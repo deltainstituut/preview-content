@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uitvoeringswet AI-verordening — een analyse door drie lenzen</title>
+<meta name="description" content="Inhoudelijke analyse van de consultatie Uitvoeringswet AI-verordening (UAIV), bekeken door de lenzen NADI, AI-plan en innovatieve economie.">
+<meta property="og:title" content="Uitvoeringswet AI-verordening — een analyse door drie lenzen">
+<meta property="og:description" content="Wat regelt de UAIV, welke keuzes maakt het kabinet, en waar raakt het aan NADI, het AI-plan en de innovatieve economie.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://preview.deltainstituut.nl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://preview.deltainstituut.nl/artikelen/uaiv-analyse/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://preview.deltainstituut.nl/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-charcoal: #231f20;
+    --c-bg: #eff0eb;
+    --c-bg2: #e5e6de;
+    --c-text: #161613;
+    --c-text2: #4a4a45;
+    --c-border: #ddd9d0;
+    --c-nadi: #51724a;
+    --c-digoverheid: #1f4886;
+    --c-aiplan: #a35378;
+    --c-inkoop: #965d95;
+    --c-inneco: #5398a3;
+    --c-dossier: #5398a3;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--c-bg); color: var(--c-text); font-family: 'Lora', Georgia, serif; font-size: 1.05rem; line-height: 1.7; }
+  a { color: var(--c-text); }
+
+  .site-header { width: 100%; background: var(--c-charcoal); padding: 1.4rem 2rem; display: flex; align-items: center; justify-content: center; }
+  .site-logo { width: 200px; color: #eff0eb; display: block; overflow: hidden; text-decoration: none; }
+  .site-logo svg { width: 100%; height: auto; display: block; }
+
+  .layout { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 2rem; display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; gap: 2.5rem; align-items: start; position: relative; }
+
+  /* Article head */
+  .article-head { margin-bottom: 2.5rem; }
+  .article-head h1 { font-family: 'Merriweather', serif; font-weight: 400; font-size: 2.8rem; line-height: 1.15; margin: 0 0 0.8rem 0; color: var(--c-text); }
+  .article-subtitle { font-family: 'Lora', serif; font-size: 1.15rem; color: var(--c-text2); margin: 0 0 1.5rem 0; line-height: 1.5; }
+  .article-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.2rem; border-bottom: 1px solid var(--c-border); font-size: 0.85rem; color: var(--c-text2); }
+  .cat-tag { display: inline-block; font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.7rem; border: 1px solid var(--c-dossier); color: var(--c-dossier); border-radius: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* TOC desktop */
+  .toc { position: sticky; top: 2rem; padding-left: 1rem; }
+  .toc-inner { position: relative; }
+  .toc-track { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--c-border); }
+  .toc-fill { position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--c-dossier); transition: height 0.2s ease; z-index: 1; }
+  .toc-title { font-family: 'Lora', serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-text2); margin: 0 0 1rem 0.6rem; }
+  .toc-list { list-style: none; padding: 0 0 0 0.6rem; margin: 0; position: relative; }
+  .toc-list li { margin: 0.45rem 0; }
+  .toc-list a { font-size: 0.82rem; color: var(--c-text); text-decoration: none; line-height: 1.35; display: block; }
+  .toc-list a:hover { color: var(--c-dossier); }
+  .toc-list a.active { font-weight: 700; }
+
+  /* Content */
+  .content { min-width: 0; }
+  .content h2 { font-family: 'Merriweather', serif; font-size: 1.55rem; font-weight: 700; margin: 2.4rem 0 0.8rem 0; line-height: 1.25; }
+  .content h3 { font-family: 'Merriweather', serif; font-size: 1.12rem; font-weight: 700; margin: 1.6rem 0 0.5rem 0; line-height: 1.3; }
+  .content p { margin: 0 0 1rem 0; }
+  .content ul { padding-left: 1.25rem; margin: 0.5rem 0 1rem 0; }
+  .content li { margin-bottom: 0.4rem; }
+  .section-break { border: none; border-top: 1px solid var(--c-border); margin: 2.5rem 0; }
+
+  /* Callouts */
+  .callout { border-left: 3px solid var(--c-dossier); padding: 0.8rem 1.2rem; margin: 1.2rem 0; background: transparent; }
+  .callout-label { font-family: 'Lora', serif; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-dossier); margin-bottom: 0.4rem; }
+  .callout p { font-size: 0.95rem; margin: 0.2rem 0; line-height: 1.55; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  thead th { background: var(--c-charcoal); color: #eff0eb; font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.82rem; text-align: left; padding: 0.7rem 0.9rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  tbody td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--c-bg2); }
+
+  /* Footnote refs */
+  .fn-ref { font-size: 0.7em; color: var(--c-dossier); font-weight: 600; vertical-align: super; cursor: pointer; text-decoration: none; padding: 0 0.1em; }
+
+  /* Sidenote column */
+  .sidenote-col { position: relative; font-family: 'Lora', serif; font-size: 0.78rem; color: var(--c-text2); line-height: 1.45; }
+  .sidenote { position: absolute; left: 0; right: 0; padding-left: 0.8rem; border-left: 1px solid var(--c-border); }
+  .sidenote-num { font-weight: 600; color: var(--c-dossier); }
+
+  /* Mobile TOC bar (hidden on desktop) */
+  .mobile-toc-bar { display: none; }
+
+  /* Chart-div container */
+  .chart-container { margin: 1.8rem 0; padding: 1.2rem 0; border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); }
+  .chart-title { font-family: 'Merriweather', serif; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.3rem 0; }
+  .chart-subtitle { font-size: 0.85rem; color: var(--c-text2); margin: 0 0 1rem 0; }
+  .bar-row { display: grid; grid-template-columns: 180px 1fr; gap: 0.8rem; align-items: center; margin: 0.55rem 0; font-size: 0.85rem; }
+  .bar-label { color: var(--c-text2); }
+  .bar-track { background: var(--c-bg2); height: 16px; border-radius: 2px; position: relative; }
+  .bar-fill { background: var(--c-dossier); height: 100%; border-radius: 2px; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.4rem; color: #fff; font-size: 0.75rem; }
+  .chart-source { margin-top: 1rem; font-size: 0.72rem; color: var(--c-text2); opacity: 0.7; }
+
+  /* Footer */
+  .site-footer { width: 100%; background: var(--c-charcoal); padding: 2rem; margin-top: 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { width: 160px; color: #eff0eb; opacity: 0.7; display: block; }
+  .footer-logo svg { width: 100%; height: auto; display: block; }
+  .footer-contact { color: #eff0eb; opacity: 0.7; font-size: 0.85rem; text-align: right; }
+  .footer-contact a { color: #eff0eb; text-decoration: none; }
+
+  /* Footnote popup (mobile) */
+  .fn-popup-overlay { display: none; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); z-index: 999; }
+  .fn-popup { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--c-bg); padding: 1.4rem 1.4rem 2rem; z-index: 1000; border-top: 3px solid var(--c-dossier); max-height: 60vh; overflow-y: auto; font-size: 0.95rem; }
+  .fn-popup.active, .fn-popup-overlay.active { display: block; }
+  .fn-popup-close { position: absolute; top: 0.8rem; right: 1rem; font-size: 1.4rem; background: none; border: none; cursor: pointer; color: var(--c-text2); }
+
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; padding: 1.5rem 1.2rem; gap: 0; }
+    .toc { display: none; }
+    .sidenote-col { display: none; }
+    .mobile-toc-bar { display: block; position: sticky; top: 0; z-index: 20; background: var(--c-bg); border-bottom: 1px solid var(--c-border); margin: 0 -1.2rem 1.5rem; padding: 0.75rem 1.2rem; }
+    .mobile-toc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; font-family: 'Lora', serif; font-size: 0.9rem; color: var(--c-text); padding: 0; cursor: pointer; }
+    .mobile-toc-section { color: var(--c-text2); font-size: 0.85rem; }
+    .mobile-progress { height: 3px; background: var(--c-border); margin-top: 0.6rem; border-radius: 2px; overflow: hidden; }
+    .mobile-progress-fill { height: 100%; width: 0; background: var(--c-dossier); transition: width 0.15s ease; }
+    .mobile-toc-drawer { display: none; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--c-border); }
+    .mobile-toc-drawer.open { display: block; }
+    .mobile-toc-drawer ul { list-style: none; padding: 0; margin: 0; }
+    .mobile-toc-drawer li { margin: 0.5rem 0; }
+    .mobile-toc-drawer a { display: block; padding: 0.55rem 0; font-size: 0.9rem; color: var(--c-text); text-decoration: none; }
+    .article-head h1 { font-size: 1.8rem; }
+    .article-subtitle { font-size: 1rem; }
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { margin-bottom: 1rem; padding: 0.5rem 0.8rem; background: var(--c-bg2); border-radius: 3px; }
+    tbody tr:nth-child(even) { background: var(--c-bg2); }
+    tbody td { border: none; padding: 0.35rem 0; font-size: 0.92rem; }
+    tbody td::before { content: attr(data-label) ": "; font-weight: 600; color: var(--c-text2); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.06em; display: block; margin-bottom: 0.1rem; }
+    .bar-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    .site-footer { flex-direction: column; text-align: center; }
+    .footer-contact { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#" class="site-logo" aria-label="Delta Instituut">
+    <svg viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/><path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/><path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/><path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/><path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/><path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/><path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/><path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/><path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/><path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/><path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/><path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/><path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/><path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/><path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/><path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/></svg>
+  </a>
+</header>
+
+<div class="mobile-toc-bar" id="mobileTocBar">
+  <button class="mobile-toc-toggle" id="mobileTocToggle" aria-expanded="false">
+    <span class="mobile-toc-section" id="mobileTocLabel">Inleiding</span>
+    <span aria-hidden="true">▾</span>
+  </button>
+  <div class="mobile-progress"><div class="mobile-progress-fill" id="mobileProgressFill"></div></div>
+  <nav class="mobile-toc-drawer" id="mobileTocDrawer" aria-label="Inhoudsopgave mobiel">
+    <ul id="mobileTocList"></ul>
+  </nav>
+</div>
+
+<main class="layout">
+
+  <aside class="toc" aria-label="Inhoudsopgave">
+    <p class="toc-title">Inhoud</p>
+    <div class="toc-inner">
+      <div class="toc-track"></div>
+      <div class="toc-fill" id="tocFill"></div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#samenvatting">Samenvatting</a></li>
+        <li><a href="#wat-regelt-uaiv">Wat regelt de UAIV</a></li>
+        <li><a href="#zwaartepunt">Waar zit het zwaartepunt</a></li>
+        <li><a href="#nadi">Lens 1 — NADI</a></li>
+        <li><a href="#aiplan">Lens 2 — AI-plan</a></li>
+        <li><a href="#innovatie">Lens 3 — innovatieve economie</a></li>
+        <li><a href="#lacunes">Opvallende lacunes</a></li>
+        <li><a href="#inbreng">Waar Delta iets mee kan</a></li>
+        <li><a href="#vervolgstappen">Vervolgstappen</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <article class="content">
+
+    <header class="article-head">
+      <h1>Uitvoeringswet AI-verordening — een analyse door drie lenzen</h1>
+      <p class="article-subtitle">Op 20 april 2026 is de UAIV in consultatie gegaan. Het wetsvoorstel regelt hoe Nederland de AI-verordening gaat handhaven. De keuzes raken direct aan het NADI-debat, aan het AI-plan, en aan hoe Nederland ruimte maakt voor innovatie.</p>
+      <div class="article-meta">
+        <span class="cat-tag">Innovatieve economie</span>
+        <span>Onno Eric Blom</span>
+        <span>20 april 2026</span>
+      </div>
+    </header>
+
+    <section id="samenvatting">
+      <h2>Samenvatting</h2>
+      <p>De Uitvoeringswet AI-verordening<span class="fn-ref" data-note="1">1</span> kiest voor een toezichtstelsel met tien bevoegde instanties, met de RDI als centraal contactpunt en de AP als ontvanger van alle nieuwe AI-domeinen die niet bij een bestaande sectorale toezichthouder horen. Het kabinet kiest bewust niet voor één centrale AI-autoriteit. De regulatory sandbox wordt multisectoraal en gratis voor MKB. De Fundamental Rights Impact Assessment krijgt géén nationale verankering. De bedrijfseffectentoets beantwoordt de vraag of de wet innovatie-effecten heeft met "Nee"<span class="fn-ref" data-note="2">2</span>, terwijl er tegelijk meer dan 25 fte nieuwe toezichtcapaciteit wordt ingezet. Voor Delta raakt dit drie dossiers tegelijk, maar het zwaartepunt ligt in de innovatieve economie en in het NADI-vraagstuk.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="wat-regelt-uaiv">
+      <h2>Wat regelt de UAIV</h2>
+      <p>De AI-verordening werkt rechtstreeks, maar de verordening zelf laat lidstaten een reeks uitvoeringskeuzes. De UAIV vult die keuzes voor Nederland in. De kern:</p>
+      <ul>
+        <li>Aanwijzing van bevoegde instanties voor markttoezicht op AI</li>
+        <li>Aanwijzing van een centraal contactpunt richting de Europese AI-office</li>
+        <li>Inrichting van een regulatory sandbox en testen onder reële omstandigheden</li>
+        <li>Boetebevoegdheden, bevoegdheden om AI-systemen van de markt te halen, en klachtrecht</li>
+        <li>Aanpassingen in elf bestaande wetten zodat sectorale toezichthouders AI-bevoegdheden krijgen in hun eigen domein</li>
+      </ul>
+
+      <h3>Het tien-toezichthoudersmodel</h3>
+      <p>Het voorgenomen toezichtstelsel verdeelt de taken als volgt.<span class="fn-ref" data-note="3">3</span></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Toezichthouder</th><th>Domein</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-label="Toezichthouder">AP</td><td data-label="Domein">Verboden AI, transparantie-eisen, alle hoog-risico AI uit bijlage III (biometrie, onderwijs, werving, essentiële diensten, rechtshandhaving, migratie, democratische processen)</td></tr>
+            <tr><td data-label="Toezichthouder">RDI</td><td data-label="Domein">Kritieke digitale infrastructuur, radioapparatuur, plus Centraal Contactpunt (SPoC) richting de Europese Commissie</td></tr>
+            <tr><td data-label="Toezichthouder">ILT</td><td data-label="Domein">Kritieke infrastructuur (transport), pleziervaartuigen, kabelbaaninstallaties</td></tr>
+            <tr><td data-label="Toezichthouder">IGJ</td><td data-label="Domein">Medische hulpmiddelen</td></tr>
+            <tr><td data-label="Toezichthouder">NVWA</td><td data-label="Domein">Speelgoed, gasinstallaties, machines, beschermingsmiddelen</td></tr>
+            <tr><td data-label="Toezichthouder">NLA</td><td data-label="Domein">Machines, beschermingsmiddelen, liften, drukapparatuur</td></tr>
+            <tr><td data-label="Toezichthouder">AFM en DNB</td><td data-label="Domein">Financiële instellingen (verboden AI, transparantie, kredietwaardigheid en premiestelling)</td></tr>
+            <tr><td data-label="Toezichthouder">PGHR en voorzitter ABRvS</td><td data-label="Domein">Rechtsbedeling</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Het plaatje klinkt als tien spelers. Inhoudelijk concentreert het voorstel heel veel bij twee: de AP voor alles wat nieuw is, en de RDI voor coördinatie naar Europa en voor de sandbox. De overige acht doen hun bestaande sectordomein.<span class="fn-ref" data-note="4">4</span></p>
+
+      <h3>De RDI als Centraal Contactpunt</h3>
+      <p>De RDI krijgt drie rollen tegelijk: markttoezichthouder voor eigen domein, aanmeldende autoriteit voor conformiteitsbeoordelingsinstanties, en Single Point of Contact voor Europa. Dit is een keuze die van de RDI de spil maakt in het Nederlandse AI-toezicht, zonder dat het een klassieke "AI-autoriteit" is. De AP en RDI coördineren gezamenlijk: AP voor bijlage III en verboden AI, RDI voor bijlage I (producten).</p>
+
+      <h3>De AP met organisatorische scheiding</h3>
+      <p>De AP krijgt een aparte AI-bestuurder met instemmingsrecht, los van het AVG-toezicht. Bestaand huis, nieuwe kamer. Dit is een tussenoplossing die geen nieuwe autoriteit oprichten betekent, maar wel binnen de AP een apart regime schept.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="zwaartepunt">
+      <h2>Waar zit het zwaartepunt</h2>
+      <p>Bij het doorlezen van de MvT, het wetsvoorstel, de visuele weergave van het stelsel, het beleidskompas en de bedrijfseffectentoets vallen drie punten op die systematisch anders liggen dan de politieke framing suggereert.</p>
+
+      <p>Eén: dit is institutionele wetgeving met grote institutionele gevolgen, maar wordt verkocht als technisch-uitvoerend. De mvt noemt het "lastenluw" en "beleidsneutrale implementatie"<span class="fn-ref" data-note="5">5</span>. Dat is alleen waar in de juridische zin dat Nederland zelf geen regeldruk toevoegt bovenop de verordening. Maar de keuze om toezicht te verdelen over tien instanties met twee coördinatoren is een stelselkeuze van de eerste orde.</p>
+
+      <p>Twee: de innovatie-effecten worden formeel ontkend. De bedrijfseffectentoets beantwoordt vraag 5 (effect op innovatie) met "Nee" en vraag 8 (andersoortige effecten) ook met "Nee"<span class="fn-ref" data-note="6">6</span>. Terwijl de Europese Commissie de ontwikkelingskosten per hoog-risico AI-systeem op 170.000 euro schat, nalevingskosten op 11.000 euro, en menselijk toezicht op 5.000 tot 8.000 euro. Er komt ook geen MKB-ontheffing bovenop de verordening.</p>
+
+      <p>Drie: de FRIA-plicht voor publieke organen krijgt geen nationale tanden. De transponeringstabel zegt over artikel 27 AI-verordening: "Behoeft naar zijn aard geen implementatie"<span class="fn-ref" data-note="7">7</span>. Er komt geen Nederlands model, geen registratieplicht, geen afdwingingsmechanisme. Uitgerekend publiekrechtelijke organen moeten een grondrechten-effectbeoordeling doen, maar er is geen nationaal instrument dat erop toeziet.</p>
+
+      <p>Het zwaartepunt voor Delta ligt in de spanning tussen deze drie punten. NADI zit in punt één, AI-plan zit in punt drie, innovatieve economie zit in punt twee.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="nadi">
+      <h2>Lens 1 — NADI</h2>
+      <p>Het NADI-debat gaat om de vraag of Nederland digitaal toezicht moet centraliseren in één autoriteit of verdelen over bestaande instanties. De UAIV geeft daar een expliciet antwoord op, zij het niet met die naam.</p>
+
+      <h3>Het kabinet kiest voor spreiding, met twee spillen</h3>
+      <p>Het beleidskompas zet twee opties tegenover elkaar: één toezichthouder voor alles, of aansluiten bij bestaande verantwoordelijkheden. De gekozen variant is de tweede, met als argument dat één toezichthouder "op zeer veel domeinen kennis moet ontwikkelen" en "in veel gevallen moet worden samengewerkt met de sectorale toezichthouders, met name daar waar AI in producten die vallen onder bijlage I wordt gebruikt"<span class="fn-ref" data-note="8">8</span>.</p>
+
+      <p>Dit argument is defensief. Het vertelt waarom één-toezichthouder niet werkt, maar niet waarom juist tien wel werkt. En het gekozen model is feitelijk ook niet tien. Het is twee: AP voor alles wat nieuw is, RDI voor alles wat Europa raakt en voor de sandbox, plus acht sectorale toezichthouders die hun eigen bestaande werk krijgen uitgebreid.</p>
+
+      <div class="callout">
+        <div class="callout-label">Positiebepaling</div>
+        <p>De retorische tegenstelling "één centrale autoriteit versus verspreid sectoraal toezicht" beschrijft niet wat er gebeurt. Er komt een duocentrum (AP en RDI) met een sectorale schil. Dat is een hybride model dat geen van beide labels draagt. Het verdient die naam wel in het NADI-debat.</p>
+      </div>
+
+      <h3>De PGHR en de voorzitter ABRvS als toezichthouder</h3>
+      <p>Een opmerkelijke keuze is dat de procureur-generaal bij de Hoge Raad en de voorzitter van de Afdeling bestuursrechtspraak van de Raad van State worden aangewezen als bevoegde instantie voor AI in rechtsbedeling. Dat is een ongebruikelijke uitbreiding van hun rol. Het past bij de AI-verordening (bijlage III noemt rechtsbedeling), maar het plaatst twee organen in een toezichthoudersrol die zij traditioneel niet vervullen.</p>
+
+      <h3>De coördinatiestructuur is dun</h3>
+      <p>De mvt noemt dat de AP en RDI "gezamenlijk zorgen voor coördinatie". Samen met het bestaande Samenwerkingsplatform Digitale Toezichthouders (SDT) en de Algoritme- &amp; AI-kamer wordt een bestaand coördinatieweefsel gebruikt. Er komt geen nieuwe coördinatieraad en geen wettelijk coördinatiemandaat. Wie in een complexe AI-casus aan tafel zit, wie beslist, en wat gebeurt bij meningsverschil, staat niet hard geregeld.</p>
+
+      <div class="callout">
+        <div class="callout-label">Vraag aan het kabinet</div>
+        <p>Wat gebeurt er als de AP een verboden AI-praktijk constateert in een medisch hulpmiddel, terwijl de IGJ daar geen risico in ziet? Wie heeft doorzettingsmacht? Het voorstel regelt coördinatie in de geest, niet in de wet.</p>
+      </div>
+
+      <h3>Wat dit betekent voor de NADI-discussie</h3>
+      <p>De UAIV legt het spreidingsmodel institutioneel vast voor de komende jaren. Wie later zou willen centraliseren (bijvoorbeeld in één Nederlandse AI- en Digitaliseringsautoriteit) loopt aan tegen een stelsel waarin sectorale toezichthouders al middelen, fte en domeinkennis hebben opgebouwd. De drempel om daar later op terug te komen, wordt met deze wet een factor hoger.</p>
+
+      <p>Dat is een politieke keuze met een lange schaduw. Als Delta een positie wil innemen in het NADI-debat, is de UAIV-consultatie het moment om die schaduw zichtbaar te maken. Niet om nu tegen spreiding te pleiten, maar om te eisen dat de wet zelf mechanismen krijgt voor latere hercentralisatie of voor harde coördinatie bij conflict.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="aiplan">
+      <h2>Lens 2 — AI-plan</h2>
+      <p>Het AI-plan (de overheidsbrede agenda voor AI-toepassing en -beleid) kent twee gezichten: overheid als regulator, en overheid als AI-gebruiker. De UAIV regelt bijna uitsluitend het eerste. Het tweede blijft opvallend dun.</p>
+
+      <h3>Overheden zijn zelf grootgebruiker van hoog-risico AI</h3>
+      <p>De AI-verordening markeert een reeks overheidsdomeinen als hoog-risico: essentiële publieke diensten en uitkeringen, rechtshandhaving, asiel, migratie, grensbeheer, rechtsbedeling, democratische processen, onderwijs, werving en personeelsbeheer. De overheid is dus in de meeste hoog-risico categorieën niet alleen regulator maar ook gebruiksverantwoordelijke.</p>
+
+      <p>Artikel 27 van de verordening schrijft daarom voor dat publiekrechtelijke organen een Fundamental Rights Impact Assessment uitvoeren voor hoog-risico AI. De UAIV zegt hier letterlijk over: "Behoeft naar zijn aard geen implementatie. Geen."</p>
+
+      <div class="callout">
+        <div class="callout-label">Aandachtspunt</div>
+        <p>Er komt geen Nederlands FRIA-model, geen registratieplicht, geen relatie met het algoritmeregister, geen aanwijzing wie dit toetst. Voor het overgrote deel van de Nederlandse overheid als AI-gebruiker betekent dit dat de grondrechten-toets een papieren plicht wordt zonder afdwingingsmechanisme op nationaal niveau.</p>
+      </div>
+
+      <h3>Boetes aan overheden: wel geregeld, maar</h3>
+      <p>De wet maakt het wel mogelijk om overheden een boete op te leggen. Artikel 99 lid 8 van de verordening laat dit open, en het wetsvoorstel neemt die optie in artikel 3.7. Maar zonder instrumentarium voor toezicht op FRIA-uitvoering blijft het boeterisico voor overheden zelf theoretisch bij overtredingen die draaien om de grondrechten-impact van eigen AI-gebruik.</p>
+
+      <h3>Biometrie achteraf: ruimte onbenut</h3>
+      <p>Artikel 26 lid 10 van de verordening geeft lidstaten ruimte voor nationale beperkingen op biometrische identificatie achteraf. De UAIV zegt: "Er zijn geen regels opgenomen in dit wetsvoorstel." Nederland laat deze ruimte bewust liggen. Voor het AI-plan is dit relevant: overheidsinzet van biometrie achteraf houdt de Europese minimumgrenzen aan, geen Nederlandse aanvullingen.</p>
+
+      <h3>De AI-geletterdheidsplicht zonder boete</h3>
+      <p>Artikel 4 van de AI-verordening verplicht aanbieders en gebruiksverantwoordelijken tot "AI-geletterdheid" bij personeel. De UAIV sluit dit artikel uit van de boetebevoegdheid. Het wordt een inspanningsverplichting zonder sanctie. Voor de overheid als grootwerkgever met AI-toepassingen betekent dit: de wet zegt dat ambtenaren AI-geletterd moeten zijn, maar niemand kan daarop handhaven.</p>
+
+      <h3>Wat dit betekent voor het AI-plan</h3>
+      <p>De UAIV legt een handhavingsregime vast voor de markt, maar creëert tegelijk een handhavingsvacuüm voor de overheid als AI-gebruiker. De grondrechten-effectbeoordeling, die in de verordening specifiek op de publieke sector is gemunt, krijgt nationaal geen haken. Dat schept een politiek risico: als over vijf jaar een incident optreedt rond overheids-AI (een discriminerende selectie-AI bij een uitkeringsinstantie bijvoorbeeld), zal blijken dat Nederland de FRIA nooit heeft gemaakt tot een afdwingbaar instrument.</p>
+
+      <p>Dit is een aangrijpingspunt voor Delta. Niet tegen de EU-structuur, maar met de vraag: welk nationaal instrumentarium hoort bij het AI-plan, als toetsingskader voor overheids-AI, dat de FRIA-leegte opvult? De relatie met het algoritmeregister ligt voor de hand. De wet kiest ervoor om die relatie níet te leggen.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="innovatie">
+      <h2>Lens 3 — innovatieve economie</h2>
+      <p>Hier ligt de scherpste spanning. De mvt zegt dat de implementatie "lastenluw" is en dat er "geen zelfstandige effecten op regeldruk" zijn. De bedrijfseffectentoets beantwoordt de innovatievraag met een blanke "Nee". Tegelijk wordt er meer dan 25 fte nieuwe toezichtcapaciteit gecreëerd en ramt de Commissie zelf de ontwikkelingskosten per hoog-risico systeem op 170.000 euro.</p>
+
+      <h3>Wat de Commissie zelf schat aan kosten</h3>
+      <div class="chart-container">
+        <div class="chart-title">Geraamde kosten per hoog-risico AI-systeem</div>
+        <div class="chart-subtitle">Commissieschatting zoals weergegeven in MvT</div>
+        <div class="bar-row">
+          <div class="bar-label">Ontwikkeling</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 100%;">€170.000</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Extra naleving</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 6.5%;">€11.000</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Menselijk toezicht</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 4.7%;">€8.000</div></div>
+        </div>
+        <div class="chart-source">Bron: MvT UAIV, hoofdstuk 6.2. Getallen afkomstig van de Europese Commissie.</div>
+      </div>
+
+      <p>Dat de Nederlandse BET deze kosten vervolgens niet als innovatiebarrière telt, komt omdat de UAIV zelf de verplichtingen niet oplegt — die volgen uit de verordening. Formeel klopt dat. Politiek is het een keuze om geen nationale flankering aan te bieden, terwijl er ruimte was.</p>
+
+      <h3>Waar de wet innovatie wél helpt</h3>
+      <p>De regulatory sandbox is het duidelijkste innovatie-instrument. Kernpunten:</p>
+      <ul>
+        <li>Multisectoraal, beheerd door RDI en AP gezamenlijk, met één digitaal loket als ingang<span class="fn-ref" data-note="9">9</span></li>
+        <li>Kosteloos voor MKB en met prioritaire toegang voor kmo's</li>
+        <li>Stilzwijgende goedkeuring voor testen onder reële omstandigheden is geïmplementeerd, wat de doorlooptijd drukt</li>
+        <li>Tegen 2 augustus 2026 operationeel</li>
+      </ul>
+
+      <p>Maar de concrete inrichting (toegangscriteria, beoordelingsritme, relatie met aansprakelijkheid) loopt via een ministeriële regeling, niet via de wet zelf. Veel van wat de sandbox tot een goed instrument maakt, ligt buiten de parlementaire behandeling.</p>
+
+      <h3>Waar de wet innovatie níet helpt</h3>
+      <p>Drie punten:</p>
+      <ul>
+        <li>Geen nationale MKB-ontheffing bovenop artikel 99 AI-verordening. Kleine aanbieders dragen dezelfde nalevingslast als multinationals.</li>
+        <li>AI-omnibus: het Commissievoorstel van 19 november 2025 loopt parallel en kan deze wet deels achterhalen. De UAIV houdt daar geen expliciet rekening mee.</li>
+        <li>Geen alternatief aansprakelijkheidsregime voor conformiteitsbeoordelingsinstanties (artikel 31 lid 9), terwijl de verordening die ruimte biedt. Een lichter aansprakelijkheidsregime had de notified-body-markt in Nederland kunnen stimuleren.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-label">Kans voor de consultatie</div>
+        <p>De BET kan worden uitgedaagd: een "Nee" op innovatie-effecten bij een wet die 25 fte aan toezicht creëert en 170.000 euro per systeem aan EU-nalevingskosten activeert, is een uitspraak die om onderbouwing vraagt. Dit is een aangrijpingspunt voor een consultatiereactie.</p>
+      </div>
+
+      <h3>Waar het sandbox-ontwerp beter kan</h3>
+      <p>Drie ontwerpvragen die in de consultatie gesteld kunnen worden:</p>
+      <ul>
+        <li>Komt er een publiek dashboard met deelnemers, looptijden en uitkomsten, of wordt de sandbox een zwarte doos?</li>
+        <li>Welke beperking op boetes geldt voor sandbox-deelnemers? De verordening biedt ruimte (artikel 57 lid 12), de uitwerking in de ministeriële regeling moet concreet zijn.</li>
+        <li>Sluit de sandbox aan bij de bestaande AFM/DNB InnovationHub en bij gemeentelijke AI-labs, of wordt het een apart eiland?</li>
+      </ul>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="lacunes">
+      <h2>Opvallende lacunes</h2>
+
+      <h3>Hoofdstuk 7 van de MvT is leeg</h3>
+      <p>De adviezen van de betrokken toezichthouders zelf, van de Raad voor de Rechtspraak, en het wetgevingsadvies van de AP zijn in de consultatie-mvt als PM-secties opgenomen. Dat betekent dat respondenten niet kunnen zien hoe de toezichthouders die de wet uitvoeren zelf denken over de gekozen verdeling. Dat is een lacune die herstel vraagt voor de definitieve versie.</p>
+
+      <h3>FRIA zonder afdwingmechanisme</h3>
+      <p>Zie AI-plan-lens. Geen Nederlands instrumentarium voor de grondrechten-toets voor overheids-AI.</p>
+
+      <h3>Biometrie achteraf onbenut</h3>
+      <p>Nederland laat de ruimte voor aanvullende beperkingen liggen.</p>
+
+      <h3>Registratie kritieke infrastructuur nog niet ingevuld</h3>
+      <p>Artikel 49 lid 5 (registratie van hoog-risico AI in kritieke infrastructuur) staat in de transponeringstabel als PM. Nog niet uitgewerkt.</p>
+
+      <h3>Kerninrichting sandbox via ministeriële regeling</h3>
+      <p>De sandbox is het grootste innovatie-instrument, maar de concrete inrichting ligt niet in de wet.</p>
+
+      <h3>Interne spanning "lastenluw" versus 25 fte</h3>
+      <p>De claim dat er geen zelfstandige effecten op regeldruk zijn, staat op gespannen voet met de opbouw van toezichtcapaciteit. Deze spanning wordt in de mvt niet opgelost.</p>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="inbreng">
+      <h2>Waar Delta iets mee kan</h2>
+      <p>De consultatie loopt tot 1 juni 2026. Voor Delta zie ik vier typen inbreng, met oplopende ambitie.</p>
+
+      <h3>Niveau 1 — consultatiereactie</h3>
+      <p>Een gerichte reactie van 3-5 pagina's met een scherp punt per dossier:</p>
+      <ul>
+        <li>NADI: het stelsel is geen spreiding maar een duocentrum. Noem het zo en regel coördinatie bij conflict in de wet.</li>
+        <li>AI-plan: de FRIA krijgt nationaal geen haken. Kom met een nationaal FRIA-instrumentarium, gekoppeld aan het algoritmeregister.</li>
+        <li>Innovatieve economie: de "Nee" op innovatie-effecten moet onderbouwd of herzien. Inrichting sandbox moet publiek, transparant en verbonden zijn.</li>
+      </ul>
+
+      <h3>Niveau 2 — publicatie over het duocentrum-model</h3>
+      <p>Een eigen artikel voor preview.deltainstituut.nl dat laat zien dat de "tien toezichthouders" retoriek is, en dat de werkelijke keuze twee spillen is. Dit plaatst Delta in het NADI-debat met een diagnose die elders niet gemaakt wordt.</p>
+
+      <h3>Niveau 3 — rondetafel met toezichthouders</h3>
+      <p>De adviezen in hoofdstuk 7 zijn PM. Dat betekent dat de toezichthouders zelf nog hun positie innemen. Een besloten rondetafel met RDI, AP en een sectorale toezichthouder (IGJ of NVWA) kan zichtbaar maken wat in het document zelf wordt verzwegen: waar schuurt de verdeling in de praktijk.</p>
+
+      <h3>Niveau 4 — positiepapier uitvoering AI-regelgeving Nederland</h3>
+      <p>Breder stuk over hoe Nederland AI-toezicht moet organiseren, waarin de UAIV een scharnier is maar niet het onderwerp. Dit is het niveau waarop NADI, AI-plan en innovatieve economie tegelijk geadresseerd worden, met de UAIV als casusbewijs dat het Nederlandse stelsel fragmentarisch ontworpen wordt.</p>
+
+      <div class="callout">
+        <div class="callout-label">Aanbeveling</div>
+        <p>Combineer niveau 1 (consultatiereactie voor 1 juni) met niveau 2 (publicatie rond diezelfde periode) en niveau 3 (rondetafel in mei). Niveau 4 kan in Q3 2026 als het wetsvoorstel naar de Raad van State of de Kamer gaat. Dat geeft Delta een ritme dat synchroon loopt met het parlementaire traject.</p>
+      </div>
+    </section>
+
+    <hr class="section-break">
+
+    <section id="vervolgstappen">
+      <h2>Vervolgstappen</h2>
+      <ul>
+        <li>Afspraak met contacten bij RDI en AP over hun positie, voordat consultatiereactie wordt ingediend</li>
+        <li>Interne positie bepalen over FRIA-koppeling met algoritmeregister: is dit iets wat Delta zelf wil bepleiten of beter overlaat aan BZK/CRM</li>
+        <li>Contact met MKB-Nederland en NLdigital over gezamenlijke inbreng op sandbox en BET</li>
+        <li>Concept-consultatiereactie opstellen voor interne review vóór 15 mei, indienen vóór 1 juni</li>
+        <li>Publicatieslot claimen op preview.deltainstituut.nl voor eind mei</li>
+      </ul>
+    </section>
+
+  </article>
+
+  <aside class="sidenote-col" id="sidenoteCol">
+    <div class="sidenote" data-num="1"><span class="sidenote-num">1</span> Internetconsultatie "Uitvoeringswet AI-verordening", gepubliceerd 20 april 2026 op internetconsultatie.nl/uaiv. Sluitingsdatum 1 juni 2026.</div>
+    <div class="sidenote" data-num="2"><span class="sidenote-num">2</span> Bedrijfseffectentoets AIV, vragen 5 en 8 beantwoord met "Nee".</div>
+    <div class="sidenote" data-num="3"><span class="sidenote-num">3</span> Visuele weergave voorgenomen AI-toezichtstelsel (bijlage bij consultatie).</div>
+    <div class="sidenote" data-num="4"><span class="sidenote-num">4</span> Bij de financiële sector nemen AFM en DNB de rol over voor verboden AI, transparantie en kredietwaardigheid.</div>
+    <div class="sidenote" data-num="5"><span class="sidenote-num">5</span> MvT UAIV, hoofdstuk 6.2, "beleidsneutrale implementatie" en "zo lastenluw mogelijk vorm gegeven".</div>
+    <div class="sidenote" data-num="6"><span class="sidenote-num">6</span> Bedrijfseffectentoets AIV, pagina 5-7, antwoorden op de vragen over innovatie-effecten en andersoortige bedrijfseffecten.</div>
+    <div class="sidenote" data-num="7"><span class="sidenote-num">7</span> Transponeringstabel MvT, rij artikel 27 AI-verordening.</div>
+    <div class="sidenote" data-num="8"><span class="sidenote-num">8</span> Beleidskompasformulier bij de internetconsultatie UAIV, vraag 4.</div>
+    <div class="sidenote" data-num="9"><span class="sidenote-num">9</span> MvT UAIV, hoofdstuk 4.6 (regulatory sandbox).</div>
+  </aside>
+
+</main>
+
+<div class="fn-popup-overlay" id="fnOverlay"></div>
+<div class="fn-popup" id="fnPopup">
+  <button class="fn-popup-close" id="fnClose" aria-label="Sluit">×</button>
+  <div id="fnPopupContent"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-logo" aria-label="Delta Instituut">
+    <svg viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/><path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/><path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/><path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/><path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/><path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/><path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/><path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/><path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/><path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/><path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/><path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/><path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/><path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/><path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/><path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/></svg>
+  </div>
+  <div class="footer-contact">
+    <div><a href="mailto:onno@deltainstituut.nl">onno@deltainstituut.nl</a></div>
+    <div>+31 6 1173 6946</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // TOC scroll tracking (desktop)
+  const tocLinks = Array.from(document.querySelectorAll('#tocList a'));
+  const sections = tocLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const tocFill = document.getElementById('tocFill');
+  const tocList = document.getElementById('tocList');
+
+  // Mobile TOC
+  const mToggle = document.getElementById('mobileTocToggle');
+  const mDrawer = document.getElementById('mobileTocDrawer');
+  const mLabel = document.getElementById('mobileTocLabel');
+  const mProgress = document.getElementById('mobileProgressFill');
+  const mList = document.getElementById('mobileTocList');
+  tocLinks.forEach(a => {
+    const li = document.createElement('li');
+    const na = a.cloneNode(true);
+    na.addEventListener('click', () => { mDrawer.classList.remove('open'); mToggle.setAttribute('aria-expanded','false'); });
+    li.appendChild(na);
+    mList.appendChild(li);
+  });
+  mToggle.addEventListener('click', () => {
+    const open = mDrawer.classList.toggle('open');
+    mToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  function updateActive(){
+    const scrollTop = window.scrollY;
+    const winH = window.innerHeight;
+    const docH = document.documentElement.scrollHeight - winH;
+    const pct = Math.min(100, Math.max(0, (scrollTop / docH) * 100));
+
+    // Mobile progress bar
+    if (mProgress) mProgress.style.width = pct + '%';
+
+    // Active section
+    let activeIdx = 0;
+    for (let i = 0; i < sections.length; i++) {
+      const rect = sections[i].getBoundingClientRect();
+      if (rect.top < winH * 0.35) activeIdx = i;
+    }
+    tocLinks.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+
+    // Update mobile label
+    if (mLabel) mLabel.textContent = tocLinks[activeIdx] ? tocLinks[activeIdx].textContent : '';
+
+    // Desktop fill: sync with active item position
+    if (tocFill && tocList && tocLinks[activeIdx]) {
+      const activeRect = tocLinks[activeIdx].getBoundingClientRect();
+      const listRect = tocList.getBoundingClientRect();
+      const fillTarget = activeRect.top + activeRect.height/2 - listRect.top;
+      tocFill.style.height = Math.max(0, fillTarget) + 'px';
+    }
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  window.addEventListener('resize', updateActive);
+  window.addEventListener('load', updateActive);
+  updateActive();
+
+  // Sidenote positioning (desktop only)
+  const refs = Array.from(document.querySelectorAll('.fn-ref'));
+  const sidenoteCol = document.getElementById('sidenoteCol');
+  function positionSidenotes(){
+    if (window.innerWidth <= 1024) return;
+    const colRect = sidenoteCol.getBoundingClientRect();
+    const prevBottoms = [];
+    refs.forEach(ref => {
+      const num = ref.dataset.note;
+      const note = sidenoteCol.querySelector('.sidenote[data-num="'+num+'"]');
+      if (!note) return;
+      const refRect = ref.getBoundingClientRect();
+      let targetTop = refRect.top - colRect.top;
+      // Prevent overlap
+      for (let pb of prevBottoms) {
+        if (targetTop < pb + 12) targetTop = pb + 12;
+      }
+      note.style.top = targetTop + 'px';
+      prevBottoms.push(targetTop + note.offsetHeight);
+    });
+  }
+  window.addEventListener('load', positionSidenotes);
+  window.addEventListener('resize', positionSidenotes);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionSidenotes);
+
+  // Footnote popup (mobile)
+  const overlay = document.getElementById('fnOverlay');
+  const popup = document.getElementById('fnPopup');
+  const popupContent = document.getElementById('fnPopupContent');
+  const closeBtn = document.getElementById('fnClose');
+  function showPopup(num){
+    const note = sidenoteCol.querySelector('.sidenote[data-num="'+num+'"]');
+    if (!note) return;
+    popupContent.innerHTML = note.innerHTML;
+    popup.classList.add('active');
+    overlay.classList.add('active');
+  }
+  function hidePopup(){
+    popup.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+  refs.forEach(ref => {
+    ref.addEventListener('click', e => {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        showPopup(ref.dataset.note);
+      }
+    });
+  });
+  overlay.addEventListener('click', hidePopup);
+  closeBtn.addEventListener('click', hidePopup);
+})();
+</script>
+
+</body>
+</html>

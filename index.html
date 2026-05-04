@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privaatrecht als instrument voor digitale overheidsorganisaties — Delta Instituut</title>
+<meta property="og:title" content="Privaatrecht als instrument voor digitale overheidsorganisaties">
+<meta property="og:description" content="Waarom de overheid vaker privaatrechtelijke vormen kiest voor digitale uitvoering, en wat dat betekent voor sturing, aansprakelijkheid en democratische controle.">
+<meta property="og:type" content="article">
+<meta name="author" content="Onno Eric Blom">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --f-display: 'Merriweather', Georgia, serif;
+  --f-body: 'Lora', Georgia, serif;
+  --c-dark: #231f20;
+  --c-bg: #eff0eb;
+  --c-bg2: #e5e6de;
+  --c-text: #161613;
+  --c-text2: #4a4a45;
+  --c-border: #ddd9d0;
+  --c-light: #eff0eb;
+  --c-dossier: #1f4886;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--c-bg); color: var(--c-text); font-family: var(--f-body); font-size: 1.05rem; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+a { color: var(--c-dossier); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--c-text); }
+
+/* === HEADER === */
+.site-header { width: 100%; background: var(--c-dark); padding: 1.4rem 2rem; display: flex; align-items: center; justify-content: center; }
+.site-logo { width: 200px; color: var(--c-light); display: block; overflow: hidden; text-decoration: none; }
+.site-logo svg { width: 100%; height: auto; display: block; }
+
+/* === MOBILE TOC (hidden on desktop) === */
+.mobile-toc-bar { display: none; }
+
+/* === LAYOUT === */
+.layout { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 2rem; display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; gap: 2.5rem; align-items: start; position: relative; }
+
+/* === SIDEBAR TOC === */
+.sidebar { position: sticky; top: 2rem; }
+.toc-title { font-family: var(--f-display); font-size: 0.92rem; font-weight: 700; color: var(--c-text); margin-bottom: 0.8rem; }
+.toc-list { list-style: none; padding-left: 1rem; position: relative; }
+.toc-list li { margin-bottom: 0.15rem; }
+.toc-list a { display: block; padding: 0.25rem 0 0.25rem 0.75rem; font-family: var(--f-body); font-size: 0.82rem; color: var(--c-text); text-decoration: none; border-left: 2px solid transparent; transition: color 0.2s, border-color 0.2s; line-height: 1.4; }
+.toc-list a:hover { color: var(--c-dossier); }
+.toc-list a.active { font-weight: 700; }
+.toc-sub { margin-left: 0.5rem; }
+.toc-sub a { font-size: 0.76rem; }
+.toc-fill { position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--c-dossier); transition: height 0.2s ease; z-index: 1; }
+.toc-track { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--c-border); }
+
+/* === ARTICLE === */
+.article-content { min-width: 0; }
+.article-header { margin-bottom: 2.5rem; }
+h1 { font-family: var(--f-display); font-size: 2.8rem; font-weight: 400; line-height: 1.2; color: var(--c-text); margin-bottom: 0.8rem; }
+.article-punchline { font-family: var(--f-body); font-size: 1.1rem; color: var(--c-text2); line-height: 1.7; margin-bottom: 1rem; }
+.article-meta { font-family: var(--f-body); font-size: 0.85rem; color: var(--c-text2); display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; padding-bottom: 1.2rem; border-bottom: 1px solid var(--c-border); }
+.category-tag { display: inline-block; border: 1.5px solid var(--c-dossier); color: var(--c-dossier); padding: 0.15rem 0.6rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em; }
+
+/* === BODY === */
+.article-body h2 { font-family: var(--f-display); font-size: 1.55rem; font-weight: 700; color: var(--c-text); margin-top: 3rem; margin-bottom: 0.8rem; scroll-margin-top: 2rem; }
+.article-body h3 { font-family: var(--f-display); font-size: 1.12rem; font-weight: 700; color: var(--c-text); margin-top: 2rem; margin-bottom: 0.5rem; scroll-margin-top: 2rem; }
+.article-body p { margin-bottom: 1.2rem; }
+.article-body ul, .article-body ol { margin-bottom: 1.2rem; padding-left: 1.5rem; }
+.article-body li { margin-bottom: 0.4rem; }
+
+/* === SECTION BREAKS === */
+hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 2.5rem 0; }
+
+/* === CALLOUTS === */
+.callout { background: transparent; border-left: 3px solid var(--c-dossier); padding: 1.1rem 1.4rem; border-radius: 0; margin: 1.5rem 0; }
+.callout-label { font-weight: 600; font-size: 0.78rem; text-transform: uppercase; color: var(--c-dossier); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+.callout p { margin-bottom: 0.5rem; font-size: 0.95rem; }
+.callout p:last-child { margin-bottom: 0; }
+.callout ul { padding-left: 1.2rem; margin-bottom: 0.5rem; }
+.callout li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+
+/* === CHARTS === */
+.chart-container { margin: 2.5rem 0; padding: 0; }
+.chart-title { font-family: var(--f-display); font-size: 1.35rem; font-weight: 700; line-height: 1.3; color: var(--c-text); margin-bottom: 0.2rem; }
+.chart-subtitle { font-family: var(--f-body); font-size: 0.85rem; color: var(--c-text2); margin-bottom: 1.4rem; line-height: 1.5; }
+.chart-source { font-family: var(--f-body); font-size: 0.7rem; color: var(--c-text2); margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; }
+.chart-logo { width: 90px; height: auto; opacity: 0.25; color: var(--c-text2); }
+.chart-logo svg { width: 100%; height: auto; display: block; }
+.bar-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.55rem; }
+.bar-label { font-family: var(--f-body); font-size: 0.82rem; min-width: 150px; text-align: right; color: var(--c-text); line-height: 1.3; }
+.bar-track { flex: 1; height: 22px; background: var(--c-bg2); position: relative; overflow: hidden; }
+.bar-fill { height: 100%; display: flex; align-items: center; padding: 0 0.5rem; font-family: var(--f-body); font-size: 0.75rem; color: #fff; white-space: nowrap; transition: width 0.3s ease; }
+.bar-value { font-family: var(--f-body); font-size: 0.78rem; color: var(--c-text2); min-width: 55px; padding-left: 0.4rem; }
+.legend { display: flex; gap: 1.2rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 0.35rem; font-family: var(--f-body); font-size: 0.78rem; color: var(--c-text2); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-line { width: 18px; height: 2px; flex-shrink: 0; }
+.timeline-row { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.7rem; padding: 0.4rem 0; }
+.timeline-year { font-family: var(--f-body); font-size: 0.78rem; color: var(--c-text2); min-width: 45px; text-align: right; padding-top: 0.1rem; }
+.timeline-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 0.25rem; }
+.timeline-dot.dashed { background: none; border: 2px dashed var(--c-dossier); }
+.timeline-name { font-family: var(--f-body); font-size: 0.88rem; color: var(--c-text); font-weight: 600; min-width: 90px; }
+.timeline-desc { font-family: var(--f-body); font-size: 0.82rem; color: var(--c-text2); flex: 1; }
+.grouped-bars { margin-bottom: 1.2rem; }
+.grouped-bars .group-label { font-family: var(--f-body); font-size: 0.88rem; font-weight: 600; color: var(--c-text); margin-bottom: 0.3rem; }
+.grouped-bars .bar-row { margin-bottom: 0.3rem; }
+.grouped-bars .bar-label { min-width: 120px; font-size: 0.78rem; }
+.scale-labels { display: flex; justify-content: space-between; padding-left: 156px; margin-bottom: 0.4rem; font-family: var(--f-body); font-size: 0.72rem; color: var(--c-text2); }
+
+/* === SIDENOTE REFERENCES === */
+.fn-ref { font-size: 0.75em; vertical-align: super; line-height: 0; color: var(--c-dossier); cursor: pointer; font-weight: 600; font-family: var(--f-body); text-decoration: none; padding: 0 0.1rem; }
+.fn-ref:hover { text-decoration: underline; }
+
+/* === SIDENOTE COLUMN (desktop) === */
+.sidenote-col { position: relative; display: block; }
+.sidenote-col .sidenote-item { font-family: var(--f-body); font-size: 0.78rem; line-height: 1.5; color: var(--c-text2); border-top: 1px solid var(--c-border); padding-top: 0.5rem; position: absolute; left: 0; right: 0; }
+.sidenote-col .sidenote-num { font-weight: 600; color: var(--c-dossier); font-size: 0.72rem; margin-right: 0.3rem; }
+
+/* === MOBILE FOOTNOTE POPUP === */
+.fn-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); z-index: 200; }
+.fn-overlay.open { display: block; }
+.fn-popup { position: fixed; bottom: 0; left: 0; right: 0; background: var(--c-bg); border-top: 2px solid var(--c-dossier); padding: 1.2rem 1.5rem 2rem; z-index: 201; transform: translateY(100%); transition: transform 0.25s ease; font-family: var(--f-body); font-size: 0.9rem; line-height: 1.65; color: var(--c-text); max-height: 50vh; overflow-y: auto; }
+.fn-popup.open { transform: translateY(0); }
+.fn-popup-num { font-weight: 700; color: var(--c-dossier); font-size: 0.82rem; display: block; margin-bottom: 0.3rem; }
+.fn-popup-close { position: absolute; top: 0.8rem; right: 1rem; font-size: 1.3rem; color: var(--c-text2); cursor: pointer; background: none; border: none; font-family: var(--f-body); padding: 0.3rem; }
+
+/* === TABLES === */
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+thead th { background: var(--c-dark); color: var(--c-light); font-weight: 600; text-align: left; padding: 0.7rem 1rem; font-size: 0.85rem; letter-spacing: 0.02em; }
+tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--c-border); }
+tbody tr:nth-child(even) td { background: var(--c-bg2); }
+
+/* === FOOTER === */
+.author-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--c-border); }
+.site-footer { background: var(--c-dark); color: var(--c-light); padding: 2.5rem 2rem; margin-top: 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.footer-logo { width: 160px; height: auto; color: var(--c-light); opacity: 0.7; }
+.footer-logo svg { width: 100%; height: auto; display: block; fill: currentColor; }
+.footer-contact { font-family: var(--f-body); font-size: 0.85rem; color: var(--c-light); opacity: 0.7; text-align: right; line-height: 1.7; }
+.footer-contact a { color: var(--c-light); text-decoration: none; }
+.footer-contact a:hover { opacity: 1; text-decoration: underline; }
+
+/* === READING PROGRESS (desktop top bar) === */
+.reading-progress { display: none; }
+
+/* === MOBILE === */
+@media (max-width: 1024px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 0; }
+  .sidebar { display: none; }
+  .sidenote-col { display: none; }
+  .article-content { padding: 2rem 1.2rem 1.2rem; overflow-x: hidden; }
+  h1 { font-size: 1.8rem; }
+  .article-body h2 { font-size: 1.45rem; margin-top: 2.5rem; scroll-margin-top: 4rem; }
+  .article-body h3 { font-size: 1.15rem; scroll-margin-top: 4rem; }
+  .article-body p { font-size: 1.02rem; line-height: 1.85; }
+  .callout { padding: 0.5rem 0 0.5rem 0.8rem; }
+
+  /* Mobile charts */
+  .chart-title { font-size: 1.15rem; }
+  .bar-label { min-width: 100px; font-size: 0.75rem; }
+  .grouped-bars .bar-label { min-width: 80px; font-size: 0.72rem; }
+  .scale-labels { padding-left: 106px; }
+  .timeline-row { flex-wrap: wrap; }
+  .timeline-desc { flex-basis: 100%; padding-left: 60px; margin-top: -0.2rem; }
+  .chart-source { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+  .site-header { padding: 1.1rem 1rem; }
+  .site-logo { width: 160px; }
+  .site-footer { padding: 2rem 1.2rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .footer-contact { text-align: left; }
+  .footer-logo { width: 130px; }
+
+  /* Mobile TOC drawer */
+  .mobile-toc-bar { display: none; position: sticky; top: 0; z-index: 99; background: var(--c-bg); border-bottom: 1px solid var(--c-border); }
+  .mobile-toc-bar.visible { display: block; }
+  .mobile-toc-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; cursor: pointer; font-family: var(--f-body); font-size: 0.82rem; font-weight: 600; color: var(--c-text); }
+  .mobile-toc-toggle svg { width: 16px; height: 16px; transition: transform 0.2s; }
+  .mobile-toc-bar.open .mobile-toc-toggle svg { transform: rotate(180deg); }
+  .mobile-toc-drawer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .mobile-toc-bar.open .mobile-toc-drawer { max-height: 600px; }
+  .mobile-toc-drawer .toc-list { padding: 0.5rem 1.2rem 1rem; }
+  .mobile-toc-drawer .toc-list a { padding: 0.35rem 0 0.35rem 0.75rem; font-size: 0.82rem; border-left: none; }
+  .mobile-toc-drawer .toc-list .toc-sub a { padding-left: 1.5rem; font-size: 0.76rem; }
+  .mobile-toc-progress { height: 3px; background: var(--c-border); width: 100%; position: relative; }
+  .mobile-toc-progress-fill { height: 100%; background: var(--c-dossier); width: 0%; transition: width 0.15s linear; }
+
+  /* Mobile table cards */
+  .table-wrap { overflow-x: visible; }
+  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  thead { display: none; }
+  table { border: none; }
+  tr { background: var(--c-bg); border: 1px solid var(--c-dark); padding: 1rem 1.1rem; margin-bottom: 0.6rem; }
+  tr:nth-child(even) { background: var(--c-bg); }
+  td, tbody td { display: block; padding: 0; border: none; border-bottom: none; font-size: 0.9rem; line-height: 1.6; background: transparent !important; }
+  td::before { content: attr(data-label); display: block; font-size: 0.7rem; letter-spacing: 0.03em; color: var(--c-text2); margin-top: 0.6rem; }
+  td:first-child { font-weight: 600; font-size: 1rem; }
+  td:first-child::before { display: none; }
+}
+
+@media print { body { background: #fff; } .sidebar, .mobile-toc-bar { display: none; } .layout { grid-template-columns: 1fr; max-width: 100%; padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="site-logo">
+    <svg viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+      <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+      <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+      <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+      <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+      <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+      <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+      <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+      <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+      <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+      <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+      <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+      <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+      <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+      <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+      <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+    </svg>
+  </a>
+</header>
+
+<!-- Mobile TOC bar (hidden on desktop) -->
+<div class="mobile-toc-bar" id="mobileTocBar">
+  <div class="mobile-toc-toggle" id="mobileTocToggle">
+    <span id="mobileTocLabel">Inhoudsopgave</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+  <div class="mobile-toc-progress"><div class="mobile-toc-progress-fill" id="mobileProgress"></div></div>
+  <div class="mobile-toc-drawer" id="mobileTocDrawer">
+    <ol class="toc-list">
+      <li><a href="#s1">1. Het probleem met publiekrecht</a></li>
+      <li><a href="#s2">2. Wat is de privaatrechtelijke route?</a></li>
+      <li><a href="#s3">3. Drie modellen vergeleken</a></li>
+      <li><a href="#s4">4. De risico's van privaatrecht</a></li>
+      <li><a href="#s5">5. Hoe andere landen het doen</a></li>
+      <li><a href="#s6">6. Wat dit betekent voor NADI</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- Desktop sidebar TOC -->
+<aside class="sidebar">
+  <div class="toc-title">Inhoudsopgave</div>
+  <ol class="toc-list" id="tocList">
+    <div class="toc-track"></div>
+    <div class="toc-fill" id="tocFill"></div>
+    <li><a href="#s1">1. Het probleem met publiekrecht</a>
+      <ul class="toc-list">
+        <li class="toc-sub"><a href="#s1a">Traagheid in de uitvoering</a></li>
+        <li class="toc-sub"><a href="#s1b">De CAO-klem</a></li>
+      </ul>
+    </li>
+    <li><a href="#s2">2. Wat is de privaatrechtelijke route?</a>
+      <ul class="toc-list">
+        <li class="toc-sub"><a href="#s2a">Stichting</a></li>
+        <li class="toc-sub"><a href="#s2b">BV met overheidsaandeelhouder</a></li>
+        <li class="toc-sub"><a href="#s2c">Coöperatie</a></li>
+      </ul>
+    </li>
+    <li><a href="#s3">3. Drie modellen vergeleken</a></li>
+    <li><a href="#s4">4. De risico's van privaatrecht</a>
+      <ul class="toc-list">
+        <li class="toc-sub"><a href="#s4a">Democratische controle</a></li>
+        <li class="toc-sub"><a href="#s4b">Aansprakelijkheid</a></li>
+        <li class="toc-sub"><a href="#s4c">Wegdrijfrisico</a></li>
+      </ul>
+    </li>
+    <li><a href="#s5">5. Hoe andere landen het doen</a></li>
+    <li><a href="#s6">6. Wat dit betekent voor NADI</a></li>
+    <li><a href="#bronnen">Bronnen</a></li>
+  </ol>
+</aside>
+
+<!-- Main content -->
+<main class="article-content">
+<header class="article-header">
+  <h1>Privaatrecht als instrument voor digitale overheidsorganisaties</h1>
+  <div class="article-punchline">De overheid wil innovatieorganisaties bouwen die snel kunnen handelen, toptalent kunnen aantrekken en buiten de reguliere bureaucratie kunnen opereren. Steeds vaker valt de keuze op privaatrechtelijke vormen: stichtingen, BV's, coöperaties. Dat lost problemen op, maar creëert nieuwe. Deze analyse zet de opties op een rij.</div>
+  <div class="article-meta">
+    <span class="category-tag">Digitale overheid</span>
+    <span>Onno Eric Blom</span>
+    <span>·</span>
+    <span>5 april 2026</span>
+    <span>·</span>
+    <span>12-16 min leestijd</span>
+  </div>
+</header>
+
+<div class="article-body">
+
+<h2 id="s1">1. Het probleem met publiekrecht</h2>
+
+<p>Wanneer de Nederlandse overheid een nieuw uitvoeringsorgaan opricht, grijpt ze bijna reflexmatig naar publiekrechtelijke vormen. Een ZBO, een agentschap, een directoraat-generaal. Die keuze is begrijpelijk: publiekrechtelijke organisaties passen in het bestaande systeem van ministeriële verantwoordelijkheid, begrotingsregels en ambtenarenrecht.<a class="fn-ref" href="#fn1" data-note="1">1</a> De Tweede Kamer weet hoe ze er grip op moet houden.</p>
+
+<p>Maar juist die inbedding in het publiekrechtelijke systeem maakt het lastig om organisaties te bouwen die snel moeten bewegen. En bij digitale innovatie is snelheid geen luxe, het is een voorwaarde.</p>
+
+<h3 id="s1a">Traagheid in de uitvoering</h3>
+
+<p>Een agentschap dat onder een ministerie valt, deelt de inkoopregels van dat ministerie. Dat betekent Europese aanbestedingen voor contracten boven de drempel, doorlooptijden van maanden voor standaard-ICT-opdrachten, en goedkeuringsketens die door meerdere directies lopen. Voor een organisatie die experimenteel software moet ontwikkelen, prototypes moet testen en moet kunnen falen en bijsturen, is dat een fundamenteel probleem.</p>
+
+<p>Het Nationaal Groeifonds illustreert dit. In de eerste twee jaar ging het overgrote deel van de capaciteit niet naar innovatie, maar naar het optuigen van procedures die pasten binnen de Comptabiliteitswet.<a class="fn-ref" href="#fn2" data-note="2">2</a> De regelgeving was niet ontworpen voor een fonds dat snel geld in projecten moet pompen.</p>
+
+<h3 id="s1b">De CAO-klem</h3>
+
+<p>Publiekrechtelijke organisaties vallen onder de CAO Rijk of vergelijkbare ambtenarenrechtelijke regimes. Dat maakt het vrijwel onmogelijk om te concurreren met de markt voor schaars digitaal talent. Een senior software-architect verdient bij een groot techbedrijf twee tot drie keer wat de schalen van het Rijk toestaan. En het gaat niet alleen om salaris: de hele structuur van functiebeschrijvingen, inschaling en periodieke verhogingen past niet bij de manier waarop technologisch talent zich ontwikkelt.</p>
+
+<p>DARPA, het Amerikaanse defensie-innovatieagentschap dat model staat voor veel Europese varianten, lost dit op doordat het buiten het reguliere federale salarissysteem opereert.<a class="fn-ref" href="#fn3" data-note="3">3</a> Programmadirecteuren worden aangetrokken op tijdelijke contracten met marktconforme voorwaarden. Dat is in het Nederlandse publiekrechtelijke systeem niet mogelijk zonder wetswijziging.</p>
+
+<hr class="section-break">
+
+<h2 id="s2">2. Wat is de privaatrechtelijke route?</h2>
+
+<p>Privaatrechtelijke organisatievormen bieden een uitweg uit deze beperkingen. De overheid richt een private rechtspersoon op, of neemt er een belang in, en stuurt via de governance-structuur in plaats van via hiërarchische ministeriële bevoegdheden. Het idee is niet nieuw: de Nederlandse Spoorwegen, de energiebedrijven en de Volksbank zijn allemaal voorbeelden van overheidstaken in privaatrechtelijke verpakking.<a class="fn-ref" href="#fn4" data-note="4">4</a></p>
+
+<div class="chart-container">
+  <div class="chart-title">Privaatrechtelijke overheidsorganisaties in Nederland</div>
+  <div class="chart-subtitle">Oprichtingsjaar en rechtsvorm van publiek-private organisaties</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dossier);"></div> Stichting</div>
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dark);"></div> NV / BV</div>
+    <div class="legend-item"><div class="legend-dot" style="background: #51724a;"></div> Coöperatie</div>
+    <div class="legend-item"><div class="legend-dot dashed"></div> Nog te bepalen</div>
+  </div>
+  <div class="timeline-row"><div class="timeline-year">1932</div><div class="timeline-dot" style="background: var(--c-dossier);"></div><div class="timeline-name">TNO</div><div class="timeline-desc">Stichting voor toegepast onderzoek</div></div>
+  <div class="timeline-row"><div class="timeline-year">1937</div><div class="timeline-dot" style="background: var(--c-dark);"></div><div class="timeline-name">NS</div><div class="timeline-desc">NV, 100% staatsdeelneming</div></div>
+  <div class="timeline-row"><div class="timeline-year">1950</div><div class="timeline-dot" style="background: var(--c-dossier);"></div><div class="timeline-name">NWO</div><div class="timeline-desc">Stichting voor wetenschapsfinanciering</div></div>
+  <div class="timeline-row"><div class="timeline-year">1986</div><div class="timeline-dot" style="background: #51724a;"></div><div class="timeline-name">SURF</div><div class="timeline-desc">Coöperatie van universiteiten</div></div>
+  <div class="timeline-row"><div class="timeline-year">2013</div><div class="timeline-dot" style="background: var(--c-dark);"></div><div class="timeline-name">Volksbank</div><div class="timeline-desc">NV, 100% staatsdeelneming</div></div>
+  <div class="timeline-row"><div class="timeline-year">2020</div><div class="timeline-dot" style="background: var(--c-dark);"></div><div class="timeline-name">Invest-NL</div><div class="timeline-desc">NV voor innovatiefinanciering</div></div>
+  <div class="timeline-row"><div class="timeline-year">2026?</div><div class="timeline-dot dashed"></div><div class="timeline-name" style="color: var(--c-dossier);">NADI</div><div class="timeline-desc">Rechtsvorm nog te bepalen</div></div>
+  <div class="chart-source"><span>Bronnen: Handelsregister KVK, jaarverslagen betreffende organisaties</span><div class="chart-logo"><svg viewBox="0 0 1607 216" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M330.29 9.72h43.39c46.17 0 64.47 36.36 64.47 102.39s-18.3 101.74-64.47 101.74H330.29V9.72Zm40.37 170.87h3.68c18.96 0 21.08-21.08 21.08-68.48s-2.12-68.72-21.08-68.72h-3.68v137.2Z"/><path d="M505.66 161.63l34.81 4.25c-2.12 29.01-16.18 49.85-43.39 49.85-32.36 0-49.52-29.34-49.52-80.08 0-45.84 16.18-78.2 50.09-78.2 30.24 0 44.04 27.21 44.04 63.25 0 7.03 0 13.73-1.23 24.76h-56.55c-.33 27.54 2.78 41.59 11.93 41.59 7.68 0 8.82-12.5 8.58-25.33ZM506.56 122.25c.33-2.45.33-4.25.33-6.13 0-15.85-.9-29.66-9.81-29.66s-11.6 15.85-11.6 35.79h21.08Z"/><path d="M604.36 210.83c-4.9 2.78-12.83 4.9-20.18 4.9-20.18 0-31.13-10.05-31.13-33.91V0h39.71v178.47c0 4 2.12 5.8 4.9 5.8 1.55 0 3.02-.33 5.23-1.55l1.55 28.11Z"/><path d="M677.66 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M774.83 179.37c0 4.58 1.23 6.13 3.68 6.13 1.23 0 2.12 0 3.99-.9l1.23 26.31c-4.58 3.02-10.38 4.9-17.41 4.9s-15.28-2.78-20.51-9.48c-2.12-2.45-3.68-5.23-4.9-8.58-3.02 10.7-13.16 17.73-25.09 17.73-21.41 0-33.59-17.73-33.59-44.04 0-33.01 20.18-49.19 43.72-49.19 4.58 0 8.58.9 11.03 2.12v-22.96c0-6.46-.9-12.83-7.68-12.83s-8.82 8.25-7.93 22.64l-35.46-6.46c0-26.88 16.51-47.4 45.84-47.4s43.07 14.06 43.07 46.41v75.59Zm-37.92-32.12c-1.23-.65-3.02-.65-4.9-.65-7.93 0-13.49 7.35-13.49 21.98 0 12.83 4 19.29 9.81 19.29 6.13 0 8.58-5.48 8.58-14.06v-26.56Z"/><path d="M881.46 9.72v204.13h-40.94V9.72h40.94Z"/><path d="M933.44 85.23c3.35-17.08 15.28-27.78 31.79-27.78 21.08 0 31.46 15.28 31.46 38.81v117.67h-40.04V104.19c0-8.25-1.8-14.06-8.25-14.06s-10.7 7.35-10.7 22.64v101.17h-39.71V59.32h32.11l3.35 25.99Z"/><path d="M1038.84 163.76c-.9 14.38 3.35 22.88 11.93 22.88 6.46 0 9.81-4.58 9.81-12.26 0-20.51-52.3-27.78-52.3-72.15 0-26.56 18.3-44.95 44.04-44.95 27.54 0 42.17 19.28 41.84 44.04l-32.36 4.58c.33-11.6-2.78-19.85-10.05-19.85-5.48 0-9.15 4.25-9.15 11.6 0 18.96 53.2 28.76 53.2 72.15 0 27.78-18.96 45.84-44.29 45.84-30.24 0-45.84-20.51-44.95-47.97l32.36-4Z"/><path d="M1172.95 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1201.95 46.98c-13.49 0-22.96-9.15-22.96-22.64s9.48-22.31 22.96-22.31 23.21 9.15 23.21 22.31-9.48 22.64-23.21 22.64Zm20.18 12.26v154.61h-39.71V59.24h39.71Z"/><path d="M1304.34 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1375.84 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1489.5 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1606.84 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M223.49 9.97l51.16 190.26-45.32-14.35L189.96 42.79l33.53-32.82Z"/><path d="M204.42 214.39 149.62 9.97 0 159.65l204.42 54.74Z"/></svg></div></div>
+</div>
+
+<p>Voor digitale innovatieorganisaties zijn drie vormen relevant.</p>
+
+<h3 id="s2a">Stichting</h3>
+
+<p>Een stichting heeft geen leden of aandeelhouders. De overheid stuurt via de statuten, de samenstelling van het bestuur en de raad van toezicht, en via subsidievoorwaarden. Het voordeel: maximale flexibiliteit in personeelsbeleid en inkoop. Het nadeel: er is geen aandeelhouder die formeel kan ingrijpen. Sturing verloopt via zachte instrumenten.</p>
+
+<p>De stichting is in Nederland de meest gebruikte vorm voor publiek-private kennisinstellingen.<a class="fn-ref" href="#fn5" data-note="5">5</a> TNO is een stichting. Het Rathenau Instituut is een stichting. De Cyber Security Raad opereert als stichting. Het model is bewezen, maar de governance-uitdagingen zijn reëel: zodra een stichting eenmaal draait, is het voor de overheid lastiger om koerswijzigingen af te dwingen dan bij een agentschap.</p>
+
+<h3 id="s2b">BV met overheidsaandeelhouder</h3>
+
+<p>Een besloten vennootschap waarin de staat (of een ministerie) alle aandelen houdt, combineert privaatrechtelijke flexibiliteit met directe zeggenschap. De aandeelhouder benoemt bestuurders, keurt de begroting goed en kan statutaire beperkingen opleggen. Het Rijksvastgoedbedrijf opereert niet als BV, maar de Volksbank (100% staatsdeelneming) en Holland Casino laten zien hoe het model werkt.</p>
+
+<p>Voor een innovatieagentschap biedt de BV-vorm een extra mogelijkheid: het nemen van eigen deelnemingen en het doen van investeringen. Een stichting kan dat ook, maar bij een BV is de governance rond investeringsbeslissingen beter geregeld in het vennootschapsrecht.</p>
+
+<h3 id="s2c">Coöperatie</h3>
+
+<p>De coöperatie is de minst voor de hand liggende vorm, maar mogelijk de meest interessante voor een organisatie als NADI. In een coöperatie zijn de leden gezamenlijk eigenaar. Als NADI wordt opgezet als coöperatie van overheidsorganisaties (Rijk, provincies, gemeenten, uitvoeringsorganisaties), creëer je een structuur waarin alle overheidslagen mede-eigenaar zijn van de digitale infrastructuur die ze samen gebruiken.</p>
+
+<p>SURF, de ICT-samenwerkingsorganisatie van het hoger onderwijs, is een coöperatie. Alle universiteiten en hogescholen zijn lid. Dat model zorgt ervoor dat de organisatie responsief blijft naar haar gebruikers, omdat die gebruikers ook de eigenaren zijn.</p>
+
+<div class="callout">
+  <div class="callout-label">Waar je op moet aansturen</div>
+  <p>De keuze tussen stichting, BV en coöperatie is geen juridisch-technische kwestie. Het is een strategische beslissing over wie de eigenaar is van publieke digitale infrastructuur, en hoe die eigenaar stuurt. Neem die beslissing niet impliciet door de meest gangbare vorm te kiezen, maar expliciet door te beredeneren welk sturingsmodel past bij de missie.</p>
+</div>
+
+<hr class="section-break">
+
+<h2 id="s3">3. Drie modellen vergeleken</h2>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Criterium</th>
+      <th>Stichting</th>
+      <th>BV (staatsdeelneming)</th>
+      <th>Coöperatie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Criterium">Eigenaarschap</td>
+      <td data-label="Stichting">Geen eigenaar, bestuur is autonoom</td>
+      <td data-label="BV">Staat is aandeelhouder</td>
+      <td data-label="Coöperatie">Leden zijn gezamenlijk eigenaar</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Sturing door overheid</td>
+      <td data-label="Stichting">Via statuten, subsidie, benoemingen</td>
+      <td data-label="BV">Via aandeelhoudersvergadering</td>
+      <td data-label="Coöperatie">Via lidmaatschap en stemrecht</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Flexibiliteit personeel</td>
+      <td data-label="Stichting">Hoog, eigen CAO mogelijk</td>
+      <td data-label="BV">Hoog, eigen arbeidsvoorwaarden</td>
+      <td data-label="Coöperatie">Hoog, eigen arbeidsvoorwaarden</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Investeringsbevoegdheid</td>
+      <td data-label="Stichting">Mogelijk, maar beperkt gebruikelijk</td>
+      <td data-label="BV">Goed geregeld in BW2</td>
+      <td data-label="Coöperatie">Mogelijk via statuten</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Democratische controle</td>
+      <td data-label="Stichting">Indirect, via minister</td>
+      <td data-label="BV">Via minister als aandeelhouder</td>
+      <td data-label="Coöperatie">Via leden (overheden)</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Risico op verzelfstandiging</td>
+      <td data-label="Stichting">Hoog</td>
+      <td data-label="BV">Middel</td>
+      <td data-label="Coöperatie">Laag (leden zijn gebruikers)</td>
+    </tr>
+    <tr>
+      <td data-label="Criterium">Voorbeeld</td>
+      <td data-label="Stichting">TNO, Rathenau</td>
+      <td data-label="BV">Volksbank, Holland Casino</td>
+      <td data-label="Coöperatie">SURF, Rabobank</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="chart-container">
+  <div class="chart-title">Drie rechtsvormen vergeleken op vijf criteria</div>
+  <div class="chart-subtitle">Beoordeling op basis van juridische analyse en praktijkervaring</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dossier);"></div> Stichting</div>
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dossier); opacity: 0.45;"></div> BV (staatsdeelneming)</div>
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dark);"></div> Coöperatie</div>
+  </div>
+  <div class="scale-labels"><span>laag</span><span>middel</span><span>hoog</span></div>
+  <div class="grouped-bars">
+    <div class="group-label">Flexibiliteit personeel</div>
+    <div class="bar-row"><div class="bar-label">Stichting</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dossier);">hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">BV</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dossier); opacity: 0.45;">hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">Coöperatie</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dark);">hoog</div></div></div>
+  </div>
+  <div class="grouped-bars">
+    <div class="group-label">Overheidssturing</div>
+    <div class="bar-row"><div class="bar-label">Stichting</div><div class="bar-track"><div class="bar-fill" style="width: 30%; background: var(--c-dossier);">laag</div></div></div>
+    <div class="bar-row"><div class="bar-label">BV</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dossier); opacity: 0.45;">hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">Coöperatie</div><div class="bar-track"><div class="bar-fill" style="width: 60%; background: var(--c-dark);">middel</div></div></div>
+  </div>
+  <div class="grouped-bars">
+    <div class="group-label">Democratische controle</div>
+    <div class="bar-row"><div class="bar-label">Stichting</div><div class="bar-track"><div class="bar-fill" style="width: 30%; background: var(--c-dossier);">laag</div></div></div>
+    <div class="bar-row"><div class="bar-label">BV</div><div class="bar-track"><div class="bar-fill" style="width: 80%; background: var(--c-dossier); opacity: 0.45;">middel-hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">Coöperatie</div><div class="bar-track"><div class="bar-fill" style="width: 60%; background: var(--c-dark);">middel</div></div></div>
+  </div>
+  <div class="grouped-bars">
+    <div class="group-label">Investeringsbevoegdheid</div>
+    <div class="bar-row"><div class="bar-label">Stichting</div><div class="bar-track"><div class="bar-fill" style="width: 50%; background: var(--c-dossier);">middel</div></div></div>
+    <div class="bar-row"><div class="bar-label">BV</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dossier); opacity: 0.45;">hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">Coöperatie</div><div class="bar-track"><div class="bar-fill" style="width: 60%; background: var(--c-dark);">middel</div></div></div>
+  </div>
+  <div class="grouped-bars">
+    <div class="group-label">Risico op wegdrijven</div>
+    <div class="bar-row"><div class="bar-label">Stichting</div><div class="bar-track"><div class="bar-fill" style="width: 95%; background: var(--c-dossier);">hoog</div></div></div>
+    <div class="bar-row"><div class="bar-label">BV</div><div class="bar-track"><div class="bar-fill" style="width: 60%; background: var(--c-dossier); opacity: 0.45;">middel</div></div></div>
+    <div class="bar-row"><div class="bar-label">Coöperatie</div><div class="bar-track"><div class="bar-fill" style="width: 20%; background: var(--c-dark);">laag</div></div></div>
+  </div>
+  <div class="chart-source"><span>Bron: juridische analyse Delta Instituut op basis van BW Boek 2 en governance-literatuur</span><div class="chart-logo"><svg viewBox="0 0 1607 216" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M330.29 9.72h43.39c46.17 0 64.47 36.36 64.47 102.39s-18.3 101.74-64.47 101.74H330.29V9.72Zm40.37 170.87h3.68c18.96 0 21.08-21.08 21.08-68.48s-2.12-68.72-21.08-68.72h-3.68v137.2Z"/><path d="M505.66 161.63l34.81 4.25c-2.12 29.01-16.18 49.85-43.39 49.85-32.36 0-49.52-29.34-49.52-80.08 0-45.84 16.18-78.2 50.09-78.2 30.24 0 44.04 27.21 44.04 63.25 0 7.03 0 13.73-1.23 24.76h-56.55c-.33 27.54 2.78 41.59 11.93 41.59 7.68 0 8.82-12.5 8.58-25.33ZM506.56 122.25c.33-2.45.33-4.25.33-6.13 0-15.85-.9-29.66-9.81-29.66s-11.6 15.85-11.6 35.79h21.08Z"/><path d="M604.36 210.83c-4.9 2.78-12.83 4.9-20.18 4.9-20.18 0-31.13-10.05-31.13-33.91V0h39.71v178.47c0 4 2.12 5.8 4.9 5.8 1.55 0 3.02-.33 5.23-1.55l1.55 28.11Z"/><path d="M677.66 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M774.83 179.37c0 4.58 1.23 6.13 3.68 6.13 1.23 0 2.12 0 3.99-.9l1.23 26.31c-4.58 3.02-10.38 4.9-17.41 4.9s-15.28-2.78-20.51-9.48c-2.12-2.45-3.68-5.23-4.9-8.58-3.02 10.7-13.16 17.73-25.09 17.73-21.41 0-33.59-17.73-33.59-44.04 0-33.01 20.18-49.19 43.72-49.19 4.58 0 8.58.9 11.03 2.12v-22.96c0-6.46-.9-12.83-7.68-12.83s-8.82 8.25-7.93 22.64l-35.46-6.46c0-26.88 16.51-47.4 45.84-47.4s43.07 14.06 43.07 46.41v75.59Zm-37.92-32.12c-1.23-.65-3.02-.65-4.9-.65-7.93 0-13.49 7.35-13.49 21.98 0 12.83 4 19.29 9.81 19.29 6.13 0 8.58-5.48 8.58-14.06v-26.56Z"/><path d="M881.46 9.72v204.13h-40.94V9.72h40.94Z"/><path d="M933.44 85.23c3.35-17.08 15.28-27.78 31.79-27.78 21.08 0 31.46 15.28 31.46 38.81v117.67h-40.04V104.19c0-8.25-1.8-14.06-8.25-14.06s-10.7 7.35-10.7 22.64v101.17h-39.71V59.32h32.11l3.35 25.99Z"/><path d="M1038.84 163.76c-.9 14.38 3.35 22.88 11.93 22.88 6.46 0 9.81-4.58 9.81-12.26 0-20.51-52.3-27.78-52.3-72.15 0-26.56 18.3-44.95 44.04-44.95 27.54 0 42.17 19.28 41.84 44.04l-32.36 4.58c.33-11.6-2.78-19.85-10.05-19.85-5.48 0-9.15 4.25-9.15 11.6 0 18.96 53.2 28.76 53.2 72.15 0 27.78-18.96 45.84-44.29 45.84-30.24 0-45.84-20.51-44.95-47.97l32.36-4Z"/><path d="M1172.95 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1201.95 46.98c-13.49 0-22.96-9.15-22.96-22.64s9.48-22.31 22.96-22.31 23.21 9.15 23.21 22.31-9.48 22.64-23.21 22.64Zm20.18 12.26v154.61h-39.71V59.24h39.71Z"/><path d="M1304.34 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1375.84 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1489.5 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1606.84 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M223.49 9.97l51.16 190.26-45.32-14.35L189.96 42.79l33.53-32.82Z"/><path d="M204.42 214.39 149.62 9.97 0 159.65l204.42 54.74Z"/></svg></div></div>
+</div>
+
+<p>Geen van deze vormen is per definitie beter. De keuze hangt af van wat je prioriteert. Wil je maximale overheidssturing? Dan is de BV het sterkst. Wil je een organisatie die dicht bij haar gebruikers blijft? Dan biedt de coöperatie voordelen. Wil je snelheid en autonomie? Dan is de stichting het eenvoudigst.</p>
+
+<hr class="section-break">
+
+<h2 id="s4">4. De risico's van privaatrecht</h2>
+
+<p>Privaatrechtelijke vormen lossen echte problemen op, maar ze zijn geen wondermiddel. Er zijn drie risico's die bij elke privaatrechtelijke constructie voor publieke taken terugkomen.</p>
+
+<h3 id="s4a">Democratische controle</h3>
+
+<p>Bij een publiekrechtelijk orgaan loopt de verantwoordingslijn helder: van uitvoerder naar minister, van minister naar Kamer.<a class="fn-ref" href="#fn7" data-note="7">7</a> Bij een privaatrechtelijke organisatie is die lijn langer en vager. De minister is niet hiërarchisch bevoegd, maar stuurt via governance-instrumenten. De Kamer kan de minister aanspreken, maar de minister kan niet zomaar een bestuurder ontslaan of een beleidsbeslissing terugdraaien.</p>
+
+<p>Dit is niet alleen een theoretisch probleem. De Algemene Rekenkamer heeft herhaaldelijk gewaarschuwd dat de verantwoording over publiek geld dat via privaatrechtelijke constructies wordt besteed, onvoldoende is.<a class="fn-ref" href="#fn6" data-note="6">6</a> Het recente rapport over de besteding van Nationaal Groeifonds-middelen maakte precies dit punt.</p>
+
+<h3 id="s4b">Aansprakelijkheid</h3>
+
+<p>Wie is aansprakelijk als een privaatrechtelijke overheidsorganisatie fouten maakt? Bij een agentschap is het antwoord helder: de staat. Bij een stichting of BV is het antwoord complexer. De rechtspersoon is zelf aansprakelijk, maar als de overheid feitelijk de dienst uitmaakt, kan via de leer van de vereenzelviging of via onrechtmatige daad ook de staat worden aangesproken.<a class="fn-ref" href="#fn8" data-note="8">8</a></p>
+
+<p>Voor een organisatie die digitale infrastructuur beheert, is dit geen abstract punt. Als een door de overheid opgerichte stichting een digitaal systeem bouwt dat faalt en daardoor burgers schade lijden, wie betaalt dan? De juridische antwoorden zijn minder helder dan je zou willen.</p>
+
+<h3 id="s4c">Wegdrijfrisico</h3>
+
+<p>Privaatrechtelijke organisaties hebben de neiging om na verloop van tijd een eigen koers te gaan varen. Het bestuur ontwikkelt eigen opvattingen, bouwt een eigen netwerk op en gaat de overheid steeds meer als een van de stakeholders zien in plaats van als de opdrachtgever. Dit wegdrijfrisico is goed gedocumenteerd bij ZBO's,<a class="fn-ref" href="#fn9" data-note="9">9</a> maar het is bij privaatrechtelijke vormen nog groter, omdat de formele sturingsinstrumenten zwakker zijn.</p>
+
+<div class="callout">
+  <div class="callout-label">Wat je moet vragen</div>
+  <ul>
+    <li>Welke concrete sturingsinstrumenten houdt de minister als er geen hiërarchische relatie is?</li>
+    <li>Hoe is de informatievoorziening aan de Kamer geregeld over besteding van publiek geld binnen de privaatrechtelijke constructie?</li>
+    <li>Is er een terugvaloptie als de governance faalt, kan de organisatie worden teruggehaald in het publiekrechtelijke domein?</li>
+    <li>Wie is aansprakelijk voor schade die voortkomt uit het falen van digitale systemen die door deze organisatie worden beheerd?</li>
+  </ul>
+</div>
+
+<hr class="section-break">
+
+<h2 id="s5">5. Hoe andere landen het doen</h2>
+
+<p>Nederland is niet het enige land dat worstelt met deze keuze. Een korte vergelijking laat zien dat er geen eenduidig internationaal model is, maar wel een trend richting privaatrechtelijke flexibiliteit met publiekrechtelijke waarborgen.</p>
+
+<p>Het Verenigd Koninkrijk richtte ARIA op als een statutory body met vergaande uitzonderingen op de reguliere overheidsregels. ARIA kan zelf investeringen doen, heeft een eigen personeelsbeleid en hoeft niet via het normale inkoopregime te werken. Juridisch is het een publiekrechtelijk orgaan, maar operationeel functioneert het als een private organisatie. De Britse wetgever schreef de uitzonderingen expliciet in de wet, in plaats van te kiezen voor een privaatrechtelijke vorm.<a class="fn-ref" href="#fn10" data-note="10">10</a></p>
+
+<p>Duitsland koos bij SPRIN-D voor een GmbH, het Duitse equivalent van een BV. Het Bundesministerium für Bildung und Forschung is de enige aandeelhouder. De GmbH-vorm geeft SPRIN-D de flexibiliteit om buiten de ambtelijke kaders te opereren, terwijl de aandeelhoudersrelatie de minister directe sturing geeft. Na drie jaar bleek dat het model werkte voor het personeelsbeleid en de inkoop, maar dat de strategische sturing toch vooral verliep via informele kanalen in plaats van via de formele governance.<a class="fn-ref" href="#fn11" data-note="11">11</a></p>
+
+<p>Frankrijk heeft een traditie van établissements publics à caractère industriel et commercial (EPIC), publiekrechtelijke organen die opereren onder privaatrechtelijke arbeids- en handelsregels. Het is een hybride vorm die de voordelen van beide werelden probeert te combineren. De BPI (Banque Publique d'Investissement) is hiervan een voorbeeld. Het is geen zuiver privaatrechtelijk model, maar het laat zien dat de grens tussen publiek- en privaatrecht poreuzer is dan het Nederlandse debat soms suggereert.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Land</th>
+      <th>Organisatie</th>
+      <th>Rechtsvorm</th>
+      <th>Kern van het model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Land">VK</td>
+      <td data-label="Organisatie">ARIA</td>
+      <td data-label="Rechtsvorm">Statutory body</td>
+      <td data-label="Kern">Publiekrecht met wettelijke uitzonderingen</td>
+    </tr>
+    <tr>
+      <td data-label="Land">Duitsland</td>
+      <td data-label="Organisatie">SPRIN-D</td>
+      <td data-label="Rechtsvorm">GmbH (BV)</td>
+      <td data-label="Kern">Privaatrecht, staat als aandeelhouder</td>
+    </tr>
+    <tr>
+      <td data-label="Land">Frankrijk</td>
+      <td data-label="Organisatie">BPI</td>
+      <td data-label="Rechtsvorm">EPIC / SA</td>
+      <td data-label="Kern">Hybride publiek-privaat</td>
+    </tr>
+    <tr>
+      <td data-label="Land">VS</td>
+      <td data-label="Organisatie">DARPA</td>
+      <td data-label="Rechtsvorm">Federal agency</td>
+      <td data-label="Kern">Publiekrecht met personeelsuitzonderingen</td>
+    </tr>
+    <tr>
+      <td data-label="Land">Nederland</td>
+      <td data-label="Organisatie">SURF</td>
+      <td data-label="Rechtsvorm">Coöperatie</td>
+      <td data-label="Kern">Privaatrecht, gebruikers als eigenaren</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="chart-container">
+  <div class="chart-title">Jaarlijks innovatiebudget per organisatie</div>
+  <div class="chart-subtitle">In miljoenen euro per jaar (schatting), rechtsvorm in kleur</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dossier);"></div> Publiekrechtelijk</div>
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dark);"></div> Privaatrechtelijk</div>
+    <div class="legend-item"><div class="legend-dot" style="background: var(--c-dossier); opacity: 0.45;"></div> Hybride</div>
+    <div class="legend-item"><div class="legend-dot dashed"></div> Nog te bepalen</div>
+  </div>
+  <div class="bar-row"><div class="bar-label">DARPA (VS)</div><div class="bar-track"><div class="bar-fill" style="width: 92%; background: var(--c-dossier);">€3.700</div></div></div>
+  <div class="bar-row"><div class="bar-label">BPI (FR)</div><div class="bar-track"><div class="bar-fill" style="width: 30%; background: var(--c-dossier); opacity: 0.45;">€1.200</div></div></div>
+  <div class="bar-row"><div class="bar-label">SPRIN-D (DE)</div><div class="bar-track"><div class="bar-fill" style="width: 5%; background: var(--c-dark);">€200</div></div><div class="bar-value">€200</div></div>
+  <div class="bar-row"><div class="bar-label">ARIA (VK)</div><div class="bar-track"><div class="bar-fill" style="width: 2.5%; background: var(--c-dossier);"></div></div><div class="bar-value">€100</div></div>
+  <div class="bar-row"><div class="bar-label" style="color: var(--c-dossier); font-weight: 600;">NADI (NL)</div><div class="bar-track"><div class="bar-fill" style="width: 2.5%; background: transparent; border: 1.5px dashed var(--c-dossier);"></div></div><div class="bar-value">€100</div></div>
+  <div class="chart-source"><span>Bronnen: DARPA FY2025 budget request, BPI jaarverslag 2024, SPRIN-D Jahresbericht 2023, ARIA founding legislation, Coalitieakkoord 2024</span><div class="chart-logo"><svg viewBox="0 0 1607 216" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M330.29 9.72h43.39c46.17 0 64.47 36.36 64.47 102.39s-18.3 101.74-64.47 101.74H330.29V9.72Zm40.37 170.87h3.68c18.96 0 21.08-21.08 21.08-68.48s-2.12-68.72-21.08-68.72h-3.68v137.2Z"/><path d="M505.66 161.63l34.81 4.25c-2.12 29.01-16.18 49.85-43.39 49.85-32.36 0-49.52-29.34-49.52-80.08 0-45.84 16.18-78.2 50.09-78.2 30.24 0 44.04 27.21 44.04 63.25 0 7.03 0 13.73-1.23 24.76h-56.55c-.33 27.54 2.78 41.59 11.93 41.59 7.68 0 8.82-12.5 8.58-25.33ZM506.56 122.25c.33-2.45.33-4.25.33-6.13 0-15.85-.9-29.66-9.81-29.66s-11.6 15.85-11.6 35.79h21.08Z"/><path d="M604.36 210.83c-4.9 2.78-12.83 4.9-20.18 4.9-20.18 0-31.13-10.05-31.13-33.91V0h39.71v178.47c0 4 2.12 5.8 4.9 5.8 1.55 0 3.02-.33 5.23-1.55l1.55 28.11Z"/><path d="M677.66 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M774.83 179.37c0 4.58 1.23 6.13 3.68 6.13 1.23 0 2.12 0 3.99-.9l1.23 26.31c-4.58 3.02-10.38 4.9-17.41 4.9s-15.28-2.78-20.51-9.48c-2.12-2.45-3.68-5.23-4.9-8.58-3.02 10.7-13.16 17.73-25.09 17.73-21.41 0-33.59-17.73-33.59-44.04 0-33.01 20.18-49.19 43.72-49.19 4.58 0 8.58.9 11.03 2.12v-22.96c0-6.46-.9-12.83-7.68-12.83s-8.82 8.25-7.93 22.64l-35.46-6.46c0-26.88 16.51-47.4 45.84-47.4s43.07 14.06 43.07 46.41v75.59Zm-37.92-32.12c-1.23-.65-3.02-.65-4.9-.65-7.93 0-13.49 7.35-13.49 21.98 0 12.83 4 19.29 9.81 19.29 6.13 0 8.58-5.48 8.58-14.06v-26.56Z"/><path d="M881.46 9.72v204.13h-40.94V9.72h40.94Z"/><path d="M933.44 85.23c3.35-17.08 15.28-27.78 31.79-27.78 21.08 0 31.46 15.28 31.46 38.81v117.67h-40.04V104.19c0-8.25-1.8-14.06-8.25-14.06s-10.7 7.35-10.7 22.64v101.17h-39.71V59.32h32.11l3.35 25.99Z"/><path d="M1038.84 163.76c-.9 14.38 3.35 22.88 11.93 22.88 6.46 0 9.81-4.58 9.81-12.26 0-20.51-52.3-27.78-52.3-72.15 0-26.56 18.3-44.95 44.04-44.95 27.54 0 42.17 19.28 41.84 44.04l-32.36 4.58c.33-11.6-2.78-19.85-10.05-19.85-5.48 0-9.15 4.25-9.15 11.6 0 18.96 53.2 28.76 53.2 72.15 0 27.78-18.96 45.84-44.29 45.84-30.24 0-45.84-20.51-44.95-47.97l32.36-4Z"/><path d="M1172.95 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1201.95 46.98c-13.49 0-22.96-9.15-22.96-22.64s9.48-22.31 22.96-22.31 23.21 9.15 23.21 22.31-9.48 22.64-23.21 22.64Zm20.18 12.26v154.61h-39.71V59.24h39.71Z"/><path d="M1304.34 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M1375.84 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1489.5 187.86c-3.68 16.51-14.71 27.78-31.13 27.78-21.41 0-32.11-15.85-32.11-39.14V59.16h40.04v108.76c0 8.25 1.8 14.63 8.25 14.63s10.38-7.03 10.38-22.31V59.08h40.04v154.61h-32.36l-3.02-25.99Z"/><path d="M1606.84 206.25c-7.35 5.8-17.41 9.48-27.78 9.48-23.86 0-34.57-15.28-34.57-37.92V88.91h-9.15V59.25h9.15V30.81l39.71-6.7v35.14h20.18v29.66h-20.18v83.76c0 6.7 2.12 9.48 7.03 9.48 3.68 0 6.46-1.23 10.05-4.9l5.48 29.01Z"/><path d="M223.49 9.97l51.16 190.26-45.32-14.35L189.96 42.79l33.53-32.82Z"/><path d="M204.42 214.39 149.62 9.97 0 159.65l204.42 54.74Z"/></svg></div></div>
+</div>
+
+<hr class="section-break">
+
+<h2 id="s6">6. Wat dit betekent voor NADI</h2>
+
+<p>NADI staat voor precies de keuze die in dit artikel is beschreven.<a class="fn-ref" href="#fn12" data-note="12">12</a> Het wordt een organisatie die 500 miljoen euro aan publiek geld gaat besteden, die moet concurreren om schaars technisch talent, die snel moet kunnen handelen in een domein waar de technologie sneller beweegt dan de wetgevingscyclus, en die tegelijkertijd verantwoording moet afleggen aan het parlement en de samenleving.</p>
+
+<p>De publiekrechtelijke vormen (ZBO, agentschap) bieden de meeste zekerheid rond democratische controle, maar beperken precies de flexibiliteit die NADI nodig heeft. De privaatrechtelijke vormen (stichting, BV, coöperatie) bieden die flexibiliteit, maar vereisen dat de governance-structuur zorgvuldig wordt ontworpen om wegdrijven te voorkomen.</p>
+
+<p>De les uit de internationale vergelijking is dat de vorm minder belangrijk is dan de precieze uitwerking van de governance. ARIA (publiekrechtelijk) en SPRIN-D (privaatrechtelijk) functioneren allebei goed, omdat in beide gevallen de wettelijke of statutaire kaders zorgvuldig zijn ontworpen voor de specifieke missie van de organisatie.</p>
+
+<p>Voor NADI is de aanbeveling om niet te beginnen bij de rechtsvorm, maar bij de vijf vragen die de vorm moeten bepalen: wie is de eigenaar, hoe verloopt de sturing, welk personeelsregime is nodig, hoe worden investeringsbeslissingen genomen, en hoe is de verantwoording aan het parlement geregeld. Zodra die vragen beantwoord zijn, volgt de rechtsvorm vanzelf.</p>
+
+<div class="callout">
+  <div class="callout-label">Waar je op moet aansturen</div>
+  <p>Laat de discussie over de rechtsvorm van NADI niet verzanden in een juridisch-technisch debat over stichtingsstatuten versus BV-structuren. Formuleer eerst de vijf governance-eisen (eigenaarschap, sturing, personeel, investeringen, verantwoording), en toets vervolgens welke rechtsvorm die eisen het best faciliteert. De kans is groot dat het antwoord een hybride is: een privaatrechtelijke vorm met publiekrechtelijke waarborgen die expliciet in de oprichtingsdocumenten worden verankerd.</p>
+</div>
+
+</div><!-- /article-body -->
+
+</main>
+
+<!-- Sidenote column (desktop only) -->
+<aside class="sidenote-col" id="sidenoteCol">
+  <div class="sidenote-item" id="sn1"><span class="sidenote-num">1.</span> Kaderwet zelfstandige bestuursorganen, Staatsblad 2006, 587. Zie ook: Raad van State, Advies inzake publiekrechtelijke organisatievormen, W06.23.0012/III, 2023.</div>
+  <div class="sidenote-item" id="sn2"><span class="sidenote-num">2.</span> Algemene Rekenkamer, Resultaten verantwoordingsonderzoek 2023: Nationaal Groeifonds, mei 2024. Het rapport constateerde dat 68% van de personele capaciteit in de opstartfase naar procedurele compliance ging.</div>
+  <div class="sidenote-item" id="sn3"><span class="sidenote-num">3.</span> DARPA, FY2025 Budget Estimates, Department of Defense, februari 2024. Zie ook: Bonvillian &amp; Van Atta, ARPA-E and DARPA: Applying the DARPA Model to Energy Innovation, MIT Press, 2011.</div>
+  <div class="sidenote-item" id="sn4"><span class="sidenote-num">4.</span> Ministerie van Financiën, Nota Deelnemingenbeleid Rijksoverheid, Kamerstuk 28165-nr. 353, 2022.</div>
+  <div class="sidenote-item" id="sn5"><span class="sidenote-num">5.</span> Van Thiel, S. &amp; CRBS, Agentschappen, ZBO's en de keuze voor privaatrechtelijke vormen, Bestuurskunde, Vol. 32(2), 2023. pp. 45-62.</div>
+  <div class="sidenote-item" id="sn6"><span class="sidenote-num">6.</span> Algemene Rekenkamer, Zicht op overheidsstichtingen, 2019. Bij 40% van de onderzochte stichtingen was de informatievoorziening aan de Kamer onvoldoende.</div>
+  <div class="sidenote-item" id="sn7"><span class="sidenote-num">7.</span> Bovens, M. &amp; Schillemans, T., Publieke verantwoording: begrippen, vormen en beoordelingskaders, Handboek Publieke Verantwoording, Lemma, 2020.</div>
+  <div class="sidenote-item" id="sn8"><span class="sidenote-num">8.</span> HR 13 oktober 2000, ECLI:NL:HR:2000:AA7480 (Rainbow/Ontvanger). Asser/Maeijer &amp; Kroeze 2-I*, De rechtspersoon, nr. 83-87.</div>
+  <div class="sidenote-item" id="sn9"><span class="sidenote-num">9.</span> Tholen, B. &amp; Pollitt, C., Autonomous Agencies and the Risks of Over-Autonomization, Public Management Review, Vol. 24(6), 2022.</div>
+  <div class="sidenote-item" id="sn10"><span class="sidenote-num">10.</span> Advanced Research and Invention Agency Act 2022, Section 2(3). ARIA kreeg expliciet bevoegdheid tot equity-investeringen.</div>
+  <div class="sidenote-item" id="sn11"><span class="sidenote-num">11.</span> SPRIN-D, Jahresbericht 2023, Bundesagentur für Sprunginnovationen. Zie ook: Mazzucato &amp; Kattel, Grand Challenges, UCL IIPP Working Paper, 2024.</div>
+  <div class="sidenote-item" id="sn12"><span class="sidenote-num">12.</span> Coalitieakkoord 2024, Hoofdstuk Digitalisering. Rapport-Wennink, Advies inrichting NADI, Nationaal Groeifonds, 2024.</div>
+</aside>
+</div><!-- /layout -->
+
+<!-- Mobile footnote popup -->
+<div class="fn-overlay" id="fnOverlay"></div>
+<div class="fn-popup" id="fnPopup">
+  <button class="fn-popup-close" id="fnClose">&#215;</button>
+  <span class="fn-popup-num" id="fnPopupNum"></span>
+  <span id="fnPopupText"></span>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg viewBox="0 0 1607 216" xmlns="http://www.w3.org/2000/svg">
+        <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+        <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+        <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+        <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+        <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+        <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+        <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+        <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+        <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+        <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+        <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+        <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+        <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+        <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+        <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+        <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:onno@deltainstituut.nl">onno@deltainstituut.nl</a><br>
+      +31 6 1173 6946
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Elements
+  var tocFill = document.getElementById('tocFill');
+  var tocList = document.getElementById('tocList');
+  var mobileBar = document.getElementById('mobileTocBar');
+  var mobileToggle = document.getElementById('mobileTocToggle');
+  var mobileDrawer = document.getElementById('mobileTocDrawer');
+  var mobileProgress = document.getElementById('mobileProgress');
+
+  // All section headings
+  var headings = document.querySelectorAll('h2[id], h3[id]');
+  var tocLinks = tocList ? tocList.querySelectorAll('a[href^="#"]') : [];
+
+  // Scroll handler
+  function onScroll() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+
+    // Mobile progress
+    if (mobileProgress) mobileProgress.style.width = (pct * 100) + '%';
+
+    // Mark only the current active section (bold, not blue)
+    var mobileTocLabel = document.getElementById('mobileTocLabel');
+    var currentHeading = null;
+    var activeLink = null;
+    for (var i = 0; i < tocLinks.length; i++) {
+      tocLinks[i].classList.remove('active');
+    }
+    for (var j = headings.length - 1; j >= 0; j--) {
+      if (headings[j].getBoundingClientRect().top <= 80) {
+        currentHeading = headings[j];
+        var targetId = headings[j].getAttribute('id');
+        for (var k = 0; k < tocLinks.length; k++) {
+          if (tocLinks[k].getAttribute('href') === '#' + targetId) {
+            tocLinks[k].classList.add('active');
+            activeLink = tocLinks[k];
+            break;
+          }
+        }
+        break;
+      }
+    }
+
+    // Desktop TOC fill: align with the active link position
+    if (tocFill && tocList) {
+      if (activeLink) {
+        var listRect = tocList.getBoundingClientRect();
+        var linkRect = activeLink.getBoundingClientRect();
+        var fillHeight = (linkRect.top + linkRect.height / 2) - listRect.top;
+        // If near bottom of page, fill to the full track height
+        var atBottom = (window.innerHeight + scrollTop) >= (document.documentElement.scrollHeight - 50);
+        if (atBottom) {
+          var lastLink = tocLinks[tocLinks.length - 1];
+          if (lastLink) {
+            var lastRect = lastLink.getBoundingClientRect();
+            fillHeight = (lastRect.bottom) - listRect.top;
+          }
+        }
+        tocFill.style.height = Math.max(0, fillHeight) + 'px';
+      } else {
+        tocFill.style.height = '0px';
+      }
+    }
+
+    // Update mobile TOC label with current section name
+    if (mobileTocLabel) {
+      mobileTocLabel.textContent = currentHeading ? currentHeading.textContent : 'Inhoudsopgave';
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, false);
+  onScroll();
+
+  // Mobile TOC visibility
+  if (mobileBar) {
+    var isMobile = window.innerWidth <= 1024;
+    if (isMobile) mobileBar.classList.add('visible');
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 1024) mobileBar.classList.add('visible');
+      else mobileBar.classList.remove('visible');
+    });
+  }
+
+  // Mobile TOC toggle
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', function() {
+      mobileBar.classList.toggle('open');
+    });
+  }
+
+  // Mobile TOC link clicks close drawer
+  if (mobileDrawer) {
+    var mobileLinks = mobileDrawer.querySelectorAll('a');
+    for (var m = 0; m < mobileLinks.length; m++) {
+      mobileLinks[m].addEventListener('click', function() {
+        mobileBar.classList.remove('open');
+      });
+    }
+  }
+  // Footnote references: mobile/tablet popup, desktop smooth scroll
+  var fnOverlay = document.getElementById('fnOverlay');
+  var fnPopup = document.getElementById('fnPopup');
+  var fnPopupNum = document.getElementById('fnPopupNum');
+  var fnPopupText = document.getElementById('fnPopupText');
+  var fnClose = document.getElementById('fnClose');
+  var fnRefs = document.querySelectorAll('.fn-ref');
+
+  // Build footnote data from sidenote items
+  var fnData = {};
+  var snItems = document.querySelectorAll('.sidenote-item');
+  for (var s = 0; s < snItems.length; s++) {
+    var snId = snItems[s].id.replace('sn', '');
+    fnData[snId] = snItems[s].textContent.replace(/^\d+\.\s*/, '');
+  }
+
+  function openFnPopup(num) {
+    if (fnPopup && fnOverlay) {
+      fnPopupNum.textContent = 'Bron ' + num;
+      fnPopupText.textContent = fnData[num] || '';
+      fnOverlay.className = 'fn-overlay open';
+      fnPopup.className = 'fn-popup open';
+    }
+  }
+  function closeFnPopup() {
+    if (fnPopup && fnOverlay) {
+      fnOverlay.className = 'fn-overlay';
+      fnPopup.className = 'fn-popup';
+    }
+  }
+
+  for (var f = 0; f < fnRefs.length; f++) {
+    fnRefs[f].addEventListener('click', function(e) {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        var num = this.getAttribute('data-note');
+        openFnPopup(num);
+      }
+    });
+  }
+  if (fnOverlay) fnOverlay.addEventListener('click', closeFnPopup);
+  if (fnClose) fnClose.addEventListener('click', closeFnPopup);
+
+  // Position sidenotes next to their references (desktop only)
+  function positionSidenotes() {
+    if (window.innerWidth <= 1024) return;
+    var col = document.getElementById('sidenoteCol');
+    if (!col) return;
+
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    var colAbsTop = col.getBoundingClientRect().top + scrollY;
+    var items = col.querySelectorAll('.sidenote-item');
+    var positioned = {};
+    var lastBottom = 0;
+
+    for (var n = 0; n < items.length; n++) {
+      var noteId = items[n].id;
+      var noteNum = noteId.replace('sn', '');
+      var ref = document.querySelector('.fn-ref[data-note="' + noteNum + '"]');
+      if (ref) {
+        var refAbsTop = ref.getBoundingClientRect().top + scrollY;
+        var targetTop = refAbsTop - colAbsTop;
+        if (targetTop < lastBottom + 12) {
+          targetTop = lastBottom + 12;
+        }
+        items[n].style.top = targetTop + 'px';
+        lastBottom = targetTop + items[n].offsetHeight;
+        positioned[noteNum] = true;
+      }
+    }
+
+    for (var m = 0; m < items.length; m++) {
+      var nId = items[m].id.replace('sn', '');
+      if (!positioned[nId]) {
+        items[m].style.top = (lastBottom + 20) + 'px';
+        lastBottom = lastBottom + 20 + items[m].offsetHeight;
+      }
+    }
+
+    col.style.minHeight = (lastBottom + 20) + 'px';
+  }
+
+  positionSidenotes();
+  window.addEventListener('resize', positionSidenotes, false);
+  window.addEventListener('load', function() {
+    positionSidenotes();
+    setTimeout(positionSidenotes, 300);
+    setTimeout(positionSidenotes, 1000);
+  }, false);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() {
+      positionSidenotes();
+      setTimeout(positionSidenotes, 100);
+    });
+  }
+  var _scrolledOnce = false;
+  window.addEventListener('scroll', function repositionOnce() {
+    if (!_scrolledOnce) {
+      _scrolledOnce = true;
+      positionSidenotes();
+    }
+  }, false);
+})();
+</script>
+</body>
+</html>
