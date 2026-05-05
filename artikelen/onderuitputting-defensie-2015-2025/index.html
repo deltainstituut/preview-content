@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Defensie krijgt het geld niet uitgegeven</title>
-<meta name="description" content="Sinds 2013 lukt het Defensie niet om het beschikbare investeringsbudget volledig uit te geven. In 2024 bleef 3,3 miljard euro op de plank liggen — 30 procent van het materieelfonds.">
+<meta name="description" content="Tien jaar onderuitputting bij Defensie. In 2024 bleef 3,3 miljard liggen — bijna een derde van het materieelfonds. Cijfers per jaar, per krijgsmachtdeel en de vier oorzaken die elkaar versterken.">
 <meta name="author" content="Onno Eric Blom">
 <meta property="og:title" content="Defensie krijgt het geld niet uitgegeven">
-<meta property="og:description" content="Sinds 2013 lukt het Defensie niet om het beschikbare investeringsbudget volledig uit te geven. In 2024 bleef 3,3 miljard euro op de plank liggen — 30 procent van het materieelfonds.">
+<meta property="og:description" content="Tien jaar onderuitputting bij Defensie. In 2024 bleef 3,3 miljard liggen — bijna een derde van het materieelfonds. Cijfers per jaar, per krijgsmachtdeel en de vier oorzaken die elkaar versterken.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://preview.deltainstituut.nl/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -243,10 +243,10 @@ h1 {
 }
 .subtitle {
   font-family: 'Lora', Georgia, serif;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   font-weight: 400;
-  color: var(--c-text-secondary);
-  line-height: 1.45;
+  color: var(--c-text);
+  line-height: 1.55;
   margin-bottom: 1.6rem;
 }
 
@@ -402,6 +402,164 @@ hr.section-break {
 .footer-contact a { color: var(--c-offwhite); text-decoration: none; }
 .footer-contact a:hover { text-decoration: underline; }
 
+/* ===== CHARTS (HTML-div based, no SVG) ===== */
+.chart { margin: 2rem 0; }
+.chart-title {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--c-text);
+  margin-bottom: 0.3rem;
+}
+.chart-subtitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--c-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.chart-source {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* --- Bar chart --- */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr 4rem;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+.bar-label {
+  color: var(--c-text);
+  text-align: right;
+}
+.bar-track {
+  position: relative;
+  height: 1.35rem;
+  background: var(--c-offwhite-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--c-charcoal);
+  opacity: 0.6;
+  border-radius: 2px;
+}
+.bar-fill.bar-pos {
+  background: var(--c-dossier);
+  opacity: 1;
+}
+.bar-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text-secondary);
+  font-size: 0.85rem;
+}
+
+/* --- Line chart --- */
+.line-chart {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  grid-template-rows: 1fr 1.4rem;
+  gap: 0.4rem 0.6rem;
+  height: 18rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.line-axis-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+  padding-right: 0.2rem;
+}
+.line-area {
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+.line-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom,
+      transparent calc(25% - 0.5px),
+      var(--c-border) calc(25% - 0.5px),
+      var(--c-border) calc(25% + 0.5px),
+      transparent calc(25% + 0.5px)),
+    linear-gradient(to bottom,
+      transparent calc(50% - 0.5px),
+      var(--c-border) calc(50% - 0.5px),
+      var(--c-border) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom,
+      transparent calc(75% - 0.5px),
+      var(--c-border) calc(75% - 0.5px),
+      var(--c-border) calc(75% + 0.5px),
+      transparent calc(75% + 0.5px));
+  pointer-events: none;
+}
+.line-target {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--c-dossier);
+  opacity: 0.65;
+  pointer-events: none;
+}
+.line-target span {
+  position: absolute;
+  right: 0.4rem;
+  top: -1.1rem;
+  font-size: 0.7rem;
+  color: var(--c-dossier);
+  background: var(--c-offwhite);
+  padding: 0 0.3rem;
+  letter-spacing: 0.02em;
+}
+.line-points {
+  position: absolute;
+  inset: 0;
+}
+.line-point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--c-dossier);
+  z-index: 2;
+}
+.line-point-est {
+  background: var(--c-offwhite);
+  border: 1.5px dashed var(--c-dossier);
+}
+.line-x-axis {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ===== MOBILE / TABLET ===== */
 @media (max-width: 1024px) {
   .layout, .layout.has-sidenotes {
@@ -426,6 +584,24 @@ hr.section-break {
     align-items: center;
   }
   .footer-contact { text-align: center; }
+
+  /* Charts: smaller variant */
+  .chart-title { font-size: 1.15rem; }
+  .chart-subtitle { font-size: 0.82rem; margin-bottom: 0.9rem; }
+  .bar-row {
+    grid-template-columns: 6.5rem 1fr 3rem;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .bar-track { height: 1.2rem; }
+  .bar-value { font-size: 0.8rem; }
+  .line-chart {
+    grid-template-columns: 2.4rem 1fr;
+    grid-template-rows: 1fr 1.2rem;
+    height: 14rem;
+  }
+  .line-axis-y, .line-x-axis { font-size: 0.7rem; }
+  .line-point { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
 
   /* Tables become stacked cards */
   table, thead, tbody, tr, td {
@@ -546,7 +722,7 @@ hr.section-break {
 </div>
 
 <!-- LAYOUT -->
-<div class="layout ">
+<div class="layout has-sidenotes">
 
   <!-- TOC SIDEBAR -->
   <aside class="toc" id="toc">
@@ -570,7 +746,7 @@ hr.section-break {
   <article>
 
     <h1>Defensie krijgt het geld niet uitgegeven</h1>
-    <p class="subtitle">Tien jaar onderuitputting bij het ministerie van Defensie, in cijfers en oorzaken</p>
+    <p class="subtitle">Defensie heeft sinds 2022 vijf miljard euro extra per jaar gekregen. In 2024 bleef daarvan 3,3 miljard euro liggen — bijna een derde van het hele materieelfonds. De NAVO 2%-norm werd daardoor net niet gehaald. En dit is geen incident: sinds 2013 lukt het Defensie niet om het beschikbare investeringsbudget volledig uit te geven.</p>
 
     <div class="article-meta">
       <span class="category-tag">NADI</span>
@@ -580,44 +756,11 @@ hr.section-break {
       <span>5 mei 2026</span>
     </div>
 
-    <div class="chart-styles"><style>
-.chart { margin: 2.4rem 0; padding: 1.2rem 0; }
-.chart-title { font-family: 'Merriweather', Georgia, serif; font-weight: 700; font-size: 1.05rem; color: var(--c-text); margin-bottom: 0.3rem; }
-.chart-subtitle { font-size: 0.9rem; color: var(--c-text-secondary); margin-bottom: 1.2rem; line-height: 1.5; }
-.chart-source { font-size: 0.8rem; color: var(--c-text-secondary); margin-top: 1rem; font-style: italic; line-height: 1.5; }
-.bar-chart { display: flex; flex-direction: column; gap: 0.55rem; }
-.bar-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.8rem; align-items: center; }
-.bar-label { font-size: 0.92rem; color: var(--c-text-secondary); text-align: right; font-family: 'Lora', Georgia, serif; }
-.bar-track { position: relative; height: 1.6rem; background: rgba(0,0,0,0.04); border-radius: 2px; }
-.bar-fill { height: 100%; background: var(--c-dossier); border-radius: 2px; opacity: 0.85; transition: width 0.3s; }
-.bar-fill.bar-pos { background: var(--c-dossier); opacity: 0.45; }
-.bar-value { position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: var(--c-text); font-family: 'Lora', Georgia, serif; font-variant-numeric: tabular-nums; }
-.line-chart { padding: 0.5rem 0; }
-.line-grid { display: grid; grid-template-columns: 3rem 1fr; gap: 0.6rem; height: 18rem; }
-.line-axis-y { display: flex; flex-direction: column; justify-content: space-between; font-size: 0.75rem; color: var(--c-text-secondary); text-align: right; padding-bottom: 1.6rem; font-variant-numeric: tabular-nums; }
-.line-area { position: relative; border-bottom: 1px solid var(--c-border); border-left: 1px solid var(--c-border); padding-bottom: 1.6rem; }
-.line-target { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--c-dossier); opacity: 0.55; }
-.line-target span { position: absolute; right: 0.4rem; top: -1.1rem; font-size: 0.72rem; color: var(--c-dossier); background: var(--c-offwhite); padding: 0 0.3rem; }
-.line-points { position: absolute; inset: 0; bottom: 1.6rem; }
-.line-point { position: absolute; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--c-dossier); transform: translate(-50%, 50%); cursor: help; }
-.line-point::before { content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 1px; background: var(--c-dossier); opacity: 0.5; transform-origin: 0 0; }
-.line-point::after { content: attr(data-label); position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); background: var(--c-charcoal); color: var(--c-offwhite); font-size: 0.72rem; padding: 0.25rem 0.5rem; border-radius: 2px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; z-index: 5; }
-.line-point:hover::after { opacity: 1; }
-.line-point-est { background: transparent; border: 2px dashed var(--c-dossier); }
-.line-x-axis { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--c-text-secondary); padding-top: 0.4rem; }
-@media (max-width: 1023px) {
-  .bar-row { grid-template-columns: 5.5rem 1fr; gap: 0.5rem; }
-  .bar-label { font-size: 0.85rem; }
-  .line-grid { height: 14rem; }
-}
-</style></div>
-
-<p class="lead">Defensie heeft sinds 2022 vijf miljard euro extra per jaar gekregen. In 2024 bleef daarvan 3,3 miljard euro liggen — bijna een derde van het hele materieelfonds. De NAVO 2%-norm werd daardoor net niet gehaald. En dit is geen incident: sinds 2013 lukt het Defensie niet om het beschikbare investeringsbudget volledig uit te geven.</p>
-
-<p>Dit artikel kijkt naar tien jaar onderuitputting (2015 tot en met 2024), splitst de cijfers uit per krijgsmachtdeel en per oorzaak, en laat zien waarom méér geld het probleem niet oplost.</p>
+    <p>Dit artikel kijkt naar tien jaar onderuitputting (2015 tot en met 2024), splitst de cijfers uit per krijgsmachtdeel en per oorzaak, en laat zien waarom méér geld het probleem niet oplost.</p>
 
 <div class="callout">
-<strong>Wat is "onderuitputting"?</strong> Het verschil tussen wat een ministerie volgens de begroting mag uitgeven en wat het aan het einde van het jaar daadwerkelijk heeft uitgegeven. Bij Defensie wordt dit op twee plekken gemeten: op de gewone begroting (hoofdstuk X) en op het Defensiematerieelbegrotingsfonds (DMF, sinds 2021). Het meeste niet-uitgegeven geld zit op het DMF.
+<span class="callout-label">Wat is "onderuitputting"?</span>
+<p>Het verschil tussen wat een ministerie volgens de begroting mag uitgeven en wat het aan het einde van het jaar daadwerkelijk heeft uitgegeven. Bij Defensie wordt dit op twee plekken gemeten: op de gewone begroting (hoofdstuk X) en op het Defensiematerieelbegrotingsfonds (DMF, sinds 2021). Het meeste niet-uitgegeven geld zit op het DMF.</p>
 </div>
 
 <h2 id="het-patroon-een-derde-van-de-investeringen-blijft-liggen">Het patroon: een derde van de investeringen blijft liggen</h2>
@@ -630,19 +773,19 @@ hr.section-break {
   <div class="chart-title">Onderuitputting investeringen Defensie, in miljoen euro</div>
   <div class="chart-subtitle">Vanaf 2021 betreft het Defensiematerieelbegrotingsfonds (DMF). Daarvoor het oude investeringsartikel 6.</div>
   <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill" style="width: 6.3%"></div><div class="bar-value">207</div></div></div>
-    <div class="bar-row"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill" style="width: 6.0%"></div><div class="bar-value">199</div></div></div>
-    <div class="bar-row"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill" style="width: 36.4%"></div><div class="bar-value">1.200</div></div></div>
-    <div class="bar-row"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div><div class="bar-value">≈ 0</div></div></div>
-    <div class="bar-row"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div><div class="bar-value">≈ 0</div></div></div>
-    <div class="bar-row"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill" style="width: 13.1%"></div><div class="bar-value">433</div></div></div>
-    <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill" style="width: 32.3%"></div><div class="bar-value">1.065</div></div></div>
-    <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div><div class="bar-value">3.303</div></div></div>
+    <div class="bar-row"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill" style="width: 6.3%"></div></div><div class="bar-value">207</div></div>
+    <div class="bar-row"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill" style="width: 6.0%"></div></div><div class="bar-value">199</div></div>
+    <div class="bar-row"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill" style="width: 36.4%"></div></div><div class="bar-value">1.200</div></div>
+    <div class="bar-row"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill" style="width: 13.1%"></div></div><div class="bar-value">433</div></div>
+    <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill" style="width: 32.3%"></div></div><div class="bar-value">1.065</div></div>
+    <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">3.303</div></div>
   </div>
   <div class="chart-source">Bron: Algemene Rekenkamer Verantwoordingsonderzoek 2024 Defensie+DMF (mei 2026); jaarverslagen DMF 2021-2024; jaarverslagen Defensie 2015-2019.</div>
 </div>
 
-<p>In 2018 bleef 1,2 miljard euro op de plank — 40 procent van het toen beschikbare investeringsbudget. In 2019 lukte het wél, na harde aansporingen van de Rekenkamer. In 2022 begon de stapel weer te groeien: 433 miljoen, daarna 1,1 miljard in 2023, tot 3,3 miljard in 2024. Dat is geen ruis. Cumulatief over 2015 tot en met 2024 ging het om ongeveer 6,5 miljard euro die wel begroot werd, maar niet werd uitgegeven.</p>
+<p>In 2018 bleef 1,2 miljard euro op de plank — 40 procent van het toen beschikbare investeringsbudget. In 2019 lukte het wél, na harde aansporingen van de Rekenkamer<sup class="fn-ref" id="ref-2" data-num="2">2</sup>. In 2022 begon de stapel weer te groeien: 433 miljoen, daarna 1,1 miljard in 2023, tot 3,3 miljard in 2024. Dat is geen ruis. Cumulatief over 2015 tot en met 2024 ging het om ongeveer 6,5 miljard euro die wel begroot werd, maar niet werd uitgegeven<sup class="fn-ref" id="ref-1" data-num="1">1</sup>.</p>
 
 <h2 id="tegelijk-meer-geld-dan-ooit">Tegelijk: méér geld dan ooit</h2>
 
@@ -650,31 +793,33 @@ hr.section-break {
 
 <div class="chart">
   <div class="chart-title">Defensie-uitgaven Nederland, als % van het bbp</div>
-  <div class="chart-subtitle">NAVO-richtlijn is 2%. In 2024 wordt die net wel (NAVO-rekenmethode) of net niet (NL-rekenmethode) gehaald.</div>
+  <div class="chart-subtitle">NAVO-richtlijn is 2% (gestreepte lijn). In 2024 wordt die net wel (NAVO-rekenmethode) of net niet (NL-rekenmethode) gehaald.</div>
   <div class="line-chart">
-    <div class="line-grid">
-      <div class="line-axis-y">
-        <span>2,2%</span><span>2,0%</span><span>1,8%</span><span>1,6%</span><span>1,4%</span><span>1,2%</span><span>1,0%</span>
+    <div class="line-axis-y">
+      <span>2,2%</span>
+      <span>1,8%</span>
+      <span>1,4%</span>
+      <span>1,0%</span>
+    </div>
+    <div class="line-area">
+      <div class="line-grid"></div>
+      <div class="line-target" style="bottom: 83.3%"><span>NAVO-norm 2%</span></div>
+      <div class="line-points">
+        <div class="line-point" style="left: 0%; bottom: 13.3%"></div>
+        <div class="line-point" style="left: 10%; bottom: 14.2%"></div>
+        <div class="line-point" style="left: 20%; bottom: 12.5%"></div>
+        <div class="line-point" style="left: 30%; bottom: 17.5%"></div>
+        <div class="line-point" style="left: 40%; bottom: 26.7%"></div>
+        <div class="line-point" style="left: 50%; bottom: 33.3%"></div>
+        <div class="line-point" style="left: 60%; bottom: 33.3%"></div>
+        <div class="line-point" style="left: 70%; bottom: 43.3%"></div>
+        <div class="line-point" style="left: 80%; bottom: 41.7%"></div>
+        <div class="line-point" style="left: 90%; bottom: 65.8%"></div>
+        <div class="line-point line-point-est" style="left: 100%; bottom: 83.3%"></div>
       </div>
-      <div class="line-area">
-        <div class="line-target" style="bottom: 83.3%"><span>NAVO-norm 2%</span></div>
-        <div class="line-points">
-          <div class="line-point" style="left: 0%; bottom: 13.3%" data-label="2015 · 1,16%"></div>
-          <div class="line-point" style="left: 10%; bottom: 14.2%" data-label="2016 · 1,17%"></div>
-          <div class="line-point" style="left: 20%; bottom: 12.5%" data-label="2017 · 1,15%"></div>
-          <div class="line-point" style="left: 30%; bottom: 17.5%" data-label="2018 · 1,21%"></div>
-          <div class="line-point" style="left: 40%; bottom: 26.7%" data-label="2019 · 1,32%"></div>
-          <div class="line-point" style="left: 50%; bottom: 33.3%" data-label="2020 · 1,40%"></div>
-          <div class="line-point" style="left: 60%; bottom: 33.3%" data-label="2021 · 1,40%"></div>
-          <div class="line-point" style="left: 70%; bottom: 43.3%" data-label="2022 · 1,52%"></div>
-          <div class="line-point" style="left: 80%; bottom: 41.7%" data-label="2023 · 1,50%"></div>
-          <div class="line-point" style="left: 90%; bottom: 65.8%" data-label="2024 · 1,79% (NL) / 2,06% (NAVO)"></div>
-          <div class="line-point line-point-est" style="left: 100%; bottom: 83.3%" data-label="2025 · ≈ 2,0% (verwacht)"></div>
-        </div>
-        <div class="line-x-axis">
-          <span>'15</span><span>'16</span><span>'17</span><span>'18</span><span>'19</span><span>'20</span><span>'21</span><span>'22</span><span>'23</span><span>'24</span><span>'25</span>
-        </div>
-      </div>
+    </div>
+    <div class="line-x-axis">
+      <span>'15</span><span>'16</span><span>'17</span><span>'18</span><span>'19</span><span>'20</span><span>'21</span><span>'22</span><span>'23</span><span>'24</span><span>'25</span>
     </div>
   </div>
   <div class="chart-source">Bron: Rekenkamer Verantwoordingsonderzoek 2024; SIPRI/NAVO publicaties; Voorjaarsnota 2025.</div>
@@ -693,10 +838,10 @@ hr.section-break {
 <div class="chart">
   <div class="chart-title">Onderuitputting DMF 2024 per portefeuille, in miljoen euro</div>
   <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div><div class="bar-value">−487</div></div></div>
-    <div class="bar-row"><div class="bar-label">Kennis & Innovatie</div><div class="bar-track"><div class="bar-fill" style="width: 26%"></div><div class="bar-value">−127</div></div></div>
-    <div class="bar-row"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 8%"></div><div class="bar-value">+40</div></div></div>
-    <div class="bar-row"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 15%"></div><div class="bar-value">+72</div></div></div>
+    <div class="bar-row"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">−487</div></div>
+    <div class="bar-row"><div class="bar-label">Kennis & Innovatie</div><div class="bar-track"><div class="bar-fill" style="width: 26%"></div></div><div class="bar-value">−127</div></div>
+    <div class="bar-row"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 8%"></div></div><div class="bar-value">+40</div></div>
+    <div class="bar-row"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 15%"></div></div><div class="bar-value">+72</div></div>
   </div>
   <div class="chart-source">Bron: Jaarverslag DMF 2024, Tabel 2 (Defensie's eigen toelichting onderuitputting).</div>
 </div>
@@ -715,7 +860,7 @@ hr.section-break {
 
 <p>Sinds februari 2022 willen alle NAVO-bondgenoten tegelijk meer wapens kopen. Productiecapaciteit voor munitie, luchtafweer, drones en gepantserde voertuigen kan dat niet bijhouden. Levertijden van twee tot zeven jaar zijn normaal geworden.</p>
 
-<p>De Rekenkamer schrijft over 2024: "De realisatie van de verplichtingen staat onder druk door verhoging van budgetten van alle bondgenoten en zeer krappe defensiematerieelmarkten." Dat geld op een Nederlandse begroting staat, betekent niet dat een fabriek in Duitsland of Noorwegen morgen kan leveren.</p>
+<p>De Rekenkamer schrijft over 2024: "De realisatie van de verplichtingen staat onder druk door verhoging van budgetten van alle bondgenoten en zeer krappe defensiematerieelmarkten."<sup class="fn-ref" id="ref-4" data-num="4">4</sup> Dat geld op een Nederlandse begroting staat, betekent niet dat een fabriek in Duitsland of Noorwegen morgen kan leveren.</p>
 
 <h3>Oorzaak 3: capaciteit van de inkooporganisatie</h3>
 
@@ -727,7 +872,7 @@ hr.section-break {
 
 <p>Nieuwe kazernes, oefenterreinen en vliegvelden lopen vast op ruimtelijke procedures. Defensie heeft een vastgoedportefeuille met een vervangingswaarde van 33 miljard euro die deels achterstallig onderhoud heeft. Vergunningen voor schietoefeningen, geluidsruimte rond vliegvelden en stikstofdeposities op natuurgebieden zijn knellend.</p>
 
-<p>Het ministerie schrijft het zelf op in het jaarverslag 2024: "schaarste van middelen en capaciteit in de markt en de beperkingen op het gebied van ruimte voor Defensie, zowel fysieke ruimte als geluidsruimte, stikstofruimte en andere vergunningsruimte, [zijn] remmende factoren."</p>
+<p>Het ministerie schrijft het zelf op in het jaarverslag 2024: "schaarste van middelen en capaciteit in de markt en de beperkingen op het gebied van ruimte voor Defensie, zowel fysieke ruimte als geluidsruimte, stikstofruimte en andere vergunningsruimte, [zijn] remmende factoren."<sup class="fn-ref" id="ref-5" data-num="5">5</sup></p>
 
 <h2 id="wat-gebeurt-er-met-het-niet-uitgegeven-geld">Wat gebeurt er met het niet-uitgegeven geld?</h2>
 
@@ -737,7 +882,7 @@ hr.section-break {
 
 <h2 id="waarom-dit-ertoe-doet">Waarom dit ertoe doet</h2>
 
-<p>Drie redenen. Eerst: politieke geloofwaardigheid van de 2%-norm. Volgens de NAVO-meetlat haalde Nederland in 2024 net 2,06 procent, vooral omdat steun aan Oekraïne meetelt en omdat met het bbp van 2021 wordt gerekend. Volgens de Nederlandse meetlat (realisatie gedeeld door bbp 2024) was het 1,79 procent. Het verschil zit grotendeels in geld dat wel begroot, maar niet uitgegeven werd.</p>
+<p>Drie redenen. Eerst: politieke geloofwaardigheid van de 2%-norm. Volgens de NAVO-meetlat haalde Nederland in 2024 net 2,06 procent, vooral omdat steun aan Oekraïne meetelt en omdat met het bbp van 2021 wordt gerekend. Volgens de Nederlandse meetlat (realisatie gedeeld door bbp 2024) was het 1,79 procent<sup class="fn-ref" id="ref-3" data-num="3">3</sup>. Het verschil zit grotendeels in geld dat wel begroot, maar niet uitgegeven werd.</p>
 
 <p>Twee: militaire effectiviteit. Niet-uitgegeven investeringsgeld betekent niet-geleverde capaciteit. De Landstrijdkrachten wachten al jaren op nieuwe pantservoertuigen, de Luchtmacht op vervangende tankers, de Marine op anti-onderzeebootcapaciteit. Elk jaar uitstel verschuift de operationele gereedheid.</p>
 
@@ -749,18 +894,15 @@ hr.section-break {
 
 <p>Maar de fundamentele afweging is structureler. Zolang de Europese defensie-industrie niet snel genoeg opschaalt en zolang de Nederlandse arbeidsmarkt voor technici krap blijft, is geld niet de bindende beperking. Dat besef ontbreekt nog grotendeels in het politieke debat, dat zich vrijwel uitsluitend richt op het optellen van miljarden.</p>
 
-<div class="callout">
-<strong>Bronnen voor dit artikel</strong><br>
-<a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Algemene Rekenkamer — Verantwoordingsonderzoek 2024 Ministerie van Defensie en Defensiematerieelbegrotingsfonds</a> (mei 2026).
-<a href="https://www.rijksfinancien.nl/jaarverslag/2024/X">Jaarverslag Ministerie van Defensie 2024</a> en <a href="https://www.rijksfinancien.nl/jaarverslag/2024/K">Jaarverslag DMF 2024</a>.
-Eerdere jaarverslagen Defensie 2015-2023 via rijksfinancien.nl.
-<a href="https://www.rekenkamer.nl/publicaties/rapporten/2020/05/20/resultaten-verantwoordingsonderzoek-2019-ministerie-van-defensie">Rekenkamer — Verantwoordingsonderzoek 2019 Defensie</a>.
-<a href="https://www.rijksfinancien.nl/voorjaarsnota/2025/7816576">Voorjaarsnota 2025 — Bijlage 5 Defensie 2% bbp</a>.
-</div>
-
   </article>
 
-  
+  <aside class="sidenote-col">
+  <div class="sidenote" data-num="1" data-ref="ref-1"><span class="sidenote-num">1</span> <a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Algemene Rekenkamer, Verantwoordingsonderzoek 2024 Defensie en Defensiematerieelbegrotingsfonds</a> (mei 2026). Cumulatieve cijfers 2015-2024 op basis van jaarverslagen Defensie 2015-2023 via rijksfinancien.nl.</div>
+  <div class="sidenote" data-num="2" data-ref="ref-2"><span class="sidenote-num">2</span> <a href="https://www.rekenkamer.nl/publicaties/rapporten/2020/05/20/resultaten-verantwoordingsonderzoek-2019-ministerie-van-defensie">Algemene Rekenkamer, Verantwoordingsonderzoek 2019 Ministerie van Defensie</a> (mei 2020), constatering aangaande inhalen onderuitputting 2018.</div>
+  <div class="sidenote" data-num="3" data-ref="ref-3"><span class="sidenote-num">3</span> <a href="https://www.rijksfinancien.nl/voorjaarsnota/2025/7816576">Voorjaarsnota 2025 — Bijlage 5: Defensie 2% bbp</a>. Het verschil tussen 1,79% (NL-meetlat: realisatie / bbp 2024) en 2,06% (NAVO-meetlat: incl. steun aan Oekraïne, gerelateerd aan bbp 2021).</div>
+  <div class="sidenote" data-num="4" data-ref="ref-4"><span class="sidenote-num">4</span> <a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Verantwoordingsonderzoek 2024 DMF</a>, hoofdstuk over verplichtingenrealisatie en marktdruk.</div>
+  <div class="sidenote" data-num="5" data-ref="ref-5"><span class="sidenote-num">5</span> <a href="https://www.rijksfinancien.nl/jaarverslag/2024/X">Jaarverslag Ministerie van Defensie 2024</a> en <a href="https://www.rijksfinancien.nl/jaarverslag/2024/K">Jaarverslag Defensiematerieelbegrotingsfonds 2024</a> — eigen toelichting Defensie op remmende factoren.</div>
+</aside>
 
 </div>
 
