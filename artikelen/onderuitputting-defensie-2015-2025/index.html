@@ -374,6 +374,10 @@ hr.section-break {
 }
 .sidenote a { text-decoration-color: var(--c-border); }
 .sidenote a:hover { text-decoration-color: var(--c-text-secondary); }
+.sidenote.is-flashed {
+  background: color-mix(in srgb, var(--c-dossier) 14%, transparent);
+  transition: background 0.3s ease;
+}
 .sidenote-num {
   font-weight: 600;
   color: var(--c-dossier);
@@ -1545,11 +1549,18 @@ hr.section-break {
 
   for (var n = 0; n < fnRefs.length; n++) {
     fnRefs[n].addEventListener('click', function(e) {
-      if (window.innerWidth > 1024) return;
       e.preventDefault();
       var num = this.textContent.replace(/\D/g, '');
       var note = document.querySelector('.sidenote[data-num="' + num + '"]');
-      if (note) openPopup(note.innerHTML);
+      if (!note) return;
+      if (window.innerWidth <= 1024) {
+        openPopup(note.innerHTML);
+      } else {
+        /* Desktop: scroll sidenote into view + brief highlight flash */
+        note.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        note.classList.add('is-flashed');
+        setTimeout(function() { note.classList.remove('is-flashed'); }, 1500);
+      }
     });
   }
 
