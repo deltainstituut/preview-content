@@ -620,24 +620,24 @@ hr.section-break {
 /* Stacked-bar pattern: data-tooltip on each .bar-seg → highlight only the hovered segment */
 .bar-fill[data-tooltip] { transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease; }
 .bar-fill[data-tooltip]:hover,
-.bar-fill[data-tooltip].is-tooltip-active,
-.bar-fill.is-series-active {
+.bar-fill[data-tooltip].is-tooltip-active {
   filter: brightness(0.82);
   opacity: 1;
 }
 .bar-fill.bar-displaced[data-tooltip]:hover,
-.bar-fill.bar-displaced[data-tooltip].is-tooltip-active,
-.bar-fill.bar-displaced.is-series-active {
+.bar-fill.bar-displaced[data-tooltip].is-tooltip-active {
   background: color-mix(in srgb, var(--c-charcoal) 38%, transparent);
 }
 
-/* Series-link: hover legend ↔ bar segment. Legend swatch gets an outline; label gets darker text */
-.chart-legend-item { cursor: pointer; transition: color 0.15s ease; }
-.chart-legend-item .chart-legend-swatch { transition: outline 0.12s ease; }
-.chart-legend-item.is-series-active { color: var(--c-text); }
-.chart-legend-item.is-series-active .chart-legend-swatch {
-  outline: 2px solid var(--c-text);
-  outline-offset: 2px;
+/* Series-link (legend ↔ bar): when one series is active, all other elements fade.
+   The active items keep their normal look — contrast comes from the dimming of the rest. */
+.chart-legend-item { cursor: pointer; transition: opacity 0.15s ease; }
+.chart-frame.has-series-active .bar-fill:not(.is-series-active) {
+  opacity: 0.18;
+  filter: none;
+}
+.chart-frame.has-series-active .chart-legend-item:not(.is-series-active) {
+  opacity: 0.3;
 }
 .line-point[data-tooltip] { transition: transform 0.12s ease; }
 .line-point[data-tooltip]:hover,
@@ -1151,14 +1151,14 @@ hr.section-break {
   <div class="chart-title">In 2024 bleef 3,3 miljard euro liggen — bijna een derde van het materieelfonds</div>
   <div class="chart-subtitle">Onderuitputting van het Defensie-investeringsbudget per jaar, 2015 – 2024, in miljoen euro. Vanaf 2021 betreft het Defensiematerieelbegrotingsfonds (DMF), daarvoor het oude investeringsartikel 6.</div>
   <div class="bar-chart">
-    <div class="bar-row" data-tooltip="<strong>2015</strong><br>207 mln"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.3%"></div></div><div class="bar-value">207</div></div>
-    <div class="bar-row" data-tooltip="<strong>2017</strong><br>199 mln"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.0%"></div></div><div class="bar-value">199</div></div>
-    <div class="bar-row" data-tooltip="<strong>2018</strong><br>1.200 mln"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 36.4%"></div></div><div class="bar-value">1.200</div></div>
-    <div class="bar-row" data-tooltip="<strong>2019</strong><br>≈ 0"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
-    <div class="bar-row" data-tooltip="<strong>2021</strong><br>≈ 0"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
-    <div class="bar-row" data-tooltip="<strong>2022</strong><br>433 mln"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 13.1%"></div></div><div class="bar-value">433</div></div>
-    <div class="bar-row" data-tooltip="<strong>2023</strong><br>1.065 mln"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 32.3%"></div></div><div class="bar-value">1.065</div></div>
-    <div class="bar-row" data-tooltip="<strong>2024</strong><br>3.303 mln"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">3.303</div></div>
+    <div class="bar-row" data-tooltip="<strong>2015</strong><br>€ 207 mln"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.3%"></div></div><div class="bar-value">207</div></div>
+    <div class="bar-row" data-tooltip="<strong>2017</strong><br>€ 199 mln"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.0%"></div></div><div class="bar-value">199</div></div>
+    <div class="bar-row" data-tooltip="<strong>2018</strong><br>€ 1.200 mln"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 36.4%"></div></div><div class="bar-value">1.200</div></div>
+    <div class="bar-row" data-tooltip="<strong>2019</strong><br>≈ € 0"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row" data-tooltip="<strong>2021</strong><br>≈ € 0"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row" data-tooltip="<strong>2022</strong><br>€ 433 mln"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 13.1%"></div></div><div class="bar-value">433</div></div>
+    <div class="bar-row" data-tooltip="<strong>2023</strong><br>€ 1.065 mln"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 32.3%"></div></div><div class="bar-value">1.065</div></div>
+    <div class="bar-row" data-tooltip="<strong>2024</strong><br>€ 3.303 mln"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">3.303</div></div>
     <div class="bar-callout-row">2024 onderuitputting verviervoudigt — bijna 30 % van het beschikbare investeringsbudget bleef onbesteed.</div>
   </div>
   <div class="chart-source">Bron: Algemene Rekenkamer, Verantwoordingsonderzoek 2024 Defensie+DMF (mei 2026); jaarverslagen DMF 2021 – 2024; jaarverslagen Defensie 2015 – 2019.</div>
@@ -1255,10 +1255,10 @@ hr.section-break {
   <div class="chart-title">Het tekort komt vooral van Grootmaterieel; IT en Vastgoed gaven juist méér uit</div>
   <div class="chart-subtitle">Onderuitputting (negatief) en overschrijding (positief) per portefeuille van het Defensiematerieelfonds, 2024, in miljoen euro.</div>
   <div class="bar-chart">
-    <div class="bar-row" data-tooltip="<strong>Grootmaterieel</strong><br>−487 mln"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">−487</div></div>
-    <div class="bar-row" data-tooltip="<strong>Kennis &amp; Innovatie</strong><br>−127 mln (83 % onder begroting)"><div class="bar-label">Kennis &amp; Innovatie</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 26%"></div></div><div class="bar-value">−127</div></div>
-    <div class="bar-row" data-tooltip="<strong>IT</strong><br>+40 mln (overschrijding)"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 8%"></div></div><div class="bar-value">+40</div></div>
-    <div class="bar-row" data-tooltip="<strong>Vastgoed</strong><br>+72 mln (overschrijding)"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 15%"></div></div><div class="bar-value">+72</div></div>
+    <div class="bar-row" data-tooltip="<strong>Grootmaterieel</strong><br>€ −487 mln"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">−487</div></div>
+    <div class="bar-row" data-tooltip="<strong>Kennis &amp; Innovatie</strong><br>€ −127 mln (83 % onder begroting)"><div class="bar-label">Kennis &amp; Innovatie</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 26%"></div></div><div class="bar-value">−127</div></div>
+    <div class="bar-row" data-tooltip="<strong>IT</strong><br>€ +40 mln (overschrijding)"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 8%"></div></div><div class="bar-value">+40</div></div>
+    <div class="bar-row" data-tooltip="<strong>Vastgoed</strong><br>€ +72 mln (overschrijding)"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 15%"></div></div><div class="bar-value">+72</div></div>
   </div>
   <div class="chart-source">Bron: Jaarverslag DMF 2024, Tabel 2 (Defensie's eigen toelichting onderuitputting).</div>
   <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1625,10 +1625,12 @@ hr.section-break {
   window.addEventListener('scroll', hide, { passive: true });
   window.addEventListener('resize', hide);
 
-  /* Series highlight: hover any [data-series] element (legend item or bar segment)
-     and all matching elements in the same .chart-frame get .is-series-active. */
+  /* Series highlight: hover any [data-series] element (legend item or bar segment).
+     The .chart-frame gets .has-series-active and all matching elements get .is-series-active.
+     CSS fades out everything WITHOUT .is-series-active inside a .has-series-active frame. */
   var seriesEls = document.querySelectorAll('[data-series]');
   function clearSeries(frame) {
+    frame.classList.remove('has-series-active');
     var actives = frame.querySelectorAll('.is-series-active');
     for (var i = 0; i < actives.length; i++) actives[i].classList.remove('is-series-active');
   }
@@ -1636,6 +1638,7 @@ hr.section-break {
     var s = el.getAttribute('data-series');
     var frame = el.closest && el.closest('.chart-frame');
     if (!frame || !s) return;
+    frame.classList.add('has-series-active');
     var matches = frame.querySelectorAll('[data-series="' + s + '"]');
     for (var i = 0; i < matches.length; i++) matches[i].classList.add('is-series-active');
   }
