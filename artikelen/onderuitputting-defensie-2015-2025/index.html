@@ -118,7 +118,6 @@ body {
   height: 3px;
   width: 0%;
   background: var(--c-dossier);
-  transition: width 0.1s linear;
 }
 .mobile-toc-drawer {
   max-height: 0;
@@ -971,9 +970,21 @@ hr.section-break {
     return Math.min(100, Math.max(0, (st / sh) * 100));
   }
 
+  /* Smooth, decoupled mobile progress fill via requestAnimationFrame */
+  var rafScheduled = false;
+  function updateMobileFill() {
+    rafScheduled = false;
+    if (!mobileFill) return;
+    mobileFill.style.width = getScrollPercent() + '%';
+  }
+  function scheduleMobileFill() {
+    if (rafScheduled) return;
+    rafScheduled = true;
+    (window.requestAnimationFrame || function(cb){ setTimeout(cb, 16); })(updateMobileFill);
+  }
+
   function updateProgress() {
     var pct = getScrollPercent();
-    /* Mobile progress bar still tracks total page scroll (top of viewport) */
     if (mobileFill) mobileFill.style.width = pct + '%';
 
     var headings = [];
@@ -1104,9 +1115,10 @@ hr.section-break {
   }
 
   window.addEventListener('scroll', function() {
+    scheduleMobileFill();
     updateProgress();
     positionSidenotes();
-  });
+  }, { passive: true });
   window.addEventListener('resize', function() {
     updateProgress();
     positionSidenotes();
