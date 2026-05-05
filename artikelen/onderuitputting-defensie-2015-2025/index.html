@@ -1557,7 +1557,8 @@ hr.section-break {
 </script>
 
 <script>
-/* Chart interactivity: tooltip on hover (desktop) and tap (mobile) for any element with data-tooltip. */
+/* Chart interactivity: tooltip on hover (desktop) and tap (mobile) for any element with data-tooltip.
+   Tap-opened tooltips persist until the user taps elsewhere; hover-opened tooltips clear on mouseleave. */
 (function() {
   if (!document.querySelector('[data-tooltip]')) return;
 
@@ -1567,58 +1568,75 @@ hr.section-break {
   document.body.appendChild(tip);
 
   var activeEl = null;
+  var clickPersisted = false;
 
-  function show(el) {
-    var label = el.getAttribute('data-tooltip');
-    if (!label) return;
-    tip.innerHTML = label;
-    tip.classList.add('is-visible');
-    activeEl = el;
-    el.classList.add('is-tooltip-active');
+  function positionFor(el) {
     /* Anchor preference:
        1. .bar-track-stacked (multi-segment bar — center on whole bar)
        2. .bar-fill with non-zero width (single bar — center on the colored part)
        3. .bar-track (zero-value rows — center on the track)
        4. element itself (heatmap cells, line points, etc.) */
     var anchor = el;
-    var stacked = el.querySelector('.bar-track-stacked');
+    var stacked = el.querySelector && el.querySelector('.bar-track-stacked');
     if (stacked) {
       anchor = stacked;
     } else {
-      var fill = el.querySelector('.bar-fill');
+      var fill = el.querySelector && el.querySelector('.bar-fill');
       if (fill && fill.offsetWidth > 0) {
         anchor = fill;
       } else {
-        var track = el.querySelector('.bar-track');
+        var track = el.querySelector && el.querySelector('.bar-track');
         if (track) anchor = track;
       }
     }
-    var rect = anchor.getBoundingClientRect();
-    var x = rect.left + rect.width / 2 + window.scrollX;
-    var y = rect.top + window.scrollY;
-    tip.style.left = x + 'px';
-    tip.style.top = y + 'px';
+    return anchor.getBoundingClientRect();
+  }
+
+  function show(el, persist) {
+    var label = el.getAttribute('data-tooltip');
+    if (!label) return;
+    /* Clear previous active element's class if switching */
+    if (activeEl && activeEl !== el) activeEl.classList.remove('is-tooltip-active');
+    tip.innerHTML = label;
+    tip.classList.add('is-visible');
+    activeEl = el;
+    clickPersisted = !!persist;
+    el.classList.add('is-tooltip-active');
+    var rect = positionFor(el);
+    tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+    tip.style.top = (rect.top + window.scrollY) + 'px';
   }
 
   function hide() {
     tip.classList.remove('is-visible');
     if (activeEl) activeEl.classList.remove('is-tooltip-active');
     activeEl = null;
+    clickPersisted = false;
   }
 
   var triggers = document.querySelectorAll('[data-tooltip]');
   for (var i = 0; i < triggers.length; i++) {
-    var el = triggers[i];
-    el.addEventListener('mouseenter', (function(e) { return function() { show(e); }; })(el));
-    el.addEventListener('mouseleave', hide);
-    el.addEventListener('focus', (function(e) { return function() { show(e); }; })(el));
-    el.addEventListener('blur', hide);
-    el.addEventListener('click', (function(e) {
-      return function(ev) {
+    (function(el) {
+      el.addEventListener('mouseenter', function() {
+        /* If a tap is currently persisting another tooltip, don't override */
+        if (clickPersisted && activeEl !== el) return;
+        show(el, false);
+      });
+      el.addEventListener('mouseleave', function() {
+        /* Only hide on mouseleave if NOT in tap-persist mode */
+        if (!clickPersisted) hide();
+      });
+      el.addEventListener('focus', function() { show(el, false); });
+      el.addEventListener('blur', function() { if (!clickPersisted) hide(); });
+      el.addEventListener('click', function(ev) {
         ev.stopPropagation();
-        if (activeEl === e) { hide(); } else { show(e); }
-      };
-    })(el));
+        if (activeEl === el && clickPersisted) {
+          hide();
+        } else {
+          show(el, true);
+        }
+      });
+    })(triggers[i]);
   }
 
   document.addEventListener('click', function() { if (activeEl) hide(); });
@@ -1643,14 +1661,13 @@ hr.section-break {
     for (var i = 0; i < matches.length; i++) matches[i].classList.add('is-series-active');
   }
   for (var s = 0; s < seriesEls.length; s++) {
-    var sEl = seriesEls[s];
-    sEl.addEventListener('mouseenter', (function(e) { return function() { activateSeries(e); }; })(sEl));
-    sEl.addEventListener('mouseleave', (function(e) {
-      return function() {
-        var frame = e.closest && e.closest('.chart-frame');
+    (function(el) {
+      el.addEventListener('mouseenter', function() { activateSeries(el); });
+      el.addEventListener('mouseleave', function() {
+        var frame = el.closest && el.closest('.chart-frame');
         if (frame) clearSeries(frame);
-      };
-    })(sEl));
+      });
+    })(seriesEls[s]);
   }
 })();
 
