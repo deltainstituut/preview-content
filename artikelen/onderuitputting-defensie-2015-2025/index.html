@@ -572,6 +572,353 @@ hr.section-break {
   font-variant-numeric: tabular-nums;
 }
 
+/* ===== CHART INTERACTIVITY (tooltip + hover) ===== */
+.chart-tooltip {
+  position: absolute;
+  background: var(--c-charcoal);
+  color: var(--c-offwhite);
+  padding: 0.45rem 0.7rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, calc(-100% - 10px));
+  transition: opacity 0.12s ease;
+  z-index: 100;
+  text-align: center;
+}
+.chart-tooltip.is-visible { opacity: 1; }
+.chart-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--c-charcoal);
+  border-bottom: 0;
+}
+
+/* Hover/active highlight states on chart elements */
+[data-tooltip] { cursor: pointer; }
+
+/* Single-bar pattern: data-tooltip on .bar-row → highlight the bar-fill */
+.bar-row[data-tooltip] .bar-fill { transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease; }
+.bar-row[data-tooltip]:hover .bar-fill,
+.bar-row.is-tooltip-active .bar-fill {
+  filter: brightness(0.82);
+  opacity: 1;
+}
+.bar-row[data-tooltip]:hover .bar-fill.bar-displaced,
+.bar-row.is-tooltip-active .bar-fill.bar-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 38%, transparent);
+}
+
+/* Stacked-bar pattern: data-tooltip on each .bar-seg → highlight only the hovered segment */
+.bar-fill[data-tooltip] { transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease; }
+.bar-fill[data-tooltip]:hover,
+.bar-fill[data-tooltip].is-tooltip-active,
+.bar-fill.is-series-active {
+  filter: brightness(0.82);
+  opacity: 1;
+}
+.bar-fill.bar-displaced[data-tooltip]:hover,
+.bar-fill.bar-displaced[data-tooltip].is-tooltip-active,
+.bar-fill.bar-displaced.is-series-active {
+  background: color-mix(in srgb, var(--c-charcoal) 38%, transparent);
+}
+
+/* Series-link: hover legend ↔ bar segment. Legend swatch gets an outline; label gets darker text */
+.chart-legend-item { cursor: pointer; transition: color 0.15s ease; }
+.chart-legend-item .chart-legend-swatch { transition: outline 0.12s ease; }
+.chart-legend-item.is-series-active { color: var(--c-text); }
+.chart-legend-item.is-series-active .chart-legend-swatch {
+  outline: 2px solid var(--c-text);
+  outline-offset: 2px;
+}
+.line-point[data-tooltip] { transition: transform 0.12s ease; }
+.line-point[data-tooltip]:hover,
+.line-point.is-tooltip-active { transform: scale(1.6); z-index: 5; }
+.heatmap-table td[data-tooltip] { transition: filter 0.12s ease; }
+.heatmap-table td[data-tooltip]:hover,
+.heatmap-table td.is-tooltip-active { filter: brightness(1.08); outline: 1.5px solid var(--c-text); outline-offset: -2px; }
+
+/* ===== EXTENDED CHART COMPONENTS ===== */
+
+/* Chart frame with watermark + footnote zone */
+.chart-frame {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  padding: 1.4rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  margin: 2.4rem 0;
+}
+.chart-frame .chart-source,
+.chart-frame .chart-footnotes { padding-right: 150px; }
+
+/* Bottom row: source/footnotes + logo on the same baseline */
+.chart-bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--c-border);
+}
+.chart-bottom > .chart-source,
+.chart-bottom > .chart-footnotes {
+  flex: 1;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  padding-right: 0;
+}
+.chart-bottom > .chart-watermark {
+  position: static;
+  flex-shrink: 0;
+  width: 130px;
+  margin: 0;
+  align-self: flex-start;
+}
+.chart-frame .chart-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+.chart-frame .chart-subtitle {
+  margin-bottom: 1.4rem;
+}
+.chart-watermark {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 130px;
+  color: var(--c-text);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.chart-watermark svg { width: 100%; height: auto; display: block; }
+.chart-footnotes {
+  margin-top: 1.2rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--c-border);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--c-text-secondary);
+}
+.chart-footnotes p { margin: 0.2rem 0; }
+
+/* Bar variants — palette uses standard tokens */
+.bar-fill.bar-muted { background: var(--c-charcoal); opacity: 0.45; }
+.bar-fill.bar-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 18%, transparent);
+}
+.bar-fill.bar-overig {
+  background: color-mix(in srgb, var(--c-dossier) 35%, transparent);
+}
+
+/* Stacked bar (segments fill the bar; no empty-track residue) */
+.bar-track-stacked {
+  display: flex;
+  background: transparent;
+}
+.bar-track-stacked .bar-seg {
+  position: relative;
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+/* Curved-arrow annotation row (placed after a bar-row) */
+.bar-callout-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-left: 9.8rem;
+  margin: -0.15rem 0 0.6rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--c-dossier);
+  line-height: 1.35;
+}
+.bar-callout-row::before {
+  content: "";
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.7rem;
+  flex-shrink: 0;
+  border-left: 1px solid var(--c-dossier);
+  border-bottom: 1px solid var(--c-dossier);
+  border-bottom-left-radius: 0.55rem;
+  margin-top: 0.05rem;
+}
+
+/* Small multiples (2-4 panel grid) */
+.chart-multiples {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem 1.4rem;
+  margin-top: 0.4rem;
+}
+.chart-multiple {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid var(--c-charcoal);
+  padding: 0.1rem 0 0.1rem 0.7rem;
+}
+.chart-multiple-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  margin-bottom: 0.15rem;
+}
+.chart-multiple-headline {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--c-text);
+  margin-bottom: 0.35rem;
+  min-height: calc(2 * 1.35 * 0.78rem);
+}
+.chart-multiple .bar-row {
+  grid-template-columns: 2.6rem 1fr 2.6rem;
+  font-size: 0.74rem;
+  gap: 0.45rem;
+}
+.chart-multiple .bar-track { height: 0.9rem; }
+.chart-multiple .bar-value { font-size: 0.72rem; }
+
+/* Heatmap-style table */
+.heatmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+.heatmap-table thead {
+  background: transparent;
+  color: var(--c-text);
+}
+.heatmap-table thead th {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.55rem 0.45rem;
+  border-bottom: 1.5px solid var(--c-text);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-secondary);
+  background: transparent;
+}
+.heatmap-table thead th:first-child { text-align: left; }
+.heatmap-table tbody td {
+  padding: 0.65rem 0.45rem;
+  text-align: center;
+  border-bottom: 2px solid #fff;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.heatmap-table tbody td:first-child {
+  text-align: left;
+  background: transparent !important;
+  color: var(--c-text) !important;
+  font-weight: 500;
+  padding-right: 1rem;
+}
+.heat-0 { background: color-mix(in srgb, var(--c-dossier) 5%, transparent); }
+.heat-1 { background: color-mix(in srgb, var(--c-dossier) 22%, transparent); }
+.heat-2 { background: color-mix(in srgb, var(--c-dossier) 45%, transparent); }
+.heat-3 { background: color-mix(in srgb, var(--c-dossier) 70%, transparent); color: #fff; }
+.heat-4 { background: color-mix(in srgb, var(--c-dossier) 90%, transparent); color: #fff; }
+.heat-5 { background: var(--c-dossier); color: #fff; }
+.heatmap-legend {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.74rem;
+  color: var(--c-text-secondary);
+}
+.heatmap-legend-scale {
+  display: inline-flex;
+  border: 1px solid var(--c-border);
+}
+.heatmap-legend-scale span {
+  display: block;
+  width: 1.2rem;
+  height: 0.7rem;
+}
+
+/* Stacked-bar legend (placed above the chart) */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin: -0.6rem 0 1.4rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+}
+.chart-legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.chart-legend-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.chart-legend-swatch.swatch-primary { background: var(--c-dossier); }
+.chart-legend-swatch.swatch-muted { background: var(--c-charcoal); opacity: 0.45; }
+.chart-legend-swatch.swatch-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 18%, transparent);
+}
+.chart-legend-swatch.swatch-overig {
+  background: color-mix(in srgb, var(--c-dossier) 35%, transparent);
+}
+
+/* Line chart inside frame: target label clearly above dashed line, fully opaque */
+.chart-frame .line-target {
+  opacity: 1;
+  border-top-color: color-mix(in srgb, var(--c-dossier) 65%, transparent);
+}
+.chart-frame .line-target span {
+  background: #fff;
+  left: 0.4rem;
+  right: auto;
+  top: 0;
+  transform: translateY(calc(-100% - 6px));
+}
+
+/* Highlight band: shaded vertical region marking a sub-period */
+.line-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--c-dossier) 9%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.line-band-label {
+  position: absolute;
+  top: 0.4rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--c-dossier);
+  line-height: 1.3;
+  pointer-events: none;
+  z-index: 3;
+}
+
 /* ===== MOBILE / TABLET ===== */
 @media (max-width: 1024px) {
   .layout, .layout.has-sidenotes {
@@ -615,12 +962,30 @@ hr.section-break {
   .line-axis-y, .line-x-axis { font-size: 0.7rem; }
   .line-point { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
 
-  /* Tables become stacked cards */
-  table, thead, tbody, tr, td {
+  /* Chart-frame mobile padding */
+  .chart-frame { padding: 1.1rem 1rem 1.1rem 1rem; }
+  .chart-frame .chart-source,
+  .chart-frame .chart-footnotes { padding-right: 110px; }
+  .chart-watermark { width: 95px; bottom: 1.1rem; right: 1rem; }
+  .chart-bottom { gap: 1rem; }
+  .chart-bottom > .chart-watermark { width: 95px; }
+  .chart-footnotes { font-size: 0.7rem; }
+  .chart-multiples { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .bar-callout-row { padding-left: 7rem; font-size: 0.74rem; }
+  .heatmap-table { font-size: 0.78rem; }
+  .heatmap-table tbody td { padding: 0.5rem 0.3rem; }
+  .heatmap-table thead th { font-size: 0.66rem; padding: 0.5rem 0.3rem; }
+
+  /* Tables become stacked cards (heatmap-table opted out) */
+  table:not(.heatmap-table),
+  table:not(.heatmap-table) thead,
+  table:not(.heatmap-table) tbody,
+  table:not(.heatmap-table) tr,
+  table:not(.heatmap-table) td {
     display: block;
     width: 100%;
   }
-  thead { display: none; }
+  table:not(.heatmap-table) thead { display: none; }
   tr {
     background: var(--c-offwhite-2) !important;
     border: 1px solid var(--c-border);
@@ -722,11 +1087,11 @@ hr.section-break {
   </div>
   <div class="mobile-toc-drawer">
     <ol>
-      <li><a data-target="het-patroon-een-derde-van-de-investeringen-blijft-liggen" href="#het-patroon-een-derde-van-de-investeringen-blijft-liggen">Het patroon: een derde van de investeringen blijft liggen</a></li>
-        <li><a data-target="tegelijk-meer-geld-dan-ooit" href="#tegelijk-meer-geld-dan-ooit">Tegelijk: méér geld dan ooit</a></li>
+      <li><a data-target="het-patroon-een-derde-van-de-investeringen-blijft-liggen" href="#het-patroon-een-derde-van-de-investeringen-blijft-liggen">Het patroon</a></li>
+        <li><a data-target="tegelijk-meer-geld-dan-ooit" href="#tegelijk-meer-geld-dan-ooit">Méér geld dan ooit</a></li>
         <li><a data-target="per-krijgsmachtdeel" href="#per-krijgsmachtdeel">Per krijgsmachtdeel</a></li>
-        <li><a data-target="vier-oorzaken-die-elkaar-versterken" href="#vier-oorzaken-die-elkaar-versterken">Vier oorzaken die elkaar versterken</a></li>
-        <li><a data-target="wat-gebeurt-er-met-het-niet-uitgegeven-geld" href="#wat-gebeurt-er-met-het-niet-uitgegeven-geld">Wat gebeurt er met het niet-uitgegeven geld?</a></li>
+        <li><a data-target="vier-oorzaken-die-elkaar-versterken" href="#vier-oorzaken-die-elkaar-versterken">Vier oorzaken</a></li>
+        <li><a data-target="wat-gebeurt-er-met-het-niet-uitgegeven-geld" href="#wat-gebeurt-er-met-het-niet-uitgegeven-geld">Het niet-uitgegeven geld</a></li>
         <li><a data-target="waarom-dit-ertoe-doet" href="#waarom-dit-ertoe-doet">Waarom dit ertoe doet</a></li>
         <li><a data-target="wat-te-doen" href="#wat-te-doen">Wat te doen</a></li>
     </ol>
@@ -743,11 +1108,11 @@ hr.section-break {
       <div class="toc-track"></div>
       <div class="toc-track-fill" id="toc-track-fill"></div>
       <ol>
-        <li><a data-target="het-patroon-een-derde-van-de-investeringen-blijft-liggen" href="#het-patroon-een-derde-van-de-investeringen-blijft-liggen">Het patroon: een derde van de investeringen blijft liggen</a></li>
-        <li><a data-target="tegelijk-meer-geld-dan-ooit" href="#tegelijk-meer-geld-dan-ooit">Tegelijk: méér geld dan ooit</a></li>
+        <li><a data-target="het-patroon-een-derde-van-de-investeringen-blijft-liggen" href="#het-patroon-een-derde-van-de-investeringen-blijft-liggen">Het patroon</a></li>
+        <li><a data-target="tegelijk-meer-geld-dan-ooit" href="#tegelijk-meer-geld-dan-ooit">Méér geld dan ooit</a></li>
         <li><a data-target="per-krijgsmachtdeel" href="#per-krijgsmachtdeel">Per krijgsmachtdeel</a></li>
-        <li><a data-target="vier-oorzaken-die-elkaar-versterken" href="#vier-oorzaken-die-elkaar-versterken">Vier oorzaken die elkaar versterken</a></li>
-        <li><a data-target="wat-gebeurt-er-met-het-niet-uitgegeven-geld" href="#wat-gebeurt-er-met-het-niet-uitgegeven-geld">Wat gebeurt er met het niet-uitgegeven geld?</a></li>
+        <li><a data-target="vier-oorzaken-die-elkaar-versterken" href="#vier-oorzaken-die-elkaar-versterken">Vier oorzaken</a></li>
+        <li><a data-target="wat-gebeurt-er-met-het-niet-uitgegeven-geld" href="#wat-gebeurt-er-met-het-niet-uitgegeven-geld">Het niet-uitgegeven geld</a></li>
         <li><a data-target="waarom-dit-ertoe-doet" href="#waarom-dit-ertoe-doet">Waarom dit ertoe doet</a></li>
         <li><a data-target="wat-te-doen" href="#wat-te-doen">Wat te doen</a></li>
       </ol>
@@ -781,20 +1146,39 @@ hr.section-break {
 
 <p>Het probleem zit op het investeringsartikel en sinds 2021 op het Defensiematerieelbegrotingsfonds. Dat is het potje waaruit nieuwe schepen, vliegtuigen, tanks, drones en munitie worden gekocht. En juist dat potje wordt structureel niet leeggemaakt.</p>
 
-<div class="chart">
-  <div class="chart-title">Onderuitputting investeringen Defensie, in miljoen euro</div>
-  <div class="chart-subtitle">Vanaf 2021 betreft het Defensiematerieelbegrotingsfonds (DMF). Daarvoor het oude investeringsartikel 6.</div>
+<div class="chart-frame">
+  <div class="chart-title">In 2024 bleef 3,3 miljard euro liggen — bijna een derde van het materieelfonds</div>
+  <div class="chart-subtitle">Onderuitputting van het Defensie-investeringsbudget per jaar, 2015 – 2024, in miljoen euro. Vanaf 2021 betreft het Defensiematerieelbegrotingsfonds (DMF), daarvoor het oude investeringsartikel 6.</div>
   <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill" style="width: 6.3%"></div></div><div class="bar-value">207</div></div>
-    <div class="bar-row"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill" style="width: 6.0%"></div></div><div class="bar-value">199</div></div>
-    <div class="bar-row"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill" style="width: 36.4%"></div></div><div class="bar-value">1.200</div></div>
-    <div class="bar-row"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
-    <div class="bar-row"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
-    <div class="bar-row"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill" style="width: 13.1%"></div></div><div class="bar-value">433</div></div>
-    <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill" style="width: 32.3%"></div></div><div class="bar-value">1.065</div></div>
-    <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">3.303</div></div>
+    <div class="bar-row" data-tooltip="<strong>2015</strong><br>207 mln"><div class="bar-label">2015</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.3%"></div></div><div class="bar-value">207</div></div>
+    <div class="bar-row" data-tooltip="<strong>2017</strong><br>199 mln"><div class="bar-label">2017</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 6.0%"></div></div><div class="bar-value">199</div></div>
+    <div class="bar-row" data-tooltip="<strong>2018</strong><br>1.200 mln"><div class="bar-label">2018</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 36.4%"></div></div><div class="bar-value">1.200</div></div>
+    <div class="bar-row" data-tooltip="<strong>2019</strong><br>≈ 0"><div class="bar-label">2019</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row" data-tooltip="<strong>2021</strong><br>≈ 0"><div class="bar-label">2021</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 0%"></div></div><div class="bar-value">≈ 0</div></div>
+    <div class="bar-row" data-tooltip="<strong>2022</strong><br>433 mln"><div class="bar-label">2022</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 13.1%"></div></div><div class="bar-value">433</div></div>
+    <div class="bar-row" data-tooltip="<strong>2023</strong><br>1.065 mln"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 32.3%"></div></div><div class="bar-value">1.065</div></div>
+    <div class="bar-row" data-tooltip="<strong>2024</strong><br>3.303 mln"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">3.303</div></div>
+    <div class="bar-callout-row">2024 onderuitputting verviervoudigt — bijna 30 % van het beschikbare investeringsbudget bleef onbesteed.</div>
   </div>
-  <div class="chart-source">Bron: Algemene Rekenkamer Verantwoordingsonderzoek 2024 Defensie+DMF (mei 2026); jaarverslagen DMF 2021-2024; jaarverslagen Defensie 2015-2019.</div>
+  <div class="chart-source">Bron: Algemene Rekenkamer, Verantwoordingsonderzoek 2024 Defensie+DMF (mei 2026); jaarverslagen DMF 2021 – 2024; jaarverslagen Defensie 2015 – 2019.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
 </div>
 
 <p>In 2018 bleef 1,2 miljard euro op de plank — 40 procent van het toen beschikbare investeringsbudget. In 2019 lukte het wél, na harde aansporingen van de Rekenkamer<sup class="fn-ref" id="ref-2" data-num="2">2</sup>. In 2022 begon de stapel weer te groeien: 433 miljoen, daarna 1,1 miljard in 2023, tot 3,3 miljard in 2024. Dat is geen ruis. Cumulatief over 2015 tot en met 2024 ging het om ongeveer 6,5 miljard euro die wel begroot werd, maar niet werd uitgegeven<sup class="fn-ref" id="ref-1" data-num="1">1</sup>.</p>
@@ -803,41 +1187,60 @@ hr.section-break {
 
 <p>Het paradoxale: de onderuitputting groeit terwijl de begroting explodeert. De volgende grafiek toont Defensie als percentage van het bbp, de meetlat van de NAVO.</p>
 
-<div class="chart">
-  <div class="chart-title">Defensie-uitgaven Nederland, als % van het bbp</div>
-  <div class="chart-subtitle">NAVO-richtlijn is 2% (gestreepte lijn). In 2024 wordt die net wel (NAVO-rekenmethode) of net niet (NL-rekenmethode) gehaald.</div>
+<div class="chart-frame">
+  <div class="chart-title">Met de NAVO-norm in zicht groeide ook het bedrag dat niet werd uitgegeven</div>
+  <div class="chart-subtitle">Defensie-uitgaven Nederland als percentage van het bbp, 2014 – 2025. NAVO-norm is 2 % (gestreepte lijn). De gekleurde band markeert de versnellingsperiode 2022 – 2025; het laatste punt (2025) is een raming.</div>
   <div class="line-chart">
     <div class="line-axis-y">
-      <span>2,2%</span>
-      <span>1,8%</span>
-      <span>1,4%</span>
-      <span>1,0%</span>
+      <span>2,2 %</span>
+      <span>1,8 %</span>
+      <span>1,4 %</span>
+      <span>1,0 %</span>
     </div>
     <div class="line-area">
       <div class="line-grid"></div>
-      <div class="line-target" style="bottom: 83.3%"><span>NAVO-norm 2%</span></div>
+      <div class="line-band" style="left: 80%; right: 0;"></div>
+      <div class="line-target" style="bottom: 83.3%"><span>NAVO-norm 2 %</span></div>
       <div class="line-points">
-        <div class="line-point" style="left: 0%; bottom: 13.3%"></div>
-        <div class="line-point" style="left: 10%; bottom: 14.2%"></div>
-        <div class="line-point" style="left: 20%; bottom: 12.5%"></div>
-        <div class="line-point" style="left: 30%; bottom: 17.5%"></div>
-        <div class="line-point" style="left: 40%; bottom: 26.7%"></div>
-        <div class="line-point" style="left: 50%; bottom: 33.3%"></div>
-        <div class="line-point" style="left: 60%; bottom: 33.3%"></div>
-        <div class="line-point" style="left: 70%; bottom: 43.3%"></div>
-        <div class="line-point" style="left: 80%; bottom: 41.7%"></div>
-        <div class="line-point" style="left: 90%; bottom: 65.8%"></div>
-        <div class="line-point line-point-est" style="left: 100%; bottom: 83.3%"></div>
+        <div class="line-point" style="left: 0%; bottom: 13.3%" data-tooltip="<strong>2014</strong><br>1,16 % bbp"></div>
+        <div class="line-point" style="left: 10%; bottom: 14.2%" data-tooltip="<strong>2015</strong><br>1,17 % bbp"></div>
+        <div class="line-point" style="left: 20%; bottom: 12.5%" data-tooltip="<strong>2016</strong><br>1,15 % bbp"></div>
+        <div class="line-point" style="left: 30%; bottom: 17.5%" data-tooltip="<strong>2017</strong><br>1,21 % bbp"></div>
+        <div class="line-point" style="left: 40%; bottom: 26.7%" data-tooltip="<strong>2018</strong><br>1,32 % bbp"></div>
+        <div class="line-point" style="left: 50%; bottom: 33.3%" data-tooltip="<strong>2019</strong><br>1,40 % bbp"></div>
+        <div class="line-point" style="left: 60%; bottom: 33.3%" data-tooltip="<strong>2020</strong><br>1,40 % bbp"></div>
+        <div class="line-point" style="left: 70%; bottom: 43.3%" data-tooltip="<strong>2021</strong><br>1,52 % bbp"></div>
+        <div class="line-point" style="left: 80%; bottom: 41.7%" data-tooltip="<strong>2022</strong><br>1,50 % bbp"></div>
+        <div class="line-point" style="left: 90%; bottom: 65.8%" data-tooltip="<strong>2023</strong><br>1,79 % bbp"></div>
+        <div class="line-point line-point-est" style="left: 100%; bottom: 83.3%" data-tooltip="<strong>2025 (raming)</strong><br>2,00 % bbp"></div>
       </div>
     </div>
     <div class="line-x-axis">
-      <span>'15</span><span>'16</span><span>'17</span><span>'18</span><span>'19</span><span>'20</span><span>'21</span><span>'22</span><span>'23</span><span>'24</span><span>'25</span>
+      <span>2014</span><span>2016</span><span>2018</span><span>2020</span><span>2022</span><span>2024</span>
     </div>
   </div>
   <div class="chart-source">Bron: Rekenkamer Verantwoordingsonderzoek 2024; SIPRI/NAVO publicaties; Voorjaarsnota 2025.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
 </div>
 
-<p>In zeven jaar tijd verdubbelde het Defensiebudget. Tussen Rutte III (1,5 miljard erbij) en Rutte IV (5 miljard erbij) en het Schoof-kabinet (verankering 2%-norm) is er ongeveer 10 miljard euro per jaar bijgekomen. Maar de organisatie blijkt dat geld niet weg te krijgen.</p>
+<p>In zeven jaar tijd verdubbelde het Defensiebudget. Tussen Rutte III (1,5 miljard erbij) en Rutte IV (5 miljard erbij) en het Schoof-kabinet (verankering 2 %-norm) is er ongeveer 10 miljard euro per jaar bijgekomen. Maar de organisatie blijkt dat geld niet weg te krijgen.</p>
 
 <h2 id="per-krijgsmachtdeel">Per krijgsmachtdeel</h2>
 
@@ -847,15 +1250,34 @@ hr.section-break {
 
 <p>Het probleem is bijna volledig geconcentreerd in het materieelfonds. Binnen dat fonds is de portefeuille Defensie Grootmaterieel verantwoordelijk voor het grootste tekort (487 miljoen euro minder uitgegeven dan gepland), gevolgd door Kennis & Innovatie (127 miljoen, 83 procent onder begroting). De overige portefeuilles blijven dichter bij de raming.</p>
 
-<div class="chart">
-  <div class="chart-title">Onderuitputting DMF 2024 per portefeuille, in miljoen euro</div>
+<div class="chart-frame">
+  <div class="chart-title">Het tekort komt vooral van Grootmaterieel; IT en Vastgoed gaven juist méér uit</div>
+  <div class="chart-subtitle">Onderuitputting (negatief) en overschrijding (positief) per portefeuille van het Defensiematerieelfonds, 2024, in miljoen euro.</div>
   <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">−487</div></div>
-    <div class="bar-row"><div class="bar-label">Kennis & Innovatie</div><div class="bar-track"><div class="bar-fill" style="width: 26%"></div></div><div class="bar-value">−127</div></div>
-    <div class="bar-row"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 8%"></div></div><div class="bar-value">+40</div></div>
-    <div class="bar-row"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-pos" style="width: 15%"></div></div><div class="bar-value">+72</div></div>
+    <div class="bar-row" data-tooltip="<strong>Grootmaterieel</strong><br>−487 mln"><div class="bar-label">Grootmaterieel</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="bar-value">−487</div></div>
+    <div class="bar-row" data-tooltip="<strong>Kennis &amp; Innovatie</strong><br>−127 mln (83 % onder begroting)"><div class="bar-label">Kennis &amp; Innovatie</div><div class="bar-track"><div class="bar-fill bar-muted" style="width: 26%"></div></div><div class="bar-value">−127</div></div>
+    <div class="bar-row" data-tooltip="<strong>IT</strong><br>+40 mln (overschrijding)"><div class="bar-label">IT</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 8%"></div></div><div class="bar-value">+40</div></div>
+    <div class="bar-row" data-tooltip="<strong>Vastgoed</strong><br>+72 mln (overschrijding)"><div class="bar-label">Vastgoed</div><div class="bar-track"><div class="bar-fill bar-displaced" style="width: 15%"></div></div><div class="bar-value">+72</div></div>
   </div>
   <div class="chart-source">Bron: Jaarverslag DMF 2024, Tabel 2 (Defensie's eigen toelichting onderuitputting).</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
 </div>
 
 <h2 id="vier-oorzaken-die-elkaar-versterken">Vier oorzaken die elkaar versterken</h2>
@@ -890,11 +1312,11 @@ hr.section-break {
 
 <p>Niet weggegooid — doorgeschoven. Het Defensiematerieelbegrotingsfonds is precies hiervoor opgericht: niet-bestede middelen blijven binnen het fonds en kunnen in latere jaren alsnog worden uitgegeven. In 2024 werd 3,3 miljard euro doorgeschoven naar 2025 en verder. Bij de Najaarsnota 2024 werd nog eens 1,55 miljard euro actief verschoven binnen het fonds.</p>
 
-<p>Dat klinkt geruststellend, maar het verlegt het probleem. De pijplijn voor 2025-2027 is daardoor vol — wat betekent dat ook in die jaren de organisatie meer moet wegzetten dan ze de afgelopen vijf jaar heeft laten zien.</p>
+<p>Dat klinkt geruststellend, maar het verlegt het probleem. De pijplijn voor 2025 – 2027 is daardoor vol — wat betekent dat ook in die jaren de organisatie meer moet wegzetten dan ze de afgelopen vijf jaar heeft laten zien.</p>
 
 <h2 id="waarom-dit-ertoe-doet">Waarom dit ertoe doet</h2>
 
-<p>Drie redenen. Eerst: politieke geloofwaardigheid van de 2%-norm. Volgens de NAVO-meetlat haalde Nederland in 2024 net 2,06 procent, vooral omdat steun aan Oekraïne meetelt en omdat met het bbp van 2021 wordt gerekend. Volgens de Nederlandse meetlat (realisatie gedeeld door bbp 2024) was het 1,79 procent<sup class="fn-ref" id="ref-3" data-num="3">3</sup>. Het verschil zit grotendeels in geld dat wel begroot, maar niet uitgegeven werd.</p>
+<p>Drie redenen. Eerst: politieke geloofwaardigheid van de 2 %-norm. Volgens de NAVO-meetlat haalde Nederland in 2024 net 2,06 procent, vooral omdat steun aan Oekraïne meetelt en omdat met het bbp van 2021 wordt gerekend. Volgens de Nederlandse meetlat (realisatie gedeeld door bbp 2024) was het 1,79 procent<sup class="fn-ref" id="ref-3" data-num="3">3</sup>. Het verschil zit grotendeels in geld dat wel begroot, maar niet uitgegeven werd.</p>
 
 <p>Twee: militaire effectiviteit. Niet-uitgegeven investeringsgeld betekent niet-geleverde capaciteit. De Landstrijdkrachten wachten al jaren op nieuwe pantservoertuigen, de Luchtmacht op vervangende tankers, de Marine op anti-onderzeebootcapaciteit. Elk jaar uitstel verschuift de operationele gereedheid.</p>
 
@@ -902,14 +1324,14 @@ hr.section-break {
 
 <h2 id="wat-te-doen">Wat te doen</h2>
 
-<p>Geen quick fixes. De Rekenkamer adviseert al jaren drie dingen: een realistischer kasritme (niet alles in jaar één plannen), versnelling van de vastgoedketen (kortere planfase) en een gerichter personeelsbeleid (vooral techniek, IT en medisch). Sinds 2024 ligt er ook een initiatiefwet om de 2%-norm wettelijk te verankeren.</p>
+<p>Geen quick fixes. De Rekenkamer adviseert al jaren drie dingen: een realistischer kasritme (niet alles in jaar één plannen), versnelling van de vastgoedketen (kortere planfase) en een gerichter personeelsbeleid (vooral techniek, IT en medisch). Sinds 2024 ligt er ook een initiatiefwet om de 2 %-norm wettelijk te verankeren.</p>
 
 <p>Maar de fundamentele afweging is structureler. Zolang de Europese defensie-industrie niet snel genoeg opschaalt en zolang de Nederlandse arbeidsmarkt voor technici krap blijft, is geld niet de bindende beperking. Dat besef ontbreekt nog grotendeels in het politieke debat, dat zich vrijwel uitsluitend richt op het optellen van miljarden.</p>
 
   </article>
 
   <aside class="sidenote-col">
-  <div class="sidenote" data-num="1" data-ref="ref-1"><span class="sidenote-num">1</span> <a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Algemene Rekenkamer, Verantwoordingsonderzoek 2024 Defensie en Defensiematerieelbegrotingsfonds</a> (mei 2026). Cumulatieve cijfers 2015-2024 op basis van jaarverslagen Defensie 2015-2023 via rijksfinancien.nl.</div>
+  <div class="sidenote" data-num="1" data-ref="ref-1"><span class="sidenote-num">1</span> <a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Algemene Rekenkamer, Verantwoordingsonderzoek 2024 Defensie en Defensiematerieelbegrotingsfonds</a> (mei 2026). Cumulatieve cijfers 2015 – 2024 op basis van jaarverslagen Defensie 2015 – 2023 via rijksfinancien.nl.</div>
   <div class="sidenote" data-num="2" data-ref="ref-2"><span class="sidenote-num">2</span> <a href="https://www.rekenkamer.nl/publicaties/rapporten/2020/05/20/resultaten-verantwoordingsonderzoek-2019-ministerie-van-defensie">Algemene Rekenkamer, Verantwoordingsonderzoek 2019 Ministerie van Defensie</a> (mei 2020), constatering aangaande inhalen onderuitputting 2018.</div>
   <div class="sidenote" data-num="3" data-ref="ref-3"><span class="sidenote-num">3</span> <a href="https://www.rijksfinancien.nl/voorjaarsnota/2025/7816576">Voorjaarsnota 2025 — Bijlage 5: Defensie 2% bbp</a>. Het verschil tussen 1,79% (NL-meetlat: realisatie / bbp 2024) en 2,06% (NAVO-meetlat: incl. steun aan Oekraïne, gerelateerd aan bbp 2021).</div>
   <div class="sidenote" data-num="4" data-ref="ref-4"><span class="sidenote-num">4</span> <a href="https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2025/05/21/vo-2024-def/X+Defensie+DMBF+WR.pdf">Verantwoordingsonderzoek 2024 DMF</a>, hoofdstuk over verplichtingenrealisatie en marktdruk.</div>
@@ -985,6 +1407,7 @@ hr.section-break {
 
   function updateProgress() {
     var pct = getScrollPercent();
+    /* Mobile fill is updated via rAF — keep ticker here as fallback for non-scroll triggers */
     if (mobileFill) mobileFill.style.width = pct + '%';
 
     var headings = [];
@@ -1128,6 +1551,103 @@ hr.section-break {
   }
   updateProgress();
   positionSidenotes();
+})();
+
+</script>
+
+<script>
+/* Chart interactivity: tooltip on hover (desktop) and tap (mobile) for any element with data-tooltip. */
+(function() {
+  if (!document.querySelector('[data-tooltip]')) return;
+
+  var tip = document.createElement('div');
+  tip.className = 'chart-tooltip';
+  tip.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(tip);
+
+  var activeEl = null;
+
+  function show(el) {
+    var label = el.getAttribute('data-tooltip');
+    if (!label) return;
+    tip.innerHTML = label;
+    tip.classList.add('is-visible');
+    activeEl = el;
+    el.classList.add('is-tooltip-active');
+    /* Anchor preference:
+       1. .bar-track-stacked (multi-segment bar — center on whole bar)
+       2. .bar-fill with non-zero width (single bar — center on the colored part)
+       3. .bar-track (zero-value rows — center on the track)
+       4. element itself (heatmap cells, line points, etc.) */
+    var anchor = el;
+    var stacked = el.querySelector('.bar-track-stacked');
+    if (stacked) {
+      anchor = stacked;
+    } else {
+      var fill = el.querySelector('.bar-fill');
+      if (fill && fill.offsetWidth > 0) {
+        anchor = fill;
+      } else {
+        var track = el.querySelector('.bar-track');
+        if (track) anchor = track;
+      }
+    }
+    var rect = anchor.getBoundingClientRect();
+    var x = rect.left + rect.width / 2 + window.scrollX;
+    var y = rect.top + window.scrollY;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+
+  function hide() {
+    tip.classList.remove('is-visible');
+    if (activeEl) activeEl.classList.remove('is-tooltip-active');
+    activeEl = null;
+  }
+
+  var triggers = document.querySelectorAll('[data-tooltip]');
+  for (var i = 0; i < triggers.length; i++) {
+    var el = triggers[i];
+    el.addEventListener('mouseenter', (function(e) { return function() { show(e); }; })(el));
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', (function(e) { return function() { show(e); }; })(el));
+    el.addEventListener('blur', hide);
+    el.addEventListener('click', (function(e) {
+      return function(ev) {
+        ev.stopPropagation();
+        if (activeEl === e) { hide(); } else { show(e); }
+      };
+    })(el));
+  }
+
+  document.addEventListener('click', function() { if (activeEl) hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('resize', hide);
+
+  /* Series highlight: hover any [data-series] element (legend item or bar segment)
+     and all matching elements in the same .chart-frame get .is-series-active. */
+  var seriesEls = document.querySelectorAll('[data-series]');
+  function clearSeries(frame) {
+    var actives = frame.querySelectorAll('.is-series-active');
+    for (var i = 0; i < actives.length; i++) actives[i].classList.remove('is-series-active');
+  }
+  function activateSeries(el) {
+    var s = el.getAttribute('data-series');
+    var frame = el.closest && el.closest('.chart-frame');
+    if (!frame || !s) return;
+    var matches = frame.querySelectorAll('[data-series="' + s + '"]');
+    for (var i = 0; i < matches.length; i++) matches[i].classList.add('is-series-active');
+  }
+  for (var s = 0; s < seriesEls.length; s++) {
+    var sEl = seriesEls[s];
+    sEl.addEventListener('mouseenter', (function(e) { return function() { activateSeries(e); }; })(sEl));
+    sEl.addEventListener('mouseleave', (function(e) {
+      return function() {
+        var frame = e.closest && e.closest('.chart-frame');
+        if (frame) clearSeries(frame);
+      };
+    })(sEl));
+  }
 })();
 
 </script>
