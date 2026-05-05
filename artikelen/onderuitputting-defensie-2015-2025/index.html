@@ -374,9 +374,12 @@ hr.section-break {
 }
 .sidenote a { text-decoration-color: var(--c-border); }
 .sidenote a:hover { text-decoration-color: var(--c-text-secondary); }
+.sidenote {
+  transition: border-left-color 0.3s ease, border-left-width 0.3s ease;
+}
 .sidenote.is-flashed {
-  background: color-mix(in srgb, var(--c-dossier) 14%, transparent);
-  transition: background 0.3s ease;
+  border-left: 3px solid var(--c-dossier);
+  margin-left: -2px;
 }
 .sidenote-num {
   font-weight: 600;
