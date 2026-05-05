@@ -374,13 +374,8 @@ hr.section-break {
 }
 .sidenote a { text-decoration-color: var(--c-border); }
 .sidenote a:hover { text-decoration-color: var(--c-text-secondary); }
-.sidenote {
-  transition: border-left-color 0.3s ease, border-left-width 0.3s ease;
-}
-.sidenote.is-flashed {
-  border-left: 2px solid var(--c-dossier);
-  margin-left: -1px;
-}
+.sidenote { transition: border-left-color 0.3s ease; }
+.sidenote.is-flashed { border-left-color: var(--c-dossier); }
 .sidenote-num {
   font-weight: 600;
   color: var(--c-dossier);
