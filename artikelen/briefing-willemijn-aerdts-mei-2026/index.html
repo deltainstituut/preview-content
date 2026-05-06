@@ -96,20 +96,6 @@ body {
   font-size: 0.75rem;
 }
 .mobile-toc.open .mobile-toc-chevron { transform: rotate(180deg); }
-.mobile-toc-progress {
-  height: 3px;
-  background: var(--c-border);
-  position: relative;
-}
-.mobile-toc-progress-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: var(--c-dossier);
-  transition: width 0.1s linear;
-}
 .mobile-toc-drawer {
   max-height: 0;
   overflow: hidden;
@@ -159,24 +145,6 @@ body {
   padding-left: 1.2rem;
 }
 .toc-wrap { position: relative; }
-.toc-track {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--c-border);
-}
-.toc-track-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 0%;
-  background: var(--c-dossier);
-  transition: height 0.1s linear;
-  z-index: 1;
-}
 .toc-label {
   font-family: 'Lora', Georgia, serif;
   font-size: 0.72rem;
@@ -544,9 +512,6 @@ hr.section-break {
     <span class="mobile-toc-label">Inhoudsopgave</span>
     <span class="mobile-toc-chevron">&#9660;</span>
   </button>
-  <div class="mobile-toc-progress">
-    <div class="mobile-toc-progress-fill" id="mobile-progress-fill"></div>
-  </div>
   <div class="mobile-toc-drawer">
     <ol>
       <li><a data-target="nederlandse-digitale-dienst" href="#nederlandse-digitale-dienst">Nederlandse Digitale Dienst</a></li>
@@ -563,8 +528,6 @@ hr.section-break {
   <aside class="toc" id="toc">
     <div class="toc-label">Inhoud</div>
     <div class="toc-wrap">
-      <div class="toc-track"></div>
-      <div class="toc-track-fill" id="toc-track-fill"></div>
       <ol>
         <li><a data-target="nederlandse-digitale-dienst" href="#nederlandse-digitale-dienst">Nederlandse Digitale Dienst</a></li>
         <li><a data-target="nl-aisi" href="#nl-aisi">NL-AISI</a></li>
@@ -660,8 +623,6 @@ hr.section-break {
 /* ES5, no external dependencies, IIFE-wrapped */
 (function() {
   var tocLinks = document.querySelectorAll('.toc a[data-target]');
-  var trackFill = document.getElementById('toc-track-fill');
-  var mobileFill = document.getElementById('mobile-progress-fill');
   var mobileToc = document.getElementById('mobile-toc');
   var mobileToggle = document.getElementById('mobile-toc-toggle');
   var mobileLinks = document.querySelectorAll('.mobile-toc-drawer a');
@@ -679,8 +640,6 @@ hr.section-break {
 
   function updateProgress() {
     var pct = getScrollPercent();
-    /* Mobile progress bar still tracks total page scroll (top of viewport) */
-    if (mobileFill) mobileFill.style.width = pct + '%';
 
     var headings = [];
     for (var i = 0; i < tocLinks.length; i++) {
@@ -714,18 +673,6 @@ hr.section-break {
 
       var labelEl = document.querySelector('.mobile-toc-label');
       if (labelEl) labelEl.textContent = headings[activeIdx].link.textContent;
-    }
-
-    /* Desktop track fill reaches down to bottom of active TOC item.
-       This keeps the fill aligned with the highlight (both driven by 50% trigger). */
-    if (trackFill) {
-      if (activeIdx >= 0 && tocLinks[activeIdx] && tocLinks[activeIdx].parentNode) {
-        var activeLi = tocLinks[activeIdx].parentNode;
-        var bottom = activeLi.offsetTop + activeLi.offsetHeight;
-        trackFill.style.height = bottom + 'px';
-      } else {
-        trackFill.style.height = '0px';
-      }
     }
   }
 
