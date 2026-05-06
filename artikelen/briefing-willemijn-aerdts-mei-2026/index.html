@@ -96,6 +96,10 @@ body {
   font-size: 0.75rem;
 }
 .mobile-toc.open .mobile-toc-chevron { transform: rotate(180deg); }
+.mobile-toc-progress {
+  height: 3px;
+  background: var(--c-border);
+}
 .mobile-toc-drawer {
   max-height: 0;
   overflow: hidden;
@@ -145,6 +149,14 @@ body {
   padding-left: 1.2rem;
 }
 .toc-wrap { position: relative; }
+.toc-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--c-border);
+}
 .toc-label {
   font-family: 'Lora', Georgia, serif;
   font-size: 0.72rem;
@@ -512,6 +524,7 @@ hr.section-break {
     <span class="mobile-toc-label">Inhoudsopgave</span>
     <span class="mobile-toc-chevron">&#9660;</span>
   </button>
+  <div class="mobile-toc-progress"></div>
   <div class="mobile-toc-drawer">
     <ol>
       <li><a data-target="nederlandse-digitale-dienst" href="#nederlandse-digitale-dienst">Nederlandse Digitale Dienst</a></li>
@@ -528,6 +541,7 @@ hr.section-break {
   <aside class="toc" id="toc">
     <div class="toc-label">Inhoud</div>
     <div class="toc-wrap">
+      <div class="toc-track"></div>
       <ol>
         <li><a data-target="nederlandse-digitale-dienst" href="#nederlandse-digitale-dienst">Nederlandse Digitale Dienst</a></li>
         <li><a data-target="nl-aisi" href="#nl-aisi">NL-AISI</a></li>
