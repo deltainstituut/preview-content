@@ -562,6 +562,21 @@ hr.section-break {
   font-variant-numeric: tabular-nums;
   padding-right: 0.2rem;
 }
+/* Trendlijn (regressie) op scatter / line-chart — inline SVG over plot area */
+.line-trend {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.line-trend line {
+  stroke: var(--c-text-secondary);
+  stroke-width: 0.6;
+  stroke-dasharray: 3 2;
+  opacity: 0.55;
+}
 .line-area {
   position: relative;
   border-left: 1px solid var(--c-border);
@@ -2634,6 +2649,9 @@ pre code {
     </div>
     <div class="line-area">
       <div class="line-grid"></div>
+      <svg class="line-trend" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="85" x2="95" y2="15" />
+      </svg>
       <div class="line-points">
         <div class="line-point" style="left: 80%; bottom: 95%" data-tooltip="<strong>Defensie/DMF</strong><br>budget € 11 mld · 29 % onbesteed"></div>
         <div class="line-point" style="left: 55%; bottom: 60%" data-tooltip="<strong>EZK (NGF + Klimaatfonds)</strong><br>budget € 7 mld · 17 % onbesteed"></div>
