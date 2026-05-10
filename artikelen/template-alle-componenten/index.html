@@ -740,11 +740,10 @@ hr.section-break {
 .chart-frame .chart-source,
 .chart-frame .chart-footnotes { padding-right: 150px; }
 
-/* Bottom row: source/footnotes + logo on the same baseline */
+/* Bottom row: source + logo, logo aligned to BOTTOM of last source line */
 .chart-bottom {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: flex-end;
   gap: 1.5rem;
   margin-top: 1rem;
   padding-top: 0.7rem;
@@ -752,7 +751,8 @@ hr.section-break {
 }
 .chart-bottom > .chart-source,
 .chart-bottom > .chart-footnotes {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   margin-top: 0;
   padding-top: 0;
   border-top: none;
@@ -763,7 +763,7 @@ hr.section-break {
   flex-shrink: 0;
   width: 130px;
   margin: 0;
-  align-self: flex-start;
+  align-self: flex-end;
 }
 .chart-frame .chart-title {
   font-size: 1.3rem;
@@ -1373,24 +1373,9 @@ pre code {
   .chart-frame { padding-left: 1rem; padding-right: 1rem; }
   .chart-frame .chart-source,
   .chart-frame .chart-footnotes { padding-right: 0; }
-  /* Mobiel: chart-bottom als block met floated watermark — source tekst vult de hele
-     breedte en wrapt automatisch om de logo heen, geen verspilde witruimte ertussen. */
-  .chart-bottom {
-    display: block;
-    gap: 0;
-  }
-  .chart-bottom::after { content: ''; display: block; clear: both; }
-  .chart-bottom > .chart-watermark {
-    float: right;
-    width: 80px;
-    margin: 0 0 0.3rem 0.8rem;
-    position: static;
-  }
-  .chart-bottom > .chart-source,
-  .chart-bottom > .chart-footnotes {
-    flex: none;
-    min-width: 0;
-  }
+  /* Mobiel: source neemt zijn ruimte, logo bottom-aligned naast laatste regel */
+  .chart-bottom { gap: 0.6rem; }
+  .chart-bottom > .chart-watermark { width: 80px; }
   .chart-watermark { width: 80px; bottom: 1rem; right: 1rem; }
   .line-chart {
     grid-template-columns: 2.4rem 1fr;
@@ -3068,10 +3053,8 @@ pre code {
       var bottom = document.createElement('div');
       bottom.className = 'chart-bottom';
       frame.insertBefore(bottom, source);
-      /* Watermark eerst in DOM zodat float-right hem rechtsboven plaatst en
-         de source-tekst er om heen vloeit (geen "verspilde" ruimte tussen). */
-      bottom.appendChild(watermark);
       bottom.appendChild(source);
+      bottom.appendChild(watermark);
     }
   }
   setupChartBottom();
