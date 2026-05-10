@@ -731,6 +731,8 @@ hr.section-break {
   position: relative;
   margin: 2.4rem 0;
 }
+/* JS wrapt source + watermark in een chart-bottom flex-row → minder padding-bottom nodig */
+.chart-frame:has(> .chart-bottom) { padding-bottom: 1.4rem; }
 .chart-frame .chart-source,
 .chart-frame .chart-footnotes { padding-right: 150px; }
 
@@ -3110,6 +3112,26 @@ pre code {
     document.body.removeChild(ta);
   }
   setupCodeCopy();
+
+  /* Chart-frame bottom row: wrap chart-source + chart-watermark in een flex-container
+     zodat-ie horizontaal naast elkaar staan ipv watermark eronder via absolute positioning.
+     Idempotent — slaat over als chart-bottom al bestaat. */
+  function setupChartBottom() {
+    var frames = document.querySelectorAll('.chart-frame');
+    for (var f = 0; f < frames.length; f++) {
+      var frame = frames[f];
+      if (frame.querySelector(':scope > .chart-bottom')) continue;
+      var source = frame.querySelector(':scope > .chart-source, :scope > .chart-footnotes');
+      var watermark = frame.querySelector(':scope > .chart-watermark');
+      if (!source || !watermark) continue;
+      var bottom = document.createElement('div');
+      bottom.className = 'chart-bottom';
+      frame.insertBefore(bottom, source);
+      bottom.appendChild(source);
+      bottom.appendChild(watermark);
+    }
+  }
+  setupChartBottom();
 
   window.addEventListener('scroll', function() {
     scheduleMobileFill();

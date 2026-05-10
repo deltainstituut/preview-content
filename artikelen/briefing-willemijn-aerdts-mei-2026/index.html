@@ -730,6 +730,8 @@ hr.section-break {
   position: relative;
   margin: 2.4rem 0;
 }
+/* JS wrapt source + watermark in een chart-bottom flex-row → minder padding-bottom nodig */
+.chart-frame:has(> .chart-bottom) { padding-bottom: 1.4rem; }
 .chart-frame .chart-source,
 .chart-frame .chart-footnotes { padding-right: 150px; }
 
@@ -871,6 +873,209 @@ hr.section-break {
 }
 .chart-multiple .bar-track { height: 0.9rem; }
 .chart-multiple .bar-value { font-size: 0.72rem; }
+
+/* ===== In-segment labels voor stacked bars =====
+   Schrijf binnen elke .bar-seg een <span class="bar-seg-label">…</span>.
+   CSS clipt automatisch als de segment te smal is om te passen.
+   Stacked rows hebben geen aparte rechter waarde-kolom — die wraping was lelijk. */
+.bar-seg {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.bar-seg-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.3rem;
+  pointer-events: none;
+}
+.bar-seg.bar-muted .bar-seg-label,
+.bar-seg.bar-displaced .bar-seg-label,
+.bar-seg.bar-overig .bar-seg-label { color: var(--c-text); }
+.bar-row:has(.bar-track-stacked) { grid-template-columns: 9rem 1fr; }
+.bar-row:has(.bar-track-stacked) .bar-value { display: none; }
+
+/* ===== Column chart (verticale bars) ===== */
+.column-chart {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.4rem 0.6rem;
+  height: 16rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.column-chart .line-axis-y { grid-row: 1; }
+.column-bars {
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 0.25rem;
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding: 0 0.2rem;
+}
+.column-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+.column-fill {
+  width: 90%;
+  background: var(--c-dossier);
+  border-radius: 2px 2px 0 0;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  position: relative;
+}
+.column-fill.bar-muted {
+  background: var(--c-charcoal);
+  opacity: 0.45;
+}
+.column-bar[data-tooltip] { cursor: pointer; }
+.column-bar[data-tooltip]:hover .column-fill,
+.column-bar.is-tooltip-active .column-fill { filter: brightness(0.85); }
+.column-x-axis {
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  text-align: center;
+}
+
+/* ===== Lollipop chart (dot aan einde van dunne lijn) ===== */
+.lollipop-row { /* erft van .bar-row */ }
+.lollipop-row .bar-track {
+  background: transparent;
+  position: relative;
+  height: 1.4rem;
+  padding-right: 7px;
+  box-sizing: border-box;
+}
+.lollipop-row .bar-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.lollipop-stem {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: var(--c-dossier);
+  transform: translateY(-50%);
+  transition: filter 0.15s ease;
+}
+.lollipop-row.bar-muted .lollipop-stem { background: var(--c-charcoal); opacity: 0.45; }
+.lollipop-head {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--c-dossier);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.lollipop-head[data-tooltip]:hover,
+.lollipop-head.is-tooltip-active { transform: translate(-50%, -50%) scale(1.4); z-index: 3; }
+
+/* ===== Range / bullet chart (band met marker) ===== */
+.range-track {
+  position: relative;
+  height: 1.4rem;
+}
+.range-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.range-band {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  background: color-mix(in srgb, var(--c-charcoal) 14%, transparent);
+  border-radius: 2px;
+}
+.range-marker {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background: var(--c-dossier);
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.range-marker[data-tooltip]:hover,
+.range-marker.is-tooltip-active { transform: translateX(-50%) scaleY(1.15); }
+.range-target {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1.5px dashed var(--c-text-secondary);
+  transform: translateX(-50%);
+}
+
+/* ===== Scatter plot — hergebruikt line-chart structuur, dots zijn line-points op niet-temporele x-posities ===== */
+/* Bestaande line-chart classes volstaan; gebruik .line-point op willekeurige left/bottom-posities. */
+
+/* ===== Diverging stacked bar (Likert / agree-disagree vanaf center-as) ===== */
+.diverge-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr 1fr 5rem;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0.4rem 0;
+}
+.diverge-label { text-align: right; color: var(--c-text); }
+.diverge-neg, .diverge-pos {
+  display: flex;
+  height: 1.3rem;
+  position: relative;
+}
+.diverge-neg { justify-content: flex-end; border-right: 1.5px solid var(--c-text); }
+.diverge-pos { justify-content: flex-start; }
+.diverge-seg {
+  height: 100%;
+  transition: filter 0.15s ease;
+}
+.diverge-seg[data-tooltip] { cursor: pointer; }
+.diverge-seg[data-tooltip]:hover,
+.diverge-seg.is-tooltip-active { filter: brightness(0.85); }
+.diverge-seg.seg-strong-neg { background: color-mix(in srgb, var(--c-charcoal) 55%, transparent); }
+.diverge-seg.seg-neg { background: color-mix(in srgb, var(--c-charcoal) 25%, transparent); }
+.diverge-seg.seg-pos { background: color-mix(in srgb, var(--c-dossier) 50%, transparent); }
+.diverge-seg.seg-strong-pos { background: var(--c-dossier); }
+.diverge-value {
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
 
 /* Heatmap-style table */
 .heatmap-table {
@@ -1152,19 +1357,46 @@ pre code {
   .chart-title { font-size: 1.15rem; }
   .chart-subtitle { font-size: 0.82rem; margin-bottom: 0.9rem; }
   .bar-row {
-    grid-template-columns: 6.5rem 1fr 3rem;
-    gap: 0.5rem;
+    grid-template-columns: 4rem 1fr 4.5rem;
+    gap: 0.4rem;
     font-size: 0.82rem;
   }
+  .bar-row:has(.bar-track-stacked) { grid-template-columns: 4rem 1fr; }
+  .bar-label { text-align: left; }
   .bar-track { height: 1.2rem; }
-  .bar-value { font-size: 0.8rem; }
+  .bar-value { font-size: 0.8rem; white-space: nowrap; }
+  .chart-frame { padding-left: 1rem; padding-right: 1rem; }
+  .chart-frame .chart-source,
+  .chart-frame .chart-footnotes { padding-right: 100px; }
   .line-chart {
     grid-template-columns: 2.4rem 1fr;
     grid-template-rows: 1fr 1.2rem;
     height: 14rem;
   }
+  .column-chart {
+    grid-template-columns: 2.4rem 1fr;
+    height: 12rem;
+  }
+  .column-fill { width: 85%; }
+  .column-bars { gap: 0.15rem; padding: 0 0.15rem; }
   .line-axis-y, .line-x-axis { font-size: 0.7rem; }
   .line-point { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
+  /* Bigger tap-buffer voor dikke duimen — onzichtbaar maar uitgebreid click-zone (~44px square) */
+  .line-point[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    pointer-events: auto;
+  }
+  /* Stacked-bar segmenten: vergroot vertical hit area zodat smalle segmenten makkelijker tapbaar zijn */
+  .bar-fill[data-tooltip] { position: relative; }
+  .bar-fill[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    inset: -12px 0;
+    pointer-events: auto;
+  }
 
   /* Chart-frame mobile padding */
   .chart-frame { padding: 1.1rem 1rem 1.9rem 1rem; }
@@ -1190,19 +1422,19 @@ pre code {
     width: 100%;
   }
   table:not(.heatmap-table) thead { display: none; }
-  tr {
+  table:not(.heatmap-table) tr {
     background: var(--c-offwhite-2) !important;
     border: 1px solid var(--c-border);
     border-radius: 4px;
     margin-bottom: 0.9rem;
     padding: 0.4rem 0;
   }
-  td {
+  table:not(.heatmap-table) td {
     border-bottom: 1px solid var(--c-border);
     padding: 0.7rem 1rem;
   }
-  td:last-child { border-bottom: none; }
-  td::before {
+  table:not(.heatmap-table) td:last-child { border-bottom: none; }
+  table:not(.heatmap-table) td::before {
     content: attr(data-label);
     display: block;
     font-weight: 600;
@@ -1666,6 +1898,26 @@ pre code {
     document.body.removeChild(ta);
   }
   setupCodeCopy();
+
+  /* Chart-frame bottom row: wrap chart-source + chart-watermark in een flex-container
+     zodat-ie horizontaal naast elkaar staan ipv watermark eronder via absolute positioning.
+     Idempotent — slaat over als chart-bottom al bestaat. */
+  function setupChartBottom() {
+    var frames = document.querySelectorAll('.chart-frame');
+    for (var f = 0; f < frames.length; f++) {
+      var frame = frames[f];
+      if (frame.querySelector(':scope > .chart-bottom')) continue;
+      var source = frame.querySelector(':scope > .chart-source, :scope > .chart-footnotes');
+      var watermark = frame.querySelector(':scope > .chart-watermark');
+      if (!source || !watermark) continue;
+      var bottom = document.createElement('div');
+      bottom.className = 'chart-bottom';
+      frame.insertBefore(bottom, source);
+      bottom.appendChild(source);
+      bottom.appendChild(watermark);
+    }
+  }
+  setupChartBottom();
 
   window.addEventListener('scroll', function() {
     scheduleMobileFill();
