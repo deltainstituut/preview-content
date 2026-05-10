@@ -873,6 +873,31 @@ hr.section-break {
 .chart-multiple .bar-track { height: 0.9rem; }
 .chart-multiple .bar-value { font-size: 0.72rem; }
 
+/* ===== In-segment labels voor stacked bars =====
+   Schrijf binnen elke .bar-seg een <span class="bar-seg-label">…</span>.
+   CSS clipt automatisch als de segment te smal is om te passen.
+   Stacked rows hebben geen aparte rechter waarde-kolom — die wraping was lelijk. */
+.bar-seg {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.bar-seg-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.3rem;
+  pointer-events: none;
+}
+.bar-seg.bar-muted .bar-seg-label,
+.bar-seg.bar-displaced .bar-seg-label,
+.bar-seg.bar-overig .bar-seg-label { color: var(--c-text); }
+.bar-row:has(.bar-track-stacked) { grid-template-columns: 9rem 1fr; }
+.bar-row:has(.bar-track-stacked) .bar-value { display: none; }
+
 /* ===== Column chart (verticale bars) ===== */
 .column-chart {
   display: grid;
@@ -1333,6 +1358,7 @@ pre code {
     gap: 0.4rem;
     font-size: 0.82rem;
   }
+  .bar-row:has(.bar-track-stacked) { grid-template-columns: 4rem 1fr; }
   .bar-label { text-align: left; }
   .bar-track { height: 1.2rem; }
   .bar-value { font-size: 0.8rem; white-space: nowrap; }
@@ -1880,42 +1906,37 @@ pre code {
     <div class="bar-row">
       <div class="bar-label">JenV</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>JenV · Cloud</strong><br>78 %" style="width: 78%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>JenV · On-premise</strong><br>22 %" style="width: 22%"></div>
+        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>JenV · Cloud</strong><br>78 %" style="width: 78%"><span class="bar-seg-label">78</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>JenV · On-premise</strong><br>22 %" style="width: 22%"><span class="bar-seg-label">22</span></div>
       </div>
-      <div class="bar-value">78 / 22</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">SZW</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>SZW · Cloud</strong><br>62 %" style="width: 62%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>SZW · On-premise</strong><br>38 %" style="width: 38%"></div>
+        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>SZW · Cloud</strong><br>62 %" style="width: 62%"><span class="bar-seg-label">62</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>SZW · On-premise</strong><br>38 %" style="width: 38%"><span class="bar-seg-label">38</span></div>
       </div>
-      <div class="bar-value">62 / 38</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">EZK</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>EZK · Cloud</strong><br>55 %" style="width: 55%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>EZK · On-premise</strong><br>45 %" style="width: 45%"></div>
+        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>EZK · Cloud</strong><br>55 %" style="width: 55%"><span class="bar-seg-label">55</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>EZK · On-premise</strong><br>45 %" style="width: 45%"><span class="bar-seg-label">45</span></div>
       </div>
-      <div class="bar-value">55 / 45</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">BZK</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>BZK · Cloud</strong><br>51 %" style="width: 51%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>BZK · On-premise</strong><br>49 %" style="width: 49%"></div>
+        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>BZK · Cloud</strong><br>51 %" style="width: 51%"><span class="bar-seg-label">51</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>BZK · On-premise</strong><br>49 %" style="width: 49%"><span class="bar-seg-label">49</span></div>
       </div>
-      <div class="bar-value">51 / 49</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">Defensie</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>Defensie · Cloud</strong><br>32 %" style="width: 32%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>Defensie · On-premise</strong><br>68 %" style="width: 68%"></div>
+        <div class="bar-seg bar-fill" data-series="cloud" data-tooltip="<strong>Defensie · Cloud</strong><br>32 %" style="width: 32%"><span class="bar-seg-label">32</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="onprem" data-tooltip="<strong>Defensie · On-premise</strong><br>68 %" style="width: 68%"><span class="bar-seg-label">68</span></div>
       </div>
-      <div class="bar-value">32 / 68</div>
     </div>
   </div>
   <div class="chart-source">Bron: ICT-jaarrapportage 2024, illustratieve verdeling.</div>
@@ -1956,42 +1977,38 @@ pre code {
     <div class="bar-row">
       <div class="bar-label">EZK</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>EZK · AWS</strong><br>52 %" style="width: 52%"></div>
-        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>EZK · Azure</strong><br>22 %" style="width: 22%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>EZK · GCP</strong><br>14 %" style="width: 14%"></div>
-        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>EZK · Overig</strong><br>12 %" style="width: 12%"></div>
+        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>EZK · AWS</strong><br>52 %" style="width: 52%"><span class="bar-seg-label">52</span></div>
+        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>EZK · Azure</strong><br>22 %" style="width: 22%"><span class="bar-seg-label">22</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>EZK · GCP</strong><br>14 %" style="width: 14%"><span class="bar-seg-label">14</span></div>
+        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>EZK · Overig</strong><br>12 %" style="width: 12%"><span class="bar-seg-label">12</span></div>
       </div>
-      <div class="bar-value">52 / 22 / 14 / 12</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">BZK</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>BZK · AWS</strong><br>28 %" style="width: 28%"></div>
-        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>BZK · Azure</strong><br>46 %" style="width: 46%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>BZK · GCP</strong><br>11 %" style="width: 11%"></div>
-        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>BZK · Overig</strong><br>15 %" style="width: 15%"></div>
+        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>BZK · AWS</strong><br>28 %" style="width: 28%"><span class="bar-seg-label">28</span></div>
+        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>BZK · Azure</strong><br>46 %" style="width: 46%"><span class="bar-seg-label">46</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>BZK · GCP</strong><br>11 %" style="width: 11%"><span class="bar-seg-label">11</span></div>
+        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>BZK · Overig</strong><br>15 %" style="width: 15%"><span class="bar-seg-label">15</span></div>
       </div>
-      <div class="bar-value">28 / 46 / 11 / 15</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">JenV</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>JenV · AWS</strong><br>22 %" style="width: 22%"></div>
-        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>JenV · Azure</strong><br>54 %" style="width: 54%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>JenV · GCP</strong><br>14 %" style="width: 14%"></div>
-        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>JenV · Overig</strong><br>10 %" style="width: 10%"></div>
+        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>JenV · AWS</strong><br>22 %" style="width: 22%"><span class="bar-seg-label">22</span></div>
+        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>JenV · Azure</strong><br>54 %" style="width: 54%"><span class="bar-seg-label">54</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>JenV · GCP</strong><br>14 %" style="width: 14%"><span class="bar-seg-label">14</span></div>
+        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>JenV · Overig</strong><br>10 %" style="width: 10%"><span class="bar-seg-label">10</span></div>
       </div>
-      <div class="bar-value">22 / 54 / 14 / 10</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">IenW</div>
       <div class="bar-track bar-track-stacked">
-        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>IenW · AWS</strong><br>48 %" style="width: 48%"></div>
-        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>IenW · Azure</strong><br>26 %" style="width: 26%"></div>
-        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>IenW · GCP</strong><br>16 %" style="width: 16%"></div>
-        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>IenW · Overig</strong><br>10 %" style="width: 10%"></div>
+        <div class="bar-seg bar-fill" data-series="aws" data-tooltip="<strong>IenW · AWS</strong><br>48 %" style="width: 48%"><span class="bar-seg-label">48</span></div>
+        <div class="bar-seg bar-fill bar-muted" data-series="azure" data-tooltip="<strong>IenW · Azure</strong><br>26 %" style="width: 26%"><span class="bar-seg-label">26</span></div>
+        <div class="bar-seg bar-fill bar-displaced" data-series="gcp" data-tooltip="<strong>IenW · GCP</strong><br>16 %" style="width: 16%"><span class="bar-seg-label">16</span></div>
+        <div class="bar-seg bar-fill bar-overig" data-series="overig" data-tooltip="<strong>IenW · Overig</strong><br>10 %" style="width: 10%"><span class="bar-seg-label">10</span></div>
       </div>
-      <div class="bar-value">48 / 26 / 16 / 10</div>
     </div>
   </div>
   <div class="chart-source">Bron: Rijks ICT-dashboard 2024, illustratieve verdeling.</div>
