@@ -509,6 +509,8 @@ hr.section-break {
 .bar-chart:has(.bar-track-stacked) {
   grid-template-columns: auto 1fr;
 }
+/* Lollipop-dot puilt 5.5px buiten bar-track — extra column-gap zodat het getal niet plakt */
+.bar-chart:has(.lollipop-row) { column-gap: 1.4rem; }
 .bar-row { display: contents; }
 .bar-callout-row { grid-column: 1 / -1; }
 .bar-label {
@@ -1368,6 +1370,7 @@ pre code {
     row-gap: 0.4rem;
     font-size: 0.82rem;
   }
+  .bar-chart:has(.lollipop-row) { column-gap: 0.9rem; }
   .bar-label { text-align: left; }
   .bar-track { height: 1.2rem; }
   .bar-value { font-size: 0.8rem; white-space: nowrap; }
