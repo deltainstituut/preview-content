@@ -162,22 +162,18 @@ body {
 .mobile-toc-drawer li:last-child a { border-bottom: none; }
 
 /* ===== LAYOUT ===== */
-/* Default: 2-column (TOC + content) */
+/* Always 3-column zodat content + TOC op dezelfde plek staan ongeacht of er
+   bronnen zijn. De rechterkolom is leeg als meta.sidenotes ontbreekt. */
 .layout {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 3rem 2rem 2rem;
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-/* When document has footnotes: 3-column (TOC + content + sidenotes) */
-.layout.has-sidenotes {
-  max-width: 1280px;
   grid-template-columns: 220px minmax(0, 1fr) 220px;
   gap: 2.5rem;
+  align-items: start;
 }
+.layout.has-sidenotes { /* legacy class — same grid; behoudt selectors die hiernaar verwijzen */ }
 
 /* ===== TOC SIDEBAR (DESKTOP) ===== */
 .toc {
