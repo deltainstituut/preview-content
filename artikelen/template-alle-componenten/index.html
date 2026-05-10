@@ -1372,11 +1372,13 @@ pre code {
   .bar-value { font-size: 0.8rem; white-space: nowrap; }
   .chart-frame { padding-left: 1rem; padding-right: 1rem; }
   .chart-frame .chart-source,
-  .chart-frame .chart-footnotes { padding-right: 100px; }
-  /* Smaller watermark + smaller gap op mobiel zodat source-tekst ademruimte krijgt */
-  .chart-bottom { gap: 0.8rem; }
-  .chart-bottom > .chart-watermark { width: 90px; }
-  .chart-watermark { width: 90px; bottom: 1rem; right: 1rem; }
+  .chart-frame .chart-footnotes { padding-right: 80px; }
+  /* Source krijgt zoveel mogelijk ruimte; watermark kleiner + bottom-aligned op mobiel */
+  .chart-bottom { gap: 0.6rem; align-items: flex-end; }
+  .chart-bottom > .chart-source,
+  .chart-bottom > .chart-footnotes { min-width: 0; }
+  .chart-bottom > .chart-watermark { width: 70px; align-self: flex-end; }
+  .chart-watermark { width: 70px; bottom: 1rem; right: 1rem; }
   .line-chart {
     grid-template-columns: 2.4rem 1fr;
     grid-template-rows: 1fr 1.2rem;
