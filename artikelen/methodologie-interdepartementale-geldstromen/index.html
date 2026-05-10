@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Methodologie — Analyse interdepartementale geldstromen rijksbegroting</title>
+<title>Methodologie — Analyse interdepartementale geldstromen rijksbegroting (H1)</title>
 <meta name="description" content="Analyse van geldstromen tussen ministeries via Bijdrage aan andere begrotingshoofdstukken. Onderbouwing voor interdepartementale financiering van gedeelde capaciteit.">
 <meta name="author" content="Onno Eric Blom">
-<meta property="og:title" content="Methodologie — Analyse interdepartementale geldstromen rijksbegroting">
+<meta property="og:title" content="Methodologie — Analyse interdepartementale geldstromen rijksbegroting (H1)">
 <meta property="og:description" content="Analyse van geldstromen tussen ministeries via Bijdrage aan andere begrotingshoofdstukken. Onderbouwing voor interdepartementale financiering van gedeelde capaciteit.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://preview.deltainstituut.nl/og-image.jpg">
@@ -562,7 +562,7 @@ hr.section-break {
   <!-- ARTICLE -->
   <article>
 
-    <h1>Methodologie — Analyse interdepartementale geldstromen rijksbegroting</h1>
+    <h1>Methodologie — Analyse interdepartementale geldstromen rijksbegroting (H1)</h1>
     <p class="subtitle">Een gegevensbronnen onderzoek naar financiële overdrachten tussen ministeries</p>
 
     <div class="article-meta">
@@ -573,25 +573,23 @@ hr.section-break {
       <span>10 mei 2026</span>
     </div>
 
-    <p class="lead"># Methodologie — Analyse interdepartementale geldstromen rijksbegroting (H1)</p>
+    <h2 id="onderzoeksvraag-h2">Onderzoeksvraag (H2)</h2>
 
-<h2 id="onderzoeksvraag-h2">Onderzoeksvraag (H2)</h2>
-
-<p>In kaart brengen hoe vaak en door wie ministeries geld overmaken aan andere ministeries via het instrument Bijdrage aan andere begrotingshoofdstukken, als onderbouwing voor de stelling dat interdepartementale financiering van gedeelde capaciteit gebruikelijk is binnen de rijksoverheid.</p>
+<p class="lead">In kaart brengen hoe vaak en door wie ministeries geld overmaken aan andere ministeries via het instrument Bijdrage aan andere begrotingshoofdstukken, als onderbouwing voor de stelling dat interdepartementale financiering van gedeelde capaciteit gebruikelijk is binnen de rijksoverheid.</p>
 
 <h2 id="1-databron-h2">1. Databron (H2)</h2>
 
 <h3>Financiële instrumenten rijksjaarverslagen 2017–2024 (H3)</h3>
 
-<p>**Bron:** rijksfinancien.nl/open-data</p>
+<p>Bron: rijksfinancien.nl/open-data</p>
 
-<p>**Bestand:** Financiele_instrumenten_2017-2024.csv (scheidingsteken: puntkomma)</p>
+<p>Bestand: Financiele_instrumenten_2017-2024.csv (scheidingsteken: puntkomma)</p>
 
-<p>**Inhoud:** per begrotingsjaar, ministerie en beleidsartikel alle uitgaven uitgesplitst naar financieel instrument (subsidies, opdrachten, bijdragen aan ZBO's, bijdragen aan andere begrotingshoofdstukken, etc.) met bedrag in x1000 EUR.</p>
+<p>Inhoud: per begrotingsjaar, ministerie en beleidsartikel alle uitgaven uitgesplitst naar financieel instrument (subsidies, opdrachten, bijdragen aan ZBO's, bijdragen aan andere begrotingshoofdstukken, etc.) met bedrag in x1000 EUR.</p>
 
-<p>**Juridische grondslag instrument:** Rijksbegrotingsvoorschriften (RBV), limitatieve lijst financiële instrumenten.</p>
+<p>Juridische grondslag instrument: Rijksbegrotingsvoorschriften (RBV), limitatieve lijst financiële instrumenten.</p>
 
-<p>**Belangrijke databeperkingen (ontdekt tijdens analyse):**</p>
+<p>Belangrijke databeperkingen (ontdekt tijdens analyse):</p>
 
 <ul><li>De dataset bevat alleen programma-uitgaven (subsidies, bijdragen etc.), niet de volledige departementale begroting (geen personeel, geen apparaat, geen agentschapsinterne kosten).</li><li>Overboekingen via suppletoire begrotingen (technische mutaties) verschijnen niet in deze dataset — die zijn alleen zichtbaar in de suppletoire begrotingswetten zelf.</li><li>DVO's (dienstverleningsovereenkomsten) en opdrachten binnen bestaand budget zijn niet zichtbaar.</li><li>2024-data is onvolledig (jaarverslagen deels nog niet gepubliceerd ten tijde van download).</li><li>Ontvangers zijn tot 2021 vaak geanonimiseerd; vanaf 2021 steeds vaker expliciet benoemd.</li></ul>
 
@@ -601,7 +599,9 @@ hr.section-break {
 
 <h3>2.1 Filtering (H3)</h3>
 
-<p>``<code>python INSTR_FILTER = "bijdrage aan (andere) begrotingshoofdstukken" df = df_raw[df_raw["Instrument"].str.strip().str.lower() == INSTR_FILTER].copy() </code>``</p>
+<pre><code>INSTR_FILTER = "bijdrage aan (andere) begrotingshoofdstukken"
+df = df_raw[df_raw["Instrument"].str.strip().str.lower() == INSTR_FILTER].copy()
+</code></pre>
 
 <h3>2.2 Analyses uitgevoerd (H3)</h3>
 
@@ -611,27 +611,43 @@ hr.section-break {
 
 <ul><li>187 transacties, 17 unieke gevende begrotingen</li><li>Mediaan transactiebedrag: €0,61M; 57% < €1M; 80% < €10M</li><li>Cumulatief totaal: ~€27 miljard</li></ul>
 
-<p>**Correctie achteraf:** het totaal van €27 miljard werd volledig gedomineerd door IenW-fondstransfers (Infrastructuurfonds, Deltafonds: ~€24 miljard). Deze zijn geen inter-ministeriële beleidssamenwerking maar interne fondstransfers binnen hetzelfde beleidsterrein.</p>
+<p>Correctie achteraf: het totaal van €27 miljard werd volledig gedomineerd door IenW-fondstransfers (Infrastructuurfonds, Deltafonds: ~€24 miljard). Deze zijn geen inter-ministeriële beleidssamenwerking maar interne fondstransfers binnen hetzelfde beleidsterrein.</p>
 
 <h2 id="3-analyse-fase-2-verfijning-en-fact-checking-in-gesprek-met-claude-h2">3. Analyse — fase 2 (verfijning en fact-checking, in gesprek met Claude) (H2)</h2>
 
 <h3>3.1 Filter zelfde-beleidsterrein transfers (H3)</h3>
 
-<p>``<code>python uitsluit_begrotingsnaam = [     'infrastructuurfonds', 'deltafonds', 'mobiliteitsfonds',     'infrastructuur en waterstaat', 'infrastructuur en milieu' ] uitsluit_regeling = [     'bijdrage deltafonds', 'bijdrage infrastructuurfonds',     'storting reserve bmkb', 'storting reserve go',     'storting reserve groeifaciliteit',     'storting reserve klein krediet corona',     'storting reserve mkb financiering',     'storting in begrotingsreserve duurzame energie',     'diergezondheidsfonds', 'bijdrage aan het diergezondheidsfonds',     'veiligheidsfonds', "landenprogramma's veiligheid voor mensen" ] </code>``</p>
+<pre><code>uitsluit_begrotingsnaam = [
+    'infrastructuurfonds', 'deltafonds', 'mobiliteitsfonds',
+    'infrastructuur en waterstaat', 'infrastructuur en milieu'
+]
+uitsluit_regeling = [
+    'bijdrage deltafonds', 'bijdrage infrastructuurfonds',
+    'storting reserve bmkb', 'storting reserve go',
+    'storting reserve groeifaciliteit',
+    'storting reserve klein krediet corona',
+    'storting reserve mkb financiering',
+    'storting in begrotingsreserve duurzame energie',
+    'diergezondheidsfonds', 'bijdrage aan het diergezondheidsfonds',
+    'veiligheidsfonds', "landenprogramma's veiligheid voor mensen"
+]
+</code></pre>
 
-<p>**Toelichting per filter:**</p>
+<p>Toelichting per filter:</p>
 
-<ul><li>**IenW-begrotingen:** alle bijdragen gaan naar Infrastructuurfonds/Deltafonds (zelfde beleidsterrein)</li><li>**EZK-reserves:** stortingen in eigen garantiereserves (BMKB, GO, KKC) — geen overdracht aan ander ministerie</li><li>**LNV-Diergezondheidsfonds:** eigen sectorale fonds, geen ander ministerie</li><li>**BZ-veiligheidsfonds:** internationale fondsen, niet een Nederlands ministerie als ontvanger</li></ul>
+<ul><li>IenW-begrotingen: alle bijdragen gaan naar Infrastructuurfonds/Deltafonds (zelfde beleidsterrein)</li><li>EZK-reserves: stortingen in eigen garantiereserves (BMKB, GO, KKC) — geen overdracht aan ander ministerie</li><li>LNV-Diergezondheidsfonds: eigen sectorale fonds, geen ander ministerie</li><li>BZ-veiligheidsfonds: internationale fondsen, niet een Nederlands ministerie als ontvanger</li></ul>
 
 <h3>3.2 Aandeel per ministerie berekenen (H3)</h3>
 
-<p>```python # Totaal programma-uitgaven per ministerie per jaar (noemer) totaal = df[df['min_kort'].isin(echte) & df['Begrotingsjaar'].isin(jaren)]\     .groupby(['Begrotingsjaar','min_kort'])['Bedrag (x1000)'].sum().reset_index()</p>
+<pre><code># Totaal programma-uitgaven per ministerie per jaar (noemer)
+totaal = df[df['min_kort'].isin(echte) & df['Begrotingsjaar'].isin(jaren)]\
+    .groupby(['Begrotingsjaar','min_kort'])['Bedrag (x1000)'].sum().reset_index()
 
 <p># Bijdragen aan andere begrotingshoofdstukken per ministerie per jaar (teller) uitgekeerd = schoon[schoon['min_kort'].isin(echte) & schoon['Begrotingsjaar'].isin(jaren)]\     .groupby(['Begrotingsjaar','min_kort'])['Bedrag (x1000)'].sum().reset_index()</p>
 
-<p>merged['pct'] = (merged['bijdrage'] / merged['totaal'] * 100).round(2) ```</p>
+<p>merged['pct'] = (merged['bijdrage'] / merged['totaal'] * 100).round(2) </code></pre></p>
 
-<p>**Kanttekening percentages:** de noemer is de som van financiële instrumenten in de dataset (programma-uitgaven), niet het volledige departementale budget. Voor ministeries met grote apparaatsbudgetten (zoals Defensie, ~€10-14 mrd/jaar totaal) geeft dit sterk vertekende percentages. De 21-34% voor DEF slaat op 21-34% van de programma-deelset in de dataset, niet op het volledige DEF-budget.</p>
+<p>Kanttekening percentages: de noemer is de som van financiële instrumenten in de dataset (programma-uitgaven), niet het volledige departementale budget. Voor ministeries met grote apparaatsbudgetten (zoals Defensie, ~€10-14 mrd/jaar totaal) geeft dit sterk vertekende percentages. De 21-34% voor DEF slaat op 21-34% van de programma-deelset in de dataset, niet op het volledige DEF-budget.</p>
 
 <h3>3.3 Verificatie individuele rijen (H3)</h3>
 
@@ -639,21 +655,22 @@ hr.section-break {
 
 <ul><li>Een expliciet benoemd ander ministerie als ontvanger hebben, of</li><li>Aantoonbaar zijn via jaarverslagen of Memories van Toelichting</li></ul>
 
-<p>**Verificatiebronnen:**</p>
+<p>Verificatiebronnen:</p>
 
 <ul><li>Jaarverslag Defensie 2020–2023 (artikel Kennisopbouw TNO/NLR/MARIN via EZ)</li><li>Kamerstuk 35570 IV, nr. 33 (protocol grenstoezicht Caribisch gebied KR–DEF)</li><li>Jaarverslag Koninkrijksrelaties 2019–2023 (RST Convenant Financieringssystematiek)</li><li>Jaarverslag BZK 2022–2023 (artikel Woningmarkt, ILT-toezicht SBR/WNT)</li></ul>
 
-<p>**Uitgeslotenvan de eindtabel:**</p>
+<p>Uitgesloten van de eindtabel:</p>
 
-<ul><li>BZK → Belastingdienst (€12–43M/jaar): dit zijn vennootschapsbelastingbetalingen van BZK-agentschappen over hun winsten, geen beleidssamenwerking. Ontdekt via jaarverslagen.</li><li>KR → "Financiën en Nationale Schuld": zelfde VPB-mechanisme, uitgeslooten.</li><li>Rijen met geanonimiseerde ontvangers zonder aanvullende verificatie.</li></ul>
+<ul><li>BZK → Belastingdienst (€12–43M/jaar): dit zijn vennootschapsbelastingbetalingen van BZK-agentschappen over hun winsten, geen beleidssamenwerking. Ontdekt via jaarverslagen.</li><li>KR → "Financiën en Nationale Schuld": zelfde VPB-mechanisme, uitgesloten.</li><li>Rijen met geanonimiseerde ontvangers zonder aanvullende verificatie.</li></ul>
 
 <h3>3.4 KR/BZK-splitting (H3)</h3>
 
-<p>**Fout ontdekt:** de zoekterm str.contains('Koninkrijksrelaties') matcht ook "Binnenlandse Zaken en Koninkrijksrelaties". Correctie:</p>
+<p>Fout ontdekt: de zoekterm str.contains('Koninkrijksrelaties') matcht ook "Binnenlandse Zaken en Koninkrijksrelaties". Correctie:</p>
 
-<p>```python # Fout: kr = bijdrage[bijdrage['Begrotingsnaam'].str.contains('Koninkrijksrelaties', na=False)]</p>
+<pre><code># Fout:
+kr = bijdrage[bijdrage['Begrotingsnaam'].str.contains('Koninkrijksrelaties', na=False)]
 
-<p># Correct: kr_exact = bijdrage[bijdrage['Begrotingsnaam'] == 'Koninkrijksrelaties'] bzk_exact = bijdrage[bijdrage['Begrotingsnaam'].isin([     'Binnenlandse Zaken en Koninkrijksrelaties',     'Binnenlandse Zaken' ])] ```</p>
+<p># Correct: kr_exact = bijdrage[bijdrage['Begrotingsnaam'] == 'Koninkrijksrelaties'] bzk_exact = bijdrage[bijdrage['Begrotingsnaam'].isin([     'Binnenlandse Zaken en Koninkrijksrelaties',     'Binnenlandse Zaken' ])] </code></pre></p>
 
 <h2 id="4-eindresultaat-h2">4. Eindresultaat (H2)</h2>
 
@@ -671,7 +688,7 @@ hr.section-break {
 
 <ul><li>Comptabiliteitswet 2016, art. 2.3: autorisatie op artikelniveau door Staten-Generaal</li><li>CW2016, art. 2.26: wijzigingen via suppletoire begrotingen (Voorjaarsnota/Najaarsnota)</li><li>CW2016, art. 4.2 lid 2: verantwoording bij minister die als eerste verantwoordelijke is aangewezen</li></ul>
 
-<p>**Alternatieve instrumenten (niet in deze dataset zichtbaar):**</p>
+<p>Alternatieve instrumenten (niet in deze dataset zichtbaar):</p>
 
 <ul><li>Budgetoverboekingen via suppletoire begroting (technische mutaties)</li><li>Dienstverleningsovereenkomsten (DVO) binnen geautoriseerd budget</li><li>Opdrachtverlening aan agentschap van ander ministerie</li><li>Parallelle subsidiëring van dezelfde externe partij</li></ul>
 
