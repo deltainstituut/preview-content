@@ -1104,19 +1104,18 @@ pre code {
   .sidenote-col { display: none; }
   .mobile-toc {
     display: block;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translate3d(0, -110%, 0);
     pointer-events: none;
-    transition: max-height 0.25s ease, opacity 0.2s ease;
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
   }
   .mobile-toc.is-revealed {
-    max-height: 4rem;
-    opacity: 1;
+    transform: translate3d(0, 0, 0);
     pointer-events: auto;
-  }
-  .mobile-toc.is-revealed.open {
-    max-height: 80vh;
   }
 
   h1 { font-size: 1.85rem; }
@@ -1762,17 +1761,29 @@ pre code {
     });
   }
 
-  /* Mobile TOC visibility — pas tonen als article-meta voorbij top viewport is gescrolld */
+  /* Mobile TOC visibility — pas tonen als article-meta voorbij top viewport is gescrolld.
+     rAF-throttled zodat we de class slechts één keer per frame togglen → smooth animatie. */
   var articleMeta = document.querySelector('.article-meta');
-  function updateMobileTocVisibility() {
+  var mobileTocRevealed = false;
+  var mobileTocRafScheduled = false;
+  function applyMobileTocVisibility() {
+    mobileTocRafScheduled = false;
     if (!mobileToc || !articleMeta) return;
-    if (articleMeta.getBoundingClientRect().bottom <= 0) {
+    var shouldReveal = articleMeta.getBoundingClientRect().bottom <= 0;
+    if (shouldReveal === mobileTocRevealed) return;
+    mobileTocRevealed = shouldReveal;
+    if (shouldReveal) {
       mobileToc.classList.add('is-revealed');
     } else {
       mobileToc.classList.remove('is-revealed');
       mobileToc.classList.remove('open');
       if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
     }
+  }
+  function updateMobileTocVisibility() {
+    if (mobileTocRafScheduled) return;
+    mobileTocRafScheduled = true;
+    (window.requestAnimationFrame || function(cb){ setTimeout(cb, 16); })(applyMobileTocVisibility);
   }
 
   /* Code-block copy buttons */
