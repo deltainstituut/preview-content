@@ -1373,19 +1373,17 @@ pre code {
   .chart-frame { padding-left: 1rem; padding-right: 1rem; }
   .chart-frame .chart-source,
   .chart-frame .chart-footnotes { padding-right: 0; }
-  /* Source krijgt FULL WIDTH op mobiel; logo daaronder rechts uitgelijnd */
-  .chart-bottom {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.8rem;
-  }
+  /* Source en logo blijven naast elkaar op mobiel (zelfs als het krap is);
+     logo bottom-aligned zodat-ie meedoet met de bottom-line van de bron-tekst */
+  .chart-bottom { gap: 0.6rem; align-items: flex-end; }
   .chart-bottom > .chart-source,
-  .chart-bottom > .chart-footnotes { min-width: 0; flex: none; }
+  .chart-bottom > .chart-footnotes { min-width: 0; }
   .chart-bottom > .chart-watermark {
-    width: 100px;
+    width: 70px;
     align-self: flex-end;
+    flex-shrink: 0;
   }
-  .chart-watermark { width: 100px; bottom: 1rem; right: 1rem; }
+  .chart-watermark { width: 70px; bottom: 1rem; right: 1rem; }
   .line-chart {
     grid-template-columns: 2.4rem 1fr;
     grid-template-rows: 1fr 1.2rem;
