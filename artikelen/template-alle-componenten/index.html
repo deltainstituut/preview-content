@@ -914,11 +914,11 @@ hr.section-break {
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   align-items: end;
-  gap: 0.5rem;
+  gap: 0.25rem;
   position: relative;
   border-left: 1px solid var(--c-border);
   border-bottom: 1px solid var(--c-border);
-  padding: 0 0.3rem;
+  padding: 0 0.2rem;
 }
 .column-bar {
   display: flex;
@@ -929,7 +929,7 @@ hr.section-break {
   position: relative;
 }
 .column-fill {
-  width: 70%;
+  width: 90%;
   background: var(--c-dossier);
   border-radius: 2px 2px 0 0;
   transition: filter 0.15s ease, opacity 0.15s ease;
@@ -961,6 +961,8 @@ hr.section-break {
   background: transparent;
   position: relative;
   height: 1.4rem;
+  padding-right: 7px;
+  box-sizing: border-box;
 }
 .lollipop-row .bar-track::before {
   content: '';
@@ -1370,6 +1372,12 @@ pre code {
     grid-template-rows: 1fr 1.2rem;
     height: 14rem;
   }
+  .column-chart {
+    grid-template-columns: 2.4rem 1fr;
+    height: 12rem;
+  }
+  .column-fill { width: 85%; }
+  .column-bars { gap: 0.15rem; padding: 0 0.15rem; }
   .line-axis-y, .line-x-axis { font-size: 0.7rem; }
   .line-point { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
   /* Bigger tap-buffer voor dikke duimen — onzichtbaar maar uitgebreid click-zone (~44px square) */
