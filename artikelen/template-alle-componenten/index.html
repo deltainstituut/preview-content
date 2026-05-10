@@ -2464,7 +2464,7 @@ pre code {
   <div class="chart-subtitle">Defensie-investeringsbudget niet besteed per jaar, 2018 – 2024, in miljoen euro.</div>
   <div class="column-chart">
     <div class="line-axis-y">
-      <span>3.500</span><span>2.500</span><span>1.500</span><span>500</span>
+      <span>3.500</span><span>2.500</span><span>1.500</span><span>500</span><span>0</span>
     </div>
     <div class="column-bars">
       <div class="column-bar" data-tooltip="<strong>2018</strong><br>€ 1.200 mln"><div class="column-fill bar-muted" style="height: 36%"></div></div>
@@ -3112,8 +3112,14 @@ pre code {
        5. element itself (heatmap cells, line points, etc.) */
     var anchor = el;
     var columnFill = el.querySelector && el.querySelector('.column-fill');
-    if (columnFill && columnFill.offsetHeight > 0) {
-      anchor = columnFill;
+    if (columnFill) {
+      if (columnFill.offsetHeight > 0) {
+        anchor = columnFill;
+      } else {
+        /* 0-waarde column: anker op baseline (bottom van column-bar) */
+        var br = el.getBoundingClientRect();
+        return { left: br.left, top: br.bottom - 8, right: br.right, bottom: br.bottom, width: br.width, height: 8 };
+      }
     } else {
       var stacked = el.querySelector && el.querySelector('.bar-track-stacked');
       if (stacked) {
