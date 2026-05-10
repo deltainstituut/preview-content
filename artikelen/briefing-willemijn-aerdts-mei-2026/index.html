@@ -1002,6 +1002,11 @@ code {
   font-size: 0.92em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+.codeblock-wrap {
+  position: relative;
+  margin: 1.25rem 0;
+}
+.codeblock-wrap pre { margin: 0; }
 pre {
   overflow-x: auto;
   max-width: 100%;
@@ -1011,7 +1016,6 @@ pre {
   font-size: 0.85rem;
   line-height: 1.5;
   margin: 1.25rem 0;
-  position: relative;
   -webkit-overflow-scrolling: touch;
 }
 pre code {
@@ -1613,7 +1617,11 @@ pre code {
     var pres = document.querySelectorAll('article pre');
     for (var p = 0; p < pres.length; p++) {
       (function(pre) {
-        if (pre.querySelector('.codeblock-copy')) return;
+        if (pre.parentNode && pre.parentNode.classList && pre.parentNode.classList.contains('codeblock-wrap')) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'codeblock-wrap';
+        pre.parentNode.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'codeblock-copy';
@@ -1642,7 +1650,7 @@ pre code {
             fallbackCopy(text, done);
           }
         });
-        pre.appendChild(btn);
+        wrap.appendChild(btn);
       })(pres[p]);
     }
   }
