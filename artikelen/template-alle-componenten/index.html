@@ -1108,15 +1108,19 @@ pre:hover .codeblock-copy,
   .sidenote-col { display: none; }
   .mobile-toc {
     display: block;
-    transform: translateY(-100%);
+    overflow: hidden;
+    max-height: 0;
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
   }
   .mobile-toc.is-revealed {
-    transform: translateY(0);
+    max-height: 4rem;
     opacity: 1;
     pointer-events: auto;
+  }
+  .mobile-toc.is-revealed.open {
+    max-height: 80vh;
   }
 
   h1 { font-size: 1.85rem; }
