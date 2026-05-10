@@ -873,6 +873,182 @@ hr.section-break {
 .chart-multiple .bar-track { height: 0.9rem; }
 .chart-multiple .bar-value { font-size: 0.72rem; }
 
+/* ===== Column chart (verticale bars) ===== */
+.column-chart {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.4rem 0.6rem;
+  height: 16rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.column-chart .line-axis-y { grid-row: 1; }
+.column-bars {
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 0.5rem;
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding: 0 0.3rem;
+}
+.column-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+.column-fill {
+  width: 70%;
+  background: var(--c-dossier);
+  border-radius: 2px 2px 0 0;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  position: relative;
+}
+.column-fill.bar-muted {
+  background: var(--c-charcoal);
+  opacity: 0.45;
+}
+.column-bar[data-tooltip] { cursor: pointer; }
+.column-bar[data-tooltip]:hover .column-fill,
+.column-bar.is-tooltip-active .column-fill { filter: brightness(0.85); }
+.column-x-axis {
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  text-align: center;
+}
+
+/* ===== Lollipop chart (dot aan einde van dunne lijn) ===== */
+.lollipop-row { /* erft van .bar-row */ }
+.lollipop-row .bar-track {
+  background: transparent;
+  position: relative;
+  height: 1.4rem;
+}
+.lollipop-row .bar-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.lollipop-stem {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: var(--c-dossier);
+  transform: translateY(-50%);
+  transition: filter 0.15s ease;
+}
+.lollipop-row.bar-muted .lollipop-stem { background: var(--c-charcoal); opacity: 0.45; }
+.lollipop-head {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--c-dossier);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.lollipop-head[data-tooltip]:hover,
+.lollipop-head.is-tooltip-active { transform: translate(-50%, -50%) scale(1.4); z-index: 3; }
+
+/* ===== Range / bullet chart (band met marker) ===== */
+.range-track {
+  position: relative;
+  height: 1.4rem;
+}
+.range-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.range-band {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  background: color-mix(in srgb, var(--c-charcoal) 14%, transparent);
+  border-radius: 2px;
+}
+.range-marker {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background: var(--c-dossier);
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.range-marker[data-tooltip]:hover,
+.range-marker.is-tooltip-active { transform: translateX(-50%) scaleY(1.15); }
+.range-target {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1.5px dashed var(--c-text-secondary);
+  transform: translateX(-50%);
+}
+
+/* ===== Scatter plot — hergebruikt line-chart structuur, dots zijn line-points op niet-temporele x-posities ===== */
+/* Bestaande line-chart classes volstaan; gebruik .line-point op willekeurige left/bottom-posities. */
+
+/* ===== Diverging stacked bar (Likert / agree-disagree vanaf center-as) ===== */
+.diverge-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr 1fr 5rem;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0.4rem 0;
+}
+.diverge-label { text-align: right; color: var(--c-text); }
+.diverge-neg, .diverge-pos {
+  display: flex;
+  height: 1.3rem;
+  position: relative;
+}
+.diverge-neg { justify-content: flex-end; border-right: 1.5px solid var(--c-text); }
+.diverge-pos { justify-content: flex-start; }
+.diverge-seg {
+  height: 100%;
+  transition: filter 0.15s ease;
+}
+.diverge-seg[data-tooltip] { cursor: pointer; }
+.diverge-seg[data-tooltip]:hover,
+.diverge-seg.is-tooltip-active { filter: brightness(0.85); }
+.diverge-seg.seg-strong-neg { background: color-mix(in srgb, var(--c-charcoal) 55%, transparent); }
+.diverge-seg.seg-neg { background: color-mix(in srgb, var(--c-charcoal) 25%, transparent); }
+.diverge-seg.seg-pos { background: color-mix(in srgb, var(--c-dossier) 50%, transparent); }
+.diverge-seg.seg-strong-pos { background: var(--c-dossier); }
+.diverge-value {
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Heatmap-style table */
 .heatmap-table {
   width: 100%;
@@ -2215,6 +2391,305 @@ pre code {
     </tbody>
   </table>
   <div class="chart-source">Bron: illustratief, op basis van interview-aantekeningen COMMIT-leveranciers (Q4 2024).</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
+</div>
+
+<h3>Column chart (verticale bars)</h3>
+
+<p>Voor tijdreeksen leest een column chart vaak natuurlijker dan een horizontale bar — jaren onder elkaar zien is anders dan jaren in een rij.</p>
+
+<div class="chart-frame">
+  <div class="chart-title">Onderuitputting Defensie groeit elk jaar — 2024 piekt op € 3,3 mld</div>
+  <div class="chart-subtitle">Defensie-investeringsbudget niet besteed per jaar, 2018 – 2024, in miljoen euro.</div>
+  <div class="column-chart">
+    <div class="line-axis-y">
+      <span>3.500</span><span>2.500</span><span>1.500</span><span>500</span>
+    </div>
+    <div class="column-bars">
+      <div class="column-bar" data-tooltip="<strong>2018</strong><br>€ 1.200 mln"><div class="column-fill bar-muted" style="height: 36%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2019</strong><br>≈ € 0"><div class="column-fill bar-muted" style="height: 0%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2020</strong><br>€ 380 mln"><div class="column-fill bar-muted" style="height: 11%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2021</strong><br>≈ € 0"><div class="column-fill bar-muted" style="height: 0%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2022</strong><br>€ 433 mln"><div class="column-fill bar-muted" style="height: 13%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2023</strong><br>€ 1.065 mln"><div class="column-fill bar-muted" style="height: 32%"></div></div>
+      <div class="column-bar" data-tooltip="<strong>2024</strong><br>€ 3.303 mln"><div class="column-fill" style="height: 100%"></div></div>
+    </div>
+    <div class="column-x-axis">
+      <span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span>
+    </div>
+  </div>
+  <div class="chart-source">Bron: jaarverslagen Defensie + DMF 2018 – 2024.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
+</div>
+
+<h3>Lollipop chart</h3>
+
+<p>Een dunner alternatief voor de bar — een lijntje met een dot aan het einde. Strakker als je veel rijen hebt of als de exacte breedte minder belangrijk is dan de rangorde.</p>
+
+<div class="chart-frame">
+  <div class="chart-title">EZK loopt voorop in 2024-onderuitputting, OCW en Defensie volgen</div>
+  <div class="chart-subtitle">Top 5 ministeries onderuitputting Rijksbegroting 2024, in miljoen euro.</div>
+  <div class="bar-chart">
+    <div class="bar-row lollipop-row" data-tooltip="<strong>EZK</strong><br>€ 1.200 mln">
+      <div class="bar-label">EZK</div>
+      <div class="bar-track"><div class="lollipop-stem" style="width: 100%"></div><div class="lollipop-head" style="left: 100%"></div></div>
+      <div class="bar-value">€ 1.200</div>
+    </div>
+    <div class="bar-row lollipop-row" data-tooltip="<strong>OCW</strong><br>€ 900 mln">
+      <div class="bar-label">OCW</div>
+      <div class="bar-track"><div class="lollipop-stem" style="width: 75%"></div><div class="lollipop-head" style="left: 75%"></div></div>
+      <div class="bar-value">€ 900</div>
+    </div>
+    <div class="bar-row lollipop-row" data-tooltip="<strong>Defensie</strong><br>€ 700 mln">
+      <div class="bar-label">Defensie</div>
+      <div class="bar-track"><div class="lollipop-stem" style="width: 58%"></div><div class="lollipop-head" style="left: 58%"></div></div>
+      <div class="bar-value">€ 700</div>
+    </div>
+    <div class="bar-row lollipop-row" data-tooltip="<strong>BZK</strong><br>≈ € 450 mln">
+      <div class="bar-label">BZK</div>
+      <div class="bar-track"><div class="lollipop-stem" style="width: 38%"></div><div class="lollipop-head" style="left: 38%"></div></div>
+      <div class="bar-value">≈ € 450</div>
+    </div>
+    <div class="bar-row lollipop-row" data-tooltip="<strong>IenW</strong><br>≈ € 400 mln">
+      <div class="bar-label">IenW</div>
+      <div class="bar-track"><div class="lollipop-stem" style="width: 33%"></div><div class="lollipop-head" style="left: 33%"></div></div>
+      <div class="bar-value">≈ € 400</div>
+    </div>
+  </div>
+  <div class="chart-source">Bron: FJR 2024, sectie 2.1.1.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
+</div>
+
+<h3>Range bar / bullet chart</h3>
+
+<p>Voor "waar zit deze waarde in het bereik?" — een grijze band toont het normale bereik (P25 – P75), een streep de target, een dossier-gekleurd marker de actuele waarde. Bekend uit KPI-dashboards.</p>
+
+<div class="chart-frame">
+  <div class="chart-title">Defensie haalt NAVO-norm in 2025 — eerste keer in twintig jaar boven het 5-jaars-gemiddelde</div>
+  <div class="chart-subtitle">Defensie-uitgaven als % bbp, 2020 – 2025. Grijze band = 5-jaars-bereik 2020 – 2024; gestreepte lijn = NAVO-norm 2 %; marker = actuele waarde.</div>
+  <div class="bar-chart">
+    <div class="bar-row" data-tooltip="<strong>NL · 2025 (raming)</strong><br>2,00 % bbp">
+      <div class="bar-label">Nederland</div>
+      <div class="bar-track range-track">
+        <div class="range-band" style="left: 30%; right: 28%"></div>
+        <div class="range-target" style="left: 78%"></div>
+        <div class="range-marker" style="left: 78%" data-tooltip="<strong>NL 2025 (raming)</strong><br>2,00 % bbp"></div>
+      </div>
+      <div class="bar-value">2,00 %</div>
+    </div>
+    <div class="bar-row" data-tooltip="<strong>België · 2025 (raming)</strong><br>1,38 % bbp">
+      <div class="bar-label">België</div>
+      <div class="bar-track range-track">
+        <div class="range-band" style="left: 18%; right: 42%"></div>
+        <div class="range-target" style="left: 78%"></div>
+        <div class="range-marker" style="left: 40%" data-tooltip="<strong>BE 2025 (raming)</strong><br>1,38 % bbp"></div>
+      </div>
+      <div class="bar-value">1,38 %</div>
+    </div>
+    <div class="bar-row" data-tooltip="<strong>Duitsland · 2025 (raming)</strong><br>2,12 % bbp">
+      <div class="bar-label">Duitsland</div>
+      <div class="bar-track range-track">
+        <div class="range-band" style="left: 35%; right: 22%"></div>
+        <div class="range-target" style="left: 78%"></div>
+        <div class="range-marker" style="left: 82%" data-tooltip="<strong>DE 2025 (raming)</strong><br>2,12 % bbp"></div>
+      </div>
+      <div class="bar-value">2,12 %</div>
+    </div>
+    <div class="bar-row" data-tooltip="<strong>Polen · 2025 (raming)</strong><br>4,12 % bbp">
+      <div class="bar-label">Polen</div>
+      <div class="bar-track range-track">
+        <div class="range-band" style="left: 55%; right: 8%"></div>
+        <div class="range-target" style="left: 78%"></div>
+        <div class="range-marker" style="left: 95%" data-tooltip="<strong>PL 2025 (raming)</strong><br>4,12 % bbp"></div>
+      </div>
+      <div class="bar-value">4,12 %</div>
+    </div>
+  </div>
+  <div class="chart-source">Bron: NAVO Defence Expenditure 2020 – 2024 + ramingen 2025; bereik = P25-P75 van vijfjaarsperiode.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
+</div>
+
+<h3>Scatter plot</h3>
+
+<p>Voor correlatie-patronen — gebruikt dezelfde line-chart structuur maar met niet-temporele x-positionering. Eén dot per datapunt.</p>
+
+<div class="chart-frame">
+  <div class="chart-title">Grotere fondsen, méér onderuitputting — niet andersom</div>
+  <div class="chart-subtitle">Per ministerie 2024: x-as = totaal investeringsbudget (mld €), y-as = aandeel onbesteed (%). Eén punt per ministerie.</div>
+  <div class="line-chart">
+    <div class="line-axis-y">
+      <span>30 %</span><span>20 %</span><span>10 %</span><span>0 %</span>
+    </div>
+    <div class="line-area">
+      <div class="line-grid"></div>
+      <div class="line-points">
+        <div class="line-point" style="left: 80%; bottom: 95%" data-tooltip="<strong>Defensie/DMF</strong><br>budget € 11 mld · 29 % onbesteed"></div>
+        <div class="line-point" style="left: 55%; bottom: 60%" data-tooltip="<strong>EZK (NGF + Klimaatfonds)</strong><br>budget € 7 mld · 17 % onbesteed"></div>
+        <div class="line-point" style="left: 60%; bottom: 33%" data-tooltip="<strong>IenW (MF/DF)</strong><br>budget € 8 mld · 10 % onbesteed"></div>
+        <div class="line-point" style="left: 30%; bottom: 50%" data-tooltip="<strong>OCW</strong><br>budget € 3,5 mld · 15 % onbesteed"></div>
+        <div class="line-point" style="left: 22%; bottom: 80%" data-tooltip="<strong>BZK (Groningen)</strong><br>budget € 2,8 mld · 24 % onbesteed"></div>
+        <div class="line-point" style="left: 18%; bottom: 30%" data-tooltip="<strong>JenV</strong><br>budget € 2,3 mld · 9 % onbesteed"></div>
+        <div class="line-point" style="left: 12%; bottom: 18%" data-tooltip="<strong>SZW</strong><br>budget € 1,6 mld · 5 % onbesteed"></div>
+        <div class="line-point" style="left: 15%; bottom: 22%" data-tooltip="<strong>VWS</strong><br>budget € 2 mld · 6 % onbesteed"></div>
+        <div class="line-point" style="left: 8%; bottom: 12%" data-tooltip="<strong>BuZa</strong><br>budget € 1 mld · 3 % onbesteed"></div>
+        <div class="line-point" style="left: 9%; bottom: 35%" data-tooltip="<strong>LNV</strong><br>budget € 1,2 mld · 10 % onbesteed"></div>
+      </div>
+    </div>
+    <div class="line-x-axis">
+      <span>€ 0 mld</span><span>€ 5 mld</span><span>€ 10 mld</span><span>€ 12 mld</span>
+    </div>
+  </div>
+  <div class="chart-source">Bron: FJR 2024 + departementale jaarverslagen, illustratieve verdeling.</div>
+  <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg></div>
+</div>
+
+<h3>Diverging stacked bar (Likert)</h3>
+
+<p>Voor surveys of meningspeilingen — segmenten weerszijden van een center-as, sterk vs zwak aan beide kanten.</p>
+
+<div class="chart-frame">
+  <div class="chart-title">Ambtenaren positief over digitalisering, sceptisch over AI-versnelling</div>
+  <div class="chart-subtitle">Enquête rijksambtenaren over digitale transitie, n = 412, percentage respondenten per categorie.</div>
+  <div class="chart-legend">
+    <span class="chart-legend-item"><span class="chart-legend-swatch" style="background: color-mix(in srgb, var(--c-charcoal) 55%, transparent)"></span> Zeer mee oneens</span>
+    <span class="chart-legend-item"><span class="chart-legend-swatch" style="background: color-mix(in srgb, var(--c-charcoal) 25%, transparent)"></span> Mee oneens</span>
+    <span class="chart-legend-item"><span class="chart-legend-swatch" style="background: color-mix(in srgb, var(--c-dossier) 50%, transparent)"></span> Mee eens</span>
+    <span class="chart-legend-item"><span class="chart-legend-swatch swatch-primary"></span> Zeer mee eens</span>
+  </div>
+  <div class="diverge-row">
+    <div class="diverge-label">Digitalisering verbetert mijn werk</div>
+    <div class="diverge-neg">
+      <span class="diverge-seg seg-strong-neg" data-tooltip="<strong>Zeer oneens</strong><br>4 %" style="flex: 4"></span>
+      <span class="diverge-seg seg-neg" data-tooltip="<strong>Oneens</strong><br>12 %" style="flex: 12"></span>
+    </div>
+    <div class="diverge-pos">
+      <span class="diverge-seg seg-pos" data-tooltip="<strong>Eens</strong><br>48 %" style="flex: 48"></span>
+      <span class="diverge-seg seg-strong-pos" data-tooltip="<strong>Zeer eens</strong><br>36 %" style="flex: 36"></span>
+    </div>
+    <div class="diverge-value">+84 / −16</div>
+  </div>
+  <div class="diverge-row">
+    <div class="diverge-label">Open data verbetert beleid</div>
+    <div class="diverge-neg">
+      <span class="diverge-seg seg-strong-neg" data-tooltip="<strong>Zeer oneens</strong><br>2 %" style="flex: 2"></span>
+      <span class="diverge-seg seg-neg" data-tooltip="<strong>Oneens</strong><br>8 %" style="flex: 8"></span>
+    </div>
+    <div class="diverge-pos">
+      <span class="diverge-seg seg-pos" data-tooltip="<strong>Eens</strong><br>52 %" style="flex: 52"></span>
+      <span class="diverge-seg seg-strong-pos" data-tooltip="<strong>Zeer eens</strong><br>38 %" style="flex: 38"></span>
+    </div>
+    <div class="diverge-value">+90 / −10</div>
+  </div>
+  <div class="diverge-row">
+    <div class="diverge-label">AI versnelt mijn taken</div>
+    <div class="diverge-neg">
+      <span class="diverge-seg seg-strong-neg" data-tooltip="<strong>Zeer oneens</strong><br>14 %" style="flex: 14"></span>
+      <span class="diverge-seg seg-neg" data-tooltip="<strong>Oneens</strong><br>32 %" style="flex: 32"></span>
+    </div>
+    <div class="diverge-pos">
+      <span class="diverge-seg seg-pos" data-tooltip="<strong>Eens</strong><br>38 %" style="flex: 38"></span>
+      <span class="diverge-seg seg-strong-pos" data-tooltip="<strong>Zeer eens</strong><br>16 %" style="flex: 16"></span>
+    </div>
+    <div class="diverge-value">+54 / −46</div>
+  </div>
+  <div class="diverge-row">
+    <div class="diverge-label">Privacy-zorgen vertragen mij</div>
+    <div class="diverge-neg">
+      <span class="diverge-seg seg-strong-neg" data-tooltip="<strong>Zeer oneens</strong><br>10 %" style="flex: 10"></span>
+      <span class="diverge-seg seg-neg" data-tooltip="<strong>Oneens</strong><br>28 %" style="flex: 28"></span>
+    </div>
+    <div class="diverge-pos">
+      <span class="diverge-seg seg-pos" data-tooltip="<strong>Eens</strong><br>42 %" style="flex: 42"></span>
+      <span class="diverge-seg seg-strong-pos" data-tooltip="<strong>Zeer eens</strong><br>20 %" style="flex: 20"></span>
+    </div>
+    <div class="diverge-value">+62 / −38</div>
+  </div>
+  <div class="chart-source">Bron: illustratieve enquête rijksambtenaren digitale transitie 2024.</div>
   <div class="chart-watermark"><svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
 <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
