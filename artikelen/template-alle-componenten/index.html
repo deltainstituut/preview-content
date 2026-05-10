@@ -1117,6 +1117,19 @@ pre code {
     transform: translate3d(0, 0, 0);
     pointer-events: auto;
   }
+  .mobile-toc-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(35, 31, 32, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 49;
+    transition: opacity 0.2s ease;
+  }
+  .mobile-toc-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   h1 { font-size: 1.85rem; }
   .subtitle { font-size: 1.05rem; }
@@ -1674,18 +1687,36 @@ pre code {
     }
   }
 
-  /* Mobile TOC drawer */
+  /* Mobile TOC drawer + backdrop overlay */
+  var mobileBackdrop = null;
+  function ensureBackdrop() {
+    if (mobileBackdrop) return mobileBackdrop;
+    mobileBackdrop = document.createElement('div');
+    mobileBackdrop.className = 'mobile-toc-backdrop';
+    mobileBackdrop.addEventListener('click', closeMobileDrawer);
+    document.body.appendChild(mobileBackdrop);
+    return mobileBackdrop;
+  }
+  function openMobileDrawer() {
+    if (!mobileToc) return;
+    mobileToc.classList.add('open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+    ensureBackdrop().classList.add('is-active');
+  }
+  function closeMobileDrawer() {
+    if (!mobileToc) return;
+    mobileToc.classList.remove('open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    if (mobileBackdrop) mobileBackdrop.classList.remove('is-active');
+  }
   if (mobileToggle) {
     mobileToggle.addEventListener('click', function() {
-      var isOpen = mobileToc.classList.toggle('open');
-      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (mobileToc.classList.contains('open')) closeMobileDrawer();
+      else openMobileDrawer();
     });
   }
   for (var m = 0; m < mobileLinks.length; m++) {
-    mobileLinks[m].addEventListener('click', function() {
-      mobileToc.classList.remove('open');
-      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-    });
+    mobileLinks[m].addEventListener('click', closeMobileDrawer);
   }
 
   /* Sidenote positioning - desktop only */
@@ -1776,8 +1807,7 @@ pre code {
       mobileToc.classList.add('is-revealed');
     } else {
       mobileToc.classList.remove('is-revealed');
-      mobileToc.classList.remove('open');
-      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+      closeMobileDrawer();
     }
   }
   function updateMobileTocVisibility() {
