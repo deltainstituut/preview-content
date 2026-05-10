@@ -493,20 +493,24 @@ hr.section-break {
   opacity: 0.85;
 }
 
-/* --- Bar chart --- */
+/* --- Bar chart ---
+   Grid leeft op .bar-chart (parent), niet op .bar-row, zodat label-kolom
+   en value-kolom over alle rijen dezelfde breedte krijgen — gebaseerd op
+   de langste labelinhoud. Bars starten daardoor zo links mogelijk. */
 .bar-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-.bar-row {
   display: grid;
-  grid-template-columns: 9rem 1fr 4rem;
-  gap: 0.8rem;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 0.8rem;
+  row-gap: 0.55rem;
   align-items: center;
   font-size: 0.88rem;
   line-height: 1.3;
 }
+.bar-chart:has(.bar-track-stacked) {
+  grid-template-columns: auto 1fr;
+}
+.bar-row { display: contents; }
+.bar-callout-row { grid-column: 1 / -1; }
 .bar-label {
   color: var(--c-text);
   text-align: left;
@@ -867,10 +871,11 @@ hr.section-break {
   margin-bottom: 0.35rem;
   min-height: calc(2 * 1.35 * 0.78rem);
 }
-.chart-multiple .bar-row {
-  grid-template-columns: 2.6rem 1fr 2.6rem;
+.chart-multiple .bar-chart {
+  grid-template-columns: auto 1fr auto;
   font-size: 0.74rem;
-  gap: 0.45rem;
+  column-gap: 0.45rem;
+  row-gap: 0.4rem;
 }
 .chart-multiple .bar-track { height: 0.9rem; }
 .chart-multiple .bar-value { font-size: 0.72rem; }
@@ -1357,12 +1362,11 @@ pre code {
   /* Charts: smaller variant */
   .chart-title { font-size: 1.15rem; }
   .chart-subtitle { font-size: 0.82rem; margin-bottom: 0.9rem; }
-  .bar-row {
-    grid-template-columns: 4rem 1fr 4.5rem;
-    gap: 0.4rem;
+  .bar-chart {
+    column-gap: 0.4rem;
+    row-gap: 0.4rem;
     font-size: 0.82rem;
   }
-  .bar-row:has(.bar-track-stacked) { grid-template-columns: 4rem 1fr; }
   .bar-label { text-align: left; }
   .bar-track { height: 1.2rem; }
   .bar-value { font-size: 0.8rem; white-space: nowrap; }
