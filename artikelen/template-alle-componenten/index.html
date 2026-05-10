@@ -1030,27 +1030,27 @@ pre code {
   position: absolute;
   top: 0.45rem;
   right: 0.45rem;
-  padding: 0.25rem 0.6rem;
-  font-family: 'Public Sans', 'Trebuchet MS', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: var(--c-offwhite-2);
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
   color: var(--c-text-secondary);
-  border: 1px solid var(--c-border);
+  border: 0;
   border-radius: 3px;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.55;
   transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
 }
-pre:hover .codeblock-copy,
-.codeblock-copy:focus,
-.codeblock-copy.is-copied { opacity: 1; }
-.codeblock-copy:hover { color: var(--c-text); background: #fff; }
+.codeblock-copy svg { width: 14px; height: 14px; display: block; }
+.codeblock-copy:hover,
+.codeblock-copy:focus { opacity: 1; color: var(--c-text); background: rgba(255,255,255,0.6); outline: none; }
 .codeblock-copy.is-copied {
+  opacity: 1;
   color: var(--c-dossier);
-  border-color: var(--c-dossier);
+  background: transparent;
 }
 
 /* ===== FIGURES (PNG/JPG inline beelden met caption) ===== */
@@ -1780,6 +1780,8 @@ pre:hover .codeblock-copy,
   }
 
   /* Code-block copy buttons */
+  var COPY_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h7"/></svg>';
+  var CHECK_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5"/></svg>';
   function setupCodeCopy() {
     var pres = document.querySelectorAll('article pre');
     for (var p = 0; p < pres.length; p++) {
@@ -1789,17 +1791,20 @@ pre:hover .codeblock-copy,
         btn.type = 'button';
         btn.className = 'codeblock-copy';
         btn.setAttribute('aria-label', 'Kopieer code');
-        btn.textContent = 'Kopieer';
+        btn.setAttribute('title', 'Kopieer code');
+        btn.innerHTML = COPY_ICON;
         btn.addEventListener('click', function(ev) {
           ev.preventDefault();
           var code = pre.querySelector('code') || pre;
           var text = code.textContent || '';
           var done = function() {
             btn.classList.add('is-copied');
-            btn.textContent = 'Gekopieerd';
+            btn.innerHTML = CHECK_ICON;
+            btn.setAttribute('aria-label', 'Gekopieerd');
             setTimeout(function() {
               btn.classList.remove('is-copied');
-              btn.textContent = 'Kopieer';
+              btn.innerHTML = COPY_ICON;
+              btn.setAttribute('aria-label', 'Kopieer code');
             }, 1500);
           };
           if (navigator.clipboard && navigator.clipboard.writeText) {
