@@ -3102,21 +3102,27 @@ pre code {
 
   function positionFor(el) {
     /* Anchor preference:
-       1. .bar-track-stacked (multi-segment bar — center on whole bar)
-       2. .bar-fill with non-zero width (single bar — center on the colored part)
-       3. .bar-track (zero-value rows — center on the track)
-       4. element itself (heatmap cells, line points, etc.) */
+       1. .column-fill (vertical column chart — anchor op de zichtbare bar bovenkant)
+       2. .bar-track-stacked (multi-segment bar — center on whole bar)
+       3. .bar-fill with non-zero width (single bar — center on the colored part)
+       4. .bar-track (zero-value rows — center on the track)
+       5. element itself (heatmap cells, line points, etc.) */
     var anchor = el;
-    var stacked = el.querySelector && el.querySelector('.bar-track-stacked');
-    if (stacked) {
-      anchor = stacked;
+    var columnFill = el.querySelector && el.querySelector('.column-fill');
+    if (columnFill && columnFill.offsetHeight > 0) {
+      anchor = columnFill;
     } else {
-      var fill = el.querySelector && el.querySelector('.bar-fill');
-      if (fill && fill.offsetWidth > 0) {
-        anchor = fill;
+      var stacked = el.querySelector && el.querySelector('.bar-track-stacked');
+      if (stacked) {
+        anchor = stacked;
       } else {
-        var track = el.querySelector && el.querySelector('.bar-track');
-        if (track) anchor = track;
+        var fill = el.querySelector && el.querySelector('.bar-fill');
+        if (fill && fill.offsetWidth > 0) {
+          anchor = fill;
+        } else {
+          var track = el.querySelector && el.querySelector('.bar-track');
+          if (track) anchor = track;
+        }
       }
     }
     return anchor.getBoundingClientRect();
