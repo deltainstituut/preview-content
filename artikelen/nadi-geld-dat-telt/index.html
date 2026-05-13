@@ -57,6 +57,7 @@ body {
 .mobile-toc.open .mobile-toc-drawer { max-height: 75vh; overflow-y: auto; }
 .mobile-toc-drawer ol { list-style: none; padding: 0; margin: 0; }
 .mobile-toc-drawer li a { display: flex; align-items: center; padding: 0.7rem 1.2rem; color: var(--c-text); text-decoration: none; font-size: 0.92rem; border-bottom: 1px solid var(--c-border); min-height: 44px; }
+.mobile-toc-drawer li.toc-sub a { padding-left: 2.4rem; font-size: 0.86rem; color: var(--c-text-secondary); }
 .mobile-toc-drawer li:last-child a { border-bottom: none; }
 
 /* LAYOUT */
@@ -70,6 +71,7 @@ body {
 .toc-label { font-family: 'Public Sans', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; color: var(--c-text-secondary); text-transform: uppercase; margin-bottom: 1rem; padding-left: 0.9rem; }
 .toc ol { list-style: none; padding: 0; margin: 0; }
 .toc li { margin: 0.55rem 0; padding-left: 0.9rem; }
+.toc li.toc-sub { padding-left: 1.8rem; font-size: 0.78rem; }
 .toc a { color: var(--c-text-secondary); text-decoration: none; line-height: 1.4; display: block; transition: color 0.2s; position: relative; }
 .toc a:hover { color: var(--c-text); }
 .toc a.active { color: var(--c-text); font-weight: 700; }
@@ -239,6 +241,11 @@ hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 
       <li><a href="#arpa-formule" data-target="arpa-formule">De ARPA-formule</a></li>
       <li><a href="#geen-geld" data-target="geen-geld">Geen geld dat telt</a></li>
       <li><a href="#vraag-miljard" data-target="vraag-miljard">De vraag van een miljard</a></li>
+      <li class="toc-sub"><a href="#route-1" data-target="route-1">Route 1: versober de innovatiebox</a></li>
+      <li class="toc-sub"><a href="#route-2" data-target="route-2">Route 2: vang onderuitputting Defensie op</a></li>
+      <li class="toc-sub"><a href="#route-3" data-target="route-3">Route 3: heralloceer Nationaal Groeifonds</a></li>
+      <li class="toc-sub"><a href="#route-4" data-target="route-4">Route 4: schrap kleinere regelingen</a></li>
+      <li><a href="#conclusie" data-target="conclusie">Conclusie</a></li>
     </ol>
   </div>
 </div>
@@ -257,6 +264,11 @@ hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 
         <li><a href="#arpa-formule" data-target="arpa-formule">De ARPA-formule</a></li>
         <li><a href="#geen-geld" data-target="geen-geld">Geen geld dat telt</a></li>
         <li><a href="#vraag-miljard" data-target="vraag-miljard">De vraag van een miljard</a></li>
+        <li class="toc-sub"><a href="#route-1" data-target="route-1">Route 1: innovatiebox</a></li>
+        <li class="toc-sub"><a href="#route-2" data-target="route-2">Route 2: Defensie</a></li>
+        <li class="toc-sub"><a href="#route-3" data-target="route-3">Route 3: Groeifonds</a></li>
+        <li class="toc-sub"><a href="#route-4" data-target="route-4">Route 4: kleine regelingen</a></li>
+        <li><a href="#conclusie" data-target="conclusie">Conclusie</a></li>
       </ol>
     </div>
   </aside>
@@ -373,7 +385,7 @@ hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 
 
     <p>Door grotere defensie-uitgaven heeft de coalitie de pijngrens voor bezuinigingen al opgezocht. Extra geld voor innovatie ligt niet voor het oprapen, wat het des te belangrijker maakt om te prioriteren waar dat geld heen gaat. Want niet elke euro die aan innovatie wordt besteed, is even effectief.</p>
 
-    <h3>Route 1: versober de innovatiebox</h3>
+    <h3 id="route-1">Route 1: versober de innovatiebox</h3>
 
     <p>De innovatiebox krijgt al langer kritiek van economen en in ambtelijke rapporten, omdat de regeling van bedrijven een enorme urenregistratie vraagt. Bovendien gaat 90% van het voordeel naar drie gevestigde bedrijven (ASML, Booking en MSD), en onderzoek laat zien dat de regeling vooral R&amp;D subsidieert die anders ook was gedaan.</p>
 
@@ -454,7 +466,7 @@ hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 
 
     <p>Als middel om grote bedrijven in Nederland te houden is de regeling te verdedigen, maar er zijn directere en minder bureaucratische instrumenten om vestigingsbeleid te voeren. Daar komt bij dat NADI gerichter kan sturen op waar dat geld terechtkomt dan een generieke fiscale regeling: ook als NADI-geld bij R&amp;D-intensieve bedrijven als ASML en MSD eindigt, financiert het onderzoek dat zonder NADI niet zou gebeuren. De innovatiebox versoberen en het geld via NADI naar gerichte R&amp;D laten stromen is daarmee een logischere keuze.</p>
 
-    <h3>Route 2: vang de onderuitputting bij Defensie op</h3>
+    <h3 id="route-2">Route 2: vang de onderuitputting bij Defensie op</h3>
 
     <p>Een tweede bron is onderuitputting. Ieder jaar blijft begroot geld op de plank liggen omdat het niet snel genoeg kan worden uitgegeven, bijvoorbeeld door personeelstekorten. Juist Defensie, ons snelstgroeiende ministerie, loopt waarschijnlijk tegen de grenzen van zijn groei aan, en heeft veel baat bij de dual-use innovatie van NADI.</p>
 
@@ -532,13 +544,15 @@ hr.section-break { border: none; border-top: 1px solid var(--c-border); margin: 
       </div>
     </div>
 
-    <h3>Route 3: heralloceer het Nationaal Groeifonds</h3>
+    <h3 id="route-3">Route 3: heralloceer het Nationaal Groeifonds</h3>
 
     <p>Ook de huidige versie van het Nationaal Groeifonds wordt afgebouwd, en zal zijn geld waarschijnlijk niet volledig uitgeven. Middelen verschuiven van het Nationaal Groeifonds naar NADI is daarmee een aantrekkelijke route, en behoudt grotendeels dezelfde beleidsdoelen.</p>
 
-    <h3>Route 4: schrap kleinere ineffectieve regelingen</h3>
+    <h3 id="route-4">Route 4: schrap kleinere ineffectieve regelingen</h3>
 
     <p>Daarnaast zijn er kleinere, ineffectieve fiscale regelingen te schrappen. Het kabinet besloot onlangs de startersaftrek uit te faseren en de kleinschalige investeringsaftrek te versoberen. Hiermee werd ten dele het noodpakket energie gefinancierd. Dit pakket loopt af, waarmee die middelen weer vrijkomen. Bontenbal en anderen hebben al met succes een motie ingediend om middelen door te schuiven naar enkele instrumenten die het ondernemersklimaat moeten verbeteren. Ze zouden er goed aan doen NADI daarbij op te nemen.</p>
+
+    <h2 id="conclusie">Conclusie</h2>
 
     <p>Mogelijkheden te over. De keuze is aan de politiek. Na jaren praten wordt het tijd voor het antwoord op de vraag: wat hebben we over voor onze toekomst?</p>
 
