@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One-pager: AI navigeren en permanent borgen in de overheid</title>
-<meta name="description" content="De afsluiting van Fable 5 laat zien hoe afhankelijk Nederland is. Voorstel voor een serieuze, blijvende structuur om AI te navigeren en technische expertise permanent in de overheid te borgen.">
-<meta name="author" content="Onno Eric Blom">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<meta property="og:title" content="One-pager: AI navigeren en permanent borgen in de overheid">
+<title>AI navigeren en permanent borgen in de overheid</title>
+<meta name="description" content="De afsluiting van Fable 5 is een wake-up call. Nederland heeft een serieuze, blijvende structuur nodig om AI te navigeren en te borgen in de overheid.">
+<meta name="author" content="Onno Eric Blom">
+<meta property="og:title" content="AI navigeren en permanent borgen in de overheid">
 <meta property="og:description" content="De afsluiting van Fable 5 is een wake-up call. Nederland heeft een serieuze, blijvende structuur nodig om AI te navigeren en te borgen in de overheid.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://preview.deltainstituut.nl/og-image.jpg">
@@ -18,362 +18,2184 @@
 <meta name="twitter:image" content="https://preview.deltainstituut.nl/og-image.jpg">
 <link rel="stylesheet" href="/fonts.css">
 <style>
-  :root {
-    --c-charcoal: #231f20;
-    --c-bg: #eff0eb;
-    --c-bg2: #e5e6de;
-    --c-text: #161613;
-    --c-text2: #4a4a45;
-    --c-border: #ddd9d0;
-    --c-dossier: #1f4886;
-    --c-dossier-soft: rgba(31, 72, 134, 0.08);
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--c-bg);
-    color: var(--c-text);
-    font-family: "Lora", Georgia, serif;
-    font-size: 1.05rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3 { font-family: "Merriweather", Georgia, serif; color: var(--c-text); }
+:root { --c-dossier: #1f4886; }
+/* Delta Instituut - base styles for branded HTML documents */
+/* Extracted from eu-scope-creep.html and aligned with design-spec.md */
 
-  .site-header {
-    width: 100%;
-    background: var(--c-charcoal);
-    padding: 1.4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .site-logo { width: 190px; color: var(--c-bg); display: block; overflow: hidden; }
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Public+Sans:wght@400;700&display=swap');
 
-  .wrap { max-width: 880px; margin: 0 auto; padding: 3rem 1.5rem 2rem; }
+/* Inline Public Sans 700 fallback — guarantees real bold even if @import laadt traag */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/publicsans/v21/ijwGs572Xtc6ZYQws9YVwllKVG8qX1oyOymu8Z65ww.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/publicsans/v21/ijwGs572Xtc6ZYQws9YVwllKVG8qX1oyOymuFpm5ww.ttf') format('truetype');
+}
 
-  .eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--c-dossier);
-    font-weight: 600;
-    margin: 0 0 0.6rem;
-  }
-  h1 { font-size: 2.5rem; font-weight: 400; line-height: 1.2; margin: 0 0 1rem; }
-  .subtitle {
-    font-size: 1.18rem;
-    color: var(--c-dossier);
-    line-height: 1.5;
-    margin: 0 0 1.4rem;
-  }
-  .meta {
-    font-size: 0.85rem;
-    color: var(--c-text2);
-    padding-bottom: 1.6rem;
-    border-bottom: 1px solid var(--c-border);
-    margin-bottom: 2.2rem;
-  }
+:root {
+  --c-charcoal: #231f20;
+  --c-offwhite: #eff0eb;
+  --c-offwhite-2: #e5e6de;
+  --c-text: #161613;
+  --c-text-secondary: #4a4a45;
+  --c-border: #ddd9d0;
+  --c-dossier: #51724a; /* override per document via inline style on :root */
+}
 
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 2.6rem 0 0.9rem;
-    line-height: 1.3;
-  }
-  p { margin: 0 0 1.1rem; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .lead-strong { font-size: 1.1rem; }
+html { scroll-behavior: smooth; }
 
-  .callout {
-    border-left: 3px solid var(--c-dossier);
-    padding: 0.4rem 0 0.4rem 1.3rem;
-    margin: 1.6rem 0;
-    color: var(--c-text);
+body {
+  font-family: 'Lora', Georgia, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--c-text);
+  background: var(--c-offwhite);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  width: 100%;
+  background: var(--c-charcoal);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.site-logo {
+  display: block;
+  width: 200px;
+  color: var(--c-offwhite);
+  text-decoration: none;
+  overflow: hidden;
+}
+.site-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: currentColor;
+}
+
+/* ===== MOBILE TOC BAR ===== */
+.mobile-toc {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--c-offwhite);
+  border-bottom: 1px solid var(--c-border);
+}
+.mobile-toc-toggle {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  background: none;
+  border: none;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--c-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+.mobile-toc-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+.mobile-toc-chevron {
+  transition: transform 0.25s ease;
+  font-size: 0.75rem;
+}
+.mobile-toc.open .mobile-toc-chevron { transform: rotate(180deg); }
+.mobile-toc-progress {
+  height: 3px;
+  background: var(--c-border);
+  position: relative;
+}
+.mobile-toc-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--c-dossier);
+}
+.mobile-toc-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: var(--c-offwhite-2);
+}
+.mobile-toc.open .mobile-toc-drawer { max-height: 75vh; overflow-y: auto; }
+.mobile-toc-drawer ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile-toc-drawer li a {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  color: var(--c-text);
+  text-decoration: none;
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--c-border);
+  min-height: 44px;
+}
+.mobile-toc-drawer li:last-child a { border-bottom: none; }
+
+/* ===== LAYOUT ===== */
+/* Always 3-column zodat content + TOC op dezelfde plek staan ongeacht of er
+   bronnen zijn. De rechterkolom is leeg als meta.sidenotes ontbreekt. */
+.layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 220px;
+  gap: 2.5rem;
+  align-items: start;
+}
+.layout.has-sidenotes { /* legacy class — same grid; behoudt selectors die hiernaar verwijzen */ }
+
+/* ===== TOC SIDEBAR (DESKTOP) ===== */
+.toc {
+  position: sticky;
+  top: 2rem;
+  font-size: 0.82rem;
+  padding-left: 1.2rem;
+}
+.toc-wrap { position: relative; }
+.toc-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--c-border);
+}
+.toc-label {
+  font-size: 0;
+  margin-bottom: 1rem;
+  padding-left: 0.9rem;
+  line-height: 1;
+}
+.toc-label::before {
+  content: 'INHOUDSOPGAVE';
+  display: block;
+  font-family: 'Johnston', 'P22 Underground', 'ITC New Johnston', 'Public Sans', 'Hammersmith One', 'Trebuchet MS', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--c-text-secondary);
+}
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc li { margin: 0.55rem 0; padding-left: 0.9rem; }
+.toc a {
+  color: var(--c-text-secondary);
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+  transition: color 0.2s;
+  position: relative;
+}
+.toc a:hover { color: var(--c-text); }
+.toc a.active {
+  color: var(--c-text);
+  font-weight: 700;
+}
+.toc a.active::before {
+  content: '';
+  position: absolute;
+  left: -0.9rem;
+  top: -0.15rem;
+  bottom: -0.15rem;
+  width: 2px;
+  background: var(--c-dossier);
+  border-radius: 1px;
+}
+
+/* ===== ARTICLE ===== */
+article { min-width: 0; }
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--c-text-secondary);
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.article-meta + * { margin-top: 0; }
+.category-tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--c-dossier);
+  border-radius: 0;
+  color: var(--c-dossier);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.article-meta .sep {
+  color: var(--c-text);
+  font-size: 1.3em;
+  line-height: 1;
+  align-self: center;
+}
+
+h1 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+.subtitle {
+  font-family: 'Lora', Georgia, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--c-text);
+  line-height: 1.5;
+  margin-bottom: 1.6rem;
+}
+
+h2 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 2.6rem 0 1rem;
+  color: var(--c-text);
+}
+h3 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 2rem 0 0.8rem;
+  color: var(--c-text);
+}
+h4 {
+  font-family: 'Public Sans', 'Johnston', 'P22 Underground', 'ITC New Johnston', 'Trebuchet MS', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 1.6rem 0 0.15rem;
+  color: var(--c-dossier);
+}
+h4 + p { margin-top: 0; }
+p { margin-bottom: 1.1rem; }
+p + p { margin-top: 0; }
+
+article ul, article ol {
+  padding-left: 1.4rem;
+  margin: 0.6rem 0 1.2rem;
+}
+article li {
+  margin: 0.35rem 0;
+  padding-left: 0.2rem;
+}
+article ul li::marker { color: var(--c-dossier); }
+article ol li::marker { color: var(--c-text-secondary); }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a.inline-link {
+  color: var(--c-dossier);
+}
+
+
+/* ===== CALLOUT (transparent, only left border) ===== */
+.callout {
+  border-left: 3px solid var(--c-dossier);
+  padding: 0.4rem 1.4rem;
+  margin: 1.6rem 0;
+}
+.callout-label {
+  font-family: 'Johnston', 'P22 Underground', 'ITC New Johnston', 'Public Sans', 'Hammersmith One', 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-dossier);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.callout p { font-size: 0.95rem; margin-bottom: 0.6rem; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ===== TABLE ===== */
+.table-wrap { overflow-x: auto; margin: 1.4rem 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+thead {
+  background: var(--c-charcoal);
+  color: var(--c-offwhite);
+}
+th {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) { background: var(--c-offwhite-2); }
+
+/* ===== SECTION BREAK ===== */
+hr.section-break {
+  border: none;
+  border-top: 1px solid var(--c-border);
+  margin: 3rem 0 0;
+}
+
+/* ===== FOOTNOTE / SIDENOTE ===== */
+.fn-ref {
+  color: var(--c-dossier);
+  font-weight: 500;
+  font-size: 0.65em;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 0.1em;
+}
+.fn-ref:hover { text-decoration: underline; }
+
+.sidenote-col {
+  position: relative;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--c-text-secondary);
+}
+.sidenote {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--c-border);
+  transition: top 0.15s ease;
+}
+.sidenote a { text-decoration-color: var(--c-border); }
+.sidenote a:hover { text-decoration-color: var(--c-text-secondary); }
+.sidenote { transition: border-left-color 0.3s ease; }
+.sidenote.is-flashed { border-left-color: var(--c-dossier); }
+.sidenote-num {
+  color: var(--c-text-secondary);
+  margin-right: 0.15rem;
+}
+.sidenote-num::after { content: "."; }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: var(--c-charcoal);
+  color: var(--c-offwhite);
+  padding: 2rem;
+  margin-top: 1.5rem;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer-logo {
+  display: block;
+  width: 140px;
+  color: var(--c-offwhite);
+  opacity: 0.7;
+}
+.footer-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: currentColor;
+}
+.footer-contact {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  text-align: right;
+}
+.footer-contact a { color: var(--c-offwhite); text-decoration: none; }
+.footer-contact a:hover { text-decoration: underline; }
+
+/* ===== CHARTS (HTML-div based, no SVG) ===== */
+.chart { margin: 2rem 0; }
+.chart-title {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--c-text);
+  margin-bottom: 0.3rem;
+}
+.chart-subtitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--c-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.chart-source {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* --- Bar chart ---
+   Grid leeft op .bar-chart (parent), niet op .bar-row, zodat label-kolom
+   en value-kolom over alle rijen dezelfde breedte krijgen — gebaseerd op
+   de langste labelinhoud. Bars starten daardoor zo links mogelijk. */
+.bar-chart {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 0.8rem;
+  row-gap: 0.55rem;
+  align-items: center;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+.bar-chart:has(.bar-track-stacked) {
+  grid-template-columns: auto 1fr;
+}
+/* Lollipop-dot puilt 5.5px buiten bar-track — extra column-gap zodat het getal niet plakt */
+.bar-chart:has(.lollipop-row) { column-gap: 1.4rem; }
+.bar-row { display: contents; }
+.bar-callout-row { grid-column: 1 / -1; }
+.bar-label {
+  color: var(--c-text);
+  text-align: left;
+}
+.bar-track {
+  position: relative;
+  height: 1.35rem;
+  background: var(--c-offwhite-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--c-dossier);
+  opacity: 1;
+  border-radius: 2px;
+}
+.bar-fill.bar-pos {
+  background: var(--c-charcoal);
+  opacity: 0.55;
+}
+.bar-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text-secondary);
+  font-size: 0.85rem;
+}
+
+/* --- Line chart --- */
+.line-chart {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  grid-template-rows: 1fr 1.4rem;
+  gap: 0.4rem 0.6rem;
+  height: 18rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.line-axis-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+  padding-right: 0.2rem;
+}
+/* Trendlijn (regressie) op scatter / line-chart — inline SVG over plot area */
+.line-trend {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.line-trend line {
+  stroke: var(--c-text-secondary);
+  stroke-width: 0.6;
+  stroke-dasharray: 3 2;
+  opacity: 0.55;
+}
+.line-area {
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+.line-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom,
+      transparent calc(25% - 0.5px),
+      var(--c-border) calc(25% - 0.5px),
+      var(--c-border) calc(25% + 0.5px),
+      transparent calc(25% + 0.5px)),
+    linear-gradient(to bottom,
+      transparent calc(50% - 0.5px),
+      var(--c-border) calc(50% - 0.5px),
+      var(--c-border) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom,
+      transparent calc(75% - 0.5px),
+      var(--c-border) calc(75% - 0.5px),
+      var(--c-border) calc(75% + 0.5px),
+      transparent calc(75% + 0.5px));
+  pointer-events: none;
+}
+.line-target {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--c-dossier);
+  opacity: 0.65;
+  pointer-events: none;
+}
+.line-target span {
+  position: absolute;
+  right: 0.4rem;
+  top: -1.1rem;
+  font-size: 0.7rem;
+  color: var(--c-dossier);
+  background: var(--c-offwhite);
+  padding: 0 0.3rem;
+  letter-spacing: 0.02em;
+}
+.line-points {
+  position: absolute;
+  inset: 0;
+}
+.line-point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--c-dossier);
+  z-index: 2;
+}
+.line-point-est {
+  background: var(--c-offwhite);
+  border: 1.5px dashed var(--c-dossier);
+}
+.line-x-axis {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== CHART INTERACTIVITY (tooltip + hover) ===== */
+.chart-tooltip {
+  position: absolute;
+  background: var(--c-charcoal);
+  color: var(--c-offwhite);
+  padding: 0.45rem 0.7rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, calc(-100% - 10px));
+  transition: opacity 0.12s ease;
+  z-index: 100;
+  text-align: center;
+}
+.chart-tooltip.is-visible { opacity: 1; }
+.chart-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--c-charcoal);
+  border-bottom: 0;
+}
+
+/* Hover/active highlight states on chart elements */
+[data-tooltip] { cursor: pointer; }
+
+/* Single-bar pattern: data-tooltip on .bar-row → highlight the bar-fill */
+.bar-row[data-tooltip] .bar-fill { transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease; }
+.bar-row[data-tooltip]:hover .bar-fill,
+.bar-row.is-tooltip-active .bar-fill {
+  filter: brightness(0.82);
+  opacity: 1;
+}
+.bar-row[data-tooltip]:hover .bar-fill.bar-displaced,
+.bar-row.is-tooltip-active .bar-fill.bar-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 38%, transparent);
+}
+
+/* Stacked-bar pattern: data-tooltip on each .bar-seg → highlight only the hovered segment */
+.bar-fill[data-tooltip] { transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease; }
+.bar-fill[data-tooltip]:hover,
+.bar-fill[data-tooltip].is-tooltip-active {
+  filter: brightness(0.82);
+  opacity: 1;
+}
+.bar-fill.bar-displaced[data-tooltip]:hover,
+.bar-fill.bar-displaced[data-tooltip].is-tooltip-active {
+  background: color-mix(in srgb, var(--c-charcoal) 38%, transparent);
+}
+
+/* Series-link (legend ↔ bar): when one series is active, others fade hard
+   AND the active series gets darker/more-saturated for extra contrast. */
+.chart-legend-item { cursor: pointer; transition: opacity 0.15s ease; }
+.chart-frame.has-series-active .bar-fill:not(.is-series-active) {
+  opacity: 0.10;
+  filter: none;
+}
+.chart-frame.has-series-active .chart-legend-item:not(.is-series-active) {
+  opacity: 0.25;
+}
+.chart-frame.has-series-active .bar-fill.is-series-active {
+  filter: brightness(0.85);
+}
+.chart-frame.has-series-active .bar-fill.bar-displaced.is-series-active {
+  background: color-mix(in srgb, var(--c-charcoal) 45%, transparent);
+}
+.chart-frame.has-series-active .bar-fill.bar-overig.is-series-active {
+  background: color-mix(in srgb, var(--c-dossier) 70%, transparent);
+}
+.chart-frame.has-series-active .chart-legend-item.is-series-active {
+  color: var(--c-text);
+  font-weight: 600;
+}
+/* Heatmap series-highlight: fade non-active cells + non-active legend swatches */
+.heatmap-legend-scale span[data-series] { cursor: pointer; transition: opacity 0.15s ease, transform 0.12s ease; }
+.heatmap-legend-scale span[data-series]:hover { transform: scale(1.1); }
+.chart-frame.has-series-active .heatmap-table td[data-series]:not(.is-series-active) {
+  opacity: 0.18;
+}
+.chart-frame.has-series-active .heatmap-legend-scale span[data-series]:not(.is-series-active) {
+  opacity: 0.3;
+}
+.line-point[data-tooltip] { transition: transform 0.12s ease; }
+.line-point[data-tooltip]:hover,
+.line-point.is-tooltip-active { transform: scale(1.6); z-index: 5; }
+.heatmap-table td[data-tooltip] { transition: filter 0.12s ease; }
+.heatmap-table td[data-tooltip]:hover,
+.heatmap-table td.is-tooltip-active { filter: brightness(1.08); outline: 1.5px solid var(--c-text); outline-offset: -2px; }
+
+/* ===== EXTENDED CHART COMPONENTS ===== */
+
+/* Chart frame with watermark + footnote zone */
+.chart-frame {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  padding: 1.4rem 1.5rem 2.4rem 1.5rem;
+  position: relative;
+  margin: 2.4rem 0;
+}
+/* JS wrapt source + watermark in een chart-bottom flex-row → minder padding-bottom nodig */
+.chart-frame:has(> .chart-bottom) { padding-bottom: 1.4rem; }
+.chart-frame .chart-source,
+.chart-frame .chart-footnotes { padding-right: 150px; }
+
+/* Bottom row: source + logo, logo aligned to BOTTOM of last source line.
+   Source grows to fill (flex: 1) zodat logo automatisch helemaal rechts komt. */
+.chart-bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--c-border);
+}
+.chart-bottom > .chart-source,
+.chart-bottom > .chart-footnotes {
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  padding-right: 0;
+}
+.chart-bottom > .chart-watermark {
+  position: static;
+  flex-shrink: 0;
+  width: 130px;
+  margin: 0;
+  align-self: flex-end;
+}
+.chart-frame .chart-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+.chart-frame .chart-subtitle {
+  margin-bottom: 1.4rem;
+}
+.chart-watermark {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 130px;
+  color: var(--c-text);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.chart-watermark svg { width: 100%; height: auto; display: block; }
+.chart-footnotes {
+  margin-top: 1.2rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--c-border);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--c-text-secondary);
+}
+.chart-footnotes p { margin: 0.2rem 0; }
+
+/* Bar variants — palette uses standard tokens */
+.bar-fill.bar-muted { background: var(--c-charcoal); opacity: 0.45; }
+.bar-fill.bar-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 18%, transparent);
+}
+.bar-fill.bar-overig {
+  background: color-mix(in srgb, var(--c-dossier) 35%, transparent);
+}
+
+/* Stacked bar (segments fill the bar; no empty-track residue) */
+.bar-track-stacked {
+  display: flex;
+  background: transparent;
+}
+.bar-track-stacked .bar-seg {
+  position: relative;
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+/* Curved-arrow annotation row (placed after a bar-row) */
+.bar-callout-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-left: 9.8rem;
+  margin: -0.15rem 0 0.6rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--c-dossier);
+  line-height: 1.35;
+}
+.bar-callout-row::before {
+  content: "";
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.7rem;
+  flex-shrink: 0;
+  border-left: 1px solid var(--c-dossier);
+  border-bottom: 1px solid var(--c-dossier);
+  border-bottom-left-radius: 0.55rem;
+  margin-top: 0.05rem;
+}
+
+/* Small multiples (2-4 panel grid) */
+.chart-multiples {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem 1.4rem;
+  margin-top: 0.4rem;
+}
+.chart-multiple {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid var(--c-charcoal);
+  padding: 0.1rem 0 0.1rem 0.7rem;
+}
+.chart-multiple-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  margin-bottom: 0.15rem;
+}
+.chart-multiple-headline {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--c-text);
+  margin-bottom: 0.35rem;
+  min-height: calc(2 * 1.35 * 0.78rem);
+}
+.chart-multiple .bar-chart {
+  grid-template-columns: auto 1fr auto;
+  font-size: 0.74rem;
+  column-gap: 0.45rem;
+  row-gap: 0.4rem;
+}
+.chart-multiple .bar-track { height: 0.9rem; }
+.chart-multiple .bar-value { font-size: 0.72rem; }
+
+/* ===== In-segment labels voor stacked bars =====
+   Schrijf binnen elke .bar-seg een <span class="bar-seg-label">…</span>.
+   CSS clipt automatisch als de segment te smal is om te passen.
+   Stacked rows hebben geen aparte rechter waarde-kolom — die wraping was lelijk. */
+.bar-seg {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.bar-seg-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.3rem;
+  pointer-events: none;
+}
+.bar-seg.bar-muted .bar-seg-label { color: rgba(255, 255, 255, 0.95); }
+.bar-seg.bar-displaced .bar-seg-label,
+.bar-seg.bar-overig .bar-seg-label { color: var(--c-text); }
+.bar-row:has(.bar-track-stacked) { grid-template-columns: 9rem 1fr; }
+.bar-row:has(.bar-track-stacked) .bar-value { display: none; }
+
+/* ===== Column chart (verticale bars) ===== */
+.column-chart {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0.3rem 0.6rem;
+  height: 13rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.column-chart .line-axis-y { grid-row: 1; }
+.column-bars {
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 0.25rem;
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding: 0 0.2rem;
+}
+.column-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+.column-fill {
+  width: 90%;
+  background: var(--c-dossier);
+  border-radius: 2px 2px 0 0;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  position: relative;
+}
+.column-fill.bar-muted {
+  background: var(--c-charcoal);
+  opacity: 0.45;
+}
+.column-bar[data-tooltip] { cursor: pointer; }
+.column-bar[data-tooltip]:hover .column-fill,
+.column-bar.is-tooltip-active .column-fill { filter: brightness(0.85); }
+.column-x-axis {
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
+  color: var(--c-text-secondary);
+  text-align: center;
+}
+
+/* ===== Lollipop chart (dot aan einde van dunne lijn) ===== */
+.lollipop-row { /* erft van .bar-row */ }
+.lollipop-row .bar-track {
+  background: transparent;
+  position: relative;
+  height: 1.4rem;
+  overflow: visible;
+}
+.lollipop-row .bar-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.lollipop-stem {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: var(--c-dossier);
+  transform: translateY(-50%);
+  transition: filter 0.15s ease;
+}
+.lollipop-row.bar-muted .lollipop-stem { background: var(--c-charcoal); opacity: 0.45; }
+.lollipop-head {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--c-dossier);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.lollipop-head[data-tooltip]:hover,
+.lollipop-head.is-tooltip-active { transform: translate(-50%, -50%) scale(1.4); z-index: 3; }
+
+/* ===== Range / bullet chart (band met marker) ===== */
+.range-track {
+  position: relative;
+  height: 1.4rem;
+}
+.range-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--c-border);
+}
+.range-band {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  background: color-mix(in srgb, var(--c-charcoal) 14%, transparent);
+  border-radius: 2px;
+}
+.range-marker {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background: var(--c-dossier);
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.range-marker[data-tooltip]:hover,
+.range-marker.is-tooltip-active { transform: translateX(-50%) scaleY(1.15); }
+.range-target {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1.5px dashed var(--c-text-secondary);
+  transform: translateX(-50%);
+}
+
+/* ===== Scatter plot — hergebruikt line-chart structuur, dots zijn line-points op niet-temporele x-posities ===== */
+/* Bestaande line-chart classes volstaan; gebruik .line-point op willekeurige left/bottom-posities. */
+
+/* ===== Diverging stacked bar (Likert / agree-disagree vanaf center-as) ===== */
+.diverge-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr 1fr 5rem;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0.4rem 0;
+}
+.diverge-label { text-align: right; color: var(--c-text); }
+.diverge-neg, .diverge-pos {
+  display: flex;
+  height: 1.3rem;
+  position: relative;
+}
+.diverge-neg { justify-content: flex-end; border-right: 1.5px solid var(--c-text); }
+.diverge-pos { justify-content: flex-start; }
+.diverge-seg {
+  height: 100%;
+  transition: filter 0.15s ease;
+}
+.diverge-seg[data-tooltip] { cursor: pointer; }
+.diverge-seg[data-tooltip]:hover,
+.diverge-seg.is-tooltip-active { filter: brightness(0.85); }
+.diverge-seg.seg-strong-neg { background: color-mix(in srgb, var(--c-charcoal) 55%, transparent); }
+.diverge-seg.seg-neg { background: color-mix(in srgb, var(--c-charcoal) 25%, transparent); }
+.diverge-seg.seg-pos { background: color-mix(in srgb, var(--c-dossier) 50%, transparent); }
+.diverge-seg.seg-strong-pos { background: var(--c-dossier); }
+.diverge-value {
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Heatmap-style table */
+.heatmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+.heatmap-table thead {
+  background: transparent;
+  color: var(--c-text);
+}
+.heatmap-table thead th {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.55rem 0.45rem;
+  border-bottom: 1.5px solid var(--c-text);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-secondary);
+  background: transparent;
+}
+.heatmap-table thead th:first-child { text-align: left; }
+.heatmap-table tbody td {
+  padding: 0.65rem 0.45rem;
+  text-align: center;
+  border-bottom: 2px solid #fff;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.heatmap-table tbody td:first-child {
+  text-align: left;
+  background: transparent !important;
+  color: var(--c-text) !important;
+  font-weight: 500;
+  padding-right: 1rem;
+}
+.heat-0 { background: color-mix(in srgb, var(--c-dossier) 5%, transparent); }
+.heat-1 { background: color-mix(in srgb, var(--c-dossier) 22%, transparent); }
+.heat-2 { background: color-mix(in srgb, var(--c-dossier) 45%, transparent); }
+.heat-3 { background: color-mix(in srgb, var(--c-dossier) 70%, transparent); color: #fff; }
+.heat-4 { background: color-mix(in srgb, var(--c-dossier) 90%, transparent); color: #fff; }
+.heat-5 { background: var(--c-dossier); color: #fff; }
+.heatmap-legend {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.74rem;
+  color: var(--c-text-secondary);
+}
+.heatmap-legend-scale {
+  display: inline-flex;
+  border: 1px solid var(--c-border);
+}
+.heatmap-legend-scale span {
+  display: block;
+  width: 1.2rem;
+  height: 0.7rem;
+}
+
+/* Stacked-bar legend (placed above the chart) */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin: -0.6rem 0 1.4rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--c-text-secondary);
+}
+.chart-legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.chart-legend-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.chart-legend-swatch.swatch-primary { background: var(--c-dossier); }
+.chart-legend-swatch.swatch-muted { background: var(--c-charcoal); opacity: 0.45; }
+.chart-legend-swatch.swatch-displaced {
+  background: color-mix(in srgb, var(--c-charcoal) 18%, transparent);
+}
+.chart-legend-swatch.swatch-overig {
+  background: color-mix(in srgb, var(--c-dossier) 35%, transparent);
+}
+
+/* Line chart inside frame: target label clearly above dashed line, fully opaque */
+.chart-frame .line-target {
+  opacity: 1;
+  border-top-color: color-mix(in srgb, var(--c-dossier) 65%, transparent);
+}
+.chart-frame .line-target span {
+  background: #fff;
+  left: 0.4rem;
+  right: auto;
+  top: 0;
+  transform: translateY(calc(-100% - 6px));
+}
+
+/* Highlight band: shaded vertical region marking a sub-period */
+.line-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--c-dossier) 9%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.line-band-label {
+  position: absolute;
+  top: 0.4rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--c-dossier);
+  line-height: 1.3;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ===== CODE BLOCKS ===== */
+code {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.92em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.codeblock-wrap {
+  position: relative;
+  margin: 1.25rem 0;
+}
+.codeblock-wrap pre { margin: 0; }
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 1.25rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.codeblock-copy {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--c-text-secondary);
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.codeblock-copy svg { width: 14px; height: 14px; display: block; }
+.codeblock-copy:hover,
+.codeblock-copy:focus { opacity: 1; color: var(--c-text); background: rgba(255,255,255,0.6); outline: none; }
+.codeblock-copy.is-copied {
+  opacity: 1;
+  color: var(--c-dossier);
+  background: transparent;
+}
+
+/* ===== FIGURES (PNG/JPG inline beelden met caption) ===== */
+.fig { margin: 1.6rem 0; }
+.fig img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--c-border);
+  background: #fff;
+}
+.fig figcaption {
+  font-size: 0.82rem;
+  color: var(--c-text-secondary);
+  margin-top: 0.5rem;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+}
+
+/* ===== KPI ROW ===== */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.kpi {
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--c-dossier);
+  background: rgba(81, 114, 74, 0.04);
+}
+.kpi-num {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+.kpi-label {
+  font-size: 0.82rem;
+  color: var(--c-text-secondary);
+  line-height: 1.3;
+}
+
+/* ===== MOBILE / TABLET ===== */
+@media (max-width: 1024px) {
+  .layout, .layout.has-sidenotes {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 1.5rem 1.2rem;
+    max-width: 100%;
   }
-  .callout .callout-label {
+  .toc { display: none; }
+  .sidenote-col { display: none; }
+  .mobile-toc {
     display: block;
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--c-dossier);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translate3d(0, -110%, 0);
+    pointer-events: none;
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
+  }
+  .mobile-toc.is-revealed {
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+  }
+  .mobile-toc-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(35, 31, 32, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 49;
+    transition: opacity 0.2s ease;
+  }
+  .mobile-toc-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  h1 { font-size: 1.85rem; }
+  .subtitle { font-size: 1.05rem; }
+  h2 { font-size: 1.35rem; margin-top: 2.2rem; }
+  h3 { font-size: 1.2rem; }
+  body { font-size: 1rem; }
+
+  .footer-inner {
+    flex-direction: column-reverse;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-contact { text-align: center; }
+
+  /* Charts: smaller variant */
+  .chart-title { font-size: 1.15rem; }
+  .chart-subtitle { font-size: 0.82rem; margin-bottom: 0.9rem; }
+  .bar-chart {
+    column-gap: 0.4rem;
+    row-gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+  .bar-chart:has(.lollipop-row) { column-gap: 0.9rem; }
+  .bar-label { text-align: left; }
+  .bar-track { height: 1.2rem; }
+  .bar-value { font-size: 0.8rem; white-space: nowrap; }
+  .chart-frame { padding-left: 1rem; padding-right: 1rem; }
+  .chart-frame .chart-source,
+  .chart-frame .chart-footnotes { padding-right: 0; }
+  /* Mobiel: vertical stack — source full-width boven, logo eronder links */
+  .chart-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .chart-bottom > .chart-source,
+  .chart-bottom > .chart-footnotes {
+    flex: none;
+    min-width: 0;
+  }
+  .chart-bottom > .chart-watermark {
+    width: 100px;
+    align-self: flex-start;
+  }
+  .chart-watermark { width: 100px; bottom: 1rem; right: 1rem; }
+  .line-chart {
+    grid-template-columns: 2.4rem 1fr;
+    grid-template-rows: 1fr 1.2rem;
+    height: 14rem;
+  }
+  .column-chart {
+    grid-template-columns: 2.4rem 1fr;
+    height: 12rem;
+  }
+  .column-fill { width: 85%; }
+  .column-bars { gap: 0.15rem; padding: 0 0.15rem; }
+  .line-axis-y, .line-x-axis { font-size: 0.7rem; }
+  .line-point { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
+  /* Bigger tap-buffer voor dikke duimen — onzichtbaar maar uitgebreid click-zone (~44px square) */
+  .line-point[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    pointer-events: auto;
+  }
+  /* Stacked-bar segmenten: vergroot vertical hit area zodat smalle segmenten makkelijker tapbaar zijn */
+  .bar-fill[data-tooltip] { position: relative; }
+  .bar-fill[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    inset: -12px 0;
+    pointer-events: auto;
+  }
+
+  .chart-footnotes { font-size: 0.7rem; }
+  .chart-multiples { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .bar-callout-row { padding-left: 7rem; font-size: 0.74rem; }
+  .heatmap-table { font-size: 0.78rem; }
+  .heatmap-table tbody td { padding: 0.5rem 0.3rem; }
+  .heatmap-table thead th { font-size: 0.66rem; padding: 0.5rem 0.3rem; }
+
+  /* Tables become stacked cards (heatmap-table opted out) */
+  table:not(.heatmap-table),
+  table:not(.heatmap-table) thead,
+  table:not(.heatmap-table) tbody,
+  table:not(.heatmap-table) tr,
+  table:not(.heatmap-table) td {
+    display: block;
+    width: 100%;
+  }
+  table:not(.heatmap-table) thead { display: none; }
+  table:not(.heatmap-table) tr {
+    background: var(--c-offwhite-2) !important;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    margin-bottom: 0.9rem;
+    padding: 0.4rem 0;
+  }
+  table:not(.heatmap-table) td {
+    border-bottom: 1px solid var(--c-border);
+    padding: 0.7rem 1rem;
+  }
+  table:not(.heatmap-table) td:last-child { border-bottom: none; }
+  table:not(.heatmap-table) td::before {
+    content: attr(data-label);
+    display: block;
     font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--c-text-secondary);
     margin-bottom: 0.3rem;
   }
 
-  .kpi-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 1rem;
-    margin: 1.8rem 0 0.6rem;
+  /* Footnote popup (mobile bottom-sheet) */
+  .fn-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    display: none;
   }
-  .kpi {
-    border-left: 3px solid var(--c-dossier);
-    padding: 0.2rem 0 0.2rem 1rem;
+  .fn-popup-overlay.open { display: block; }
+  .fn-popup {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--c-offwhite);
+    padding: 1.4rem 1.4rem 2rem;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 101;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+    max-height: 60vh;
+    overflow-y: auto;
   }
-  .kpi-num { font-family: "Merriweather", Georgia, serif; font-size: 1.7rem; line-height: 1.1; }
-  .kpi-label { font-size: 0.85rem; color: var(--c-text2); margin-top: 0.3rem; }
+  .fn-popup.open { transform: translateY(0); }
+  .fn-popup-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--c-text-secondary);
+    padding: 0.3rem 0.6rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
 
-  ul.clean { padding-left: 1.2rem; margin: 0 0 1.1rem; }
-  ul.clean li { margin-bottom: 0.5rem; }
-
-  /* ---- Organogram ---- */
-  .org {
-    background: #fff;
-    border: 1px solid var(--c-border);
-    border-radius: 4px;
-    padding: 2rem 1.5rem 2.2rem;
-    margin: 1.6rem 0 2rem;
-  }
-  .org-caption {
-    font-family: "Lora", Georgia, serif;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--c-text2);
-    margin-top: 1.2rem;
-  }
-  .org-top { display: flex; justify-content: center; }
-  .org-bewind {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .node-bewind {
-    background: var(--c-charcoal);
-    border-color: var(--c-charcoal);
-    min-width: 200px;
-  }
-  .org .node-bewind .role { color: #ffffff; }
-  .org .node-bewind .sub { color: rgba(255,255,255,0.8); }
-  .node {
-    border: 1.5px solid var(--c-dossier);
-    border-radius: 4px;
-    padding: 0.7rem 1rem;
-    text-align: center;
-    background: #fff;
-  }
-  .node .role { font-family: "Merriweather", Georgia, serif; font-weight: 700; font-size: 0.95rem; line-height: 1.25; }
-  .node .sub { font-size: 0.78rem; color: var(--c-text2); margin-top: 0.2rem; }
-
-  .node-lead {
-    background: var(--c-dossier);
-    border-color: var(--c-dossier);
-    max-width: 420px;
-  }
-  .org .node-lead .role { color: #ffffff; }
-  .org .node-lead .sub { color: rgba(255,255,255,0.85); }
-
-  .connector-v { width: 2px; height: 26px; background: var(--c-dossier); margin: 0 auto; }
-
-  .node-core {
-    border-style: dashed;
-    max-width: 520px;
-    margin: 0 auto;
-    background: var(--c-dossier-soft);
-  }
-  .node-core .role { font-size: 0.9rem; }
-
-  .spoor-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.8rem;
-    margin-top: 0.4rem;
-  }
-  .spoor {
-    border: 1px solid var(--c-border);
-    border-top: 3px solid var(--c-dossier);
-    border-radius: 3px;
-    padding: 0.7rem 0.7rem 0.8rem;
-    background: #fff;
-  }
-  .spoor .role { font-family: "Merriweather", Georgia, serif; font-weight: 700; font-size: 0.82rem; line-height: 1.25; }
-  .spoor .sub { font-size: 0.73rem; color: var(--c-text2); margin-top: 0.3rem; line-height: 1.35; }
-  .spoor-rail { position: relative; height: 22px; margin-bottom: 0.2rem; }
-  .spoor-rail::before {
-    content: ""; position: absolute; top: 0; left: 12.5%; right: 12.5%; height: 2px; background: var(--c-dossier);
-  }
-  .spoor-rail .tick {
-    position: absolute; top: 0; width: 2px; height: 22px; background: var(--c-dossier);
-  }
-
-  .external {
-    margin-top: 1.2rem;
-    border: 1px dashed var(--c-border);
-    border-radius: 3px;
-    padding: 0.6rem 0.9rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--c-text2);
-    background: var(--c-bg2);
-  }
-
-  .site-footer {
-    width: 100%;
-    background: var(--c-charcoal);
-    color: var(--c-bg);
-    padding: 2rem;
-    margin-top: 3rem;
-    text-align: center;
-  }
-  .footer-logo { width: 150px; color: var(--c-bg); opacity: 0.7; display: inline-block; }
-  .footer-contact { font-size: 0.82rem; opacity: 0.7; margin-top: 0.8rem; }
-
-  @media (max-width: 720px) {
-    h1 { font-size: 1.8rem; }
-    .spoor-grid { grid-template-columns: repeat(2, 1fr); }
-    .spoor-rail { display: none; }
-    .connector-v { height: 18px; }
-    .org { padding: 1.5rem 1rem; }
-  }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
-  <svg class="site-logo" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Delta Instituut">
-    <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
-    <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
-    <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
-    <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
-    <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
-    <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
-    <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
-    <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
-    <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
-    <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
-    <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
-    <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
-    <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
-    <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
-    <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
-    <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
-  </svg>
+  <a href="/" class="site-logo" aria-label="Delta Instituut">
+    <svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg>
+  </a>
 </header>
 
-<main class="wrap">
-
-  <p class="eyebrow">One-pager · Vertrouwelijk concept</p>
-  <h1>AI navigeren en permanent borgen in de overheid.</h1>
-  <p class="subtitle">Afgelopen weekend zette Anthropic op last van de Amerikaanse overheid zijn nieuwste model Fable 5 volledig uit voor alle buitenlandse gebruikers. In één avond werd duidelijk hoe afhankelijk Nederland is en hoe weinig grip de overheid heeft. AI wordt alleen maar belangrijker. Daarom is er een serieuze, blijvende structuur nodig die AI navigeert en technische expertise permanent in de overheid borgt.</p>
-  <p class="meta">Voorstel · Delta Instituut · 14 juni 2026</p>
-
-  <div class="callout">
-    <span class="callout-label">De aanleiding</span>
-    Op vrijdagavond 12 juni gaf het Amerikaanse ministerie van Handel Anthropic de opdracht om alle toegang tot Fable 5 en Mythos 5 voor buitenlandse staatsburgers te blokkeren, ook voor eigen buitenlandse medewerkers. Fable 5 stond publiek live en moest daarop voor iedereen worden uitgezet. Mythos 5 was nog niet publiek beschikbaar, alleen uitgebracht aan een select groepje vertrouwde partners. Het is de eerste keer dat een toonaangevend AI-bedrijf een publiek uitgerold model offline haalt op last van de overheid. In Europa viel het woord wake-up call, en een Nederlandse bewindspersoon noemde AI &ldquo;steeds meer een kwestie van nationale soevereiniteit&rdquo;.
+<!-- MOBILE TOC -->
+<div class="mobile-toc" id="mobile-toc">
+  <button class="mobile-toc-toggle" id="mobile-toc-toggle" aria-expanded="false">
+    <span class="mobile-toc-label">Inhoudsopgave</span>
+    <span class="mobile-toc-chevron">&#9660;</span>
+  </button>
+  <div class="mobile-toc-progress">
+    <div class="mobile-toc-progress-fill" id="mobile-progress-fill"></div>
   </div>
-
-  <p class="lead-strong">Dit is geen incident, maar een voorproefje. Wie geavanceerde AI bezit, bepaalt wie er toegang toe heeft. Nederland kan die afhankelijkheid niet wegnemen, maar wel leren navigeren: de risico&rsquo;s zien aankomen, de eigen positie benutten, en de kennis in huis hebben om mee te sturen. Dat lukt niet met losse projecten en tijdelijke werkgroepen. Het vraagt een blijvende structuur in de overheid, met technische expertise als fundament. De eerste stap daarnaartoe is een technisch kernteam dat nu begint, gedekt door de Minister-President en de Staatssecretaris Digitale Zaken, en dat uitgroeit tot een Nederlands AI Safety Institute (NL-AISI).</p>
-
-  <h2>Navigeren, niet wegkijken</h2>
-  <p>De afsluiting van Fable 5 raakt direct aan veiligheid, economie en bestuur. Bedrijven en diensten die op het model bouwen, staan plots zonder. En de beslissing werd genomen in Washington, buiten elke Nederlandse invloed om. Dit soort schokken gaat vaker komen naarmate AI krachtiger en geopolitiek beladener wordt. Navigeren betekent: deze bewegingen zien aankomen, scenario&rsquo;s klaar hebben, en zelf genoeg kennis en capaciteit bezitten om niet volledig afhankelijk te zijn. Dat is een permanente opgave, geen project met een einddatum.</p>
-
-  <h2>Een sterke uitgangspositie: ASML</h2>
-  <p>Nederland onderhandelt in Europa niet vanaf de zijlijn. Met ASML zit de meest cruciale schakel in de wereldwijde AI-keten op Nederlandse bodem. Zonder de lithografie uit Veldhoven worden de chips die geavanceerde AI draaien niet gemaakt. Dat geeft Nederland een hefboom die weinig landen hebben. In de Europese inzet rond AI-veiligheid en chipbeleid kunnen we daarom een hoofdrol spelen in plaats van volgen. Een technisch kernteam dat dit dossier beheerst, zet die positie om in invloed.</p>
-
-  <h2>De structuur begint met een technisch kernteam</h2>
-  <p>Een blijvende structuur richt je niet in één keer op. Je begint met een groep die het mandaat krijgt om de fundering te leggen en ondertussen al echt werk levert. Dit zijn geen mensen die het er even bij doen, en het is geen beleidsteam. Het is een technisch kernteam van 5 tot 15 fte dat vertrekt vanuit technische expertise over waar de technologie heen gaat. Dat team is de kiem van een permanente functie binnen de overheid en de toekomstige zetel van NL-AISI: de plek waar het instituut straks omheen wordt gebouwd.</p>
-  <p>Er loopt al een verkenning naar een Nederlands AI Safety Institute. De verwachting is dat die positief uitvalt. Juist daarom kunnen we nu al beginnen met bewegen in plaats van de uitkomst af te wachten. Wie vroeg bemenst, heeft straks een draaiend team in plaats van een leeg organigram.</p>
-  <p>We staan nog aan het begin. AI wordt alleen maar belangrijker voor veiligheid, economie en bestuur, en de overheid heeft op dit moment te weinig technische kennis in huis om mee te sturen. Daarom is het mobiliseren van technische expertise de overheid in nu de eerste prioriteit. Het kernteam werkt dagelijks samen met de andere ministeries, maar vertrekt steeds vanuit de techniek en niet vanuit een beleidsreflex.</p>
-  <p>Belangrijk: dit zijn niet de eerste de besten. Het moeten mensen zijn die hier al een jaar of langer voor waarschuwen en het dossier door en door kennen. Wie in het kernteam zit, bepaalt of het lukt. Delta Instituut speelt daarom een grote rol in de selectie en kan zelf vier fte leveren, plus een vijfde kandidaat als die wil aanhaken.</p>
-
-  <h2>Een gedeelde adviseur aan de top</h2>
-  <p>Er komt één adviseur die zowel de Minister-President als de Staatssecretaris Digitale Zaken bedient. Deze persoon zit op het snijvlak van het politieke besluit en de uitvoering, en staat tegelijk aan het hoofd van NL-AISI in oprichting. Dat voorkomt dat het dossier verzandt tussen departementen en geeft het technisch kernteam een duidelijke opdrachtgever. Eén persoon, twee bewindspersonen, en het instituut dat eronder hangt.</p>
-
-  <h2>Vier sporen</h2>
-  <p>Het technisch kernteam werkt langs vier lijnen tegelijk. Elke lijn heeft een eigen focus, maar ze delen één opdrachtgever en één agenda.</p>
-  <ul class="clean">
-    <li><strong style="font-weight:600">Geopolitiek en Europese inzet</strong> &mdash; positie bepalen in de Europese AI-governance, de ASML-hefboom in de chipketen benutten, en aansluiten bij het netwerk van buitenlandse safety institutes.</li>
-    <li><strong style="font-weight:600">Cybersecurity</strong> &mdash; de veiligheidskant van geavanceerde AI-systemen, in verbinding met de bestaande nationale cyberstructuur.</li>
-    <li><strong style="font-weight:600">Nederlandse opbouw van capaciteit</strong> &mdash; kennis, mensen en infrastructuur opbouwen zodat Nederland straks zelf kan evalueren en testen.</li>
-    <li><strong style="font-weight:600">Advisering MP</strong> &mdash; de Minister-President voorzien van scherpe, tijdige analyse over de risico&rsquo;s en kansen van geavanceerde AI.</li>
-  </ul>
-  <p>Deze groep kanaliseert bovendien externe expertise. Er is veel kennis buiten de overheid die nu niet bij het juiste loket terechtkomt. Het kernteam is dat loket.</p>
-
-  <h2>Organogram</h2>
-  <div class="org">
-    <div class="org-bewind">
-      <div class="node node-bewind">
-        <div class="role">Minister-President</div>
-        <div class="sub">Politieke dekking</div>
-      </div>
-      <div class="node node-bewind">
-        <div class="role">Staatssecretaris Digitale Zaken</div>
-        <div class="sub">Dossierhouder</div>
-      </div>
-    </div>
-    <div class="connector-v"></div>
-    <div class="org-top">
-      <div class="node node-lead">
-        <div class="role">Gedeelde adviseur</div>
-        <div class="sub">Eén adviseur voor MP &amp; Staatssecretaris &middot; hoofd NL-AISI (in oprichting)</div>
-      </div>
-    </div>
-    <div class="connector-v"></div>
-    <div class="node node-core">
-      <div class="role">Technisch kernteam &middot; 5&ndash;15 fte</div>
-      <div class="sub">Toekomstige zetel NL-AISI &middot; vertrekt vanuit techniek, werkt dagelijks met de ministeries &middot; ~4 fte vanuit Delta + 1 kandidaat</div>
-    </div>
-    <div class="connector-v"></div>
-    <div class="spoor-rail">
-      <span class="tick" style="left:12.5%"></span>
-      <span class="tick" style="left:37.5%"></span>
-      <span class="tick" style="left:62.5%"></span>
-      <span class="tick" style="left:87.5%"></span>
-    </div>
-    <div class="spoor-grid">
-      <div class="spoor">
-        <div class="role">Geopolitiek &amp; Europese inzet</div>
-        <div class="sub">Positie in EU-governance, netwerk buitenlandse AISI&rsquo;s</div>
-      </div>
-      <div class="spoor">
-        <div class="role">Cybersecurity</div>
-        <div class="sub">Veiligheid geavanceerde AI, link nationale cyberstructuur</div>
-      </div>
-      <div class="spoor">
-        <div class="role">NL capaciteitsopbouw</div>
-        <div class="sub">Technische kennis, mensen en infra om zelf te evalueren en testen</div>
-      </div>
-      <div class="spoor">
-        <div class="role">Advisering MP</div>
-        <div class="sub">Scherpe, tijdige analyse risico&rsquo;s en kansen</div>
-      </div>
-    </div>
-    <div class="external">Externe expertise wordt via het kernteam gekanaliseerd naar de vier sporen</div>
-    <div class="org-caption">Schematische weergave van de voorgestelde structuur. De gedeelde adviseur is opdrachtgever van het kernteam en hoofd van het instituut in oprichting.</div>
+  <div class="mobile-toc-drawer">
+    <ol>
+      <li><a data-target="navigeren-niet-wegkijken" href="#navigeren-niet-wegkijken">Navigeren, niet wegkijken</a></li>
+        <li><a data-target="een-sterke-uitgangspositie-asml" href="#een-sterke-uitgangspositie-asml">Een sterke uitgangspositie: ASML</a></li>
+        <li><a data-target="de-structuur-begint-met-een-technisch-kernteam" href="#de-structuur-begint-met-een-technisch-kernteam">De structuur begint met een technisch kernteam</a></li>
+        <li><a data-target="een-gedeelde-adviseur-aan-de-top" href="#een-gedeelde-adviseur-aan-de-top">Een gedeelde adviseur aan de top</a></li>
+        <li><a data-target="vier-sporen" href="#vier-sporen">Vier sporen</a></li>
+        <li><a data-target="organogram" href="#organogram">Organogram</a></li>
+        <li><a data-target="wat-dit-nu-vraagt" href="#wat-dit-nu-vraagt">Wat dit nu vraagt</a></li>
+    </ol>
   </div>
+</div>
 
-  <h2>Wat dit nu vraagt</h2>
-  <p>Een mandaat van de Minister-President en de Staatssecretaris Digitale Zaken, de aanstelling van de gedeelde adviseur, en de samenstelling van het technisch kernteam met mensen die het dossier al kennen. De lopende verkenning naar een Nederlands AI Safety Institute hoeft niet te worden afgewacht: begin nu met bemensen, zodat het instituut straks op een draaiend team kan landen. Delta Instituut levert vier fte en denkt actief mee over de overige bezetting. De afsluiting van Fable 5 laat zien wat er op het spel staat. Hoe eerder de structuur staat, hoe beter Nederland de volgende schok kan navigeren.</p>
+<!-- LAYOUT -->
+<div class="layout has-sidenotes">
 
-  <div class="callout" style="font-size:0.82rem; color:var(--c-text2);">
-    <span class="callout-label">Bronnen</span>
-    NBC News, &ldquo;Anthropic suspends new AI models after government directive&rdquo; (12 juni 2026). Euronews, &ldquo;&lsquo;Wake-up call&rsquo;: Europe reacts to Anthropic halting access to its Fable 5 and Mythos 5 AI models&rdquo; (13 juni 2026). Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; (12 juni 2026).
+  <!-- TOC SIDEBAR -->
+  <aside class="toc" id="toc">
+    <div class="toc-label">INHOUDSOPGAVE</div>
+    <div class="toc-wrap">
+      <div class="toc-track"></div>
+      <ol>
+        <li><a data-target="navigeren-niet-wegkijken" href="#navigeren-niet-wegkijken">Navigeren, niet wegkijken</a></li>
+        <li><a data-target="een-sterke-uitgangspositie-asml" href="#een-sterke-uitgangspositie-asml">Een sterke uitgangspositie: ASML</a></li>
+        <li><a data-target="de-structuur-begint-met-een-technisch-kernteam" href="#de-structuur-begint-met-een-technisch-kernteam">De structuur begint met een technisch kernteam</a></li>
+        <li><a data-target="een-gedeelde-adviseur-aan-de-top" href="#een-gedeelde-adviseur-aan-de-top">Een gedeelde adviseur aan de top</a></li>
+        <li><a data-target="vier-sporen" href="#vier-sporen">Vier sporen</a></li>
+        <li><a data-target="organogram" href="#organogram">Organogram</a></li>
+        <li><a data-target="wat-dit-nu-vraagt" href="#wat-dit-nu-vraagt">Wat dit nu vraagt</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <!-- ARTICLE -->
+  <article>
+
+    <h1>AI navigeren en permanent borgen in de overheid</h1>
+    <p class="subtitle">Afgelopen weekend zette Anthropic op last van de Amerikaanse overheid zijn nieuwste model Fable 5 volledig uit voor alle buitenlandse gebruikers. In één avond werd duidelijk hoe afhankelijk Nederland is en hoe weinig grip de overheid heeft. AI wordt alleen maar belangrijker. Daarom is er een serieuze, blijvende structuur nodig die AI navigeert en technische expertise permanent in de overheid borgt.</p>
+
+    <div class="article-meta">
+      <span class="category-tag">Digitale Overheid</span>
+      <span class="sep">&middot;</span>
+      <span>Onno Eric Blom</span>
+      <span class="sep">&middot;</span>
+      <span>14 juni 2026</span>
+    </div>
+
+    <p>Op vrijdagavond 12 juni gaf het Amerikaanse ministerie van Handel Anthropic de opdracht om alle toegang tot Fable 5 en Mythos 5 voor buitenlandse staatsburgers te blokkeren, ook voor eigen buitenlandse medewerkers.<sup class="fn-ref" id="ref-1" data-num="1">1</sup> Fable 5 stond publiek live en moest daarop voor iedereen worden uitgezet. Mythos 5 was nog niet publiek beschikbaar, alleen uitgebracht aan een select groepje vertrouwde partners.<sup class="fn-ref" id="ref-2" data-num="2">2</sup> Het is de eerste keer dat een toonaangevend AI-bedrijf een publiek uitgerold model offline haalt op last van de overheid. In Europa viel het woord wake-up call, en een Nederlandse bewindspersoon noemde AI steeds meer een kwestie van nationale soevereiniteit.<sup class="fn-ref" id="ref-3" data-num="3">3</sup></p>
+
+<p>Dit is geen incident, maar een voorproefje. Wie geavanceerde AI bezit, bepaalt wie er toegang toe heeft. Nederland kan die afhankelijkheid niet wegnemen, maar wel leren navigeren: de risico's zien aankomen, de eigen positie benutten, en de kennis in huis hebben om mee te sturen. Dat lukt niet met losse projecten en tijdelijke werkgroepen. Het vraagt een blijvende structuur in de overheid, met technische expertise als fundament. De eerste stap daarnaartoe is een technisch kernteam dat nu begint, gedekt door de Minister-President en de Staatssecretaris Digitale Zaken, en dat uitgroeit tot een Nederlands AI Safety Institute (NL-AISI).</p>
+
+<h2 id="navigeren-niet-wegkijken">Navigeren, niet wegkijken</h2>
+
+<p>De afsluiting van Fable 5 raakt direct aan veiligheid, economie en bestuur. Bedrijven en diensten die op het model bouwen, staan plots zonder. En de beslissing werd genomen in Washington, buiten elke Nederlandse invloed om. Dit soort schokken gaat vaker komen naarmate AI krachtiger en geopolitiek beladener wordt. Navigeren betekent: deze bewegingen zien aankomen, scenario's klaar hebben, en zelf genoeg kennis en capaciteit bezitten om niet volledig afhankelijk te zijn. Dat is een permanente opgave, geen project met een einddatum.</p>
+
+<h2 id="een-sterke-uitgangspositie-asml">Een sterke uitgangspositie: ASML</h2>
+
+<p>Nederland onderhandelt in Europa niet vanaf de zijlijn. Met ASML zit de meest cruciale schakel in de wereldwijde AI-keten op Nederlandse bodem. Zonder de lithografie uit Veldhoven worden de chips die geavanceerde AI draaien niet gemaakt. Dat geeft Nederland een hefboom die weinig landen hebben. In de Europese inzet rond AI-veiligheid en chipbeleid kunnen we daarom een hoofdrol spelen in plaats van volgen. Een technisch kernteam dat dit dossier beheerst, zet die positie om in invloed.</p>
+
+<h2 id="de-structuur-begint-met-een-technisch-kernteam">De structuur begint met een technisch kernteam</h2>
+
+<p>Een blijvende structuur richt je niet in één keer op. Je begint met een groep die het mandaat krijgt om de fundering te leggen en ondertussen al echt werk levert. Dit zijn geen mensen die het er even bij doen, en het is geen beleidsteam. Het is een technisch kernteam van 5 tot 15 fte dat vertrekt vanuit technische expertise over waar de technologie heen gaat. Dat team is de kiem van een permanente functie binnen de overheid en de toekomstige zetel van NL-AISI: de plek waar het instituut straks omheen wordt gebouwd.</p>
+
+<p>Er loopt al een verkenning naar een Nederlands AI Safety Institute. De verwachting is dat die positief uitvalt. Juist daarom kunnen we nu al beginnen met bewegen in plaats van de uitkomst af te wachten. Wie vroeg bemenst, heeft straks een draaiend team in plaats van een leeg organigram.</p>
+
+<p>We staan nog aan het begin. AI wordt alleen maar belangrijker voor veiligheid, economie en bestuur, en de overheid heeft op dit moment te weinig technische kennis in huis om mee te sturen. Daarom is het mobiliseren van technische expertise de overheid in nu de eerste prioriteit. Het kernteam werkt dagelijks samen met de andere ministeries, maar vertrekt steeds vanuit de techniek en niet vanuit een beleidsreflex.</p>
+
+<p>Belangrijk: dit zijn niet de eerste de besten. Het moeten mensen zijn die hier al een jaar of langer voor waarschuwen en het dossier door en door kennen. Wie in het kernteam zit, bepaalt of het lukt. Delta Instituut speelt daarom een grote rol in de selectie en kan zelf vier fte leveren, plus een vijfde kandidaat als die wil aanhaken.</p>
+
+<h2 id="een-gedeelde-adviseur-aan-de-top">Een gedeelde adviseur aan de top</h2>
+
+<p>Er komt één adviseur die zowel de Minister-President als de Staatssecretaris Digitale Zaken bedient. Deze persoon zit op het snijvlak van het politieke besluit en de uitvoering, en staat tegelijk aan het hoofd van NL-AISI in oprichting. Dat voorkomt dat het dossier verzandt tussen departementen en geeft het technisch kernteam een duidelijke opdrachtgever. Eén persoon, twee bewindspersonen, en het instituut dat eronder hangt.</p>
+
+<h2 id="vier-sporen">Vier sporen</h2>
+
+<p>Het technisch kernteam werkt langs vier lijnen tegelijk. Elke lijn heeft een eigen focus, maar ze delen één opdrachtgever en één agenda.</p>
+
+<ul><li>**Geopolitiek en Europese inzet** — positie bepalen in de Europese AI-governance, de ASML-hefboom in de chipketen benutten, en aansluiten bij het netwerk van buitenlandse safety institutes.</li><li>**Cybersecurity** — de veiligheidskant van geavanceerde AI-systemen, in verbinding met de bestaande nationale cyberstructuur.</li><li>**Nederlandse opbouw van capaciteit** — technische kennis, mensen en infrastructuur opbouwen zodat Nederland straks zelf kan evalueren en testen.</li><li>**Advisering MP en Staatssecretaris** — de Minister-President en de Staatssecretaris Digitale Zaken voorzien van scherpe, tijdige analyse over de risico's en kansen van geavanceerde AI.</li></ul>
+
+<p>Deze groep kanaliseert bovendien externe expertise. Er is veel kennis buiten de overheid die nu niet bij het juiste loket terechtkomt. Het kernteam is dat loket.</p>
+
+<h2 id="organogram">Organogram</h2>
+
+<style>
+  .org { background:#fff; border:1px solid var(--c-border); border-radius:4px; padding:2rem 1.5rem 2.2rem; margin:1.6rem 0 2rem; }
+  .org-caption { font-family:"Lora",Georgia,serif; font-style:italic; font-size:0.85rem; color:var(--c-text-secondary); margin-top:1.2rem; }
+  .org-top { display:flex; justify-content:center; }
+  .org-bewind { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+  .org .node { border:1.5px solid var(--c-dossier); border-radius:4px; padding:0.7rem 1rem; text-align:center; background:#fff; }
+  .org .node .role { font-family:"Merriweather",Georgia,serif; font-weight:700; font-size:0.95rem; line-height:1.25; color:var(--c-text); }
+  .org .node .sub { font-size:0.78rem; color:var(--c-text-secondary); margin-top:0.2rem; }
+  .org .node-bewind { background:var(--c-charcoal); border-color:var(--c-charcoal); min-width:200px; }
+  .org .node-bewind .role { color:#ffffff; }
+  .org .node-bewind .sub { color:rgba(255,255,255,0.8); }
+  .org .node-lead { background:var(--c-dossier); border-color:var(--c-dossier); max-width:440px; }
+  .org .node-lead .role { color:#ffffff; }
+  .org .node-lead .sub { color:rgba(255,255,255,0.85); }
+  .org .connector-v { width:2px; height:26px; background:var(--c-dossier); margin:0 auto; }
+  .org .node-core { border-style:dashed; max-width:540px; margin:0 auto; background:rgba(31,72,134,0.08); }
+  .org .node-core .role { font-size:0.9rem; }
+  .org .spoor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; margin-top:0.4rem; }
+  .org .spoor { border:1px solid var(--c-border); border-top:3px solid var(--c-dossier); border-radius:3px; padding:0.7rem 0.7rem 0.8rem; background:#fff; }
+  .org .spoor .role { font-family:"Merriweather",Georgia,serif; font-weight:700; font-size:0.82rem; line-height:1.25; }
+  .org .spoor .sub { font-size:0.73rem; color:var(--c-text-secondary); margin-top:0.3rem; line-height:1.35; }
+  .org .spoor-rail { position:relative; height:22px; margin-bottom:0.2rem; }
+  .org .spoor-rail::before { content:""; position:absolute; top:0; left:12.5%; right:12.5%; height:2px; background:var(--c-dossier); }
+  .org .spoor-rail .tick { position:absolute; top:0; width:2px; height:22px; background:var(--c-dossier); }
+  .org .external { margin-top:1.2rem; border:1px dashed var(--c-border); border-radius:3px; padding:0.6rem 0.9rem; text-align:center; font-size:0.8rem; color:var(--c-text-secondary); background:var(--c-offwhite-2); }
+  @media (max-width:1024px){ .org .spoor-grid{ grid-template-columns:repeat(2,1fr);} .org .spoor-rail{ display:none;} .org .connector-v{ height:18px;} }
+</style>
+<div class="org">
+  <div class="org-bewind">
+    <div class="node node-bewind"><div class="role">Minister-President</div><div class="sub">Politieke dekking</div></div>
+    <div class="node node-bewind"><div class="role">Staatssecretaris Digitale Zaken</div><div class="sub">Dossierhouder</div></div>
   </div>
+  <div class="connector-v"></div>
+  <div class="org-top">
+    <div class="node node-lead"><div class="role">Gedeelde adviseur</div><div class="sub">Eén adviseur voor MP &amp; Staatssecretaris &middot; hoofd NL-AISI (in oprichting)</div></div>
+  </div>
+  <div class="connector-v"></div>
+  <div class="node node-core"><div class="role">Technisch kernteam &middot; 5&ndash;15 fte</div><div class="sub">Toekomstige zetel NL-AISI &middot; vertrekt vanuit techniek, werkt dagelijks met de ministeries &middot; ~4 fte vanuit Delta + 1 kandidaat</div></div>
+  <div class="connector-v"></div>
+  <div class="spoor-rail"><span class="tick" style="left:12.5%"></span><span class="tick" style="left:37.5%"></span><span class="tick" style="left:62.5%"></span><span class="tick" style="left:87.5%"></span></div>
+  <div class="spoor-grid">
+    <div class="spoor"><div class="role">Geopolitiek &amp; Europese inzet</div><div class="sub">Positie in EU-governance, netwerk buitenlandse AISI's</div></div>
+    <div class="spoor"><div class="role">Cybersecurity</div><div class="sub">Veiligheid geavanceerde AI, link nationale cyberstructuur</div></div>
+    <div class="spoor"><div class="role">NL capaciteitsopbouw</div><div class="sub">Technische kennis, mensen en infra om zelf te evalueren en testen</div></div>
+    <div class="spoor"><div class="role">Advisering MP en Staatssecretaris</div><div class="sub">Scherpe, tijdige analyse risico's en kansen</div></div>
+  </div>
+  <div class="external">Externe expertise wordt via het kernteam gekanaliseerd naar de vier sporen</div>
+  <div class="org-caption">Schematische weergave van de voorgestelde structuur. De gedeelde adviseur is opdrachtgever van het kernteam en hoofd van het instituut in oprichting.</div>
+</div>
 
-</main>
+<h2 id="wat-dit-nu-vraagt">Wat dit nu vraagt</h2>
 
+<p>Een mandaat van de Minister-President en de Staatssecretaris Digitale Zaken, de aanstelling van de gedeelde adviseur, en de samenstelling van het technisch kernteam met mensen die het dossier al kennen. De lopende verkenning naar een Nederlands AI Safety Institute hoeft niet te worden afgewacht: begin nu met bemensen, zodat het instituut straks op een draaiend team kan landen. Delta Instituut levert vier fte en denkt actief mee over de overige bezetting. De afsluiting van Fable 5 laat zien wat er op het spel staat. Hoe eerder de structuur staat, hoe beter Nederland de volgende schok kan navigeren.</p>
+
+  </article>
+
+  <aside class="sidenote-col">
+  <div class="sidenote" data-num="1" data-ref="ref-1"><span class="sidenote-num">1</span> NBC News, &ldquo;Anthropic suspends new AI models after government directive&rdquo; (12 juni 2026).</div>
+  <div class="sidenote" data-num="2" data-ref="ref-2"><span class="sidenote-num">2</span> Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; (12 juni 2026). Mythos 5 was alleen uitgebracht aan een select groepje vertrouwde partners en stond niet publiek live.</div>
+  <div class="sidenote" data-num="3" data-ref="ref-3"><span class="sidenote-num">3</span> Euronews, &ldquo;&lsquo;Wake-up call&rsquo;: Europe reacts to Anthropic halting access to its Fable 5 and Mythos 5 AI models&rdquo; (13 juni 2026).</div>
+</aside>
+
+</div>
+
+<!-- FOOTER -->
 <footer class="site-footer">
-  <svg class="footer-logo" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Delta Instituut">
-    <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
-    <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
-    <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
-    <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
-    <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
-    <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
-    <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
-    <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
-    <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
-    <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
-    <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
-    <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
-    <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
-    <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
-    <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
-    <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
-  </svg>
-  <div class="footer-contact">Delta Instituut &middot; Herprogrammeer de Overheid &middot; onno@herprogrammeerdeoverheid.nl</div>
+  <div class="footer-inner">
+    <div class="footer-logo" aria-label="Delta Instituut">
+      <svg width="1607" height="216" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+<path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+<path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+<path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+<path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+<path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+<path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+<path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+<path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+<path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+<path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+<path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+<path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+<path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+<path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+<path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+</svg>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:onno@deltainstituut.nl">onno@deltainstituut.nl</a><br>
+      +31 6 1173 6946
+    </div>
+  </div>
 </footer>
+
+<script>
+/* Delta Instituut - TOC scroll tracking, sidenote positioning, footnote popups */
+/* ES5, no external dependencies, IIFE-wrapped */
+(function() {
+  var tocLinks = document.querySelectorAll('.toc a[data-target]');
+  var trackFill = document.getElementById('toc-track-fill');
+  var mobileFill = document.getElementById('mobile-progress-fill');
+  var mobileToc = document.getElementById('mobile-toc');
+  var mobileToggle = document.getElementById('mobile-toc-toggle');
+  var mobileLinks = document.querySelectorAll('.mobile-toc-drawer a');
+  var sidenoteCol = document.querySelector('.sidenote-col');
+  var fnRefs = document.querySelectorAll('.fn-ref');
+
+  function getScrollPercent() {
+    var h = document.documentElement;
+    var b = document.body;
+    var st = h.scrollTop || b.scrollTop;
+    var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return 0;
+    return Math.min(100, Math.max(0, (st / sh) * 100));
+  }
+
+  /* Smooth, decoupled mobile progress fill via requestAnimationFrame */
+  var rafScheduled = false;
+  function updateMobileFill() {
+    rafScheduled = false;
+    if (!mobileFill) return;
+    mobileFill.style.width = getScrollPercent() + '%';
+  }
+  function scheduleMobileFill() {
+    if (rafScheduled) return;
+    rafScheduled = true;
+    (window.requestAnimationFrame || function(cb){ setTimeout(cb, 16); })(updateMobileFill);
+  }
+
+  function updateProgress() {
+    var pct = getScrollPercent();
+    /* Mobile fill is updated via rAF — keep ticker here as fallback for non-scroll triggers */
+    if (mobileFill) mobileFill.style.width = pct + '%';
+
+    var headings = [];
+    for (var i = 0; i < tocLinks.length; i++) {
+      var id = tocLinks[i].getAttribute('data-target');
+      var el = document.getElementById(id);
+      if (el) headings.push({ link: tocLinks[i], el: el });
+    }
+
+    var triggerPoint = window.innerHeight * 0.5;
+    var activeIdx = -1;
+    for (var j = 0; j < headings.length; j++) {
+      var rect = headings[j].el.getBoundingClientRect();
+      if (rect.top < triggerPoint) {
+        activeIdx = j;
+      }
+    }
+
+    /* At the bottom of the page, force the last section active.
+       Short final sections (like a brief Conclusie) never reach the 30% trigger
+       before the page bottom comes into view, leaving the previous section active. */
+    if (pct >= 98 && headings.length > 0) {
+      activeIdx = headings.length - 1;
+    }
+
+    /* Only the active item is highlighted - no cumulative .passed class */
+    for (var k = 0; k < headings.length; k++) {
+      headings[k].link.classList.remove('active');
+    }
+    if (activeIdx >= 0) {
+      headings[activeIdx].link.classList.add('active');
+
+      var labelEl = document.querySelector('.mobile-toc-label');
+      if (labelEl) labelEl.textContent = headings[activeIdx].link.textContent;
+    }
+
+    /* Desktop track fill reaches down to bottom of active TOC item.
+       This keeps the fill aligned with the highlight (both driven by 50% trigger). */
+    if (trackFill) {
+      if (activeIdx >= 0 && tocLinks[activeIdx] && tocLinks[activeIdx].parentNode) {
+        var activeLi = tocLinks[activeIdx].parentNode;
+        var bottom = activeLi.offsetTop + activeLi.offsetHeight;
+        trackFill.style.height = bottom + 'px';
+      } else {
+        trackFill.style.height = '0px';
+      }
+    }
+  }
+
+  /* Mobile TOC drawer + backdrop overlay */
+  var mobileBackdrop = null;
+  function ensureBackdrop() {
+    if (mobileBackdrop) return mobileBackdrop;
+    mobileBackdrop = document.createElement('div');
+    mobileBackdrop.className = 'mobile-toc-backdrop';
+    mobileBackdrop.addEventListener('click', closeMobileDrawer);
+    document.body.appendChild(mobileBackdrop);
+    return mobileBackdrop;
+  }
+  function openMobileDrawer() {
+    if (!mobileToc) return;
+    mobileToc.classList.add('open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+    ensureBackdrop().classList.add('is-active');
+  }
+  function closeMobileDrawer() {
+    if (!mobileToc) return;
+    mobileToc.classList.remove('open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    if (mobileBackdrop) mobileBackdrop.classList.remove('is-active');
+  }
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', function() {
+      if (mobileToc.classList.contains('open')) closeMobileDrawer();
+      else openMobileDrawer();
+    });
+  }
+  for (var m = 0; m < mobileLinks.length; m++) {
+    mobileLinks[m].addEventListener('click', closeMobileDrawer);
+  }
+
+  /* Sidenote positioning - desktop only */
+  function positionSidenotes() {
+    if (!sidenoteCol) return;
+    if (window.innerWidth <= 1024) return;
+    var notes = sidenoteCol.querySelectorAll('.sidenote');
+    var colRect = sidenoteCol.getBoundingClientRect();
+    var lastBottom = 0;
+    for (var i = 0; i < notes.length; i++) {
+      var note = notes[i];
+      var refId = note.getAttribute('data-ref');
+      if (!refId) continue;
+      var ref = document.getElementById(refId);
+      if (!ref) continue;
+      var refRect = ref.getBoundingClientRect();
+      var desiredTop = refRect.top - colRect.top;
+      if (desiredTop < lastBottom + 12) desiredTop = lastBottom + 12;
+      note.style.top = desiredTop + 'px';
+      lastBottom = desiredTop + note.offsetHeight;
+    }
+  }
+
+  /* Footnote popups - mobile only */
+  var popupOverlay = null;
+  var popupBody = null;
+  function ensurePopup() {
+    if (popupOverlay) return;
+    popupOverlay = document.createElement('div');
+    popupOverlay.className = 'fn-popup-overlay';
+    popupBody = document.createElement('div');
+    popupBody.className = 'fn-popup';
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'fn-popup-close';
+    closeBtn.setAttribute('aria-label', 'Sluiten');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.addEventListener('click', closePopup);
+    popupBody.appendChild(closeBtn);
+    var content = document.createElement('div');
+    content.className = 'fn-popup-content';
+    popupBody.appendChild(content);
+    document.body.appendChild(popupOverlay);
+    document.body.appendChild(popupBody);
+    popupOverlay.addEventListener('click', closePopup);
+  }
+  function openPopup(html) {
+    ensurePopup();
+    var content = popupBody.querySelector('.fn-popup-content');
+    content.innerHTML = html;
+    popupOverlay.classList.add('open');
+    popupBody.classList.add('open');
+  }
+  function closePopup() {
+    if (!popupOverlay) return;
+    popupOverlay.classList.remove('open');
+    popupBody.classList.remove('open');
+  }
+
+  for (var n = 0; n < fnRefs.length; n++) {
+    fnRefs[n].addEventListener('click', function(e) {
+      e.preventDefault();
+      var num = this.textContent.replace(/\D/g, '');
+      var note = document.querySelector('.sidenote[data-num="' + num + '"]');
+      if (!note) return;
+      if (window.innerWidth <= 1024) {
+        openPopup(note.innerHTML);
+      } else {
+        /* Desktop: scroll sidenote into view + brief highlight flash */
+        note.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        note.classList.add('is-flashed');
+        setTimeout(function() { note.classList.remove('is-flashed'); }, 1500);
+      }
+    });
+  }
+
+  /* Mobile TOC visibility — pas tonen als article-meta voorbij top viewport is gescrolld.
+     rAF-throttled zodat we de class slechts één keer per frame togglen → smooth animatie. */
+  var articleMeta = document.querySelector('.article-meta');
+  var mobileTocRevealed = false;
+  var mobileTocRafScheduled = false;
+  function applyMobileTocVisibility() {
+    mobileTocRafScheduled = false;
+    if (!mobileToc || !articleMeta) return;
+    var shouldReveal = articleMeta.getBoundingClientRect().bottom <= 0;
+    if (shouldReveal === mobileTocRevealed) return;
+    mobileTocRevealed = shouldReveal;
+    if (shouldReveal) {
+      mobileToc.classList.add('is-revealed');
+    } else {
+      mobileToc.classList.remove('is-revealed');
+      closeMobileDrawer();
+    }
+  }
+  function updateMobileTocVisibility() {
+    if (mobileTocRafScheduled) return;
+    mobileTocRafScheduled = true;
+    (window.requestAnimationFrame || function(cb){ setTimeout(cb, 16); })(applyMobileTocVisibility);
+  }
+
+  /* Code-block copy buttons */
+  var COPY_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h7"/></svg>';
+  var CHECK_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5"/></svg>';
+  function setupCodeCopy() {
+    var pres = document.querySelectorAll('article pre');
+    for (var p = 0; p < pres.length; p++) {
+      (function(pre) {
+        if (pre.parentNode && pre.parentNode.classList && pre.parentNode.classList.contains('codeblock-wrap')) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'codeblock-wrap';
+        pre.parentNode.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'codeblock-copy';
+        btn.setAttribute('aria-label', 'Kopieer code');
+        btn.setAttribute('title', 'Kopieer code');
+        btn.innerHTML = COPY_ICON;
+        btn.addEventListener('click', function(ev) {
+          ev.preventDefault();
+          var code = pre.querySelector('code') || pre;
+          var text = code.textContent || '';
+          var done = function() {
+            btn.classList.add('is-copied');
+            btn.innerHTML = CHECK_ICON;
+            btn.setAttribute('aria-label', 'Gekopieerd');
+            setTimeout(function() {
+              btn.classList.remove('is-copied');
+              btn.innerHTML = COPY_ICON;
+              btn.setAttribute('aria-label', 'Kopieer code');
+            }, 1500);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(function() {
+              fallbackCopy(text, done);
+            });
+          } else {
+            fallbackCopy(text, done);
+          }
+        });
+        wrap.appendChild(btn);
+      })(pres[p]);
+    }
+  }
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); }
+    catch (e) { /* clipboard onbereikbaar — niets doen */ }
+    document.body.removeChild(ta);
+  }
+  setupCodeCopy();
+
+  /* Chart-frame bottom row: wrap chart-source + chart-watermark in een flex-container
+     zodat-ie horizontaal naast elkaar staan ipv watermark eronder via absolute positioning.
+     Idempotent — slaat over als chart-bottom al bestaat. */
+  function setupChartBottom() {
+    var frames = document.querySelectorAll('.chart-frame');
+    for (var f = 0; f < frames.length; f++) {
+      var frame = frames[f];
+      if (frame.querySelector(':scope > .chart-bottom')) continue;
+      var source = frame.querySelector(':scope > .chart-source, :scope > .chart-footnotes');
+      var watermark = frame.querySelector(':scope > .chart-watermark');
+      if (!source || !watermark) continue;
+      var bottom = document.createElement('div');
+      bottom.className = 'chart-bottom';
+      frame.insertBefore(bottom, source);
+      bottom.appendChild(source);
+      bottom.appendChild(watermark);
+    }
+  }
+  setupChartBottom();
+
+  window.addEventListener('scroll', function() {
+    scheduleMobileFill();
+    updateProgress();
+    positionSidenotes();
+    updateMobileTocVisibility();
+  }, { passive: true });
+  window.addEventListener('resize', function() {
+    updateProgress();
+    positionSidenotes();
+    updateMobileTocVisibility();
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(positionSidenotes);
+  }
+  updateProgress();
+  positionSidenotes();
+  updateMobileTocVisibility();
+})();
+
+</script>
+
+<script>
+/* Chart interactivity: tooltip on hover (desktop) and tap (mobile) for any element with data-tooltip.
+   Tap-opened tooltips persist until the user taps elsewhere; hover-opened tooltips clear on mouseleave. */
+(function() {
+  if (!document.querySelector('[data-tooltip]')) return;
+
+  var tip = document.createElement('div');
+  tip.className = 'chart-tooltip';
+  tip.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(tip);
+
+  var activeEl = null;
+  var clickPersisted = false;
+
+  function positionFor(el) {
+    /* Anchor preference:
+       1. .column-fill (vertical column chart — anchor op de zichtbare bar bovenkant)
+       2. .bar-track-stacked (multi-segment bar — center on whole bar)
+       3. .bar-fill with non-zero width (single bar — center on the colored part)
+       4. .bar-track (zero-value rows — center on the track)
+       5. element itself (heatmap cells, line points, etc.) */
+    var anchor = el;
+    var columnFill = el.querySelector && el.querySelector('.column-fill');
+    if (columnFill) {
+      if (columnFill.offsetHeight > 0) {
+        anchor = columnFill;
+      } else {
+        /* 0-waarde column: anker op baseline (bottom van column-bar) */
+        var br = el.getBoundingClientRect();
+        return { left: br.left, top: br.bottom - 8, right: br.right, bottom: br.bottom, width: br.width, height: 8 };
+      }
+    } else {
+      var stacked = el.querySelector && el.querySelector('.bar-track-stacked');
+      if (stacked) {
+        anchor = stacked;
+      } else {
+        var fill = el.querySelector && el.querySelector('.bar-fill');
+        if (fill && fill.offsetWidth > 0) {
+          anchor = fill;
+        } else {
+          var track = el.querySelector && el.querySelector('.bar-track');
+          if (track) anchor = track;
+        }
+      }
+    }
+    return anchor.getBoundingClientRect();
+  }
+
+  function show(el, persist) {
+    var label = el.getAttribute('data-tooltip');
+    if (!label) return;
+    /* Clear previous active element's class if switching */
+    if (activeEl && activeEl !== el) activeEl.classList.remove('is-tooltip-active');
+    tip.innerHTML = label;
+    tip.classList.add('is-visible');
+    activeEl = el;
+    clickPersisted = !!persist;
+    el.classList.add('is-tooltip-active');
+    var rect = positionFor(el);
+    tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+    tip.style.top = (rect.top + window.scrollY) + 'px';
+  }
+
+  function hide() {
+    tip.classList.remove('is-visible');
+    if (activeEl) activeEl.classList.remove('is-tooltip-active');
+    activeEl = null;
+    clickPersisted = false;
+  }
+
+  var triggers = document.querySelectorAll('[data-tooltip]');
+  for (var i = 0; i < triggers.length; i++) {
+    (function(el) {
+      el.addEventListener('mouseenter', function() {
+        /* If a tap is currently persisting another tooltip, don't override */
+        if (clickPersisted && activeEl !== el) return;
+        show(el, false);
+      });
+      el.addEventListener('mouseleave', function() {
+        /* Only hide on mouseleave if NOT in tap-persist mode */
+        if (!clickPersisted) hide();
+      });
+      el.addEventListener('focus', function() { show(el, false); });
+      el.addEventListener('blur', function() { if (!clickPersisted) hide(); });
+      el.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        if (activeEl === el && clickPersisted) {
+          hide();
+        } else {
+          show(el, true);
+        }
+      });
+    })(triggers[i]);
+  }
+
+  document.addEventListener('click', function() { if (activeEl) hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('resize', hide);
+
+  /* Series highlight: hover (desktop) of click (desktop+mobile) op een [data-series]
+     element. .chart-frame krijgt .has-series-active, matching elements .is-series-active.
+     Click toggelt persistent — blijft staan tot je hetzelfde item nogmaals klikt of buiten klikt.
+     Hover wordt genegeerd zolang er een persistent series actief is op die frame. */
+  var seriesEls = document.querySelectorAll('[data-series]');
+  function clearSeries(frame) {
+    frame.classList.remove('has-series-active');
+    delete frame.dataset.seriesPersist;
+    var actives = frame.querySelectorAll('.is-series-active');
+    for (var i = 0; i < actives.length; i++) actives[i].classList.remove('is-series-active');
+  }
+  function activateSeries(el) {
+    var s = el.getAttribute('data-series');
+    var frame = el.closest && el.closest('.chart-frame');
+    if (!frame || !s) return;
+    frame.classList.add('has-series-active');
+    var matches = frame.querySelectorAll('[data-series="' + s + '"]');
+    for (var i = 0; i < matches.length; i++) matches[i].classList.add('is-series-active');
+  }
+  for (var sIdx = 0; sIdx < seriesEls.length; sIdx++) {
+    (function(el) {
+      el.addEventListener('mouseenter', function() {
+        var frame = el.closest && el.closest('.chart-frame');
+        if (frame && frame.dataset.seriesPersist) return; /* persist-mode owns the frame */
+        activateSeries(el);
+      });
+      el.addEventListener('mouseleave', function() {
+        var frame = el.closest && el.closest('.chart-frame');
+        if (!frame || frame.dataset.seriesPersist) return;
+        clearSeries(frame);
+      });
+      el.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        var frame = el.closest && el.closest('.chart-frame');
+        if (!frame) return;
+        var s = el.getAttribute('data-series');
+        if (frame.dataset.seriesPersist === s) {
+          clearSeries(frame);
+        } else {
+          /* switch persistent series: clear first, then activate the new one */
+          var matches = frame.querySelectorAll('.is-series-active');
+          for (var i = 0; i < matches.length; i++) matches[i].classList.remove('is-series-active');
+          frame.dataset.seriesPersist = s;
+          activateSeries(el);
+        }
+      });
+    })(seriesEls[sIdx]);
+  }
+  /* Click anywhere outside a [data-series] element clears all persistent series. */
+  document.addEventListener('click', function() {
+    var frames = document.querySelectorAll('.chart-frame');
+    for (var f = 0; f < frames.length; f++) {
+      if (frames[f].dataset.seriesPersist) clearSeries(frames[f]);
+    }
+  });
+})();
+
+</script>
 
 </body>
 </html>
