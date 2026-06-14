@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One-pager: een Nederlands AI Safety Institute, nu voorsorteren</title>
+<meta name="description" content="Voorstel voor een klein kernteam dat de oprichting van een Nederlands AI Safety Institute voorbereidt, met een gedeelde adviseur aan de MP en Staatssecretaris.">
+<meta name="author" content="Onno Eric Blom">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta property="og:title" content="One-pager: een Nederlands AI Safety Institute, nu voorsorteren">
+<meta property="og:description" content="Een klein kernteam dat de oprichting van een NL-AISI voorbereidt, met een gedeelde adviseur aan de MP en Staatssecretaris.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://preview.deltainstituut.nl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://preview.deltainstituut.nl/artikelen/aisi-voorsortering/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://preview.deltainstituut.nl/og-image.jpg">
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root {
+    --c-charcoal: #231f20;
+    --c-bg: #eff0eb;
+    --c-bg2: #e5e6de;
+    --c-text: #161613;
+    --c-text2: #4a4a45;
+    --c-border: #ddd9d0;
+    --c-dossier: #1f4886;
+    --c-dossier-soft: rgba(31, 72, 134, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--c-bg);
+    color: var(--c-text);
+    font-family: "Lora", Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Merriweather", Georgia, serif; color: var(--c-text); }
+
+  .site-header {
+    width: 100%;
+    background: var(--c-charcoal);
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-logo { width: 190px; color: var(--c-bg); display: block; overflow: hidden; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 3rem 1.5rem 2rem; }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-dossier);
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+  }
+  h1 { font-size: 2.5rem; font-weight: 400; line-height: 1.2; margin: 0 0 1rem; }
+  .subtitle {
+    font-size: 1.18rem;
+    color: var(--c-dossier);
+    line-height: 1.5;
+    margin: 0 0 1.4rem;
+  }
+  .meta {
+    font-size: 0.85rem;
+    color: var(--c-text2);
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--c-border);
+    margin-bottom: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.6rem 0 0.9rem;
+    line-height: 1.3;
+  }
+  p { margin: 0 0 1.1rem; }
+
+  .lead-strong { font-size: 1.1rem; }
+
+  .callout {
+    border-left: 3px solid var(--c-dossier);
+    padding: 0.4rem 0 0.4rem 1.3rem;
+    margin: 1.6rem 0;
+    color: var(--c-text);
+  }
+  .callout .callout-label {
+    display: block;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--c-dossier);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    margin: 1.8rem 0 0.6rem;
+  }
+  .kpi {
+    border-left: 3px solid var(--c-dossier);
+    padding: 0.2rem 0 0.2rem 1rem;
+  }
+  .kpi-num { font-family: "Merriweather", Georgia, serif; font-size: 1.7rem; line-height: 1.1; }
+  .kpi-label { font-size: 0.85rem; color: var(--c-text2); margin-top: 0.3rem; }
+
+  ul.clean { padding-left: 1.2rem; margin: 0 0 1.1rem; }
+  ul.clean li { margin-bottom: 0.5rem; }
+
+  /* ---- Organogram ---- */
+  .org {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    padding: 2rem 1.5rem 2.2rem;
+    margin: 1.6rem 0 2rem;
+  }
+  .org-caption {
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--c-text2);
+    margin-top: 1.2rem;
+  }
+  .org-top { display: flex; justify-content: center; }
+  .node {
+    border: 1.5px solid var(--c-dossier);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    background: #fff;
+  }
+  .node .role { font-family: "Merriweather", Georgia, serif; font-weight: 700; font-size: 0.95rem; line-height: 1.25; }
+  .node .sub { font-size: 0.78rem; color: var(--c-text2); margin-top: 0.2rem; }
+
+  .node-lead {
+    background: var(--c-dossier);
+    border-color: var(--c-dossier);
+    max-width: 420px;
+  }
+  .node-lead .role { color: #fff; }
+  .node-lead .sub { color: rgba(255,255,255,0.85); }
+
+  .connector-v { width: 2px; height: 26px; background: var(--c-dossier); margin: 0 auto; }
+
+  .node-core {
+    border-style: dashed;
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--c-dossier-soft);
+  }
+  .node-core .role { font-size: 0.9rem; }
+
+  .spoor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin-top: 0.4rem;
+  }
+  .spoor {
+    border: 1px solid var(--c-border);
+    border-top: 3px solid var(--c-dossier);
+    border-radius: 3px;
+    padding: 0.7rem 0.7rem 0.8rem;
+    background: #fff;
+  }
+  .spoor .role { font-family: "Merriweather", Georgia, serif; font-weight: 700; font-size: 0.82rem; line-height: 1.25; }
+  .spoor .sub { font-size: 0.73rem; color: var(--c-text2); margin-top: 0.3rem; line-height: 1.35; }
+  .spoor-rail { position: relative; height: 22px; margin-bottom: 0.2rem; }
+  .spoor-rail::before {
+    content: ""; position: absolute; top: 0; left: 12.5%; right: 12.5%; height: 2px; background: var(--c-dossier);
+  }
+  .spoor-rail .tick {
+    position: absolute; top: 0; width: 2px; height: 22px; background: var(--c-dossier);
+  }
+
+  .external {
+    margin-top: 1.2rem;
+    border: 1px dashed var(--c-border);
+    border-radius: 3px;
+    padding: 0.6rem 0.9rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--c-text2);
+    background: var(--c-bg2);
+  }
+
+  .site-footer {
+    width: 100%;
+    background: var(--c-charcoal);
+    color: var(--c-bg);
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .footer-logo { width: 150px; color: var(--c-bg); opacity: 0.7; display: inline-block; }
+  .footer-contact { font-size: 0.82rem; opacity: 0.7; margin-top: 0.8rem; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 1.8rem; }
+    .spoor-grid { grid-template-columns: repeat(2, 1fr); }
+    .spoor-rail { display: none; }
+    .connector-v { height: 18px; }
+    .org { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <svg class="site-logo" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Delta Instituut">
+    <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+    <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+    <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+    <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+    <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+    <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+    <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+    <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+    <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+    <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+    <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+    <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+    <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+    <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+    <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+    <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+  </svg>
+</header>
+
+<main class="wrap">
+
+  <p class="eyebrow">One-pager · Vertrouwelijk concept</p>
+  <h1>Een Nederlands AI Safety Institute. Nu voorsorteren.</h1>
+  <p class="subtitle">Andere landen bouwen hun AI Safety Institute al. Nederland kan dat ook, maar dan moet er nu een klein kernteam komen dat de afstemming voert en het werk doordrukt. Geen werkgroep die rapporteert, maar de eerste bemensing van het instituut zelf.</p>
+  <p class="meta">Voorstel · Delta Instituut · 14 juni 2026</p>
+
+  <p class="lead-strong">De snelste route loopt via de twee bewindspersonen die hier al op zitten: de Staatssecretaris en de Minister-President. Hun politieke dekking maakt het verschil tussen een nota die rondzingt en een team dat begint. Het werk dat nu telt is afstemming binnen het Rijk, richting Europa, en het binnenhalen van de juiste mensen. Dat doe je niet met een reguliere ambtelijke werkgroep. Dat doe je met een toegewijd kernteam dat de voorsortering is van een Nederlands AI Safety Institute.</p>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-num">5&ndash;15 fte</div>
+      <div class="kpi-label">Toegewijd kernteam, geen reguliere ambtenaren</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">4 sporen</div>
+      <div class="kpi-label">Geopolitiek, cyber, capaciteit, advisering</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">1 adviseur</div>
+      <div class="kpi-label">Gedeeld aan MP en Staatssecretaris, hoofd NL-AISI</div>
+    </div>
+  </div>
+
+  <h2>Waarom nu een kernteam</h2>
+  <p>Een instituut richt je niet in één keer op. Je begint met een groep die het mandaat krijgt om de oprichting voor te bereiden en ondertussen al echt werk levert. Dit zijn geen mensen die het er even bij doen. Dit is een toegewijd team van 5 tot 15 fte dat de afstemming voert, de Europese inzet coördineert en de relaties opbouwt die het latere instituut nodig heeft. De voorsortering van NL-AISI, met andere woorden.</p>
+  <p>Belangrijk: dit zijn niet de eerste de besten. Het moeten mensen zijn die hier al een jaar of langer voor waarschuwen en het dossier door en door kennen. Wie in het kernteam zit, bepaalt of het lukt. Delta Instituut speelt daarom een grote rol in de selectie en kan zelf vier fte leveren, plus een vijfde kandidaat als die wil aanhaken.</p>
+
+  <h2>Een gedeelde adviseur aan de top</h2>
+  <p>Er komt één adviseur die zowel de Minister-President als de Staatssecretaris bedient. Deze persoon zit op het snijvlak van het politieke besluit en de uitvoering, en staat tegelijk aan het hoofd van NL-AISI in oprichting. Dat voorkomt dat het dossier verzandt tussen departementen en geeft het kernteam een duidelijke opdrachtgever. Eén persoon, twee bewindspersonen, en het instituut dat eronder hangt.</p>
+
+  <h2>Vier sporen</h2>
+  <p>Het kernteam werkt langs vier lijnen tegelijk. Elke lijn heeft een eigen focus, maar ze delen één opdrachtgever en één agenda.</p>
+  <ul class="clean">
+    <li><strong style="font-weight:600">Geopolitiek en Europese inzet</strong> &mdash; positie bepalen in de Europese AI-governance en aansluiten bij het netwerk van buitenlandse safety institutes.</li>
+    <li><strong style="font-weight:600">Cybersecurity</strong> &mdash; de veiligheidskant van geavanceerde AI-systemen, in verbinding met de bestaande nationale cyberstructuur.</li>
+    <li><strong style="font-weight:600">Nederlandse opbouw van capaciteit</strong> &mdash; kennis, mensen en infrastructuur opbouwen zodat Nederland straks zelf kan evalueren en testen.</li>
+    <li><strong style="font-weight:600">Advisering MP</strong> &mdash; de Minister-President voorzien van scherpe, tijdige analyse over de risico&rsquo;s en kansen van geavanceerde AI.</li>
+  </ul>
+  <p>Deze groep kanaliseert bovendien externe expertise. Er is veel kennis buiten de overheid die nu niet bij het juiste loket terechtkomt. Het kernteam is dat loket.</p>
+
+  <h2>Organogram</h2>
+  <div class="org">
+    <div class="org-top">
+      <div class="node node-lead">
+        <div class="role">Gedeelde adviseur</div>
+        <div class="sub">Aan Minister-President &amp; Staatssecretaris &middot; hoofd NL-AISI (in oprichting)</div>
+      </div>
+    </div>
+    <div class="connector-v"></div>
+    <div class="node node-core">
+      <div class="role">Kernteam &middot; 5&ndash;15 fte</div>
+      <div class="sub">Toegewijd, geen reguliere ambtenaren &middot; voorsortering NL-AISI &middot; ~4 fte vanuit Delta + 1 kandidaat</div>
+    </div>
+    <div class="connector-v"></div>
+    <div class="spoor-rail">
+      <span class="tick" style="left:12.5%"></span>
+      <span class="tick" style="left:37.5%"></span>
+      <span class="tick" style="left:62.5%"></span>
+      <span class="tick" style="left:87.5%"></span>
+    </div>
+    <div class="spoor-grid">
+      <div class="spoor">
+        <div class="role">Geopolitiek &amp; Europese inzet</div>
+        <div class="sub">Positie in EU-governance, netwerk buitenlandse AISI&rsquo;s</div>
+      </div>
+      <div class="spoor">
+        <div class="role">Cybersecurity</div>
+        <div class="sub">Veiligheid geavanceerde AI, link nationale cyberstructuur</div>
+      </div>
+      <div class="spoor">
+        <div class="role">NL capaciteitsopbouw</div>
+        <div class="sub">Kennis, mensen en infra om zelf te evalueren en testen</div>
+      </div>
+      <div class="spoor">
+        <div class="role">Advisering MP</div>
+        <div class="sub">Scherpe, tijdige analyse risico&rsquo;s en kansen</div>
+      </div>
+    </div>
+    <div class="external">Externe expertise wordt via het kernteam gekanaliseerd naar de vier sporen</div>
+    <div class="org-caption">Schematische weergave van de voorgestelde structuur. De gedeelde adviseur is opdrachtgever van het kernteam en hoofd van het instituut in oprichting.</div>
+  </div>
+
+  <h2>Wat dit nu vraagt</h2>
+  <p>Een mandaat van de twee bewindspersonen, de aanstelling van de gedeelde adviseur, en de samenstelling van het kernteam met mensen die het dossier al kennen. Delta Instituut levert vier fte en denkt actief mee over de overige bezetting. Hoe eerder de groep start, hoe groter de voorsprong die Nederland nog kan pakken.</p>
+
+</main>
+
+<footer class="site-footer">
+  <svg class="footer-logo" viewBox="0 0 1607 216" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Delta Instituut">
+    <path d="M330.29 9.7218H373.681C419.85 9.7218 438.155 46.0853 438.155 112.112C438.155 178.138 419.85 213.848 373.681 213.848H330.29V9.7218ZM370.658 180.589H374.335C393.293 180.589 395.417 159.507 395.417 112.112C395.417 64.7165 393.293 43.3887 374.335 43.3887H370.658V180.589Z" fill="currentColor"/>
+    <path d="M505.657 161.633L540.468 165.882C538.344 194.891 524.289 215.729 497.077 215.729C464.718 215.729 447.558 186.393 447.558 135.647C447.558 89.8048 463.737 57.4455 497.649 57.4455C527.884 57.4455 541.694 84.6567 541.694 120.693C541.694 127.721 541.694 134.422 540.468 145.453H485.147C484.82 172.991 487.925 187.047 497.077 187.047C504.759 187.047 505.902 174.544 505.657 161.715V161.633ZM506.556 122.246C506.883 119.794 506.883 117.997 506.883 116.117C506.883 100.264 505.984 86.4544 497.077 86.4544C488.17 86.4544 485.474 102.307 485.474 122.246H506.556Z" fill="currentColor"/>
+    <path d="M604.361 210.826C599.458 213.605 591.532 215.729 584.178 215.729C563.994 215.729 553.044 205.678 553.044 181.817V0H592.758V178.467C592.758 182.471 594.882 184.269 597.661 184.269C599.213 184.269 600.684 183.942 602.89 182.716L604.443 210.826H604.361Z" fill="currentColor"/>
+    <path d="M677.657 206.252C670.303 212.054 660.252 215.731 649.874 215.731C626.013 215.731 615.308 200.45 615.308 177.815V88.9085H606.156V59.2458H615.308V30.8087L655.022 24.108V59.2458H675.206V88.9085H655.022V172.667C655.022 179.368 657.147 182.146 662.05 182.146C665.727 182.146 668.505 180.92 672.101 177.243L677.576 206.252H677.657Z" fill="currentColor"/>
+    <path d="M774.83 179.366C774.83 183.943 776.056 185.495 778.507 185.495C779.733 185.495 780.632 185.495 782.511 184.596L783.737 210.909C779.161 213.932 773.359 215.812 766.331 215.812C759.304 215.812 751.051 213.033 745.821 206.333C743.696 203.881 742.144 201.103 740.918 197.752C737.894 208.457 727.762 215.485 715.831 215.485C694.422 215.485 682.246 197.752 682.246 171.44C682.246 138.427 702.43 122.247 725.964 122.247C730.54 122.247 734.544 123.146 736.995 124.372V101.41C736.995 94.9541 736.097 88.5804 729.314 88.5804C722.532 88.5804 720.489 96.8337 721.388 111.216L685.923 104.76C685.923 77.8756 702.43 57.3649 731.766 57.3649C761.102 57.3649 774.83 71.4201 774.83 103.779V179.285V179.366ZM736.914 147.252C735.688 146.598 733.89 146.598 732.011 146.598C724.084 146.598 718.528 153.953 718.528 168.58C718.528 181.409 722.532 187.865 728.334 187.865C734.462 187.865 736.914 182.39 736.914 173.81V147.252Z" fill="currentColor"/>
+    <path d="M881.462 9.7218V213.848H840.522V9.7218H881.462Z" fill="currentColor"/>
+    <path d="M933.437 85.2288C936.788 68.1502 948.718 57.4455 965.224 57.4455C986.307 57.4455 996.685 72.7263 996.685 96.2604V213.931H956.644V104.187C956.644 95.9336 954.847 90.1317 948.391 90.1317C941.936 90.1317 937.686 97.4861 937.686 112.767V213.931H897.973V59.3249H930.087L933.437 85.3104V85.2288Z" fill="currentColor"/>
+    <path d="M1038.84 163.76C1037.94 178.142 1042.19 186.64 1050.77 186.64C1057.23 186.64 1060.58 182.064 1060.58 174.383C1060.58 153.872 1008.28 146.6 1008.28 102.228C1008.28 75.6706 1026.58 57.2845 1052.32 57.2845C1079.86 57.2845 1094.49 76.5694 1094.16 101.329L1061.8 105.905C1062.13 94.3017 1059.03 86.0485 1051.75 86.0485C1046.28 86.0485 1042.6 90.2977 1042.6 97.6521C1042.6 116.61 1095.8 126.416 1095.8 169.807C1095.8 197.59 1076.84 215.65 1051.51 215.65C1021.27 215.65 1005.67 195.139 1006.56 167.682L1038.92 163.678L1038.84 163.76Z" fill="currentColor"/>
+    <path d="M1172.95 206.252C1165.59 212.054 1155.54 215.731 1145.16 215.731C1121.3 215.731 1110.6 200.45 1110.6 177.815V88.9085H1101.45V59.2458H1110.6V30.8087L1150.31 24.108V59.2458H1170.5V88.9085H1150.31V172.667C1150.31 179.368 1152.44 182.146 1157.34 182.146C1161.02 182.146 1163.79 180.92 1167.39 177.243L1172.86 206.252H1172.95Z" fill="currentColor"/>
+    <path d="M1201.95 46.9847C1188.47 46.9847 1178.99 37.8326 1178.99 24.3495C1178.99 10.8664 1188.47 2.04108 1201.95 2.04108C1215.44 2.04108 1225.16 11.1933 1225.16 24.3495C1225.16 37.5057 1215.68 46.9847 1201.95 46.9847ZM1222.14 59.2421V213.848H1182.42V59.2421H1222.14Z" fill="currentColor"/>
+    <path d="M1304.34 206.252C1296.99 212.054 1286.94 215.731 1276.56 215.731C1252.7 215.731 1242 200.45 1242 177.815V88.9085H1232.84V59.2458H1242V30.8087L1281.71 24.108V59.2458H1301.89V88.9085H1281.71V172.667C1281.71 179.368 1283.83 182.146 1288.74 182.146C1292.41 182.146 1295.19 180.92 1298.79 177.243L1304.26 206.252H1304.34Z" fill="currentColor"/>
+    <path d="M1375.84 187.863C1372.16 204.37 1361.13 215.646 1344.7 215.646C1323.29 215.646 1312.59 199.793 1312.59 176.505V59.1608H1352.63V167.924C1352.63 176.178 1354.43 182.551 1360.88 182.551C1367.34 182.551 1371.26 175.524 1371.26 160.243V59.0792H1411.3V213.685H1378.94L1375.92 187.7L1375.84 187.863Z" fill="currentColor"/>
+    <path d="M1489.5 187.863C1485.83 204.37 1474.8 215.646 1458.37 215.646C1436.96 215.646 1426.26 199.793 1426.26 176.505V59.1608H1466.3V167.924C1466.3 176.178 1468.1 182.551 1474.55 182.551C1481.01 182.551 1484.93 175.524 1484.93 160.243V59.0792H1524.97V213.685H1492.61L1489.59 187.7L1489.5 187.863Z" fill="currentColor"/>
+    <path d="M1606.84 206.252C1599.49 212.054 1589.44 215.731 1579.06 215.731C1555.2 215.731 1544.49 200.45 1544.49 177.815V88.9085H1535.34V59.2458H1544.49V30.8087L1584.21 24.108V59.2458H1604.39V88.9085H1584.21V172.667C1584.21 179.368 1586.33 182.146 1591.24 182.146C1594.91 182.146 1597.69 180.92 1601.29 177.243L1606.76 206.252H1606.84Z" fill="currentColor"/>
+    <path d="M223.488 9.96872L274.648 200.23L229.328 185.881L189.955 42.785L223.488 9.96872Z" fill="currentColor"/>
+    <path d="M204.423 214.391L149.621 9.96872L0 159.648L204.423 214.391Z" fill="currentColor"/>
+  </svg>
+  <div class="footer-contact">Delta Instituut &middot; Herprogrammeer de Overheid &middot; onno@herprogrammeerdeoverheid.nl</div>
+</footer>
+
+</body>
+</html>
