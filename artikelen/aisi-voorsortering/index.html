@@ -1554,7 +1554,7 @@ pre code {
         <li><a data-target="vier-sporen" href="#vier-sporen">Vier sporen</a></li>
         <li><a data-target="de-structuur-begint-met-een-technisch-kernteam" href="#de-structuur-begint-met-een-technisch-kernteam">De structuur begint met een technisch kernteam</a></li>
         <li><a data-target="een-gedeelde-adviseur-aan-de-top" href="#een-gedeelde-adviseur-aan-de-top">Een gedeelde adviseur aan de top</a></li>
-        <li><a data-target="organigram" href="#organigram">Organigram</a></li>
+        <li><a data-target="organogram" href="#organogram">Organogram</a></li>
         <li><a data-target="wat-dit-nu-vraagt" href="#wat-dit-nu-vraagt">Wat dit nu vraagt</a></li>
     </ol>
   </div>
@@ -1573,7 +1573,7 @@ pre code {
         <li><a data-target="vier-sporen" href="#vier-sporen">Vier sporen</a></li>
         <li><a data-target="de-structuur-begint-met-een-technisch-kernteam" href="#de-structuur-begint-met-een-technisch-kernteam">De structuur begint met een technisch kernteam</a></li>
         <li><a data-target="een-gedeelde-adviseur-aan-de-top" href="#een-gedeelde-adviseur-aan-de-top">Een gedeelde adviseur aan de top</a></li>
-        <li><a data-target="organigram" href="#organigram">Organigram</a></li>
+        <li><a data-target="organogram" href="#organogram">Organogram</a></li>
         <li><a data-target="wat-dit-nu-vraagt" href="#wat-dit-nu-vraagt">Wat dit nu vraagt</a></li>
       </ol>
     </div>
@@ -1613,7 +1613,7 @@ pre code {
 
 <p>Een blijvende structuur richt je niet in één keer op. Je begint met een groep die het mandaat krijgt om de basis te leggen en ondertussen al levert. Het is een technisch kernteam van 5 tot 15 fte, geen beleidsteam, dat werkt vanuit kennis over waar de technologie heen gaat. Dit team wordt daarna NL-AISI.</p>
 
-<p>Er ligt al een positieve aanbeveling voor de oprichting van een Nederlands AI Safety Institute. Het model is het Britse AI Safety Institute, dat naast veiligheidsonderzoek ook de premier rechtstreeks adviseert. Juist omdat de richting er ligt, kunnen we nu al beginnen met bemensen in plaats van de formele oprichting af te wachten. Wie vroeg begint, heeft straks een draaiend team in plaats van een leeg organigram.</p>
+<p>Er ligt al een positieve aanbeveling voor de oprichting van een Nederlands AI Safety Institute. Het model is het Britse AI Safety Institute, dat naast veiligheidsonderzoek ook de premier rechtstreeks adviseert. Juist omdat de richting er ligt, kunnen we nu al beginnen met bemensen in plaats van de formele oprichting af te wachten. Wie vroeg begint, heeft straks een draaiend team in plaats van een leeg organogram.</p>
 
 <p>We staan nog aan het begin, en AI wordt voor veiligheid, economie en bestuur alleen maar belangrijker. Dat vraagt om diepe technische kennis dicht bij de beslissers. Die kennis de overheid in halen is daarom de eerste prioriteit. Het kernteam werkt dagelijks samen met de andere ministeries en redeneert vanuit de techniek over waar het heen gaat.</p>
 
@@ -1621,7 +1621,7 @@ pre code {
 
 <p>Er komt één AI Adviseur die zowel de Minister-President als de Staatssecretaris Digitale Zaken bedient en tegelijk CTO van NL-AISI in oprichting is. Deze persoon verbindt het politieke besluit met de uitvoering en stuurt het kernteam aan. Zo verzandt het dossier niet tussen departementen en heeft het kernteam één duidelijke opdrachtgever.</p>
 
-<h2 id="organigram">Organigram</h2>
+<h2 id="organogram">Organogram</h2>
 
 <style>
   .org { background:#fff; border:1px solid var(--c-border); border-radius:4px; padding:2rem 1.5rem 2.2rem; margin:1.6rem 0 2rem; }
@@ -1638,6 +1638,10 @@ pre code {
   .org .node-lead .role { color:#ffffff; }
   .org .node-lead .sub { color:rgba(255,255,255,0.85); }
   .org .connector-v { width:2px; height:26px; background:var(--c-dossier); margin:0 auto; }
+  .org .bewind-rail { position:relative; height:26px; margin:0 auto; max-width:560px; }
+  .org .bewind-rail::before { content:""; position:absolute; bottom:0; left:25%; right:25%; height:2px; background:var(--c-dossier); }
+  .org .bewind-rail::after { content:""; position:absolute; bottom:0; left:50%; width:2px; height:13px; background:var(--c-dossier); transform:translateX(-50%); }
+  .org .bewind-rail .tick { position:absolute; top:0; width:2px; height:26px; background:var(--c-dossier); }
   .org .node-core { border-style:dashed; max-width:540px; margin:0 auto; background:rgba(163,83,120,0.08); }
   .org .node-core .role { font-size:0.9rem; }
   .org .spoor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; margin-top:0.4rem; }
@@ -1655,9 +1659,9 @@ pre code {
     <div class="node node-bewind"><div class="role">Minister-President</div><div class="sub">Politieke dekking</div></div>
     <div class="node node-bewind"><div class="role">Staatssecretaris Digitale Zaken</div><div class="sub">Dossierhouder</div></div>
   </div>
-  <div class="connector-v"></div>
+  <div class="bewind-rail"><span class="tick" style="left:25%"></span><span class="tick" style="left:75%"></span></div>
   <div class="org-top">
-    <div class="node node-lead"><div class="role">AI Adviseur &amp; CTO NL-AISI</div><div class="sub">Eén adviseur voor MP &amp; Staatssecretaris &middot; hoofd NL-AISI (in oprichting)</div></div>
+    <div class="node node-lead"><div class="role">AI Adviseur &amp; CTO NL-AISI</div><div class="sub">Adviseert MP &amp; Staatssecretaris rechtstreeks &middot; hoofd NL-AISI (in oprichting)</div></div>
   </div>
   <div class="connector-v"></div>
   <div class="node node-core"><div class="role">Technisch kernteam &middot; 5&ndash;15 fte</div><div class="sub">Wordt daarna NL-AISI &middot; vertrekt vanuit techniek, werkt dagelijks met de ministeries</div></div>
