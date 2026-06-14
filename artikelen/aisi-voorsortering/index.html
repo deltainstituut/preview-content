@@ -1626,54 +1626,60 @@ pre code {
 <style>
   .org { background:#fff; border:1px solid var(--c-border); border-radius:4px; padding:2rem 1.5rem 2.2rem; margin:1.6rem 0 2rem; }
   .org-caption { font-family:"Lora",Georgia,serif; font-style:italic; font-size:0.85rem; color:var(--c-text-secondary); margin-top:1.2rem; }
+  .org-stack { max-width:760px; margin:0 auto; }
+  .org-bewind { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
   .org-top { display:flex; justify-content:center; }
-  .org-bewind { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
   .org .node { border:1.5px solid var(--c-dossier); border-radius:4px; padding:0.7rem 1rem; text-align:center; background:#fff; }
   .org .node .role { font-family:"Merriweather",Georgia,serif; font-weight:700; font-size:0.95rem; line-height:1.25; color:var(--c-text); }
   .org .node .sub { font-size:0.78rem; color:var(--c-text-secondary); margin-top:0.2rem; }
-  .org .node-bewind { background:var(--c-charcoal); border-color:var(--c-charcoal); min-width:200px; }
+  .org .node-bewind { background:var(--c-charcoal); border-color:var(--c-charcoal); }
   .org .node-bewind .role { color:#ffffff; }
   .org .node-bewind .sub { color:rgba(255,255,255,0.8); }
-  .org .node-lead { background:var(--c-dossier); border-color:var(--c-dossier); max-width:440px; }
+  .org .node-lead { background:var(--c-dossier); border-color:var(--c-dossier); max-width:480px; margin:0 auto; }
   .org .node-lead .role { color:#ffffff; }
   .org .node-lead .sub { color:rgba(255,255,255,0.85); }
-  .org .connector-v { width:2px; height:26px; background:var(--c-dossier); margin:0 auto; }
-  .org .bewind-rail { position:relative; height:26px; margin:0 auto; max-width:560px; }
-  .org .bewind-rail::before { content:""; position:absolute; bottom:0; left:25%; right:25%; height:2px; background:var(--c-dossier); }
-  .org .bewind-rail::after { content:""; position:absolute; bottom:0; left:50%; width:2px; height:13px; background:var(--c-dossier); transform:translateX(-50%); }
-  .org .bewind-rail .tick { position:absolute; top:0; width:2px; height:26px; background:var(--c-dossier); }
-  .org .node-core { border-style:dashed; max-width:540px; margin:0 auto; background:rgba(163,83,120,0.08); }
+  .org .connector-v { width:2px; height:24px; background:var(--c-dossier); margin:0 auto; }
+  /* bracket: horizontale balk met twee armen omlaag naar de twee topblokken + één arm omlaag naar de adviseur */
+  .org .bewind-rail { position:relative; height:24px; }
+  .org .bewind-rail .h { position:absolute; top:50%; left:25%; right:25%; height:2px; background:var(--c-dossier); }
+  .org .bewind-rail .up-l { position:absolute; top:0; left:25%; width:2px; height:50%; background:var(--c-dossier); }
+  .org .bewind-rail .up-r { position:absolute; top:0; right:25%; width:2px; height:50%; background:var(--c-dossier); }
+  .org .bewind-rail .down { position:absolute; bottom:0; left:50%; width:2px; height:50%; background:var(--c-dossier); transform:translateX(-50%); }
+  .org .node-core { border-style:dashed; max-width:560px; margin:0 auto; background:rgba(163,83,120,0.08); }
   .org .node-core .role { font-size:0.9rem; }
-  .org .spoor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; margin-top:0.4rem; }
+  .org .spoor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; }
   .org .spoor { border:1px solid var(--c-border); border-top:3px solid var(--c-dossier); border-radius:3px; padding:0.7rem 0.7rem 0.8rem; background:#fff; }
   .org .spoor .role { font-family:"Merriweather",Georgia,serif; font-weight:700; font-size:0.82rem; line-height:1.25; }
   .org .spoor .sub { font-size:0.73rem; color:var(--c-text-secondary); margin-top:0.3rem; line-height:1.35; }
-  .org .spoor-rail { position:relative; height:22px; margin-bottom:0.2rem; }
-  .org .spoor-rail::before { content:""; position:absolute; top:0; left:12.5%; right:12.5%; height:2px; background:var(--c-dossier); }
-  .org .spoor-rail .tick { position:absolute; top:0; width:2px; height:22px; background:var(--c-dossier); }
+  /* spoor-bracket: één arm omlaag vanuit het midden + horizontale balk + vier armen omlaag naar de sporen */
+  .org .spoor-rail { position:relative; height:26px; }
+  .org .spoor-rail .down { position:absolute; top:0; left:50%; width:2px; height:50%; background:var(--c-dossier); transform:translateX(-50%); }
+  .org .spoor-rail .h { position:absolute; top:50%; left:12.5%; right:12.5%; height:2px; background:var(--c-dossier); }
+  .org .spoor-rail .arm { position:absolute; bottom:0; width:2px; height:50%; background:var(--c-dossier); }
   .org .external { margin-top:1.2rem; border:1px dashed var(--c-border); border-radius:3px; padding:0.6rem 0.9rem; text-align:center; font-size:0.8rem; color:var(--c-text-secondary); background:var(--c-offwhite-2); }
   @media (max-width:1024px){ .org .spoor-grid{ grid-template-columns:repeat(2,1fr);} .org .spoor-rail{ display:none;} .org .connector-v{ height:18px;} }
 </style>
 <div class="org">
-  <div class="org-bewind">
-    <div class="node node-bewind"><div class="role">Minister-President</div><div class="sub">Politieke dekking</div></div>
-    <div class="node node-bewind"><div class="role">Staatssecretaris Digitale Zaken</div><div class="sub">Dossierhouder</div></div>
+  <div class="org-stack">
+    <div class="org-bewind">
+      <div class="node node-bewind"><div class="role">Minister-President</div><div class="sub">Politieke dekking</div></div>
+      <div class="node node-bewind"><div class="role">Staatssecretaris Digitale Zaken</div><div class="sub">Dossierhouder</div></div>
+    </div>
+    <div class="bewind-rail"><span class="up-l"></span><span class="up-r"></span><span class="h"></span><span class="down"></span></div>
+    <div class="org-top">
+      <div class="node node-lead"><div class="role">AI Adviseur &amp; CTO NL-AISI</div><div class="sub">Adviseert MP &amp; Staatssecretaris rechtstreeks &middot; hoofd NL-AISI (in oprichting)</div></div>
+    </div>
+    <div class="connector-v"></div>
+    <div class="node node-core"><div class="role">Technisch kernteam &middot; 5&ndash;15 fte</div><div class="sub">Wordt daarna NL-AISI &middot; vertrekt vanuit techniek, werkt dagelijks met de ministeries</div></div>
+    <div class="spoor-rail"><span class="down"></span><span class="h"></span><span class="arm" style="left:12.5%"></span><span class="arm" style="left:37.5%"></span><span class="arm" style="left:62.5%"></span><span class="arm" style="left:87.5%"></span></div>
+    <div class="spoor-grid">
+      <div class="spoor"><div class="role">Geopolitiek &amp; Europese inzet</div><div class="sub">Positie in EU-governance, netwerk buitenlandse AISI's</div></div>
+      <div class="spoor"><div class="role">Cybersecurity</div><div class="sub">Veiligheid geavanceerde AI, link nationale cyberstructuur</div></div>
+      <div class="spoor"><div class="role">Opbouw NL AI-sector</div><div class="sub">Wat de sector nodig heeft om te groeien, bottlenecks wegnemen</div></div>
+      <div class="spoor"><div class="role">Advisering MP en Staatssecretaris</div><div class="sub">Scherpe, tijdige analyse risico's en kansen</div></div>
+    </div>
+    <div class="external">Externe expertise wordt via het kernteam gekanaliseerd naar de vier sporen</div>
   </div>
-  <div class="bewind-rail"><span class="tick" style="left:25%"></span><span class="tick" style="left:75%"></span></div>
-  <div class="org-top">
-    <div class="node node-lead"><div class="role">AI Adviseur &amp; CTO NL-AISI</div><div class="sub">Adviseert MP &amp; Staatssecretaris rechtstreeks &middot; hoofd NL-AISI (in oprichting)</div></div>
-  </div>
-  <div class="connector-v"></div>
-  <div class="node node-core"><div class="role">Technisch kernteam &middot; 5&ndash;15 fte</div><div class="sub">Wordt daarna NL-AISI &middot; vertrekt vanuit techniek, werkt dagelijks met de ministeries</div></div>
-  <div class="connector-v"></div>
-  <div class="spoor-rail"><span class="tick" style="left:12.5%"></span><span class="tick" style="left:37.5%"></span><span class="tick" style="left:62.5%"></span><span class="tick" style="left:87.5%"></span></div>
-  <div class="spoor-grid">
-    <div class="spoor"><div class="role">Geopolitiek &amp; Europese inzet</div><div class="sub">Positie in EU-governance, netwerk buitenlandse AISI's</div></div>
-    <div class="spoor"><div class="role">Cybersecurity</div><div class="sub">Veiligheid geavanceerde AI, link nationale cyberstructuur</div></div>
-    <div class="spoor"><div class="role">Opbouw NL AI-sector</div><div class="sub">Wat de sector nodig heeft om te groeien, bottlenecks wegnemen</div></div>
-    <div class="spoor"><div class="role">Advisering MP en Staatssecretaris</div><div class="sub">Scherpe, tijdige analyse risico's en kansen</div></div>
-  </div>
-  <div class="external">Externe expertise wordt via het kernteam gekanaliseerd naar de vier sporen</div>
   <div class="org-caption">Schematische weergave van de voorgestelde structuur. De AI Adviseur is opdrachtgever van het kernteam en CTO van het instituut in oprichting.</div>
 </div>
 
