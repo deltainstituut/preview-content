@@ -150,6 +150,19 @@
   .ctext .cd{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:2px;}
   .ctext a{color:var(--sea-deep);font-weight:700;}
   .check input:checked ~ .ctext .ct{text-decoration:line-through;color:var(--muted);text-decoration-thickness:1.5px;}
+  .citem{border-bottom:1px solid var(--line-soft);}
+  .citem:last-child{border-bottom:0;}
+  .copts{margin:-6px 16px 8px 51px;}
+  .copts summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--sea-deep);padding:4px 0;width:fit-content;}
+  .copts summary::-webkit-details-marker{display:none;}
+  .copts summary .optw{border-bottom:1.5px solid rgba(14,83,102,.28);}
+  .copts summary::before{content:"▸";color:var(--clay);transition:transform .2s ease;display:inline-block;}
+  .copts[open] summary::before{transform:rotate(90deg);}
+  .copts summary:hover .optw{border-bottom-color:var(--clay);}
+  .copts summary:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:3px;}
+  .optbody{font-size:13px;line-height:1.6;color:#3a4d50;background:var(--sand-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:6px 0 4px;}
+  .optbody b{color:#2b3d40;}
+  .optbody a{color:var(--sea-deep);font-weight:700;}
 
   .note{font-size:12.5px;color:var(--muted);margin-top:34px;border-top:1px solid var(--line);padding-top:16px;line-height:1.6;}
   .note b{color:#3a4d50;}
@@ -175,6 +188,8 @@
     .check{padding:13px 12px;gap:12px;}
     .box{width:24px;height:24px;}
     .checkgroup h4{margin:14px 12px 4px;}
+    .copts{margin:-4px 12px 8px 12px;}
+    .optbody{font-size:13.5px;}
   }
   @media (max-width:380px){
     .meta .chip{font-size:12px;padding:6px 11px;}
@@ -489,21 +504,31 @@
   /* ---- booking checklist ---- */
   var ITEMS=[
     {g:"Vlucht & auto"},
-    {id:"flight-out", t:"Heenvlucht naar Dubrovnik (DBV)", d:"Rond 17 juli, ochtend zodat je dezelfde dag doorrijdt naar Pelješac."},
-    {id:"flight-back", t:"Terugvlucht vanaf Zagreb (ZAG)", d:"28 juli (late vlucht) of vroeg 29 juli. Open-jaw of twee enkele reizen."},
-    {id:"car", t:"Huurauto Dubrovnik → Zagreb", d:"Eenrichting, met <b>cross-border-toestemming voor Slovenië</b>. Vergelijk DiscoverCars met Oryx/Carwiz/Avax."},
+    {id:"flight-out", t:"Heenvlucht naar Dubrovnik (DBV)", d:"Rond 17 juli, ochtend zodat je dezelfde dag doorrijdt naar Pelješac.",
+     o:'<b>Direct vanaf Amsterdam:</b> <b>KLM</b> vliegt non-stop AMS→DBV in de zomer (~2u30), ca. 14 directe vluchten/week. <b>easyJet</b> en <b>Croatia Airlines</b> doen de route vooral met overstap.<br><b>Prijsindicatie juli:</b> vanaf ~€140–230 p.p. enkele reis.<br><b>Tip:</b> boek vroeg, de directe zomerverbinding piekt in juli. Vergelijk op <a href="https://www.google.com/travel/flights/flights-from-amsterdam-to-dubrovnik.html" target="_blank" rel="noopener">Google Flights ↗</a> / Skyscanner.'},
+    {id:"flight-back", t:"Terugvlucht vanaf Zagreb (ZAG)", d:"28 juli (late vlucht) of vroeg 29 juli.",
+     o:'<b>Direct terug:</b> zowel <b>KLM</b> als <b>Croatia Airlines</b> vliegen non-stop ZAG→AMS (~2u05), ca. 2 directe vluchten/dag. Door twee maatschappijen meer prijsdruk dan op de heenweg.<br><b>Prijsindicatie juli:</b> vanaf ~€118 p.p. enkele reis.<br><b>Open-jaw vs. 2 losse tickets:</b> twee enkele reizen geeft vaak de laagste prijs en meeste flex (~€250–450 p.p. voor beide samen). Een open-jaw KLM-ticket bundelt alles in één boeking (handig voor bagage/bescherming) — vergelijk beide.'},
+    {id:"car", t:"Huurauto Dubrovnik → Zagreb", d:"Eenrichting, met <b>cross-border-toestemming voor Slovenië</b>.",
+     o:'<b>One-way fee DBV→ZAG:</b> typisch €200–300 (lange route over heel Kroatië).<br><b>Aanbieders:</b> <b>Oryx</b> meldt vaak <b>géén one-way fee bij 8+ dagen huur</b> (jullie zitten op 11 — expliciet checken, kan ~€400–500 totaal). <b>Autowill</b> vaste fee €250. <b>Avax</b> adverteert geen borg + gratis cross-border. <b>Carwiz</b> vergelijkbaar. Vergelijk via DiscoverCars/Rentalcars.<br><b>Cross-border Slovenië:</b> meestal toegestaan, soms €10–50; regel bij boeking + groene kaart in de auto. Vraag schriftelijke bevestiging.<br><b>Onderweg:</b> Slovenië e-vinjeta verplicht (weekvignet ~€16 — check of de auto er al een heeft); Kroatië heeft afstand-tol via tolpoortjes (geen vignet).<br><b>Indicatie totaal compact, 11 dagen:</b> ~€600–750 incl. fee, of ~€400–500 zonder one-way fee bij Oryx.'},
     {g:"Overnachtingen"},
     {id:"stay-peljesac", c:true, t:"Pelješac · B&amp;B Villa Vrgorac (17–19 jul)", d:'<a href="https://www.villa-vrgorac.com/" target="_blank" rel="noopener">villa-vrgorac.com ↗</a> · 2 nachten · <b>geboekt €264,90</b>'},
     {id:"stay-sibenik", c:true, t:"Šibenik · Sebenico Luxury Rooms (19–22 jul)", d:'<a href="https://www.booking.com/hotel/hr/sebenico-luxury-rooms.html" target="_blank" rel="noopener">booking.com ↗</a> · 3 nachten · <b>geboekt €375</b>'},
     {id:"stay-dolenjska", c:true, t:"Dolenjska · Vineyard Cottage Rataj 2 (22–25 jul)", d:'<a href="https://www.booking.com/hotel/si/vineyard-cottage-hram-rataj.html" target="_blank" rel="noopener">booking.com ↗</a> · 3 nachten · <b>geboekt €438,75</b>'},
-    {id:"stay-mokrice", t:"Mokrice · kamer voor de bruiloft (25–26 jul)", d:'Check of de bruiloft op <a href="https://mokrice-castle.com/" target="_blank" rel="noopener">Grad Mokrice ↗</a> kamers regelt, of boek zelf.'},
-    {id:"stay-ljubljana", t:"Ljubljana · hotel (26–28 jul)", d:'<a href="https://www.booking.com/hotel/si/old-town-residence-ljubljana.html" target="_blank" rel="noopener">Old Quarter Residence ↗</a> of <a href="https://www.booking.com/hotel/si/zlata-ladjica-boutique-ljubljana.html" target="_blank" rel="noopener">Zlata Ladjica ↗</a> · 2 nachten'},
-    {id:"stay-zagreb", t:"Eventueel: nacht bij Zagreb-vliegveld", d:"Alleen als je 29 juli vroeg vliegt in plaats van 28 juli laat."},
+    {id:"stay-mokrice", t:"Mokrice · kamer voor de bruiloft (25–26 jul)", d:'Slapen op of vlakbij de bruiloftslocatie.',
+     o:'<b>Op de locatie zelf:</b> <a href="https://www.booking.com/hotel/si/golf-grad-mokrice.html" target="_blank" rel="noopener">Hotel Golf Grad Mokrice ↗</a> — 4-sterren kasteelhotel, 19 kamers, vanaf ~€140 p.n. incl. ontbijt + toegang Terme Čatež spa. Beste keuze (geen vervoer na het feest), maar weinig kamers: <b>boek meteen</b>.<br><b>Dichtbij (5–15 min):</b> <a href="https://terme-catez.si/en/accomodation/hotel-terme/" target="_blank" rel="noopener">Hotel Terme/Čatež (Terme Čatež) ↗</a> ~€130–160 p.n. met zwemparadijs; guesthouses in <b>Brežice centrum</b> vanaf ~€78–86 p.n. (budget back-up).<br><b>Advies:</b> Grad Mokrice eerst proberen, anders Terme Čatež als prettige reserveplek op rij-afstand.'},
+    {id:"stay-ljubljana", t:"Ljubljana · hotel (26–28 jul)", d:'2 nachten in/bij de oude stad.',
+     o:'<b>Splurge:</b> <a href="https://zlataladjica.com/" target="_blank" rel="noopener">Zlata Ladjica Boutique ↗</a> — 5-sterren, MICHELIN-gids, ~€240–330+ p.n. (parkeren/wellness apart). Of <a href="https://www.residence-ljubljana.com/" target="_blank" rel="noopener">Old Quarter Residence ↗</a> luxe-appartementen midden in de oude stad, ~9.6/10, ~€130–180 p.n.<br><b>Midrange:</b> Petkovšek Rooms (rivierfront) of ibis Styles The Fuzzy Log, ~€90–130 p.n.<br><b>Budget:</b> April1550 Boutique of Kollmann Rooms, ~€80–110 p.n.; Hostel Celica (designhostel) private kamer ~€60–90.<br><b>Tip:</b> oude stad is in juli snel vol — boek vroeg.'},
+    {id:"stay-zagreb", t:"Eventueel: nacht bij Zagreb-vliegveld", d:"Alleen als je 29 juli vroeg vliegt in plaats van 28 juli laat.",
+     o:'Alleen nodig als je voor de vroege vlucht kiest. Zoek een hotel bij <b>Zagreb Airport (Pleso)</b> zoals het airport-hotel of een guesthouse in Velika Gorica (~10 min), zodat je de auto al kunt inleveren en \'s ochtends zo door de security loopt.'},
     {g:"Extra's & onderweg"},
-    {id:"travel-ins", t:"Reisverzekering & EHIC/EU-zorgpas", d:"Check dekking auto-eigen-risico en buitenland."},
-    {id:"plitvice", t:"Plitvice-tickets (22 jul)", d:"Tijdslot vooraf reserveren; ga vroeg of laat tegen de drukte."},
-    {id:"korcula", t:"Optioneel: ferry Orebić → Korčula", d:"Korte overtocht, meestal ter plekke te regelen — check dienstregeling."},
-    {id:"wedding", t:"Bruiloft: cadeau, kleding, RSVP", d:"Dresscode en eventuele shuttle/parkeren bij het kasteel checken."}
+    {id:"travel-ins", t:"Reisverzekering & EHIC/EU-zorgpas", d:"Geldig in zowel Kroatië als Slovenië.",
+     o:'<b>EHIC (Europese zorgpas):</b> gratis aanvragen bij je Nederlandse zorgverzekeraar, min. 2 weken vooraf. Dekt medisch noodzakelijke publieke zorg in KR + SI. <b>Maar:</b> géén repatriëring, privéklinieken of annulering.<br><b>Dus ook:</b> een (doorlopende of kortlopende) reisverzekering met <b>SOS/repatriëringsdekking</b>. Neem EHIC + polisnummer mee (fysiek of in de app).'},
+    {id:"plitvice", t:"Plitvice-tickets (22 jul)", d:"Tijdslot vooraf reserveren; ga vroeg tegen de drukte.",
+     o:'<b>Reserveren verplicht:</b> aankomst-tijdslot vooraf online via <a href="https://np-plitvicka-jezera.hr/en/plan-your-visit/istrazite-jezera/price-list/" target="_blank" rel="noopener">np-plitvicka-jezera.hr ↗</a>. Aan de poort kopen lukt in hoogseizoen meestal niet.<br><b>Prijs hoogseizoen (jun–sep):</b> ~€40 p.p. per dag, ~€25 na 16:00. Boot over het Kozjak-meer en panoramatrein zitten in de prijs.<br><b>Tegen drukte:</b> boek 2–4 weken vooruit; neem het vroegste slot (~07:00–08:00) bij Entrance 1 zodat je vóór de dagbussen op de boardwalks loopt.'},
+    {id:"korcula", t:"Optioneel: ferry Orebić → Korčula", d:"Korte overtocht vanaf Pelješac.",
+     o:'<b>Aanbieder:</b> <a href="https://www.jadrolinija.hr/en/search-buy-ticket" target="_blank" rel="noopener">Jadrolinija ↗</a>, lijn 634, autoveer (~20 min) naar Dominče (~3 km van Korčula-stad). Hoogseizoen ~22 afvaarten/dag.<br><b>Prijs:</b> voetganger ~€2–4 p.p.; auto vanaf ~€16 (los van passagiers).<br><b>Reserveren:</b> voor voetgangers niet nodig; met auto in juli kunnen er wachtrijen zijn — kom ruim op tijd of boek online.'},
+    {id:"wedding", t:"Bruiloft: cadeau, kleding, RSVP", d:"Praktische zaken voor 25 juli.",
+     o:'Check de <b>dresscode</b> en of er een <b>shuttle of parkeren</b> bij het kasteel is. Bevestig je <b>RSVP</b> en eventuele dieetwensen op tijd. Pak iets voor zowel warme dag als koelere avond op het kasteelterrein.'}
   ];
   var listEl=document.getElementById("checklist"),
       bar=document.getElementById("cbar"),
@@ -523,7 +548,15 @@
     var txt=document.createElement("span"); txt.className="ctext";
     txt.innerHTML='<span class="ct">'+it.t+'</span><span class="cd">'+(it.d||"")+'</span>';
     lab.appendChild(inp); lab.appendChild(box); lab.appendChild(txt);
-    listEl.appendChild(lab);
+    var wrap=document.createElement("div"); wrap.className="citem";
+    wrap.appendChild(lab);
+    if(it.o){
+      var det=document.createElement("details"); det.className="copts";
+      var sum=document.createElement("summary"); sum.innerHTML='<span class="optw">Bekijk opties</span>';
+      var body=document.createElement("div"); body.className="optbody"; body.innerHTML=it.o;
+      det.appendChild(sum); det.appendChild(body); wrap.appendChild(det);
+    }
+    listEl.appendChild(wrap);
     inp.addEventListener("change",function(){ state[it.id]=inp.checked; save(); update(); });
     checkboxes.push({id:it.id, inp:inp});
   });
