@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="nl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadtrip Kroatië × Slovenië · 17–29 juli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#163139;
+    --sea:#1C7C95;
+    --sea-deep:#0E5366;
+    --clay:#C2613C;
+    --clay-soft:#9E4B2D;
+    --gold:#C0872B;
+    --olive:#6E8A4E;
+    --paper:#FCFAF4;
+    --sand:#E9E0CE;
+    --sand-2:#F2EAD9;
+    --line:#DCD1BC;
+    --line-soft:#E6DCC9;
+    --muted:#556668;
+    --shadow:0 1px 2px rgba(22,49,57,.04),0 14px 34px -18px rgba(22,49,57,.22);
+    --shadow-lift:0 2px 6px rgba(22,49,57,.06),0 22px 48px -20px rgba(22,49,57,.30);
+    --display:"Fraunces",Georgia,serif;
+    --body:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    background:
+      radial-gradient(1200px 520px at 78% -8%, rgba(28,124,149,.10), transparent 60%),
+      radial-gradient(900px 480px at 8% 4%, rgba(194,97,60,.07), transparent 55%),
+      linear-gradient(var(--sand),var(--sand));
+    background-attachment:fixed;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:34px 20px 90px;}
+  ::selection{background:rgba(28,124,149,.18);}
+
+  /* ---------- hero ---------- */
+  header{position:relative;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sea-deep);font-weight:700;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--clay);display:inline-block;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,7.4vw,62px);line-height:1.0;margin:.26em 0 .16em;letter-spacing:-.018em;}
+  h1 em{font-style:italic;font-weight:500;color:var(--clay);}
+  .lede{font-size:clamp(16px,2.3vw,19.5px);color:#3c4f52;max-width:60ch;margin:.2em 0 0;line-height:1.55;}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+  .chip{
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;font-size:13px;font-weight:500;color:#3c4f52;
+    box-shadow:0 1px 1px rgba(22,49,57,.03);
+  }
+  .chip b{color:var(--sea-deep);font-weight:700;}
+
+  /* ---------- option toggle ---------- */
+  .toggle-bar{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:14px 18px;margin:26px 0 4px;box-shadow:var(--shadow);
+  }
+  .toggle-bar .tlabel{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);font-weight:700;}
+  .seg{display:inline-flex;background:var(--sand-2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:3px;}
+  .seg button{
+    font-family:var(--body);font-size:13.5px;font-weight:700;cursor:pointer;
+    border:0;background:transparent;color:var(--muted);
+    padding:7px 16px;border-radius:999px;transition:background .18s ease,color .18s ease;
+  }
+  .seg button[aria-pressed="true"]{background:var(--sea);color:#fff;box-shadow:0 1px 2px rgba(22,49,57,.18);}
+  .seg button:focus-visible{outline:2px solid var(--sea-deep);outline-offset:2px;}
+  .toggle-note{font-size:13px;color:var(--muted);flex:1 1 200px;min-width:180px;}
+
+  /* ---------- map ---------- */
+  .mapcard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:16px 16px 8px;margin:18px 0 8px;box-shadow:var(--shadow);}
+  .mapcard svg{display:block;width:100%;height:auto;}
+  .mk{cursor:pointer;}
+  .mk circle,.mk text{transition:opacity .25s ease,transform .2s ease;}
+  .mk:hover .mhalo{opacity:.5;}
+  .mhalo{opacity:0;transition:opacity .2s ease;}
+  .mk:focus-visible{outline:none;}
+  .mk:focus-visible .mhalo{opacity:.7;}
+  .route-b{transition:opacity .3s ease;}
+  .dim{opacity:.22 !important;}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;padding:10px 8px 8px;font-size:12.5px;color:var(--muted);font-weight:500;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;box-shadow:0 0 0 3px rgba(0,0,0,.04);}
+  .dash{width:20px;height:0;border-top:2px dashed var(--olive);display:inline-block;}
+
+  /* ---------- sections ---------- */
+  section{margin-top:54px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:24px;}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(23px,3.4vw,29px);margin:0;letter-spacing:-.014em;}
+  .sec-head .num{
+    font-family:var(--display);font-size:13px;font-weight:600;color:var(--clay);
+    font-feature-settings:"tnum";letter-spacing:.04em;
+    border:1px solid var(--line);border-radius:999px;padding:4px 10px;line-height:1;
+  }
+
+  /* ---------- at a glance ---------- */
+  .glance{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px;}
+  .g{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 14px;
+    position:relative;transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .g::before{content:"";position:absolute;left:14px;right:14px;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--sea),transparent);opacity:.5;}
+  .g:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .g .gn{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);font-weight:700;}
+  .g .gt{font-family:var(--display);font-size:17.5px;font-weight:600;margin:4px 0 1px;letter-spacing:-.01em;}
+  .g .gd{font-size:12.5px;color:var(--muted);}
+  .g.optb-only::before{background:linear-gradient(90deg,var(--olive),transparent);}
+
+  /* ---------- stops ---------- */
+  .stop{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-bottom:20px;
+    box-shadow:var(--shadow);overflow:hidden;position:relative;
+    transition:transform .2s ease,box-shadow .2s ease;scroll-margin-top:18px;
+  }
+  .stop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--sea);z-index:4;}
+  .stop.wedding::before{background:var(--gold);}
+  .stop.transit::before{background:var(--olive);}
+  .stop:hover{box-shadow:var(--shadow-lift);}
+  .stop.flash{animation:flash 1.3s ease;}
+  @keyframes flash{0%{box-shadow:0 0 0 3px var(--clay),var(--shadow-lift);}100%{box-shadow:var(--shadow);}}
+  .figure{position:relative;margin:0;height:210px;overflow:hidden;background:var(--sand-2);}
+  .figure .illus{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  .figure .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;transition:transform .6s ease;}
+  .stop:hover .figure .photo{transform:scale(1.04);}
+  .figure::after{content:"";position:absolute;inset:auto 0 0 0;height:84px;background:linear-gradient(transparent,rgba(8,30,35,.62));pointer-events:none;z-index:2;}
+  .figure figcaption{position:absolute;left:16px;bottom:11px;color:#fff;font-size:12px;font-weight:600;letter-spacing:.03em;text-shadow:0 1px 4px rgba(0,0,0,.7);z-index:3;}
+
+  /* ---------- collapsible header ---------- */
+  .stop-head{
+    width:100%;text-align:left;background:transparent;border:0;cursor:pointer;font-family:inherit;color:inherit;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 16px;
+    padding:18px 24px;
+  }
+  .stop-head:focus-visible{outline:2px solid var(--sea);outline-offset:-4px;border-radius:12px;}
+  .stop-head .htitle{display:flex;align-items:center;gap:12px;min-width:0;}
+  .stop-head h3{font-family:var(--display);font-weight:600;font-size:23px;margin:0;letter-spacing:-.014em;}
+  .stop-head .tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .chev{flex:none;color:var(--sea);transition:transform .25s ease;}
+  .stop[data-open="false"] .chev{transform:rotate(-90deg);}
+  .nights{font-size:12.5px;font-weight:700;color:var(--sea-deep);white-space:nowrap;background:rgba(28,124,149,.09);border-radius:999px;padding:4px 11px;}
+  .dates{font-size:12.5px;color:var(--muted);font-weight:600;background:rgba(110,138,78,.12);border-radius:999px;padding:4px 11px;}
+  .stop-panel{overflow:hidden;transition:height .3s ease;}
+  .stop-inner{padding:0 24px 19px;}
+
+  /* ---------- stay / booking link ---------- */
+  .stay{font-size:14px;color:#3a4d50;margin:4px 0 2px;line-height:1.5;}
+  .stay-tag{
+    display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    color:var(--clay);margin-right:7px;transform:translateY(-1px);
+  }
+  .book{
+    display:inline-flex;align-items:center;gap:5px;
+    font-weight:700;color:var(--sea-deep);text-decoration:none;
+    border-bottom:1.5px solid rgba(14,83,102,.30);padding-bottom:1px;
+    transition:color .15s ease,border-color .15s ease,background .15s ease;
+  }
+  .book .arr{font-size:.82em;color:var(--clay);transition:transform .15s ease;}
+  .book:hover{color:var(--clay-soft);border-bottom-color:var(--clay);}
+  .book:hover .arr{transform:translate(1px,-1px);}
+  .book:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:3px;}
+
+  .vibe{color:var(--muted);margin:.7em 0 1.05em;font-size:15px;line-height:1.55;}
+  .rows{display:grid;gap:12px;}
+  .row{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:start;}
+  .row .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sea);font-weight:700;padding-top:3px;}
+  .row .v{font-size:14.5px;line-height:1.5;}
+  .row .v b{font-weight:600;color:#2b3d40;}
+  .drive{margin-top:15px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:11px;}
+  .drive b{color:var(--sea-deep);}
+
+  /* ---------- two options ---------- */
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;}
+  .opt{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    box-shadow:var(--shadow);position:relative;transition:transform .2s ease,box-shadow .2s ease,opacity .25s ease;
+  }
+  .opt::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;z-index:4;}
+  .opt.b::before{background:var(--olive);}
+  .opt.a::before{background:var(--clay);}
+  .opt:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);}
+  .opt.is-active{outline:2px solid var(--sea);outline-offset:0;}
+  .opt.is-faded{opacity:.5;}
+  .opt .figure{height:158px;}
+  .opt-head{padding:17px 20px 4px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .opt-head .tag{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--clay);}
+  .opt.b .opt-head .tag{color:var(--olive);}
+  .opt-head h3{font-family:var(--display);font-size:21px;margin:4px 0 0;font-weight:600;letter-spacing:-.01em;}
+  .pickbtn{flex:none;font-family:var(--body);font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--sand-2);color:var(--sea-deep);border-radius:999px;padding:6px 13px;transition:all .15s ease;}
+  .pickbtn:hover{background:var(--sea);color:#fff;border-color:var(--sea);}
+  .opt.is-active .pickbtn{background:var(--sea);color:#fff;border-color:var(--sea);}
+  .pickbtn:focus-visible{outline:2px solid var(--sea-deep);outline-offset:2px;}
+  .opt ol{margin:10px 0 0;padding:0 20px 4px 36px;font-size:14px;line-height:1.5;}
+  .opt ol li{margin-bottom:7px;}
+  .opt ol li::marker{color:var(--sea);font-weight:700;}
+  .opt .why{padding:8px 20px 20px;font-size:13px;color:var(--muted);line-height:1.5;}
+  .why a{
+    font-weight:700;color:var(--sea-deep);text-decoration:none;
+    border-bottom:1.5px solid rgba(14,83,102,.28);transition:color .15s ease,border-color .15s ease;
+  }
+  .why a:hover{color:var(--clay-soft);border-bottom-color:var(--clay);}
+  .why a:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:3px;}
+
+  /* ---------- practical ---------- */
+  .practical{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .p{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);}
+  .p h4{font-family:var(--display);font-size:18.5px;margin:0 0 7px;font-weight:600;letter-spacing:-.01em;}
+  .p p{margin:0;font-size:14px;color:#3a4d50;line-height:1.55;}
+  .p p+p{margin-top:9px;}
+  .p b{color:#2b3d40;}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:3px 10px;margin-left:2px;vertical-align:middle;white-space:nowrap;text-transform:uppercase;}
+  .pill.ok{background:rgba(28,124,149,.13);color:var(--sea-deep);}
+  .pill.lux{background:rgba(192,135,43,.18);color:#8f6516;}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:34px;border-top:1px solid var(--line);padding-top:16px;line-height:1.6;}
+  .note b{color:#3a4d50;}
+  a{color:var(--sea-deep);}
+
+  @media (max-width:560px){
+    .wrap{padding:26px 16px 70px;}
+    .row{grid-template-columns:1fr;gap:3px;}
+    .row .k{padding-top:0;}
+    .stop-head{padding:16px 18px;}
+    .stop-inner{padding:0 18px 16px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;animation:none !important;scroll-behavior:auto !important;}
+    .stop:hover,.opt:hover,.g:hover{transform:none;}
+  }
+  @media print{
+    body{background:#fff;}
+    .stop,.mapcard,.p,.g,.opt{box-shadow:none;}
+    section{break-inside:avoid;}
+    .toggle-bar,.chev,.pickbtn{display:none;}
+    .stop-panel{height:auto !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Roadtrip · Kroatië × Slovenië · 17–29 juli</div>
+    <h1>Van Dubrovnik <em>langs de kust</em> naar de bruiloft op Grad Mokrice</h1>
+    <p class="lede">Twee kuststops, dan Plitvice onderweg en een wijnhuisje aan de Krka, de bruiloft op een kasteel net over de grens, en daarna twee opties voor het einde: rechtstreeks via Ljubljana, of nog langs Lake Bohinj.</p>
+    <div class="meta">
+      <span class="chip">🚗 Huurauto <b>Dubrovnik → Zagreb</b></span>
+      <span class="chip">🏊 Zee · rivier · (meer)</span>
+      <span class="chip">💍 Bruiloft <b>25 juli · Mokrice</b></span>
+      <span class="chip">✈️ Terug vanaf <b>Zagreb</b></span>
+    </div>
+  </header>
+
+  <!-- OPTION TOGGLE -->
+  <div class="toggle-bar">
+    <span class="tlabel">Einde van de reis</span>
+    <div class="seg" role="group" aria-label="Kies route voor het einde">
+      <button id="btnA" aria-pressed="true">Optie A · via Ljubljana</button>
+      <button id="btnB" aria-pressed="false">Optie B · + Lake Bohinj</button>
+    </div>
+    <span class="toggle-note" id="toggleNote">Korter: 2 nachten Ljubljana, een dag eerder thuis.</span>
+  </div>
+
+  <!-- ROUTE MAP -->
+  <div class="mapcard">
+    <svg viewBox="0 0 760 560" role="img" aria-label="Routekaart Dubrovnik via de kust en de Krka naar Mokrice en Slovenië. Klik op een stop om er naartoe te scrollen.">
+      <defs>
+        <linearGradient id="seaGrad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#1E86A0" stop-opacity=".16"></stop>
+          <stop offset="1" stop-color="#1E86A0" stop-opacity=".03"></stop>
+        </linearGradient>
+        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#11586A"></path>
+        </marker>
+        <marker id="arrowOlive" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#6E8A4E"></path>
+        </marker>
+      </defs>
+      <path d="M0,560 L0,300 C140,330 250,420 360,360 C470,300 540,470 660,470 L760,520 L760,560 Z" fill="url(#seaGrad)"></path>
+      <text x="70" y="500" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="#1E86A0" opacity=".5">Adriatische Zee</text>
+
+      <!-- Main route: Dubrovnik -> Pelješac -> Šibenik -> Plitvice -> Dolenjska -> Mokrice -> Ljubljana -> Zagreb -->
+      <polyline points="615,500 515,432 358,335 452,258 520,210 565,168 415,150 600,128" fill="none" stroke="#11586A" stroke-width="2.4" stroke-dasharray="2 8" stroke-linecap="round" marker-end="url(#arrow)"></polyline>
+
+      <!-- Optie B detour: Mokrice -> Bohinj -> Ljubljana (hidden under Optie A) -->
+      <polyline class="route-b" points="565,168 292,100 415,150" fill="none" stroke="#6E8A4E" stroke-width="2.4" stroke-dasharray="2 8" stroke-linecap="round" marker-end="url(#arrowOlive)" style="opacity:0"></polyline>
+
+      <g font-family="Hanken Grotesk, sans-serif">
+        <!-- Dubrovnik -->
+        <g class="mk" data-target="" tabindex="0" role="button" aria-label="Dubrovnik, aankomst">
+          <circle class="mhalo" cx="615" cy="500" r="22" fill="#10333B"></circle>
+          <circle cx="615" cy="500" r="14" fill="#10333B"></circle><text x="615" y="505" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">✈</text>
+          <text x="637" y="498" font-size="14.5" font-weight="700" fill="#10333B">Dubrovnik</text><text x="637" y="514" font-size="12" fill="#5B6A6D">aankomst · auto ophalen</text>
+        </g>
+
+        <!-- Pelješac -->
+        <g class="mk" data-target="stop-peljesac" tabindex="0" role="button" aria-label="Pelješac, naar stop scrollen">
+          <circle class="mhalo" cx="515" cy="432" r="21" fill="#1C7C95"></circle>
+          <circle cx="515" cy="432" r="13" fill="#1C7C95"></circle><text x="515" y="437" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">1</text>
+          <text x="537" y="430" font-size="14.5" font-weight="700" fill="#10333B">Pelješac · Perna</text><text x="537" y="446" font-size="12" fill="#5B6A6D">Villa Vrgorac · 17–19 jul</text>
+        </g>
+
+        <!-- Šibenik -->
+        <g class="mk" data-target="stop-sibenik" tabindex="0" role="button" aria-label="Šibenik, naar stop scrollen">
+          <circle class="mhalo" cx="358" cy="335" r="21" fill="#1C7C95"></circle>
+          <circle cx="358" cy="335" r="13" fill="#1C7C95"></circle><text x="358" y="340" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">2</text>
+          <text x="338" y="329" text-anchor="end" font-size="14.5" font-weight="700" fill="#10333B">Šibenik</text><text x="338" y="345" text-anchor="end" font-size="12" fill="#5B6A6D">Sebenico Rooms · 19–22 jul</text>
+        </g>
+
+        <!-- Plitvice -->
+        <g class="mk" data-target="stop-plitvice" tabindex="0" role="button" aria-label="Plitvice dagstop, naar stop scrollen">
+          <circle class="mhalo" cx="452" cy="258" r="18" fill="#5B6A6D"></circle>
+          <circle cx="452" cy="258" r="11" fill="#5B6A6D"></circle><text x="452" y="262" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">★</text>
+          <text x="432" y="252" text-anchor="end" font-size="13.5" font-weight="600" fill="#10333B">Plitvice + Rastoke</text><text x="432" y="267" text-anchor="end" font-size="12" fill="#5B6A6D">dagstop · 22 jul</text>
+        </g>
+
+        <!-- Dolenjska -->
+        <g class="mk" data-target="stop-dolenjska" tabindex="0" role="button" aria-label="Dolenjska, naar stop scrollen">
+          <circle class="mhalo" cx="520" cy="210" r="21" fill="#1C7C95"></circle>
+          <circle cx="520" cy="210" r="13" fill="#1C7C95"></circle><text x="520" y="215" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">3</text>
+          <text x="500" y="200" text-anchor="end" font-size="14.5" font-weight="700" fill="#10333B">Dolenjska · Trška Gora</text><text x="500" y="216" text-anchor="end" font-size="12" fill="#5B6A6D">Vineyard Cottage · 22–25 jul</text>
+        </g>
+
+        <!-- Mokrice -->
+        <g class="mk" data-target="stop-mokrice" tabindex="0" role="button" aria-label="Grad Mokrice bruiloft, naar stop scrollen">
+          <circle class="mhalo" cx="565" cy="168" r="21" fill="#C0872B"></circle>
+          <circle cx="565" cy="168" r="13" fill="#C0872B"></circle><text x="565" y="173" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">💍</text>
+          <text x="587" y="166" font-size="14.5" font-weight="700" fill="#10333B">Grad Mokrice</text><text x="587" y="182" font-size="12" fill="#5B6A6D">bruiloft · 25–26 jul</text>
+        </g>
+
+        <!-- Lake Bohinj (Optie B only) -->
+        <g class="mk route-b" data-target="opt-b" tabindex="0" role="button" aria-label="Lake Bohinj, optie B" style="opacity:0">
+          <circle class="mhalo" cx="292" cy="100" r="21" fill="#6E8A4E"></circle>
+          <circle cx="292" cy="100" r="13" fill="#6E8A4E"></circle><text x="292" y="105" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">B</text>
+          <text x="314" y="98" font-size="14.5" font-weight="700" fill="#10333B">Lake Bohinj</text><text x="314" y="114" font-size="12" fill="#5B6A6D">optie B · 26–28 jul</text>
+        </g>
+
+        <!-- Ljubljana -->
+        <g class="mk" data-target="opt-a" tabindex="0" role="button" aria-label="Ljubljana, naar opties scrollen">
+          <circle class="mhalo" cx="415" cy="150" r="21" fill="#1C7C95"></circle>
+          <circle cx="415" cy="150" r="13" fill="#1C7C95"></circle><text x="415" y="155" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">L</text>
+          <text x="437" y="148" font-size="14.5" font-weight="700" fill="#10333B">Ljubljana</text><text id="ljDates" x="437" y="164" font-size="12" fill="#5B6A6D">26–28 jul</text>
+        </g>
+
+        <!-- Zagreb -->
+        <g class="mk" data-target="" tabindex="0" role="button" aria-label="Zagreb, terugvlucht">
+          <circle class="mhalo" cx="640" cy="118" r="21" fill="#10333B"></circle>
+          <circle cx="640" cy="118" r="13" fill="#10333B"></circle><text x="640" y="123" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">✈</text>
+          <text x="640" y="98" text-anchor="middle" font-size="13.5" font-weight="700" fill="#10333B">Zagreb</text><text x="640" y="142" text-anchor="middle" font-size="11" fill="#11586A">inleveren · terugvlucht</text>
+        </g>
+      </g>
+    </svg>
+    <div class="legend">
+      <span><i class="dot" style="background:#1C7C95"></i> overnachting</span>
+      <span><i class="dot" style="background:#5B6A6D"></i> dagstop</span>
+      <span><i class="dot" style="background:#C0872B"></i> bruiloft</span>
+      <span><i class="dash"></i> optie B (via Bohinj)</span>
+    </div>
+  </div>
+
+  <!-- AT A GLANCE -->
+  <section>
+    <div class="sec-head"><span class="num">01</span><h2>De route in één oogopslag</h2></div>
+    <div class="glance">
+      <div class="g"><div class="gn">Dag 1</div><div class="gt">Dubrovnik</div><div class="gd">Aankomst, auto ophalen</div></div>
+      <div class="g"><div class="gn">17–19 jul</div><div class="gt">Pelješac</div><div class="gd">Villa Vrgorac · zee</div></div>
+      <div class="g"><div class="gn">19–22 jul</div><div class="gt">Šibenik</div><div class="gd">Sebenico Rooms</div></div>
+      <div class="g"><div class="gn">22 jul</div><div class="gt">Plitvice</div><div class="gd">Dagstop onderweg</div></div>
+      <div class="g"><div class="gn">22–25 jul</div><div class="gt">Dolenjska</div><div class="gd">Vineyard Cottage · Krka</div></div>
+      <div class="g"><div class="gn">25–26 jul</div><div class="gt">Mokrice</div><div class="gd">Bruiloft · kasteel</div></div>
+      <div class="g optb-only" id="glanceBohinj" hidden><div class="gn">26–28 jul</div><div class="gt">Lake Bohinj</div><div class="gd">optie B · bergmeer</div></div>
+      <div class="g" id="glanceLjubljana"><div class="gn">26–28 jul</div><div class="gt">Ljubljana</div><div class="gd">oude stad · kasteel</div></div>
+    </div>
+  </section>
+
+  <!-- STOPS -->
+  <section>
+    <div class="sec-head"><span class="num">02</span><h2>Stop voor stop</h2></div>
+
+    <article class="stop" id="stop-peljesac" data-open="true">
+      <figure class="figure">
+        <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Coast_at_Orebic_-_panoramio.jpg/1280px-Coast_at_Orebic_-_panoramio.jpg" alt="Kust bij Orebić, Pelješac" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <figcaption>Pelješac · kust bij Orebić</figcaption>
+      </figure>
+      <button class="stop-head" aria-expanded="true">
+        <span class="htitle"><h3>Pelješac · Perna</h3></span>
+        <span class="tags"><span class="nights">17–19 juli</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="stop-panel"><div class="stop-inner">
+        <p class="stay"><span class="stay-tag">Verblijf</span><a class="book" href="https://www.villa-vrgorac.com/" target="_blank" rel="noopener">B&amp;B Villa Vrgorac <span class="arr">↗</span></a> · strand-B&amp;B, 20 m van het water, eigen restaurant, uitzicht op Korčula</p>
+        <p class="vibe">Goede eerste stop, niet ver van het vliegveld. Rustig wijnschiereiland met kiezelstrandjes; je rijdt er over de Pelješac-brug naartoe (geen Bosnië-grens meer).</p>
+        <div class="rows">
+          <div class="row"><div class="k">Zwemmen</div><div class="v">Voor de deur in Perna; de strandjes rond Orebić.</div></div>
+          <div class="row"><div class="k">Doen</div><div class="v">Ferry naar <b>Korčula-stad</b> (15 min) voor een halve dag · wijnproeven bij <b>Dingač</b> of <b>Postup</b> · de heuvel Sv. Ilija op voor het uitzicht.</div></div>
+          <div class="row"><div class="k">Eten</div><div class="v">Het eigen restaurant van de B&amp;B, of een konoba in Korčula-stad.</div></div>
+        </div>
+        <div class="drive"><b>Rijden:</b> Dubrovnik-vliegveld → Perna/Orebić ± 2u. Te laat geland? Eerste nacht in <b>Cavtat</b> (5 min van het vliegveld).</div>
+      </div></div>
+    </article>
+
+    <article class="stop" id="stop-sibenik" data-open="true">
+      <figure class="figure">
+        <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Cathedral_of_St._James%2C_%C5%A0ibenik_08.jpg/1280px-Cathedral_of_St._James%2C_%C5%A0ibenik_08.jpg" alt="Kathedraal van Sint-Jakob, Šibenik" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <figcaption>Šibenik · oude stad aan zee</figcaption>
+      </figure>
+      <button class="stop-head" aria-expanded="true">
+        <span class="htitle"><h3>Šibenik</h3></span>
+        <span class="tags"><span class="nights">19–22 juli</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="stop-panel"><div class="stop-inner">
+        <p class="stay"><span class="stay-tag">Verblijf</span><a class="book" href="https://www.booking.com/hotel/hr/sebenico-luxury-rooms.html" target="_blank" rel="noopener">Sebenico Luxury Rooms <span class="arr">↗</span></a> · kamers midden in de oude stad</p>
+        <p class="vibe">Het rustige tegenovergestelde van Split: steen, steegjes en trappen, levendig zonder de massa.</p>
+        <div class="rows">
+          <div class="row"><div class="k">Zwemmen</div><div class="v"><b>Banj-strand</b> met zicht op de oude stad · de <b>Krka-watervallen</b> (~30 min) · bootje naar <b>Zlarin</b> of <b>Prvić</b>.</div></div>
+          <div class="row"><div class="k">Doen</div><div class="v">Rondlopen in de oude stad · <b>fort St. Michael</b> voor het uitzicht.</div></div>
+          <div class="row"><div class="k">Eten</div><div class="v"><b>Konoba Centar</b> · <b>Ay Amo</b> · <b>Bava</b> · <b>ONA</b> (ook ontbijt) · <b>Pelegrini</b> <span class="pill lux">Michelin</span></div></div>
+        </div>
+        <div class="drive"><b>Rijden:</b> Orebić → Šibenik ± 3u (over de brug en de A1).</div>
+      </div></div>
+    </article>
+
+    <article class="stop transit" id="stop-plitvice" data-open="true">
+      <figure class="figure">
+        <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Another_Rainbow_at_Waterfalls_of_Plitvice_Lakes.jpg/1280px-Another_Rainbow_at_Waterfalls_of_Plitvice_Lakes.jpg" alt="Watervallen van Plitvice" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <figcaption>Plitvice · watervallen</figcaption>
+      </figure>
+      <button class="stop-head" aria-expanded="true">
+        <span class="htitle"><h3>Plitvice + Rastoke</h3></span>
+        <span class="tags"><span class="dates">dagstop · 22 juli</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="stop-panel"><div class="stop-inner">
+        <p class="vibe">Op de rijdag van Šibenik naar Slovenië pak je de Plitvice-meren mee. Ga vroeg (vóór 9u) of laat in de middag, want het wordt druk. Rastoke, een dorpje met watermolens, ligt vlakbij voor de lunch. Daarna doorrijden naar het wijnhuisje.</p>
+        <div class="drive"><b>Rijden:</b> Šibenik → Plitvice ± 2u · Plitvice → Dolenjska ± 2u.</div>
+      </div></div>
+    </article>
+
+    <article class="stop" id="stop-dolenjska" data-open="true">
+      <figure class="figure">
+        <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Kostanjevica_na_Krki.JPG/1280px-Kostanjevica_na_Krki.JPG" alt="Kostanjevica na Krki aan de Krka, Dolenjska" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <figcaption>Dolenjska · Kostanjevica na Krki</figcaption>
+      </figure>
+      <button class="stop-head" aria-expanded="true">
+        <span class="htitle"><h3>Dolenjska · Trška Gora</h3></span>
+        <span class="tags"><span class="nights">22–25 juli</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="stop-panel"><div class="stop-inner">
+        <p class="stay"><span class="stay-tag">Verblijf</span><a class="book" href="https://www.booking.com/hotel/si/vineyard-cottage-hram-rataj.html" target="_blank" rel="noopener">Vineyard Cottage Rataj 2 <span class="arr">↗</span></a> · zidanica (wijnhuisje) met hottub en eigen Cviček, uitzicht over het Krka-dal</p>
+        <p class="vibe">Een wijnhuisje op een heuvel boven Novo Mesto. Hier blijf je drie nachten zitten en kom je tot rust; de 25e is het maar ~45 min naar Mokrice.</p>
+        <div class="rows">
+          <div class="row"><div class="k">Zwemmen</div><div class="v">In de warme <b>Krka</b>: bij Otočec, Loka, of bij de brug in <b>Kostanjevica na Krki</b>.</div></div>
+          <div class="row"><div class="k">Doen</div><div class="v">SUP of kano op de rivier · het eilandstadje <b>Kostanjevica na Krki</b> · langs kasteeleilandje <b>Otočec</b> · Cviček proeven uit de eigen kelder.</div></div>
+        </div>
+        <div class="drive"><b>Rijden:</b> de cottage ligt iets de heuvel op (smal weggetje) · → Mokrice ± 45 min.</div>
+      </div></div>
+    </article>
+
+    <article class="stop wedding" id="stop-mokrice" data-open="true">
+      <figure class="figure">
+        <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Mokrice_Castle_43.jpg/1280px-Mokrice_Castle_43.jpg" alt="Grad Mokrice, kasteel bij Brežice" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <figcaption>Grad Mokrice</figcaption>
+      </figure>
+      <button class="stop-head" aria-expanded="true">
+        <span class="htitle"><h3>Grad Mokrice · de bruiloft</h3></span>
+        <span class="tags"><span class="nights">25–26 juli</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="stop-panel"><div class="stop-inner">
+        <p class="stay"><span class="stay-tag">Locatie</span><a class="book" href="https://mokrice-castle.com/" target="_blank" rel="noopener">Grad Mokrice <span class="arr">↗</span></a> · bruiloftslocatie, kasteelhotel met park en golfbaan net over de grens bij Brežice</p>
+        <p class="vibe">Een 15e-eeuws kasteel op de grens met Kroatië. Vanaf het wijnhuisje ben je er in ~45 min. Verder weinig te regelen; aanwezig zijn, dansen, bijkomen.</p>
+        <div class="drive"><b>Rijden:</b> Dolenjska → Mokrice ± 45 min · Mokrice → Zagreb ± 40 min.</div>
+      </div></div>
+    </article>
+  </section>
+
+  <!-- TWO OPTIONS -->
+  <section id="opt-section">
+    <div class="sec-head"><span class="num">03</span><h2>Twee opties voor het einde</h2></div>
+    <div class="options">
+      <div class="opt a is-active" id="opt-a">
+        <div class="opt-head">
+          <div><div class="tag">Optie A · korter</div><h3>Rechtstreeks via Ljubljana</h3></div>
+          <button class="pickbtn" data-pick="A">Kies A</button>
+        </div>
+        <ol>
+          <li><b>26–28 jul</b> · Ljubljana (2 nachten): oude stad, kasteel, terrasjes langs de rivier</li>
+          <li><b>28 jul</b> · eind van de dag naar Zagreb, auto inleveren, terugvliegen (late vlucht op de 28e, of een nacht bij het vliegveld en vroeg de 29e weg)</li>
+        </ol>
+        <p class="why">Rustiger en een dag eerder thuis. Overnachten in Ljubljana: <a href="https://www.booking.com/hotel/si/old-town-residence-ljubljana.html" target="_blank" rel="noopener">Old Quarter Residence ↗</a> <span class="pill ok">budget</span> of <a href="https://www.booking.com/hotel/si/zlata-ladjica-boutique-ljubljana.html" target="_blank" rel="noopener">Zlata Ladjica ↗</a> <span class="pill lux">splurge</span>.</p>
+      </div>
+      <div class="opt b" id="opt-b">
+        <figure class="figure">
+          <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/An_afternoon_at_lake_Bohinj.jpg/1280px-An_afternoon_at_lake_Bohinj.jpg" alt="Lake Bohinj" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+          <figcaption>Lake Bohinj</figcaption>
+        </figure>
+        <div class="opt-head">
+          <div><div class="tag">Optie B · met bergmeer</div><h3>Nog langs Lake Bohinj</h3></div>
+          <button class="pickbtn" data-pick="B">Kies B</button>
+        </div>
+        <ol>
+          <li><b>26–28 jul</b> · Lake Bohinj (2 nachten): zwemmen in het bergmeer, Savica-waterval, Vogel-kabelbaan</li>
+          <li><b>28–29 jul</b> · Ljubljana (1 nacht)</li>
+          <li><b>29 jul</b> · naar Zagreb (~2u), auto inleveren, terugvliegen</li>
+        </ol>
+        <p class="why">Het bergmeer erbij, maar meer rijden (Mokrice → Bohinj ~2,5–3u) en een dag langer. Overnachten in Bohinj: <a href="https://www.booking.com/hotel/si/apartments-bohinj.html" target="_blank" rel="noopener">TD Bohinj Apartments ↗</a> of <a href="https://www.booking.com/hotel/si/apartment-iris.html" target="_blank" rel="noopener">Apartment Iris ↗</a> <span class="pill ok">budget</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICAL -->
+  <section>
+    <div class="sec-head"><span class="num">04</span><h2>Praktisch</h2></div>
+    <div class="practical">
+      <div class="p"><h4>🚗 Huurauto</h4>
+        <p>Eenrichting <b>Dubrovnik → Zagreb</b>: drop-off fee ± €200–300 (sommige lokale verhuurders ± €250 vast).</p>
+        <p>Voor Slovenië heb je een <b>cross-border-toestemming</b> nodig; meld dit bij het boeken (vaak gratis vanaf 3 dagen). Boek vroeg en vergelijk DiscoverCars/Rentalcars met lokale spelers (Oryx, Autowill, Carwiz, Avax).</p>
+      </div>
+      <div class="p"><h4>✈️ Vlucht</h4>
+        <p>Heen naar Dubrovnik (DBV), terug vanaf Zagreb (ZAG): open-jaw of twee enkele reizen.</p>
+        <p id="flightNote">Optie A: vlieg 28 (of vroeg 29) juli. Optie B: vlieg 29 juli. Houd genoeg tijd voor de rit Ljubljana → Zagreb (~2u) op de vertrekdag.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="note">Samengesteld als persoonlijk reisplan. Klik op een stop in de kaart om er naartoe te scrollen; klik op een koptekst om een stop in- of uit te klappen; wissel boven de kaart tussen optie A en B. Foto's komen van Wikimedia Commons (CC/CC0/publiek domein); valt een foto weg, dan toont het bestand een effen vlak. Prijzen en beschikbaarheid zijn niet live gecontroleerd; bevestig alles voor jullie data. Goede reis!</p>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- collapsible stops ---- */
+  document.querySelectorAll(".stop").forEach(function(stop){
+    var head = stop.querySelector(".stop-head");
+    var panel = stop.querySelector(".stop-panel");
+    if(!head || !panel) return;
+    // start open
+    panel.style.height = "auto";
+    head.addEventListener("click", function(){
+      var open = stop.getAttribute("data-open") !== "false";
+      if(open){
+        panel.style.height = panel.scrollHeight + "px";
+        requestAnimationFrame(function(){ panel.style.height = "0px"; });
+        stop.setAttribute("data-open","false");
+        head.setAttribute("aria-expanded","false");
+      } else {
+        panel.style.height = panel.scrollHeight + "px";
+        stop.setAttribute("data-open","true");
+        head.setAttribute("aria-expanded","true");
+        panel.addEventListener("transitionend", function te(){
+          if(stop.getAttribute("data-open")==="true") panel.style.height="auto";
+          panel.removeEventListener("transitionend", te);
+        });
+      }
+    });
+  });
+
+  function ensureOpen(stop){
+    if(stop.classList.contains("stop") && stop.getAttribute("data-open")==="false"){
+      stop.querySelector(".stop-head").click();
+    }
+  }
+  function flash(el){
+    el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+  }
+
+  /* ---- clickable map markers ---- */
+  document.querySelectorAll(".mk").forEach(function(mk){
+    function go(){
+      var id = mk.getAttribute("data-target");
+      if(!id) return;
+      var el = document.getElementById(id);
+      if(!el) return;
+      ensureOpen(el);
+      el.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"start"});
+      flash(el);
+    }
+    mk.addEventListener("click", go);
+    mk.addEventListener("keydown", function(e){
+      if(e.key==="Enter" || e.key===" "){ e.preventDefault(); go(); }
+    });
+  });
+
+  /* ---- option A/B toggle ---- */
+  var btnA = document.getElementById("btnA"),
+      btnB = document.getElementById("btnB"),
+      note = document.getElementById("toggleNote"),
+      optA = document.getElementById("opt-a"),
+      optB = document.getElementById("opt-b"),
+      ljDates = document.getElementById("ljDates"),
+      flightNote = document.getElementById("flightNote"),
+      glanceBohinj = document.getElementById("glanceBohinj"),
+      glanceLjubljana = document.getElementById("glanceLjubljana"),
+      routeB = document.querySelectorAll(".route-b");
+
+  function setMode(mode){
+    var isB = mode === "B";
+    btnA.setAttribute("aria-pressed", String(!isB));
+    btnB.setAttribute("aria-pressed", String(isB));
+    optA.classList.toggle("is-active", !isB);
+    optA.classList.toggle("is-faded", isB);
+    optB.classList.toggle("is-active", isB);
+    optB.classList.toggle("is-faded", !isB);
+    routeB.forEach(function(r){ r.style.opacity = isB ? "1" : "0"; });
+    glanceBohinj.hidden = !isB;
+    if(isB){
+      note.textContent = "Langer: 2 nachten Lake Bohinj, dan 1 nacht Ljubljana.";
+      ljDates.textContent = "28–29 jul";
+      glanceLjubljana.querySelector(".gn").textContent = "28–29 jul";
+      flightNote.innerHTML = "Optie B: vlieg <b>29 juli</b>. Op de 28e rijd je van Bohinj naar Ljubljana (~1u20), op de 29e door naar Zagreb (~2u). Houd genoeg tijd voor de rit naar het vliegveld.";
+    } else {
+      note.textContent = "Korter: 2 nachten Ljubljana, een dag eerder thuis.";
+      ljDates.textContent = "26–28 jul";
+      glanceLjubljana.querySelector(".gn").textContent = "26–28 jul";
+      flightNote.innerHTML = "Optie A: vlieg <b>28 juli</b> (of vroeg de 29e). Houd genoeg tijd voor de rit Ljubljana → Zagreb (~2u) op de vertrekdag.";
+    }
+  }
+  btnA.addEventListener("click", function(){ setMode("A"); });
+  btnB.addEventListener("click", function(){ setMode("B"); });
+  document.querySelectorAll(".pickbtn").forEach(function(b){
+    b.addEventListener("click", function(){ setMode(b.getAttribute("data-pick")); });
+  });
+  setMode("A");
+})();
+</script>
+</body></html>
