@@ -182,6 +182,20 @@
   .tl .te{font-size:14px;line-height:1.5;color:#3a4d50;}
   .tl .te b{color:#2b3d40;font-weight:600;}
   .tl.hl .te{color:var(--clay-soft);}
+  .tl.bk{grid-template-columns:64px 22px 1fr;}
+  .bkbox{position:relative;margin-top:1px;}
+  .bkbox input{position:absolute;opacity:0;width:0;height:0;}
+  .bkbox .bx{display:grid;place-items:center;width:19px;height:19px;border-radius:6px;border:2px solid var(--line);background:#fff;cursor:pointer;transition:all .15s ease;}
+  .bkbox .bx svg{width:11px;height:11px;opacity:0;transform:scale(.5);transition:all .15s ease;color:#fff;}
+  .bkbox input:checked + .bx{background:var(--sea);border-color:var(--sea);}
+  .bkbox input:checked + .bx svg{opacity:1;transform:scale(1);}
+  .bkbox input:focus-visible + .bx{outline:2px solid var(--sea-deep);outline-offset:2px;}
+  .tl.bk.done .te{color:var(--muted);}
+  .booklink{display:inline-flex;align-items:center;gap:3px;font-weight:700;color:var(--sea-deep);text-decoration:none;border-bottom:1.5px solid rgba(14,83,102,.28);white-space:nowrap;}
+  .booklink:hover{color:var(--clay-soft);border-bottom-color:var(--clay);}
+  .booklink:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:3px;}
+  .bktag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2f7d2f;background:rgba(70,140,70,.14);border-radius:999px;padding:2px 8px;margin-left:5px;vertical-align:middle;}
+  @media (max-width:640px){ .tl.bk{grid-template-columns:54px 22px 1fr;} }
   @media (max-width:640px){
     .day-head{padding:13px 15px 5px;}
     .timeline{padding:2px 15px 13px;}
@@ -452,31 +466,27 @@
     </div>
   </section>
 
-  <section id="boeken">
-    <div class="sec-head"><span class="num">04</span><h2>Boeken — checklist</h2></div>
-    <div class="checkwrap">
-      <div class="checkbar">
-        <div class="progress">
-          <div class="track"><div class="bar" id="cbar"></div></div>
-          <div class="ptext" id="ptext">0 van 0 geregeld</div>
-        </div>
-        <button class="resetbtn" id="resetCheck">Alles wissen</button>
-      </div>
-      <div class="checkgroup" id="checklist"></div>
-    </div>
-  </section>
-
   <section id="schema">
-    <div class="sec-head"><span class="num">05</span><h2>Reisschema · dag voor dag</h2></div>
+    <div class="sec-head"><span class="num">04</span><h2>Reisschema &amp; boeken</h2></div>
+    <p style="margin:-10px 0 20px;font-size:14px;color:var(--muted);line-height:1.55;">Dag voor dag van 17 t/m 28 juli, met richttijden. Regels met een vinkvakje zijn boekbaar — vink af wat geregeld is (wordt in deze browser onthouden). De drie geboekte overnachtingen staan al aan.</p>
+    <div id="bookbar" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 18px;margin-bottom:18px;box-shadow:var(--shadow);">
+      <div class="progress" style="flex:1 1 200px;min-width:160px;">
+        <div class="track"><div class="bar" id="cbar"></div></div>
+        <div class="ptext" id="ptext">0 van 0 geboekt</div>
+      </div>
+      <button class="resetbtn" id="resetCheck">Vinkjes wissen</button>
+    </div>
+    <div class="sched">
     <div class="sched">
 
       <div class="day move">
         <div class="day-head"><span class="dd">Vrijdag 17 juli</span><span class="dt">Aankomst &amp; naar Pelješac</span><span class="dn">Villa Vrgorac</span></div>
         <div class="timeline">
-          <div class="tl"><div class="tm">10:15</div><div class="te"><b>Vlucht KL1977</b> vertrekt Amsterdam (AMS).</div></div>
-          <div class="tl"><div class="tm">12:35</div><div class="te">Landing <b>Dubrovnik (DBV)</b>; auto ophalen en bagage.</div></div>
+          <div class="tl bk" data-bk="flight-out"><div class="tm">10:15</div><div class="bkbox"><input type="checkbox" id="bk-flight-out"><label class="bx" for="bk-flight-out" aria-label="Heenvlucht geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te"><b>Vlucht KL1977</b> vertrekt Amsterdam (AMS). <a class="booklink" href="https://www.skyscanner.net/transport/flights/ams/dbv/260717/" target="_blank" rel="noopener">boek ↗</a></div></div>
+          <div class="tl"><div class="tm">12:35</div><div class="te">Landing <b>Dubrovnik (DBV)</b>; auto ophalen.</div></div>
+          <div class="tl bk" data-bk="car"><div class="tm">12:45</div><div class="bkbox"><input type="checkbox" id="bk-car"><label class="bx" for="bk-car" aria-label="Huurauto geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te"><b>Huurauto ophalen</b> (eenrichting → Zagreb, cross-border Slovenië). <a class="booklink" href="https://www.discovercars.com/" target="_blank" rel="noopener">boek ↗</a></div></div>
           <div class="tl hl"><div class="tm">13:30</div><div class="te">Vertrek richting Pelješac over de Pelješac-brug (~2u).</div></div>
-          <div class="tl"><div class="tm">15:30</div><div class="te">Inchecken <b>B&amp;B Villa Vrgorac</b> in Perna; eerste duik in zee.</div></div>
+          <div class="tl bk" data-bk="stay-peljesac" data-c="1"><div class="tm">15:30</div><div class="bkbox"><input type="checkbox" id="bk-stay-peljesac"><label class="bx" for="bk-stay-peljesac" aria-label="Villa Vrgorac geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Inchecken <b>B&amp;B Villa Vrgorac</b> in Perna (17–19 jul). <span class="bktag">geboekt</span> <a class="booklink" href="https://www.villa-vrgorac.com/" target="_blank" rel="noopener">↗</a></div></div>
           <div class="tl"><div class="tm">avond</div><div class="te">Eten in het eigen restaurant van de B&amp;B.</div></div>
         </div>
       </div>
@@ -485,7 +495,7 @@
         <div class="day-head"><span class="dd">Zaterdag 18 juli</span><span class="dt">Pelješac &amp; Korčula</span><span class="dn">Villa Vrgorac</span></div>
         <div class="timeline">
           <div class="tl"><div class="tm">ochtend</div><div class="te">Zwemmen in Perna of strandjes bij Orebić.</div></div>
-          <div class="tl"><div class="tm">middag</div><div class="te">Optioneel: <b>ferry Orebić → Korčula</b> (~20 min) voor een halve dag in de oude stad.</div></div>
+          <div class="tl bk" data-bk="ferry"><div class="tm">middag</div><div class="bkbox"><input type="checkbox" id="bk-ferry"><label class="bx" for="bk-ferry" aria-label="Ferry geregeld"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Optioneel: <b>ferry Orebić → Korčula</b> (~20 min). Voetganger ter plekke, met auto evt. vooraf. <a class="booklink" href="https://www.jadrolinija.hr/en/search-buy-ticket" target="_blank" rel="noopener">boek ↗</a></div></div>
           <div class="tl"><div class="tm">laat</div><div class="te">Wijnproeven bij Dingač/Postup, of de heuvel Sv. Ilija voor het uitzicht.</div></div>
         </div>
       </div>
@@ -494,7 +504,7 @@
         <div class="day-head"><span class="dd">Zondag 19 juli</span><span class="dt">Rijden naar Šibenik</span><span class="dn">Sebenico Rooms</span></div>
         <div class="timeline">
           <div class="tl"><div class="tm">10:00</div><div class="te">Uitchecken, rijden Orebić → Šibenik (~3u over brug + A1).</div></div>
-          <div class="tl"><div class="tm">13:30</div><div class="te">Inchecken <b>Sebenico Luxury Rooms</b> in de oude stad.</div></div>
+          <div class="tl bk" data-bk="stay-sibenik" data-c="1"><div class="tm">13:30</div><div class="bkbox"><input type="checkbox" id="bk-stay-sibenik"><label class="bx" for="bk-stay-sibenik" aria-label="Sebenico geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Inchecken <b>Sebenico Luxury Rooms</b> (19–22 jul). <span class="bktag">geboekt</span> <a class="booklink" href="https://www.booking.com/hotel/hr/sebenico-luxury-rooms.html" target="_blank" rel="noopener">↗</a></div></div>
           <div class="tl"><div class="tm">middag</div><div class="te">Banj-strand met zicht op de oude stad; rondlopen door de steegjes.</div></div>
           <div class="tl"><div class="tm">avond</div><div class="te">Diner bij Konoba Centar / Pelegrini (Michelin, reserveren).</div></div>
         </div>
@@ -520,10 +530,10 @@
         <div class="day-head"><span class="dd">Woensdag 22 juli</span><span class="dt">Plitvice → Slovenië</span><span class="dn">Vineyard Cottage</span></div>
         <div class="timeline">
           <div class="tl hl"><div class="tm">07:30</div><div class="te">Vroeg weg uit Šibenik richting <b>Plitvice</b> (~2u).</div></div>
-          <div class="tl hl"><div class="tm">09:30</div><div class="te"><b>Plitvice tijdslot</b> (vooraf geboekt); meren en watervallen.</div></div>
+          <div class="tl bk hl" data-bk="plitvice"><div class="tm">09:30</div><div class="bkbox"><input type="checkbox" id="bk-plitvice"><label class="bx" for="bk-plitvice" aria-label="Plitvice-tickets geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te"><b>Plitvice tijdslot</b> — vooraf reserveren verplicht (~€40 p.p.). <a class="booklink" href="https://np-plitvicka-jezera.hr/en/plan-your-visit/istrazite-jezera/price-list/" target="_blank" rel="noopener">boek ↗</a></div></div>
           <div class="tl"><div class="tm">13:00</div><div class="te">Lunch in <b>Rastoke</b> (watermolen-dorpje), vlakbij.</div></div>
           <div class="tl"><div class="tm">14:30</div><div class="te">Doorrijden naar Dolenjska (~2u), grens Kroatië → Slovenië.</div></div>
-          <div class="tl"><div class="tm">17:00</div><div class="te">Inchecken <b>Vineyard Cottage Rataj 2</b> boven Novo Mesto; hottub.</div></div>
+          <div class="tl bk" data-bk="stay-dolenjska" data-c="1"><div class="tm">17:00</div><div class="bkbox"><input type="checkbox" id="bk-stay-dolenjska"><label class="bx" for="bk-stay-dolenjska" aria-label="Vineyard Cottage geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Inchecken <b>Vineyard Cottage Rataj 2</b> (22–25 jul); hottub. <span class="bktag">geboekt</span> <a class="booklink" href="https://www.booking.com/hotel/si/vineyard-cottage-hram-rataj.html" target="_blank" rel="noopener">↗</a></div></div>
         </div>
       </div>
 
@@ -545,7 +555,7 @@
       <div class="day wed">
         <div class="day-head"><span class="dd">Zaterdag 25 juli</span><span class="dt">Bruiloft op Grad Mokrice</span><span class="dn wedn">Mokrice 💍</span></div>
         <div class="timeline">
-          <div class="tl"><div class="tm">middag</div><div class="te">Uitchecken cottage, rijden naar <b>Grad Mokrice</b> (~45 min), inchecken kasteel.</div></div>
+          <div class="tl bk" data-bk="stay-mokrice"><div class="tm">middag</div><div class="bkbox"><input type="checkbox" id="bk-stay-mokrice"><label class="bx" for="bk-stay-mokrice" aria-label="Mokrice kamer geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Uitchecken cottage, naar <b>Grad Mokrice</b> (~45 min), inchecken kasteel (25–26 jul). <a class="booklink" href="https://www.booking.com/hotel/si/golf-grad-mokrice.html?checkin=2026-07-25&checkout=2026-07-26&group_adults=2" target="_blank" rel="noopener">boek ↗</a></div></div>
           <div class="tl hl"><div class="tm">namiddag</div><div class="te"><b>Bruiloft</b> — ceremonie, diner, dansen.</div></div>
           <div class="tl"><div class="tm">nacht</div><div class="te">Overnachten op het kasteel (geen vervoer nodig).</div></div>
         </div>
@@ -556,7 +566,7 @@
         <div class="timeline">
           <div class="tl"><div class="tm">late ochtend</div><div class="te">Rustig ontbijten, uitchecken Mokrice.</div></div>
           <div class="tl"><div class="tm">12:00</div><div class="te">Rijden Mokrice → <b>Ljubljana</b> (~1u15).</div></div>
-          <div class="tl"><div class="tm">14:00</div><div class="te">Inchecken hotel; terrasje langs de Ljubljanica.</div></div>
+          <div class="tl bk" data-bk="stay-ljubljana"><div class="tm">14:00</div><div class="bkbox"><input type="checkbox" id="bk-stay-ljubljana"><label class="bx" for="bk-stay-ljubljana" aria-label="Ljubljana hotel geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te">Inchecken <b>hotel Ljubljana</b> (26–28 jul); terrasje langs de Ljubljanica. <a class="booklink" href="https://www.booking.com/searchresults.html?ss=Ljubljana%20Old%20Town&checkin=2026-07-26&checkout=2026-07-28&group_adults=2" target="_blank" rel="noopener">boek ↗</a></div></div>
         </div>
       </div>
 
@@ -573,9 +583,9 @@
         <div class="timeline">
           <div class="tl hl"><div class="tm">13:00</div><div class="te">Uiterlijk uit Ljubljana vertrekken (rijden naar <b>Zagreb</b> ~1u45–2u).</div></div>
           <div class="tl"><div class="tm">15:00</div><div class="te">Auto inleveren bij <b>Zagreb Airport</b>; inchecken.</div></div>
-          <div class="tl hl"><div class="tm">17:10</div><div class="te"><b>Vlucht KL1968</b> vertrekt Zagreb (ZAG).</div></div>
+          <div class="tl bk hl" data-bk="flight-back"><div class="tm">17:10</div><div class="bkbox"><input type="checkbox" id="bk-flight-back"><label class="bx" for="bk-flight-back" aria-label="Terugvlucht geboekt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div><div class="te"><b>Vlucht KL1968</b> vertrekt Zagreb (ZAG) → AMS ~19:15. Laatste directe vlucht. <a class="booklink" href="https://www.skyscanner.net/transport/flights/zag/ams/260728/" target="_blank" rel="noopener">boek ↗</a></div></div>
           <div class="tl"><div class="tm">19:15</div><div class="te">Landing <b>Amsterdam (AMS)</b>. Thuis.</div></div>
-          <div class="tl"><div class="tm">backup</div><div class="te">Te laat uit Ljubljana? Nacht bij Zagreb-vliegveld en de ochtendvlucht van de 29e.</div></div>
+          <div class="tl"><div class="tm">backup</div><div class="te">Te laat uit Ljubljana? Nacht bij Zagreb-vliegveld en de ochtendvlucht van de 29e. <a class="booklink" href="https://www.booking.com/searchresults.html?ss=Zagreb%20Airport&checkin=2026-07-28&checkout=2026-07-29&group_adults=2" target="_blank" rel="noopener">hotels ↗</a></div></div>
         </div>
       </div>
 
@@ -583,7 +593,7 @@
   </section>
 
   <section>
-    <div class="sec-head"><span class="num">06</span><h2>Praktisch</h2></div>
+    <div class="sec-head"><span class="num">05</span><h2>Praktisch</h2></div>
     <div class="practical">
       <div class="p"><h4>🚗 Huurauto</h4>
         <p>Eenrichting <b>Dubrovnik → Zagreb</b>: drop-off fee ± €200–300 (sommige lokale verhuurders ± €250 vast).</p>
@@ -596,7 +606,7 @@
     </div>
   </section>
 
-  <p class="note">Samengesteld als persoonlijk reisplan. Klik op een stop in de kaart om er naartoe te scrollen; klik op een koptekst om een stop in- of uit te klappen; de boekingschecklist onthoudt je vinkjes in deze browser. Foto's komen van Wikimedia Commons (CC/CC0/publiek domein); valt een foto weg, dan toont het bestand een effen vlak. Prijzen en beschikbaarheid zijn niet live gecontroleerd; bevestig alles voor jullie data. Goede reis!</p>
+  <p class="note">Samengesteld als persoonlijk reisplan. Klik op een stop in de kaart om er naartoe te scrollen; klik op een koptekst om een stop in- of uit te klappen. In het reisschema kun je boekbare regels afvinken — je vinkjes worden in deze browser onthouden. Foto's komen van Wikimedia Commons (CC/CC0/publiek domein); valt een foto weg, dan toont het bestand een effen vlak. Vluchttijden volgen het zomerschema en prijzen zijn niet live gecontroleerd; bevestig alles voor jullie data. Goede reis!</p>
 
 </div>
 
@@ -641,73 +651,30 @@
     mk.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } });
   });
 
-  /* ---- booking checklist ---- */
-  var ITEMS=[
-    {g:"Vlucht & auto"},
-    {id:"flight-out", t:"Heenvlucht AMS → Dubrovnik (DBV) · vr 17 juli", d:"Ochtendvlucht zodat je dezelfde middag naar Pelješac rijdt (~2u).",
-     o:'<b>Aanbevolen:</b> KLM <b>KL1977, vertrek AMS 10:15 → aan DBV ~12:35</b> (direct, ~2u20). De late KL1981 (21:00) landt te laat om door te rijden.<br><b>Boek/vergelijk met datum 17-07 voorgevuld:</b> <a href="https://www.skyscanner.net/transport/flights/ams/dbv/260717/" target="_blank" rel="noopener">Skyscanner 17 jul ↗</a> · <a href="https://www.google.com/travel/flights?q=Flights%20from%20AMS%20to%20DBV%20on%202026-07-17" target="_blank" rel="noopener">Google Flights 17 jul ↗</a> · <a href="https://www.klm.nl/en-nl/flights-from-amsterdam-to-dubrovnik" target="_blank" rel="noopener">KLM direct ↗</a>.<br><b>Prijsindicatie:</b> vanaf ~€140–230 p.p. enkele reis. KLM is de enige directe; Croatia Airlines alleen met overstap via Zagreb (backup). Boek vroeg.'},
-    {id:"flight-back", t:"Terugvlucht Zagreb (ZAG) → AMS · di 28 juli", d:"Laatste directe vlucht vertrekt al ~17:10 — let op de timing.",
-     o:'<b>Directe vluchten op de 28e:</b> Croatia Airlines <b>OU450 ~08:20</b> (ochtend) en KLM <b>KL1968 ~17:10 → aan AMS ~19:15</b> (~2u05). Een latere avondvlucht bestaat niet in het zomerschema.<br><b>⚠️ Timing:</b> Ljubljana → Zagreb is ~1u45–2u. Voor KL1968 (17:10) moet je <b>uiterlijk ~13:30 uit Ljubljana</b> vertrekken (auto inleveren + check-in sluit ~40 min vooraf). Vertrek je later, neem dan een nacht bij het vliegveld en de ochtendvlucht, of vlieg vroeg de 29e.<br><b>Boek/vergelijk met datum 28-07 voorgevuld:</b> <a href="https://www.skyscanner.net/transport/flights/zag/ams/260728/" target="_blank" rel="noopener">Skyscanner 28 jul ↗</a> · <a href="https://www.google.com/travel/flights?q=Flights%20from%20ZAG%20to%20AMS%20on%202026-07-28" target="_blank" rel="noopener">Google Flights 28 jul ↗</a> · <a href="https://www.klm.nl/en-nl/flights-from-zagreb-to-amsterdam" target="_blank" rel="noopener">KLM direct ↗</a>.<br><b>Tip:</b> twee losse enkele reizen is vaak goedkoper/flexibeler (~€250–450 p.p. samen) dan één open-jaw — vergelijk beide.'},
-    {id:"car", t:"Huurauto Dubrovnik → Zagreb", d:"Eenrichting, met <b>cross-border-toestemming voor Slovenië</b>.",
-     o:'<b>One-way fee DBV→ZAG:</b> typisch €200–300 (lange route over heel Kroatië).<br><b>Aanbieders:</b> <a href="https://www.oryx.hr/en/" target="_blank" rel="noopener">Oryx ↗</a> meldt vaak <b>géén one-way fee bij 8+ dagen huur</b> (jullie zitten op 11 — expliciet checken, kan ~€400–500 totaal). <a href="https://autowill-rentacar.hr/en/" target="_blank" rel="noopener">Autowill ↗</a> vaste fee €250. <a href="https://www.avaxrent.com/one-way-rental" target="_blank" rel="noopener">Avax ↗</a> adverteert geen borg + gratis cross-border. <a href="https://www.carwiz.hr/en/" target="_blank" rel="noopener">Carwiz ↗</a> vergelijkbaar. Vergelijk via <a href="https://www.discovercars.com/" target="_blank" rel="noopener">DiscoverCars ↗</a> of <a href="https://www.rentalcars.com/" target="_blank" rel="noopener">Rentalcars ↗</a>.<br><b>Cross-border Slovenië:</b> meestal toegestaan, soms €10–50; regel bij boeking + groene kaart in de auto. Vraag schriftelijke bevestiging.<br><b>Onderweg:</b> Slovenië <a href="https://evinjeta.dars.si/en" target="_blank" rel="noopener">e-vinjeta ↗</a> verplicht (weekvignet ~€16 — check of de auto er al een heeft); Kroatië heeft afstand-tol via tolpoortjes (geen vignet).<br><b>Indicatie totaal compact, 11 dagen:</b> ~€600–750 incl. fee, of ~€400–500 zonder one-way fee bij Oryx.'},
-    {g:"Overnachtingen"},
-    {id:"stay-peljesac", c:true, t:"Pelješac · B&amp;B Villa Vrgorac (17–19 jul)", d:'<a href="https://www.villa-vrgorac.com/" target="_blank" rel="noopener">villa-vrgorac.com ↗</a> · 2 nachten · <b>geboekt €264,90</b>'},
-    {id:"stay-sibenik", c:true, t:"Šibenik · Sebenico Luxury Rooms (19–22 jul)", d:'<a href="https://www.booking.com/hotel/hr/sebenico-luxury-rooms.html" target="_blank" rel="noopener">booking.com ↗</a> · 3 nachten · <b>geboekt €375</b>'},
-    {id:"stay-dolenjska", c:true, t:"Dolenjska · Vineyard Cottage Rataj 2 (22–25 jul)", d:'<a href="https://www.booking.com/hotel/si/vineyard-cottage-hram-rataj.html" target="_blank" rel="noopener">booking.com ↗</a> · 3 nachten · <b>geboekt €438,75</b>'},
-    {id:"stay-mokrice", t:"Mokrice · kamer voor de bruiloft (25–26 jul)", d:'Slapen op of vlakbij de bruiloftslocatie.',
-     o:'<b>Op de locatie zelf:</b> <a href="https://www.booking.com/hotel/si/golf-grad-mokrice.html?checkin=2026-07-25&checkout=2026-07-26&group_adults=2" target="_blank" rel="noopener">Hotel Golf Grad Mokrice · 25–26 jul ↗</a> — 4-sterren kasteelhotel, 19 kamers, vanaf ~€140 p.n. incl. ontbijt + toegang Terme Čatež spa. Beste keuze (geen vervoer na het feest), maar weinig kamers: <b>boek meteen</b>.<br><b>Dichtbij (5–15 min):</b> <a href="https://terme-catez.si/en/accomodation/hotel-terme/" target="_blank" rel="noopener">Hotel Terme · Terme Čatež ↗</a> ~€130–160 p.n. met zwemparadijs; <a href="https://www.booking.com/searchresults.html?ss=Bre%C5%BEice&checkin=2026-07-25&checkout=2026-07-26&group_adults=2" target="_blank" rel="noopener">guesthouses in Brežice · 25–26 jul ↗</a> vanaf ~€78–86 p.n. (budget back-up).<br><b>Advies:</b> Grad Mokrice eerst proberen, anders Terme Čatež als prettige reserveplek op rij-afstand.'},
-    {id:"stay-ljubljana", t:"Ljubljana · hotel (26–28 jul)", d:'2 nachten in/bij de oude stad.',
-     o:'<b>Alles in één zoekopdracht (26–28 jul, 2 pers.):</b> <a href="https://www.booking.com/searchresults.html?ss=Ljubljana%20Old%20Town&checkin=2026-07-26&checkout=2026-07-28&group_adults=2" target="_blank" rel="noopener">Booking · oude stad Ljubljana ↗</a>.<br><b>Splurge:</b> <a href="https://zlataladjica.com/" target="_blank" rel="noopener">Zlata Ladjica Boutique ↗</a> — 5-sterren, MICHELIN-gids, ~€240–330+ p.n. (parkeren/wellness apart). Of <a href="https://www.residence-ljubljana.com/" target="_blank" rel="noopener">Old Quarter Residence ↗</a> luxe-appartementen midden in de oude stad, ~9.6/10, ~€130–180 p.n.<br><b>Midrange:</b> <a href="https://www.booking.com/hotel/si/petkovsek-rooms-apartments.html?checkin=2026-07-26&checkout=2026-07-28&group_adults=2" target="_blank" rel="noopener">Petkovšek Rooms ↗</a> (rivierfront) of <a href="https://all.accor.com/hotel/B355/index.en.shtml" target="_blank" rel="noopener">ibis Styles The Fuzzy Log ↗</a>, ~€90–130 p.n.<br><b>Budget:</b> <a href="https://www.april1550.com/" target="_blank" rel="noopener">April1550 Boutique ↗</a> of <a href="https://www.booking.com/hotel/si/kollmann-rooms.html?checkin=2026-07-26&checkout=2026-07-28&group_adults=2" target="_blank" rel="noopener">Kollmann Rooms ↗</a>, ~€80–110 p.n.; <a href="https://www.hostelcelica.com/" target="_blank" rel="noopener">Hostel Celica ↗</a> (designhostel) private kamer ~€60–90.<br><b>Tip:</b> oude stad is in juli snel vol — boek vroeg.'},
-    {id:"stay-zagreb", t:"Eventueel: nacht bij Zagreb-vliegveld", d:"Alleen als je 29 juli vroeg vliegt in plaats van 28 juli laat.",
-     o:'Alleen nodig als je niet uiterlijk ~13:30 uit Ljubljana kunt en de ochtendvlucht van de 29e neemt. Zoek een <a href="https://www.booking.com/searchresults.html?ss=Zagreb%20Airport&checkin=2026-07-28&checkout=2026-07-29&group_adults=2" target="_blank" rel="noopener">hotel bij Zagreb Airport · 28–29 jul ↗</a> of een guesthouse in Velika Gorica (~10 min), zodat je de auto al inlevert en \'s ochtends zo door de security loopt.'},
-    {g:"Extra's & onderweg"},
-    {id:"travel-ins", t:"Reisverzekering & EHIC/EU-zorgpas", d:"Geldig in zowel Kroatië als Slovenië.",
-     o:'<b><a href="https://ec.europa.eu/social/main.jsp?catId=559" target="_blank" rel="noopener">EHIC (Europese zorgpas) ↗</a>:</b> gratis aanvragen bij je Nederlandse zorgverzekeraar, min. 2 weken vooraf. Dekt medisch noodzakelijke publieke zorg in KR + SI. <b>Maar:</b> géén repatriëring, privéklinieken of annulering.<br><b>Dus ook:</b> een (doorlopende of kortlopende) reisverzekering met <b>SOS/repatriëringsdekking</b>. Neem EHIC + polisnummer mee (fysiek of in de app).'},
-    {id:"plitvice", t:"Plitvice-tickets (22 jul)", d:"Tijdslot vooraf reserveren; ga vroeg tegen de drukte.",
-     o:'<b>Reserveren verplicht:</b> aankomst-tijdslot vooraf online via <a href="https://np-plitvicka-jezera.hr/en/plan-your-visit/istrazite-jezera/price-list/" target="_blank" rel="noopener">np-plitvicka-jezera.hr ↗</a>. Aan de poort kopen lukt in hoogseizoen meestal niet.<br><b>Prijs hoogseizoen (jun–sep):</b> ~€40 p.p. per dag, ~€25 na 16:00. Boot over het Kozjak-meer en panoramatrein zitten in de prijs.<br><b>Tegen drukte:</b> boek 2–4 weken vooruit; neem het vroegste slot (~07:00–08:00) bij Entrance 1 zodat je vóór de dagbussen op de boardwalks loopt.'},
-    {id:"korcula", t:"Optioneel: ferry Orebić → Korčula", d:"Korte overtocht vanaf Pelješac.",
-     o:'<b>Aanbieder:</b> <a href="https://www.jadrolinija.hr/en/search-buy-ticket" target="_blank" rel="noopener">Jadrolinija ↗</a>, lijn 634, autoveer (~20 min) naar Dominče (~3 km van Korčula-stad). Hoogseizoen ~22 afvaarten/dag.<br><b>Prijs:</b> voetganger ~€2–4 p.p.; auto vanaf ~€16 (los van passagiers).<br><b>Reserveren:</b> voor voetgangers niet nodig; met auto in juli kunnen er wachtrijen zijn — kom ruim op tijd of boek online.'},
-    {id:"wedding", t:"Bruiloft: cadeau, kleding, RSVP", d:"Praktische zaken voor 25 juli.",
-     o:'Check de <b>dresscode</b> en of er een <b>shuttle of parkeren</b> bij het kasteel is. Bevestig je <b>RSVP</b> en eventuele dieetwensen op tijd. Pak iets voor zowel warme dag als koelere avond op het kasteelterrein.'}
-  ];
-  var listEl=document.getElementById("checklist"),
+  /* ---- bookable rows in schedule ---- */
+  var rows=[].slice.call(document.querySelectorAll(".tl.bk")),
       bar=document.getElementById("cbar"),
       ptext=document.getElementById("ptext"),
-      KEY="roadtrip-boeken-v1", state={};
+      KEY="roadtrip-boeken-v2", state={};
   var seen=true; try{ var raw=localStorage.getItem(KEY); seen=raw!=null; state=JSON.parse(raw||"{}")||{}; }catch(e){ state={}; seen=false; }
-  if(!seen){ ITEMS.forEach(function(it){ if(it.id && it.c) state[it.id]=true; }); }
+  if(!seen){ rows.forEach(function(r){ if(r.getAttribute("data-c")==="1") state[r.getAttribute("data-bk")]=true; }); }
 
-  var checkboxes=[];
-  ITEMS.forEach(function(it){
-    if(it.g){ var h=document.createElement("h4"); h.textContent=it.g; listEl.appendChild(h); return; }
-    var lab=document.createElement("label"); lab.className="check";
-    var inp=document.createElement("input"); inp.type="checkbox"; inp.id="chk-"+it.id;
-    inp.checked=!!state[it.id];
-    var box=document.createElement("span"); box.className="box";
-    box.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    var txt=document.createElement("span"); txt.className="ctext";
-    txt.innerHTML='<span class="ct">'+it.t+'</span><span class="cd">'+(it.d||"")+'</span>';
-    lab.appendChild(inp); lab.appendChild(box); lab.appendChild(txt);
-    var wrap=document.createElement("div"); wrap.className="citem";
-    wrap.appendChild(lab);
-    if(it.o){
-      var det=document.createElement("details"); det.className="copts";
-      var sum=document.createElement("summary"); sum.innerHTML='<span class="optw">Bekijk opties</span>';
-      var body=document.createElement("div"); body.className="optbody"; body.innerHTML=it.o;
-      det.appendChild(sum); det.appendChild(body); wrap.appendChild(det);
-    }
-    listEl.appendChild(wrap);
-    inp.addEventListener("change",function(){ state[it.id]=inp.checked; save(); update(); });
-    checkboxes.push({id:it.id, inp:inp});
+  var entries=rows.map(function(r){
+    var id=r.getAttribute("data-bk"), inp=r.querySelector('input[type="checkbox"]');
+    inp.checked=!!state[id];
+    r.classList.toggle("done", inp.checked);
+    inp.addEventListener("change",function(){ state[id]=inp.checked; r.classList.toggle("done",inp.checked); save(); update(); });
+    return {id:id, inp:inp, row:r};
   });
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} }
   function update(){
-    var total=checkboxes.length, done=checkboxes.filter(function(c){return c.inp.checked;}).length;
-    bar.style.width=(total?Math.round(done/total*100):0)+"%";
-    ptext.textContent=done+" van "+total+" geregeld";
+    var total=entries.length, done=entries.filter(function(e){return e.inp.checked;}).length;
+    if(bar) bar.style.width=(total?Math.round(done/total*100):0)+"%";
+    if(ptext) ptext.textContent=done+" van "+total+" geboekt";
   }
-  document.getElementById("resetCheck").addEventListener("click",function(){
-    checkboxes.forEach(function(c){ c.inp.checked=false; state[c.id]=false; });
+  var rb=document.getElementById("resetCheck");
+  if(rb) rb.addEventListener("click",function(){
+    entries.forEach(function(e){ e.inp.checked=false; e.row.classList.remove("done"); state[e.id]=false; });
     save(); update();
   });
   update();
