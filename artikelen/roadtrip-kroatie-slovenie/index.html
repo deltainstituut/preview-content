@@ -97,6 +97,9 @@
   .stop-head{width:100%;text-align:left;background:transparent;border:0;cursor:pointer;font-family:inherit;color:inherit;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 16px;padding:18px 24px;}
   .stop-head:focus-visible{outline:2px solid var(--sea);outline-offset:-4px;border-radius:12px;}
   .stop-head .htitle{display:flex;align-items:center;gap:12px;min-width:0;}
+  .mbadge{flex:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--sea);color:#fff;font-size:13px;font-weight:700;line-height:1;box-shadow:0 0 0 3px rgba(28,124,149,.16);}
+  .stop.transit .mbadge{background:#5B6A6D;box-shadow:0 0 0 3px rgba(91,106,109,.18);}
+  .stop.wedding .mbadge{background:var(--gold);box-shadow:0 0 0 3px rgba(192,135,43,.20);}
   .stop-head h3{font-family:var(--display);font-weight:600;font-size:clamp(19px,4.6vw,23px);margin:0;letter-spacing:-.014em;}
   .stop-head .tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .chev{flex:none;color:var(--sea);transition:transform .25s ease;}
@@ -378,7 +381,7 @@
         <figcaption>Pelješac · kust bij Orebić</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Pelješac · Perna</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">1</span><h3>Pelješac · Perna</h3></span>
         <span class="tags"><span class="nights">17–19 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
@@ -400,7 +403,7 @@
         <figcaption>Šibenik · oude stad aan zee</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Šibenik</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">2</span><h3>Šibenik</h3></span>
         <span class="tags"><span class="nights">19–22 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
@@ -422,7 +425,7 @@
         <figcaption>Plitvice · watervallen</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Plitvice + Rastoke</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">★</span><h3>Plitvice + Rastoke</h3></span>
         <span class="tags"><span class="dates">dagstop · 22 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
@@ -437,7 +440,7 @@
         <figcaption>Dolenjska · Kostanjevica na Krki</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Dolenjska · Trška Gora</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">3</span><h3>Dolenjska · Trška Gora</h3></span>
         <span class="tags"><span class="nights">22–25 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
@@ -458,7 +461,7 @@
         <figcaption>Grad Mokrice</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Grad Mokrice · de bruiloft</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">💍</span><h3>Grad Mokrice · de bruiloft</h3></span>
         <span class="tags"><span class="nights">25–26 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
@@ -474,7 +477,7 @@
         <figcaption>Ljubljana · oude stad</figcaption>
       </figure>
       <button class="stop-head" aria-expanded="true">
-        <span class="htitle"><h3>Ljubljana</h3></span>
+        <span class="htitle"><span class="mbadge" aria-hidden="true">L</span><h3>Ljubljana</h3></span>
         <span class="tags"><span class="nights">26–28 juli</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="stop-panel"><div class="stop-inner">
