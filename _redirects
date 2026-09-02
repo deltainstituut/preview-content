@@ -5,3 +5,4 @@
 # inhoud met een 200 wordt geserveerd en de noindex-header meekomt.
 /ellis             /ellis/index.html            200!
 /ellis/voorstel    /ellis/voorstel/index.html   200!
+/ellis/og          /ellis/og/index.html         200!
