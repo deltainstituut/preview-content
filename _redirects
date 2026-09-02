@@ -1,0 +1,7 @@
+# Netlify normaliseert een pad zonder trailing slash met een 301, en op
+# die redirect past het de regels uit _headers niet toe. De pagina raakt
+# daardoor zijn X-Robots-Tag kwijt op precies de vorm die mensen intypen
+# of plakken. Deze regels serveren de inhoud direct met een 200, zodat de
+# noindex-header wel meekomt.
+/ellis             /ellis/index.html            200
+/ellis/voorstel    /ellis/voorstel/index.html   200
